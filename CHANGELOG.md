@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.24.0](https://github.com/agl4/init/compare/v0.23.1...v0.24.0) (2024-12-02)
+
+
+### Features
+
+* Install hunspell with dicts on macOS ([c05abe6](https://github.com/agl4/init/commit/c05abe651cc254bb2530c99335a9920fa12a149d))
+
+
+### Bug Fixes
+
+* Fix updating x86 macOS ([abec6c5](https://github.com/agl4/init/commit/abec6c53bfad8b36b963dc0b027ca95709b8de1d))
+* Run gnupg and git jobs as default ([888b42a](https://github.com/agl4/init/commit/888b42a37373f6fce0e449d06e3938c70a8ad252))
+
 ## [0.23.1](https://github.com/agl4/init/compare/v0.23.0...v0.23.1) (2024-11-12)
 
 
