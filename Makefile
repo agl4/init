@@ -23,7 +23,7 @@ $(info -- Version codename .......: $(VERSION_CODENAME))
 $(info -- Version codename .......: $(ARCHITECTURE))
 $(info -- Inside docker ..........: $(INSIDE_DOCKER))
 
-BASE_TARGETS :=
+COMMON_TARGETS :=
 SERVER_TARGETS := 
 DESKTOP_TARGETS := 
 ASDF_TARGETS :=
@@ -63,8 +63,8 @@ git :
 caps-lock :
 	@gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier', 'ctrl:nocaps']"
 
-server  : directories gnupg git $(BASE_TARGETS) $(SERVER_TARGETS)
-desktop : directories gnupg git $(BASE_TARGETS) $(DESKTOP_TARGETS)
+server  : directories gnupg git $(COMMON_TARGETS) $(SERVER_TARGETS)
+desktop : directories gnupg git $(COMMON_TARGETS) $(DESKTOP_TARGETS)
 install : desktop
 
 apps : directories $(GH_TARGETS) $(1PASSWORD_TARGETS) $(RESILIO_TARGETS) $(TAILSCALE_TARGETS) $(WARP_TARGETS);

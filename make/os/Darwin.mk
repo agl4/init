@@ -34,8 +34,8 @@ ASDF_TARGETS += ${HOME}/.tool-versions asdf-upgrade
 ASDF_TARGETS += ${HOME}/.default-python-packages ${HOME}/.default-npm-packages asdf-setup-shell
 
 ifndef INSTALL_FAST
-BASE_TARGETS += darwin-brew-update
-BASE_TARGETS += darwin-brew-upgrade
+COMMON_TARGETS += darwin-brew-update
+COMMON_TARGETS += darwin-brew-upgrade
 endif
-BASE_TARGETS += darwin-base
-BASE_TARGETS += hunspell_install_dictionaries
+COMMON_TARGETS += darwin-base
+COMMON_TARGETS += hunspell_install_dictionaries

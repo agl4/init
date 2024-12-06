@@ -15,7 +15,7 @@ freebsd-base : freebsd-pkg-update
 
 
 ifndef INSTALL_FAST
-BASE_TARGETS += freebsd-pkg-update
-BASE_TARGETS += freebsd-pkg-upgrade
+COMMON_TARGETS += freebsd-pkg-update
+COMMON_TARGETS += freebsd-pkg-upgrade
 endif
-BASE_TARGETS += freebase-base
+COMMON_TARGETS += freebase-base
