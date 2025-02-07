@@ -4,7 +4,13 @@ ASDF := ${PREFIX}/asdf
 ASDF_PLUGINS := ghq nodejs python
 
 TEMPDIR := $(shell mktemp -d)
-ASDF_DOWNLOAD_LINK := https://github.com/asdf-vm/asdf/releases/download/${ASDF_VERSION}/asdf-${ASDF_VERSION}-$(shell echo "${OS}" | tr '[:upper:]' '[:lower:]')-arm64.tar.gz
+
+ASDF_ARCH := arm64
+ifeq ($(ARCHITECTURE),x86_64)
+ASDF_ARCH := amd64
+endif
+
+ASDF_DOWNLOAD_LINK := https://github.com/asdf-vm/asdf/releases/download/${ASDF_VERSION}/asdf-${ASDF_VERSION}-$(shell echo "${OS}" | tr '[:upper:]' '[:lower:]')-${ASDF_ARCH}.tar.gz
 
 $(ASDF) :
 	@curl -sSL ${ASDF_DOWNLOAD_LINK} | gzip -cd | tar -xvf - -C ${PREFIX}
