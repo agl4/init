@@ -3,8 +3,6 @@
 ASDF := ${PREFIX}/asdf
 ASDF_PLUGINS := ghq nodejs python
 
-TEMPDIR := $(shell mktemp -d)
-
 ASDF_ARCH := arm64
 ifeq ($(ARCHITECTURE),x86_64)
 ASDF_ARCH := amd64
