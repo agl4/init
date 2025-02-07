@@ -1,42 +1,40 @@
 .PHONY : asdf asdf-upgrade asdf-setup-bashrc
 
-ASDF := ${HOME}/.asdf/asdf.sh
+ASDF := ${PREFIX}/asdf
 ASDF_PLUGINS := ghq nodejs python
 
+TEMPDIR := $(shell mktemp -d)
+ASDF_DOWNLOAD_LINK := https://github.com/asdf-vm/asdf/releases/download/${ASDF_VERSION}/asdf-${ASDF_VERSION}-$(shell echo "${OS}" | tr '[:upper:]' '[:lower:]')-arm64.tar.gz
+
 $(ASDF) :
-	@git clone --branch "${ASDF_VERSION}" "https://github.com/asdf-vm/asdf.git" "${HOME}/.asdf"
+	@curl -sSL ${ASDF_DOWNLOAD_LINK} | gzip -cd | tar -xvf - -C ${PREFIX}
 
 $(ASDF_PLUGINS) : $(ASDF)
-	@if [ ! -d "$(addprefix ${HOME}/.asdf/plugins/,$@)" ] ; then ASDF_DIR=${HOME}/.asdf;. "${HOME}/.asdf/asdf.sh" && asdf plugin add $@ ; fi
+	if [ ! -d "$(addprefix ${HOME}/.asdf/plugins/,$@)" ] ; then asdf plugin add $@ ; fi
 
 ${HOME}/.tool-versions : $(ASDF_PLUGINS)
 	$(info Install tool-versions...)
 	@install -v -m 0600 share/asdf/$(shell basename $@) "$@"
-	@ASDF_DIR=${HOME}/.asdf; . "${HOME}/.asdf/asdf.sh" && asdf install
+	 asdf install || true
 
 ${HOME}/.default-python-packages : ${HOME}/.tool-versions
 	$(info update python packages...)
 	@install -v -m 0600 share/asdf/requirements.txt "$@"
-	@ASDF_DIR=${HOME}/.asdf; . "${HOME}/.asdf/asdf.sh" && pip install --upgrade pip
-	@ASDF_DIR=${HOME}/.asdf; . "${HOME}/.asdf/asdf.sh" && pip install --upgrade -r "$@"
+	pip install --upgrade pip
+	pip install --upgrade -r "$@"
 
 ${HOME}/.default-npm-packages : ${HOME}/.tool-versions
 	$(info Update npm packages...)
 	@install -v -m 0600 share/asdf/$(shell basename $@) "$@"
-	@ASDF_DIR=${HOME}/.asdf; . "${HOME}/.asdf/asdf.sh" && xargs npm install --global < "$$HOME/.default-npm-packages"
-	@ASDF_DIR=${HOME}/.asdf; . "${HOME}/.asdf/asdf.sh" && npm update -g npm
-	@ASDF_DIR=${HOME}/.asdf; . "${HOME}/.asdf/asdf.sh" && xargs npm update --global < "$$HOME/.default-npm-packages"
+	xargs npm install --global < "$$HOME/.default-npm-packages"
+	npm update -g npm
+	xargs npm update --global < "$$HOME/.default-npm-packages"
 
 asdf-upgrade: $(ASDF)
-	@ASDF_DIR=${HOME}/.asdf; . "${HOME}/.asdf/asdf.sh" && asdf update
-	@ASDF_DIR=${HOME}/.asdf; . "${HOME}/.asdf/asdf.sh" && asdf plugin-update --all
-
-asdf-setup-shell:
-	@grep '\.asdf/asdf.sh' ${HOME}/.bashrc || echo '. "${HOME}/.asdf/asdf.sh"' >> ${HOME}/.bashrc
-	@grep '\.asdf/asdf.sh' ${HOME}/.zshrc || echo '. "${HOME}/.asdf/asdf.sh"' >> ${HOME}/.zshrc
+	asdf plugin-update --all
 
 ASDF_TARGETS += ${HOME}/.tool-versions asdf-upgrade
-ASDF_TARGETS += ${HOME}/.default-python-packages ${HOME}/.default-npm-packages asdf-setup-shell
+ASDF_TARGETS += ${HOME}/.default-python-packages ${HOME}/.default-npm-packages
 
 asdf: $(ASDF_TARGETS)
 DESKTOP_TARGETS += asdf
