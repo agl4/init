@@ -81,6 +81,9 @@ install : $(SCRIPTS) $(OS_SCRIPTS)
 	@ln -f ${PREFIX}/keys.sh ${PREFIX}/keys
 	@ln -f ${PREFIX}/keys.sh ${PREFIX}/keys_week
 
+uninstall :
+	rm $(SCRIPTS) $(OS_SCRIPTS) ${PREFIX}/keys ${PREFIX}/keys_week
+
 server  : install directories $(BASE_TARGETS) $(SERVER_TARGETS)
 desktop : install directories $(BASE_TARGETS) $(DESKTOP_TARGETS)
 
