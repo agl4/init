@@ -26,7 +26,7 @@ else
 fi
 
 _add(){
-    "${current_path}/add-ssh-key-to-agent-with-passphrase.py" \
+    "${current_path}/add-ssh-key-to-agent-with-passphrase.sh" \
         -p "ssh/${name}/passphrase" \
         -t "$_timeout" \
         -k "${file_ssh_key_prefix}/${name}"
