@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.24.1](https://github.com/agl4/init/compare/v0.24.0...v0.24.1) (2025-02-12)
+
+
+### Bug Fixes
+
+* Fix SSH client config structure ([37ba2e0](https://github.com/agl4/init/commit/37ba2e0363284fe561c56fd7ba50207fddef6394))
+
 ## [0.24.0](https://github.com/agl4/init/compare/v0.23.1...v0.24.0) (2025-02-11)
 
 
