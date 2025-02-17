@@ -1,10 +1,11 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": ["config:recommended"],
+    "logLevel": "debug",
     "customManagers": [
         {
             "customType": "regex",
-            "fileMatch": ["^versions.mk"],
+            "fileMatch": ["^versions.mk$"],
             "matchStrings": [
                 "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?( registryUrl=(?<registryUrl>.*?))?\\s.*?_VERSION=(?<currentValue>.*)\\s"
             ],
