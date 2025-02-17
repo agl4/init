@@ -37,7 +37,10 @@ ${HOME}/.default-npm-packages : ${HOME}/.tool-versions
 asdf-upgrade: $(ASDF)
 	asdf plugin-update --all
 
-ASDF_TARGETS += ${HOME}/.tool-versions asdf-upgrade
+asdf-setup-bashrc:
+	@grep '^export\ PATH.*\.local/bin' ${HOME}/.bashrc >/dev/null || echo 'export PATH=$$PATH:$$HOME/.local/bin' >> ${HOME}/.bashrc
+
+ASDF_TARGETS += ${HOME}/.tool-versions asdf-upgrade asdf-setup-bashrc
 ASDF_TARGETS += ${HOME}/.default-python-packages ${HOME}/.default-npm-packages
 
 asdf: $(ASDF_TARGETS)
