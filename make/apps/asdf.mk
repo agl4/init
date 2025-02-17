@@ -1,4 +1,4 @@
-.PHONY : asdf asdf-upgrade asdf-setup-bashrc
+.PHONY : asdf asdf-upgrade asdf-setup-bashrc asdf-setup-zshrc
 
 ASDF := ${PREFIX}/asdf
 ASDF_PLUGINS := ghq nodejs python
@@ -37,7 +37,13 @@ ${HOME}/.default-npm-packages : ${HOME}/.tool-versions
 asdf-upgrade: $(ASDF)
 	asdf plugin-update --all
 
-ASDF_TARGETS += ${HOME}/.tool-versions asdf-upgrade
+asdf-setup-bashrc:
+	@grep '^export\ PATH.*\.local/bin' ${HOME}/.bashrc >/dev/null || echo 'export PATH=$$PATH:$$HOME/.local/bin' >> ${HOME}/.bashrc
+
+asdf-setup-zshrc:
+	@grep '^export\ PATH.*\.local/bin' ${HOME}/.zshrc >/dev/null || echo 'export PATH=$$PATH:$$HOME/.local/bin' >> ${HOME}/.zshrc
+
+ASDF_TARGETS += ${HOME}/.tool-versions asdf-upgrade asdf-setup-bashrc asdf-setup-zshrc
 ASDF_TARGETS += ${HOME}/.default-python-packages ${HOME}/.default-npm-packages
 
 asdf: $(ASDF_TARGETS)
