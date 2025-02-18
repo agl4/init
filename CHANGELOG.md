@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.25.0](https://github.com/agl4/init/compare/v0.24.1...v0.25.0) (2025-02-17)
+
+
+### Features
+
+* Load homebrew correctly ([9a46147](https://github.com/agl4/init/commit/9a461473fab1d13243a77baf931e6cc66d99750b))
+
+
+### Bug Fixes
+
+* Add PATH to zshrc as well regarding ASDF ([3c0a065](https://github.com/agl4/init/commit/3c0a0650b3001702d4b654fdbc089d471788c134))
+* Fix ASDF path in bashrc ([dc49917](https://github.com/agl4/init/commit/dc49917acf5441282c81577c1328d3e0cb7d96e5))
+
 ## [0.24.1](https://github.com/agl4/init/compare/v0.24.0...v0.24.1) (2025-02-12)
 
 
