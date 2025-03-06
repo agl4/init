@@ -30,12 +30,12 @@ hunspell_install_dictionaries:
 	@bash share/darwin-install-hunspell-dictionaries.sh
 
 
-ASDF_TARGETS += ${HOME}/.tool-versions asdf-upgrade
-ASDF_TARGETS += ${HOME}/.default-python-packages ${HOME}/.default-npm-packages asdf-setup-shell
+# ASDF_TARGETS += ${HOME}/.tool-versions asdf-upgrade
+# ASDF_TARGETS += ${HOME}/.default-python-packages ${HOME}/.default-npm-packages
 
 ifndef INSTALL_FAST
-COMMON_TARGETS += darwin-brew-update
-COMMON_TARGETS += darwin-brew-upgrade
+BASE_TARGETS += darwin-brew-update
+BASE_TARGETS += darwin-brew-upgrade
 endif
-COMMON_TARGETS += darwin-base
-COMMON_TARGETS += hunspell_install_dictionaries
+BASE_TARGETS += darwin-base
+BASE_TARGETS += hunspell_install_dictionaries

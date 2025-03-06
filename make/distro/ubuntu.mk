@@ -3,5 +3,5 @@ ubuntu-setup-repos : debian-update-repos
 	@sudo add-apt-repository -y universe
 	@sudo add-apt-repository -y multiverse
 
-COMMON_TARGETS += ubuntu-setup-repos
+BASE_TARGETS += ubuntu-setup-repos
 include make/distro/debian-based.mk

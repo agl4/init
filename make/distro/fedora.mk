@@ -18,11 +18,11 @@ fedora-postinstall :
 	@sudo systemctl start pcscd
 
 ifndef INSTALL_FAST
-COMMON_TARGETS += fedora-upgrade
+BASE_TARGETS += fedora-upgrade
 endif
 
-COMMON_TARGETS += fedora-install
+BASE_TARGETS += fedora-install
 
 ifndef INSIDE_DOCKER
-COMMON_TARGETS += fedora-postinstall
+BASE_TARGETS += fedora-postinstall
 endif

@@ -1,5 +1,47 @@
 # Changelog
 
+## [0.25.0](https://github.com/agl4/init/compare/v0.24.1...v0.25.0) (2025-02-17)
+
+
+### Features
+
+* Load homebrew correctly ([9a46147](https://github.com/agl4/init/commit/9a461473fab1d13243a77baf931e6cc66d99750b))
+
+
+### Bug Fixes
+
+* Add PATH to zshrc as well regarding ASDF ([3c0a065](https://github.com/agl4/init/commit/3c0a0650b3001702d4b654fdbc089d471788c134))
+* Fix ASDF path in bashrc ([dc49917](https://github.com/agl4/init/commit/dc49917acf5441282c81577c1328d3e0cb7d96e5))
+
+## [0.24.1](https://github.com/agl4/init/compare/v0.24.0...v0.24.1) (2025-02-12)
+
+
+### Bug Fixes
+
+* Fix SSH client config structure ([37ba2e0](https://github.com/agl4/init/commit/37ba2e0363284fe561c56fd7ba50207fddef6394))
+
+## [0.24.0](https://github.com/agl4/init/compare/v0.23.1...v0.24.0) (2025-02-11)
+
+
+### Features
+
+* Add gpg support ([29e412e](https://github.com/agl4/init/commit/29e412e3321e0daf7ae1c28be80e5dd1b4434290))
+* Add host CA certs ([ac010ca](https://github.com/agl4/init/commit/ac010cabaa0694e3a49e7d3538077663736dbcba))
+* Fish configuration ([3c82af7](https://github.com/agl4/init/commit/3c82af7c20015aaccccd909c02b38b0a37f4f8f4))
+* Git configuration ([ad14da0](https://github.com/agl4/init/commit/ad14da06ea97d5172bebca635e96815416bec556))
+* Install hunspell with dicts on macOS ([c05abe6](https://github.com/agl4/init/commit/c05abe651cc254bb2530c99335a9920fa12a149d))
+* Shell scripts ([59da6af](https://github.com/agl4/init/commit/59da6af50140e5037ddc124c09b54c334864a5a6))
+* tmux support ([74182ae](https://github.com/agl4/init/commit/74182ae822762cdca8ff40c743c7419d522d0250))
+* Upgrade to asdf go version ([39696a6](https://github.com/agl4/init/commit/39696a6b99894d69ce50093ca0653736d89bdac6))
+
+
+### Bug Fixes
+
+* Add new ASDF configuration code ([e22e68a](https://github.com/agl4/init/commit/e22e68ae2486cb81383e40da51a1d9fabcb76d00))
+* Correct vi binding ([335bcd0](https://github.com/agl4/init/commit/335bcd01e81b45301fae237a12a7f8dcda171baf))
+* Fix updating x86 macOS ([abec6c5](https://github.com/agl4/init/commit/abec6c53bfad8b36b963dc0b027ca95709b8de1d))
+* Run gnupg and git jobs as default ([888b42a](https://github.com/agl4/init/commit/888b42a37373f6fce0e449d06e3938c70a8ad252))
+
 ## [0.23.1](https://github.com/agl4/init/compare/v0.23.0...v0.23.1) (2024-11-12)
 
 

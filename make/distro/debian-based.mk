@@ -22,11 +22,11 @@ debian-postinstall :
 	@sudo systemctl start pcscd
 
 ifndef INSTALL_FAST
-COMMON_TARGETS += debian-upgrade
+BASE_TARGETS += debian-upgrade
 endif
 
-COMMON_TARGETS += debian-install
+BASE_TARGETS += debian-install
 
 ifndef INSIDE_DOCKER
-COMMON_TARGETS += debian-postinstall
+BASE_TARGETS += debian-postinstall
 endif
