@@ -35,7 +35,7 @@ ${HOME}/.default-npm-packages : ${HOME}/.tool-versions
 	@xargs ${HOME}/.asdf/shims/npm update --global < "$$HOME/.default-npm-packages"
 
 asdf-upgrade: $(ASDF)
-	asdf plugin-update --all
+	@asdf plugin update --all
 
 asdf-setup-bashrc:
 	@grep '^export\ PATH.*\.local/bin' ${HOME}/.bashrc >/dev/null || echo 'export PATH=$$PATH:$$HOME/.local/bin' >> ${HOME}/.bashrc
