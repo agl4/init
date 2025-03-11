@@ -9,6 +9,7 @@ Supports:
 - Ubuntu 22.04, 24.04
 - Fedora 40-41
 - FreeBSD
+- Raspbian
 
 ## Prerequisites
 
