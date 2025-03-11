@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.25.1](https://github.com/agl4/init/compare/v0.25.0...v0.25.1) (2025-03-11)
+
+
+### Bug Fixes
+
+* Fix asdf plugin update ([a761272](https://github.com/agl4/init/commit/a761272f4c6a6719998aa1f8931d1253fb708e52))
+* Fix fish syntax in homebrew fish setup ([4962905](https://github.com/agl4/init/commit/4962905c6b89aac57ad231afa8f57bd0309190aa))
+* Fix homebrew invocation on fish 4.0.0 ([97711cf](https://github.com/agl4/init/commit/97711cff382dde1271a0992d2b290447cea5567b))
+* Fix PATH related issues ([7bc4585](https://github.com/agl4/init/commit/7bc4585d89e58ab38e2e4873ad22460195650315))
+* Set GitHub username for git ([ec0bf30](https://github.com/agl4/init/commit/ec0bf3019c837d36760a8f7477d8cbf26d9eab54))
+
 ## [0.25.0](https://github.com/agl4/init/compare/v0.24.1...v0.25.0) (2025-02-17)
 
 
