@@ -26,6 +26,8 @@ git:
 	@git config --global filter.lfs.process "git-lfs filter-process"
 	@git config --global filter.lfs.required "true"
 
+	@git config --global credential.https://github.com.username "agl4"
+
 # Add targets to groups
 DESKTOP_TARGETS += git
 SERVER_TARGETS += git

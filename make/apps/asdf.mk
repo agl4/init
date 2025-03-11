@@ -24,24 +24,26 @@ ${HOME}/.tool-versions : $(ASDF_PLUGINS)
 ${HOME}/.default-python-packages : ${HOME}/.tool-versions
 	$(info update python packages...)
 	@install -v -m 0600 share/asdf/requirements.txt "$@"
-	pip install --upgrade pip
-	pip install --upgrade -r "$@"
+	@${HOME}/.asdf/shims/pip install --upgrade pip
+	@${HOME}/.asdf/shims/pip install --upgrade -r "$@"
 
 ${HOME}/.default-npm-packages : ${HOME}/.tool-versions
 	$(info Update npm packages...)
 	@install -v -m 0600 share/asdf/$(shell basename $@) "$@"
-	xargs npm install --global < "$$HOME/.default-npm-packages"
-	npm update -g npm
-	xargs npm update --global < "$$HOME/.default-npm-packages"
+	@xargs ${HOME}/.asdf/shims/npm install --global < "$$HOME/.default-npm-packages"
+	@${HOME}/.asdf/shims/npm update -g npm
+	@xargs ${HOME}/.asdf/shims/npm update --global < "$$HOME/.default-npm-packages"
 
 asdf-upgrade: $(ASDF)
 	asdf plugin-update --all
 
 asdf-setup-bashrc:
 	@grep '^export\ PATH.*\.local/bin' ${HOME}/.bashrc >/dev/null || echo 'export PATH=$$PATH:$$HOME/.local/bin' >> ${HOME}/.bashrc
+	@grep '^export\ PATH.*\.asdf/shims' ${HOME}/.bashrc >/dev/null || echo 'export PATH=$$PATH:$$HOME/.asdf/shims' >> ${HOME}/.bashrc
 
 asdf-setup-zshrc:
 	@grep '^export\ PATH.*\.local/bin' ${HOME}/.zshrc >/dev/null || echo 'export PATH=$$PATH:$$HOME/.local/bin' >> ${HOME}/.zshrc
+	@grep '^export\ PATH.*\.asdf/shims' ${HOME}/.zshrc >/dev/null || echo 'export PATH=$$PATH:$$HOME/.asdf/shims' >> ${HOME}/.zshrc
 
 ASDF_TARGETS += ${HOME}/.tool-versions asdf-upgrade asdf-setup-bashrc asdf-setup-zshrc
 ASDF_TARGETS += ${HOME}/.default-python-packages ${HOME}/.default-npm-packages
