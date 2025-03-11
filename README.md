@@ -6,8 +6,8 @@ desktop systems.
 Supports:
 
 - macOS
-- Ubuntu 20.04, 22.04
-- Fedora 38-40
+- Ubuntu 22.04, 24.04
+- Fedora 40-41
 - FreeBSD
 
 ## Prerequisites
