@@ -49,4 +49,3 @@ ASDF_TARGETS += ${HOME}/.tool-versions asdf-upgrade asdf-setup-bashrc asdf-setup
 ASDF_TARGETS += ${HOME}/.default-python-packages ${HOME}/.default-npm-packages
 
 asdf: $(ASDF_TARGETS)
-DESKTOP_TARGETS += asdf
