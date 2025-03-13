@@ -16,6 +16,10 @@ case $(uname -s) in
         }
         case $ID in
             ubuntu|debian|raspbian)
+                [[ -x /usr/bin/sudo ]] || {
+                    apt update
+                    apt-get install -y sudo
+                }
                 sudo apt-get update
                 sudo apt-get install -y git make
             ;;

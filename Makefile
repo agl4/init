@@ -6,7 +6,7 @@
 # - https://polothy.github.io/post/2018-10-09-makefile-dotfiles/
 # - https://github.com/masasam/dotfiles/blob/master/Makefile
 #
-
+SHELL := /bin/bash
 OS := $(shell uname -s)
 ARCHITECTURE := $(shell uname -m)
 ifeq ($(OS),Linux)
