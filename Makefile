@@ -6,6 +6,8 @@
 # - https://polothy.github.io/post/2018-10-09-makefile-dotfiles/
 # - https://github.com/masasam/dotfiles/blob/master/Makefile
 #
+.PHONY : apps caps-lock dev directories server desktop install base test
+
 SHELL := /bin/bash
 OS := $(shell uname -s)
 ARCHITECTURE := $(shell uname -m)
@@ -91,7 +93,6 @@ desktop : base $(DESKTOP_TARGETS)
 
 apps : directories $(GH_TARGETS) $(1PASSWORD_TARGETS) $(RESILIO_TARGETS) $(TAILSCALE_TARGETS) $(WARP_TARGETS);
 
-.PHONY : apps caps-lock dev directories server desktop install
 
 test :
 	fish --version

@@ -21,7 +21,7 @@ pyenv-deps-opensuse-tumbleweed :
 pyenv-setup-bashrc :
 	@grep '^export PYENV_ROOT' ${HOME}/.bashrc || echo 'export PYENV_ROOT="$$HOME/.pyenv"' >> ${HOME}/.bashrc
 	@grep 'PYENV_ROOT.*PATH' ${HOME}/.bashrc || echo '[[ -d $$PYENV_ROOT/bin ]] && export PATH="$$PYENV_ROOT/bin:$$PATH"' >> ${HOME}/.bashrc
-	@grep 'pyenv\ init' ${HOME}/.bashrc || echo 'eval "$$(pyenv init - bash)"' >> ${HOME}/.bashrc
+	@grep 'pyenv init' ${HOME}/.bashrc || echo 'eval "$$(pyenv init - bash)"' >> ${HOME}/.bashrc
 
 pyenv-setup-zshrc :
 	@grep '^export PYENV_ROOT' ${HOME}/.zshrc || echo 'export PYENV_ROOT="$$HOME/.pyenv"' >> ${HOME}/.zshrc
@@ -44,5 +44,6 @@ ifneq (${OS},Darwin)
 PYENV_TARGETS += pyenv-deps-${DISTRIBUTION}
 endif
 
-pyenv: $(PYENV_TARGETS) pyenv-install
-DESKTOP_TARGETS += pyenv
+pyenv : $(PYENV_TARGETS) pyenv-install
+python : pyenv
+DESKTOP_TARGETS += python

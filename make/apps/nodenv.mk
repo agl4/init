@@ -42,5 +42,6 @@ ifneq (${OS},Darwin)
 NODENV_TARGETS += nodenv-deps-${DISTRIBUTION}
 endif
 
-nodenv: $(NODENV_TARGETS) nodenv-install
-DESKTOP_TARGETS += nodenv
+nodenv : $(NODENV_TARGETS) nodenv-install
+node : nodenv
+DESKTOP_TARGETS += node
