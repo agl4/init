@@ -1,8 +1,10 @@
+.PHONY : gh-install-opensuse-tumbleweed
 gh-install-opensuse-tumbleweed :
 	@sudo zypper addrepo https://cli.github.com/packages/rpm/gh-cli.repo
 	@sudo zypper ref
 	@sudo zypper install -y gh
 
+.PHONY : gh-install-ubuntu
 gh-install-ubuntu :
 	@sudo apt-get update
 	@sudo apt-get install curl -y
@@ -12,14 +14,16 @@ gh-install-ubuntu :
 	@sudo apt-get update
 	@sudo apt-get install gh -y
 
+.PHONY : gh-install-fedora
 gh-install-fedora :
-	@sudo dnf install 'dnf-command(config-manager)'
-	@sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
-	@sudo dnf install -y gh
+	sudo dnf config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
+	sudo dnf install -y gh
 
+.PHONY : gh-install-darwin
 gh-install-darwin :
 	@brew install gh
 
+.PHONY : gh-login
 gh-login :
 	@gh auth login
 	@gh auth setup-git
@@ -32,4 +36,5 @@ ifneq (${OS},Darwin)
 GH_TARGETS += gh-install-${DISTRIBUTION}
 endif
 
-gh: $(GH_TARGETS) 
+.PHONY : app-gh
+app-gh : $(GH_TARGETS)
