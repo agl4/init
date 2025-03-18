@@ -10,7 +10,7 @@ SHELL := /bin/bash
 OS := $(shell uname -s)
 ARCHITECTURE := $(shell uname -m)
 ifeq ($(OS),Linux)
-DISTRIBUTION := $(shell cat /etc/os-release | sed -n 's/^ID=\(.*\)$$/\1/p')
+DISTRIBUTION := $(shell source /etc/os-release && echo "$ID")
 VERSION_CODENAME := $(shell cat /etc/os-release | sed -n 's/^VERSION_CODENAME=\(.*\)$$/\1/p')
 endif
 SRCDIR := ./src
