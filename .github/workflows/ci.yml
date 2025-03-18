@@ -30,4 +30,4 @@ jobs:
 
       - name: Run tests
         run: |
-          bash -c "make test"
+          source ~/.bashrc && make test
