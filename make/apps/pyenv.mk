@@ -30,12 +30,10 @@ pyenv-setup-zshrc :
 
 pyenv-install :
 	@git clone https://github.com/pyenv/pyenv.git ${HOME}/.pyenv || git -C ${HOME}/.pyenv pull
-	echo $(PYENV_VERSION) ${PYENV_VERSION}
 	${HOME}/.pyenv/bin/pyenv install --skip-existing ${PYENV_VERSION}
 	${HOME}/.pyenv/bin/pyenv global ${PYENV_VERSION}
 	${HOME}/.pyenv/shims/pip install --upgrade pip
 	${HOME}/.pyenv/shims/pip install -r share/pyenv/requirements.txt
-
 
 PYENV_TARGETS += pyenv-setup-bashrc pyenv-setup-zshrc
 
