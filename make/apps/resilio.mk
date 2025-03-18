@@ -1,5 +1,7 @@
 # https://help.resilio.com/hc/en-us/articles/206178924-Installing-Sync-package-on-Linux
 
+.PHONY : resilio-install-opensuse-tumbleweed resilio-install-ubuntu resilio-install-fedora resilio-install-darwin resilio-configure-linux app-resilio
+
 resilio-install-opensuse-tumbleweed :
 	@sudo rpm --import https://linux-packages.resilio.com/resilio-sync/key.asc
 	@sudo zypper ar --gpgcheck-allow-unsigned-repo -f https://linux-packages.resilio.com/resilio-sync/rpm/\$$basearch resilio-sync
@@ -41,4 +43,4 @@ ifneq (${OS},Darwin)
 RESILIO_TARGETS += resilio-install-${DISTRIBUTION}
 endif
 
-resilio: $(RESILIO_TARGETS)
+app-resilio: $(RESILIO_TARGETS)
