@@ -73,7 +73,7 @@ jobs:
 
   app-1password:
     runs-on: ubuntu-latest  # GitHub-hosted runner
-    needs: base
+    needs: [pyenv, nodenv]
     strategy:
       matrix:
         container:
@@ -94,7 +94,7 @@ jobs:
 
   app-gh:
     runs-on: ubuntu-latest  # GitHub-hosted runner
-    needs: base
+    needs: [pyenv, nodenv]
     strategy:
       matrix:
         container:
@@ -116,7 +116,7 @@ jobs:
 
   app-tailscale:
     runs-on: ubuntu-latest  # GitHub-hosted runner
-    needs: base
+    needs: [pyenv, nodenv]
     strategy:
       matrix:
         container:
@@ -138,7 +138,7 @@ jobs:
 
   app-resilio:
     runs-on: ubuntu-latest  # GitHub-hosted runner
-    needs: base
+    needs: [pyenv, nodenv]
     strategy:
       matrix:
         container:
