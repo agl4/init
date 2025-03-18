@@ -42,7 +42,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run make install
+      - name: Run make
         env:
           DEBIAN_FRONTEND: noninteractive
           TZ: Etc/UTC
@@ -63,13 +63,124 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run make install
+      - name: Run make
         env:
           DEBIAN_FRONTEND: noninteractive
           TZ: Etc/UTC
         run: |
-          bash ./bootstrap.sh && make nodenv   
-    
+          bash ./bootstrap.sh && make nodenv
+
+
+  app-1password:
+    runs-on: ubuntu-latest  # GitHub-hosted runner
+    needs: base
+    strategy:
+      matrix:
+        container:
+          # - ubuntu:24.04
+          - fedora:41
+    container:
+      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run make
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          TZ: Etc/UTC
+        run: |
+          bash ./bootstrap.sh && make app-1password
+
+  app-gh:
+    runs-on: ubuntu-latest  # GitHub-hosted runner
+    needs: base
+    strategy:
+      matrix:
+        container:
+          # - ubuntu:24.04
+          - fedora:41
+    container:
+      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run make
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          TZ: Etc/UTC
+        run: |
+          bash ./bootstrap.sh && make app-gh
+
+
+  app-tailscale:
+    runs-on: ubuntu-latest  # GitHub-hosted runner
+    needs: base
+    strategy:
+      matrix:
+        container:
+          # - ubuntu:24.04
+          - fedora:41
+    container:
+      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run make
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          TZ: Etc/UTC
+        run: |
+          bash ./bootstrap.sh && make app-tailscale
+
+
+  app-resilio:
+    runs-on: ubuntu-latest  # GitHub-hosted runner
+    needs: base
+    strategy:
+      matrix:
+        container:
+          # - ubuntu:24.04
+          - fedora:41
+    container:
+      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run make
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          TZ: Etc/UTC
+        run: |
+          bash ./bootstrap.sh && make app-resilio
+
+
+  app-warp:
+    runs-on: ubuntu-latest  # GitHub-hosted runner
+    needs: base
+    strategy:
+      matrix:
+        container:
+          # - ubuntu:24.04
+          - fedora:41
+    container:
+      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run make
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          TZ: Etc/UTC
+        run: |
+          bash ./bootstrap.sh && make app-warp
+
+
+
 
       # - name: Run tests
       #   run: |
