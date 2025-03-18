@@ -14,6 +14,8 @@ jobs:
       matrix:
         container:
           - ubuntu:22.04
+          - ubuntu:24.04
+          - ubuntu:24.10
           - fedora:41
     container:
       image: ${{ matrix.container }}  # Dynamically use the image from the matrix
