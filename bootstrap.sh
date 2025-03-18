@@ -15,7 +15,7 @@ case $(uname -s) in
             sudo update-locale LANG=en_US.UTF-8
         }
         case $ID in
-            ubuntu|debian|raspbian|opensuse*)
+            ubuntu|debian|raspbian)
                 [[ -x /usr/bin/sudo ]] || {
                     apt update
                     apt-get install -y sudo
@@ -27,6 +27,9 @@ case $(uname -s) in
                 sudo dnf install -y git make
             ;;
             opensuse*)
+                [[ -x /usr/bin/sudo ]] || {
+                    zypper install -y sudo
+                }
                 sudo zypper install -y git make sudo
             ;;
             *) echo "Unsupported distro: $ID"
