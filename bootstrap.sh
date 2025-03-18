@@ -21,16 +21,16 @@ case $(uname -s) in
                     apt-get install -y sudo
                 }
                 sudo apt-get update
-                sudo apt-get install -y git make
+                sudo apt-get install -y git make curl
             ;;
             fedora)
-                sudo dnf install -y git make
+                sudo dnf install -y git make curl
             ;;
             opensuse*)
                 [[ -x /usr/bin/sudo ]] || {
                     zypper install -y sudo
                 }
-                sudo zypper install -y git make sudo
+                sudo zypper install -y git make curl
             ;;
             *) echo "Unsupported distro: $ID"
                exit 1
