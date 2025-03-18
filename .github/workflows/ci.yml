@@ -160,7 +160,7 @@ jobs:
 
   app-warp:
     runs-on: ubuntu-latest  # GitHub-hosted runner
-    needs: base
+    needs: [pyenv, nodenv]
     strategy:
       matrix:
         container:
