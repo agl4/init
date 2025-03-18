@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         container:
-          # - ubuntu:22.04
+          - ubuntu:22.04
           - fedora:41
     container:
       image: ${{ matrix.container }}  # Dynamically use the image from the matrix
@@ -30,4 +30,5 @@ jobs:
 
       - name: Run tests
         run: |
+          # shellcheck disable=SC1090
           source ~/.bashrc && make test
