@@ -8,7 +8,7 @@ PACKAGES += readline-devel sqlite sqlite-devel tk-devel xz-devel zlib-devel
 PACKAGES += unzip
 
 opensuse-tumbleweed-upgrade :
-	@sudo zypper upgrade -y
+	@sudo zypper update -y
 
 opensuse-tumbleweed-install :
 	@sudo zypper install -y $(PACKAGES)
