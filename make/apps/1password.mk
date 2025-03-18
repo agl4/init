@@ -1,5 +1,9 @@
 # https://support.1password.com/install-linux/
 
+# Installing the package on Ubuntu and Fedora takes care of the repository setup
+# and things, but I thought it is safer a bit to manually configure the
+# repositories and keys, according to the documentation.
+
 1password-install-opensuse-tumbleweed :
 	@sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
 	@sudo zypper addrepo https://downloads.1password.com/linux/rpm/stable/x86_64 1password || true
@@ -18,9 +22,11 @@
 	@sudo apt-get install -y 1password
 
 1password-install-fedora :
-	@sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
-	@sudo sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
-	@sudo dnf install -y 1password
+# The repo_gpgcheck must be set to 0 here, the package sets it to 0 as well on
+# automatic updates
+	sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
+	sudo sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=0\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
+	sudo dnf install -y 1password
 
 1password-install-darwin :
 	@brew install --cask 1password
@@ -33,4 +39,4 @@ ifneq (${OS},Darwin)
 1PASSWORD_TARGETS += 1password-install-${DISTRIBUTION}
 endif
 
-1password: $(1PASSWORD_TARGETS) 
+app-1password: $(1PASSWORD_TARGETS)
