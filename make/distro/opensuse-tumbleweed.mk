@@ -1,5 +1,5 @@
 PACKAGES += bash curl fish git gpg2 mosh password-store
-PACKAGES += pcsc-lite pcsc-ccid tmux rsync fzf emacs git-lfs git-annex
+PACKAGES += pcsc-lite pcsc-ccid tmux rsync fzf git-lfs git-annex
 PACKAGES += hunspell  ripgrep
 
 opensuse-tumbleweed-upgrade :
