@@ -46,7 +46,6 @@ PACKAGES = curl fish git tmux
 -include make/distro/$(DISTRIBUTION).mk
 include versions.mk
 include make/apps/1password.mk
-include make/apps/asdf.mk
 include make/apps/fish.mk
 include make/apps/gh.mk
 include make/apps/git.mk
@@ -86,8 +85,9 @@ install : $(SCRIPTS) $(OS_SCRIPTS)
 uninstall :
 	rm $(SCRIPTS) $(OS_SCRIPTS) ${PREFIX}/keys ${PREFIX}/keys_week
 
-server  : install directories $(BASE_TARGETS) $(SERVER_TARGETS)
-desktop : install directories $(BASE_TARGETS) $(DESKTOP_TARGETS)
+base : install directories $(BASE_TARGETS)
+server  : base $(SERVER_TARGETS)
+desktop : base $(DESKTOP_TARGETS)
 
 apps : directories $(GH_TARGETS) $(1PASSWORD_TARGETS) $(RESILIO_TARGETS) $(TAILSCALE_TARGETS) $(WARP_TARGETS);
 
@@ -101,3 +101,5 @@ test :
 	pass --version
 	python --version
 	tmux -V
+	type python | grep pyenv
+	type node | grep nodenv
