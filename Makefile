@@ -6,7 +6,7 @@
 # - https://polothy.github.io/post/2018-10-09-makefile-dotfiles/
 # - https://github.com/masasam/dotfiles/blob/master/Makefile
 #
-.PHONY : apps caps-lock dev directories server desktop install base test
+.PHONY : caps-lock dev directories server desktop install base test all
 
 SHELL := /bin/bash
 OS := $(shell uname -s)
@@ -43,22 +43,24 @@ DESKTOP_TARGETS :=
 ASDF_TARGETS :=
 PACKAGES = curl fish git tmux
 
-# ... other variable declarations
+# Include files:
 -include make/os/$(OS).mk
 -include make/distro/$(DISTRIBUTION).mk
 include versions.mk
+include make/fish.mk
+include make/git.mk
+include make/gpg.mk
+include make/nodenv.mk
+include make/pyenv.mk
+include make/ssh-server.mk
+include make/ssh.mk
+include make/tmux.mk
+
+# Include apps
 include make/apps/1password.mk
-include make/apps/fish.mk
 include make/apps/gh.mk
-include make/apps/git.mk
-include make/apps/gpg.mk
-include make/apps/pyenv.mk
-include make/apps/nodenv.mk
 include make/apps/resilio.mk
-include make/apps/ssh-server.mk
-include make/apps/ssh.mk
 include make/apps/tailscale.mk
-include make/apps/tmux.mk
 include make/apps/warp.mk
 
 dev :
@@ -90,9 +92,6 @@ uninstall :
 base : install directories $(BASE_TARGETS)
 server  : base $(SERVER_TARGETS)
 desktop : base $(DESKTOP_TARGETS)
-
-apps : directories $(GH_TARGETS) $(1PASSWORD_TARGETS) $(RESILIO_TARGETS) $(TAILSCALE_TARGETS) $(WARP_TARGETS);
-
 
 test :
 	fish --version
