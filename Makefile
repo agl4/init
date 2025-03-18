@@ -52,6 +52,7 @@ include make/apps/gh.mk
 include make/apps/git.mk
 include make/apps/gpg.mk
 include make/apps/pyenv.mk
+include make/apps/nodenv.mk
 include make/apps/resilio.mk
 include make/apps/ssh-server.mk
 include make/apps/ssh.mk
