@@ -15,7 +15,8 @@ pyenv-deps-fedora :
 	@sudo dnf install -y make gcc patch zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel libuuid-devel gdbm-libs libnsl2
 
 pyenv-deps-opensuse-tumbleweed :
-	@sudo zypper install -y gcc automake bzip2 libbz2-devel xz xz-devel openssl-devel ncurses-devel readline-devel zlib-devel tk-devel libffi-devel sqlite3-devel gdbm-devel make findutils patch
+	@sudo zypper install -y gcc automake bzip2 libbz2-devel xz xz-devel openssl-devel ncurses-devel \
+		readline-devel zlib-devel tk-devel libffi-devel sqlite3-devel gdbm-devel make findutils patch
 
 pyenv-setup-bashrc :
 	@grep '^export PYENV_ROOT' ${HOME}/.bashrc || echo 'export PYENV_ROOT="$$HOME/.pyenv"' >> ${HOME}/.bashrc
