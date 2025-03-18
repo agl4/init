@@ -30,8 +30,7 @@ jobs:
 
   pyenv:
     runs-on: ubuntu-latest  # GitHub-hosted runner
-    needs:
-      - job: base
+    needs: base
     strategy:
       matrix:
         container:
@@ -50,10 +49,9 @@ jobs:
         run: |
           bash ./bootstrap.sh && make pyenv
 
-   nodenv:
+  nodenv:
     runs-on: ubuntu-latest  # GitHub-hosted runner
-    needs:
-      - job: base
+    needs: base
     strategy:
       matrix:
         container:
