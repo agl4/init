@@ -14,7 +14,7 @@ nodenv-deps-fedora :
 	@sudo dnf install -y python3 gcc-c++ make python3-pip
 
 nodenv-deps-opensuse-tumbleweed :
-	@sudo zypper install -y python3 gcc-c++ make python3-pi
+	@sudo zypper install -y python3 gcc-c++ make python3-pip
 
 nodenv-setup-bashrc :
 	@grep '^export PATH.*nodenv' ${HOME}/.bashrc || echo 'export PATH="$$HOME/.nodenv/bin:$$PATH"' >> ${HOME}/.bashrc
