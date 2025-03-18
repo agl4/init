@@ -26,6 +26,9 @@ case $(uname -s) in
             fedora)
                 sudo dnf install -y git make
             ;;
+            opensuse*)
+                sudo zypper install -y git make sudo
+            ;;
             *) echo "Unsupported distro: $ID"
                exit 1
                ;;
