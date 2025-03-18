@@ -13,7 +13,7 @@ nodenv-deps-ubuntu :
 nodenv-deps-fedora :
 	@sudo dnf install -y python3 gcc-c++ make python3-pip
 
-nodenv-deps-opensuse :
+nodenv-deps-opensuse-tumbleweed :
 	@sudo zypper install python3 gcc-c++ make python3-pi
 
 nodenv-setup-bashrc :

@@ -1,6 +1,6 @@
 # https://tailscale.com/download/linux/opensuse-tumbleweed
 
-tailscale-install-opensuse :
+tailscale-install-opensuse-tumbleweed :
 	@sudo zypper ar -g -r https://pkgs.tailscale.com/stable/opensuse/tumbleweed/tailscale.repo
 	@sudo zypper ref
 	@sudo zypper in -y tailscale

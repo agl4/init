@@ -1,6 +1,6 @@
 # https://support.1password.com/install-linux/
 
-1password-install-opensuse :
+1password-install-opensuse-tumbleweed :
 	@sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
 	@sudo zypper addrepo https://downloads.1password.com/linux/rpm/stable/x86_64 1password || true
 	@sudo zypper install -y 1password
