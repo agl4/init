@@ -17,7 +17,7 @@ case $(uname -s) in
         case $ID in
             ubuntu|debian|raspbian)
                 [[ -x /usr/bin/sudo ]] || {
-                    apt update
+                    apt-get update
                     apt-get install -y sudo
                 }
                 sudo apt-get update
