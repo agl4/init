@@ -38,7 +38,7 @@ case $(uname -s) in
         esac
         ;;
     Darwin)
-        xcode-select --install
+        xcode-select --install || true
         ;;
     FreeBSD)
         export ASSUME_ALWAYS_YES=YES
