@@ -35,11 +35,3 @@ jobs:
           # shellcheck disable=SC1090
           source ~/.bashrc && make test
         shell: bash
-
-      - name: Run tests on zsh
-        run: |
-        shell: zsh
-
-      - name: Run tests on fish
-        run: |
-        shell: fish
