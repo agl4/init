@@ -33,3 +33,18 @@ jobs:
           # shellcheck disable=SC1090
           source ~/.bashrc && make test
         shell: bash
+
+      - name: Install 1password
+        run: |
+          source ~/.bashrc && make 1password
+        shell: bash
+
+      - name: Install resilio
+        run: |
+          source ~/.bashrc && make resilio
+        shell: bash
+
+      - name: Install tailscale
+        run: |
+          source ~/.bashrc && make tailscale
+        shell: bash
