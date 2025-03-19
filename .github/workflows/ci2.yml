@@ -62,26 +62,25 @@ jobs:
   #       run: |
   #         bash ./bootstrap.sh && make base
 
-  # pyenv:
-  #   runs-on: ubuntu-latest  # GitHub-hosted runner
-  #   needs: base
-  #   strategy:
-  #     matrix:
-  #       container:
-  #         # - ubuntu:24.04
-  #         - fedora:41
-  #   container:
-  #     image: ${{ matrix.container }}  # Dynamically use the image from the matrix
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v3
+  pyenv:
+    needs: build-fedora
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        container:
+          - ghcr.io/${{ github.repository }}/fedora:41
+    container:
+      image: ${{ matrix.container }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-  #     - name: Run make
-  #       env:
-  #         DEBIAN_FRONTEND: noninteractive
-  #         TZ: Etc/UTC
-  #       run: |
-  #         bash ./bootstrap.sh && make pyenv
+      - name: Run make
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          TZ: Etc/UTC
+        run: |
+          bash make pyenv
 
   # nodenv:
   #   runs-on: ubuntu-latest  # GitHub-hosted runner
