@@ -5,11 +5,13 @@ desktop systems.
 
 Supports:
 
-- macOS
-- Ubuntu 22.04, 24.04
-- Fedora 40-41
-- FreeBSD
-- Raspbian
+| Distribution/OS     |                    | pipeline |
+|---------------------|--------------------|----------|
+| macOS               | `desktop`          |          |
+| Ubuntu 22.04, 24.04 | `desktop`/`server` | `*`      |
+| Fedora 41           | `desktop`/`server` | `*`      |
+| FreeBSD             | `server`           |          |
+| Raspbian            | `server`           |          |
 
 ## Prerequisites
 
@@ -20,6 +22,7 @@ Run `bootstrap.sh`, which installs the dependencies.
 To install the environment run the following:
 
 ```shell
+# Install git before this action of course
 git clone https://github.com/agl4/init
 cd init
 bash bootstrap.sh && make desktop
@@ -31,6 +34,14 @@ scripts. This will also skip compiling everything from source with `asdf`.
 
 ```shell
 INSTALL_FAST=1 make desktop
+```
+
+### Server environment
+
+The server environment contains the same base package set, shell configuration and scripts, but also configures `sshd`. To install, use:
+
+```shell
+make server
 ```
 
 ## Github authentication
