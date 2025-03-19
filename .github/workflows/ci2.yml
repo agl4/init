@@ -1,0 +1,237 @@
+---
+name: Build and Install Matrix
+
+on:
+  push:
+    # branches:
+    #   - main
+  pull_request:
+
+jobs:
+  build-fedora:
+    # strategy:
+    #   matrix:
+    #     container:
+    #       # - ubuntu:24.04
+    #       - fedora:41
+    strategy:
+      matrix:
+        distro: ["fedora"]
+        version:
+          - 41
+    steps:
+      - uses: actions/checkout@v3
+      - uses: docker/metadata-action@v3
+        id: metadata
+        with:
+          images: ghcr.io/${{ github.repository }}
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: int128/kaniko-action@v1
+        with:
+          # push: true
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}
+          cache: true
+          cache-repository: ghcr.io/${{ github.repository }}/cache
+          file: docker/${{ matrix.distro }}/Dockerfile
+          build-args: VERSION=${{ matrix.version }}
+
+
+  # base:
+  #   runs-on: ubuntu-latest  # GitHub-hosted runner
+  #   strategy:
+  #     matrix:
+  #       container:
+  #         # - ubuntu:24.04
+  #         - fedora:41
+  #   container:
+  #     image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+
+  #     - name: Run make install
+  #       env:
+  #         DEBIAN_FRONTEND: noninteractive
+  #         TZ: Etc/UTC
+  #       run: |
+  #         bash ./bootstrap.sh && make base
+
+  # pyenv:
+  #   runs-on: ubuntu-latest  # GitHub-hosted runner
+  #   needs: base
+  #   strategy:
+  #     matrix:
+  #       container:
+  #         # - ubuntu:24.04
+  #         - fedora:41
+  #   container:
+  #     image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+
+  #     - name: Run make
+  #       env:
+  #         DEBIAN_FRONTEND: noninteractive
+  #         TZ: Etc/UTC
+  #       run: |
+  #         bash ./bootstrap.sh && make pyenv
+
+  # nodenv:
+  #   runs-on: ubuntu-latest  # GitHub-hosted runner
+  #   needs: base
+  #   strategy:
+  #     matrix:
+  #       container:
+  #         # - ubuntu:24.04
+  #         - fedora:41
+  #   container:
+  #     image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+
+  #     - name: Run make
+  #       env:
+  #         DEBIAN_FRONTEND: noninteractive
+  #         TZ: Etc/UTC
+  #       run: |
+  #         bash ./bootstrap.sh && make nodenv
+
+
+  # app-1password:
+  #   runs-on: ubuntu-latest  # GitHub-hosted runner
+  #   needs: [pyenv, nodenv]
+  #   strategy:
+  #     matrix:
+  #       container:
+  #         # - ubuntu:24.04
+  #         - fedora:41
+  #   container:
+  #     image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+
+  #     - name: Run make
+  #       env:
+  #         DEBIAN_FRONTEND: noninteractive
+  #         TZ: Etc/UTC
+  #       run: |
+  #         bash ./bootstrap.sh && make app-1password
+
+  # app-gh:
+  #   runs-on: ubuntu-latest  # GitHub-hosted runner
+  #   needs: [pyenv, nodenv]
+  #   strategy:
+  #     matrix:
+  #       container:
+  #         # - ubuntu:24.04
+  #         - fedora:41
+  #   container:
+  #     image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+
+  #     - name: Run make
+  #       env:
+  #         DEBIAN_FRONTEND: noninteractive
+  #         TZ: Etc/UTC
+  #       run: |
+  #         bash ./bootstrap.sh && make app-gh
+
+
+  # app-tailscale:
+  #   runs-on: ubuntu-latest  # GitHub-hosted runner
+  #   needs: [pyenv, nodenv]
+  #   strategy:
+  #     matrix:
+  #       container:
+  #         # - ubuntu:24.04
+  #         - fedora:41
+  #   container:
+  #     image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+
+  #     - name: Run make
+  #       env:
+  #         DEBIAN_FRONTEND: noninteractive
+  #         TZ: Etc/UTC
+  #       run: |
+  #         bash ./bootstrap.sh && make app-tailscale
+
+
+  # app-resilio:
+  #   runs-on: ubuntu-latest  # GitHub-hosted runner
+  #   needs: [pyenv, nodenv]
+  #   strategy:
+  #     matrix:
+  #       container:
+  #         # - ubuntu:24.04
+  #         - fedora:41
+  #   container:
+  #     image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+
+  #     - name: Run make
+  #       env:
+  #         DEBIAN_FRONTEND: noninteractive
+  #         TZ: Etc/UTC
+  #       run: |
+  #         bash ./bootstrap.sh && make app-resilio
+
+
+  # app-warp:
+  #   runs-on: ubuntu-latest  # GitHub-hosted runner
+  #   needs: [pyenv, nodenv]
+  #   strategy:
+  #     matrix:
+  #       container:
+  #         # - ubuntu:24.04
+  #         - fedora:41
+  #   container:
+  #     image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+
+  #     - name: Run make
+  #       env:
+  #         DEBIAN_FRONTEND: noninteractive
+  #         TZ: Etc/UTC
+  #       run: |
+  #         bash ./bootstrap.sh && make app-warp
+
+
+
+
+  #     # - name: Run tests
+  #     #   run: |
+  #     #     # shellcheck disable=SC1090
+  #     #     source ~/.bashrc && make test
+  #     #   shell: bash
+
+  #     # - name: Install 1password
+  #     #   run: |
+  #     #     source ~/.bashrc && make 1password
+  #     #   shell: bash
+
+  #     # - name: Install resilio
+  #     #   run: |
+  #     #     source ~/.bashrc && make resilio
+  #     #   shell: bash
+
+  #     # - name: Install tailscale
+  #     #   run: |
+  #     #     source ~/.bashrc && make tailscale
+  #     #   shell: bash

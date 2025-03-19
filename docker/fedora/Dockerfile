@@ -1,8 +1,6 @@
-ARG  VERSION=22.04
-FROM ubuntu:${VERSION}
+ARG  VERSION=41
+FROM fedora:${VERSION}
 
-ENV DEBIAN_FRONTEND=noninteractive
-ENV TZ=Etc/UTC
 ENV LC_ALL=C
 ENV container=docker
 
@@ -15,8 +13,6 @@ RUN cd /build && make base
 RUN cd /build && make pyenv-deps
 RUN cd /build && make nodenv-deps
 
-
 # Cleanup
 RUN rm -rf /build \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && dnf clean all
