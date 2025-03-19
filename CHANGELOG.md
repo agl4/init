@@ -1,5 +1,36 @@
 # Changelog
 
+## [1.0.0](https://github.com/agl4/init/compare/v0.25.0...v1.0.0) (2025-03-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Getting rid of ASDF-VM, use pyenv and nodenv.
+
+### Features
+
+* Add nodenv for nodejs ([714696b](https://github.com/agl4/init/commit/714696b683ec331996e0de67cb1f46ba77a07e8c))
+* Getting rid of ASDF-VM, use pyenv and nodenv. ([dea3f6b](https://github.com/agl4/init/commit/dea3f6ba28a99d4b3ff2aef1d8c85677def97bef))
+* Implement pyenv ([a494e23](https://github.com/agl4/init/commit/a494e239f63620367bafbcf04e3d059270e7a54c))
+
+
+### Bug Fixes
+
+* Add curl to bootstrap.sh ([e46be2a](https://github.com/agl4/init/commit/e46be2ab7ec40064dac4e16794bda2b0e28fc135))
+* Fix 1password installation ([29ba8e5](https://github.com/agl4/init/commit/29ba8e5e4295c35f24d7f9ee381a37cdb3a6e4a6))
+* Fix asdf plugin update ([a761272](https://github.com/agl4/init/commit/a761272f4c6a6719998aa1f8931d1253fb708e52))
+* Fix fish syntax in homebrew fish setup ([4962905](https://github.com/agl4/init/commit/4962905c6b89aac57ad231afa8f57bd0309190aa))
+* Fix gh installation ([4db6b9c](https://github.com/agl4/init/commit/4db6b9c8be516e4d0f7814eda92246d9b4387d25))
+* Fix homebrew invocation on fish 4.0.0 ([97711cf](https://github.com/agl4/init/commit/97711cff382dde1271a0992d2b290447cea5567b))
+* Fix installation of Clouflare WARP+ ([65c6a8f](https://github.com/agl4/init/commit/65c6a8ffdab9884c0e670eb3ac1acaefea82c3e2))
+* Fix PATH related issues ([7bc4585](https://github.com/agl4/init/commit/7bc4585d89e58ab38e2e4873ad22460195650315))
+* Fix resilio installation ([6611f0b](https://github.com/agl4/init/commit/6611f0bf7567583bd86ac6dbfdde1a6c5a137a47))
+* Fix Resilio installation ([984e128](https://github.com/agl4/init/commit/984e128cb57668c11bc714f482a44c94af3da26b))
+* Fix tailscale installation ([46d19c7](https://github.com/agl4/init/commit/46d19c7668b509eec7545300c9241f354fdb5b90))
+* Set GitHub username for git ([ec0bf30](https://github.com/agl4/init/commit/ec0bf3019c837d36760a8f7477d8cbf26d9eab54))
+* Simplify job dependencies in CI workflow ([77dfe75](https://github.com/agl4/init/commit/77dfe7548cd6e9ebf0759ca1f7fde0467d453ad7))
+* Update job dependencies for app-warp in CI workflow [skip_ci] ([2742a05](https://github.com/agl4/init/commit/2742a059ac71d753d0bf1d7df1a5486e4f130347))
+
 ## [0.25.0](https://github.com/agl4/init/compare/v0.24.1...v0.25.0) (2025-02-17)
 
 
