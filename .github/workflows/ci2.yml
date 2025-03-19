@@ -9,6 +9,7 @@ on:
 
 jobs:
   build-fedora:
+    runs-on: ubuntu-latest
     # strategy:
     #   matrix:
     #     container:
