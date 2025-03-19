@@ -1,5 +1,4 @@
-ARG  VERSION=22.04
-FROM ubuntu:${VERSION}
+FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC

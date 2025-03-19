@@ -8,14 +8,11 @@ on:
   # pull_request:
 
 jobs:
-  build-ubuntu:
+  build-docker:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        distro: ["ubuntu"]
-        version:
-          - 22.04
-          - 24.04
+        distro: ["ubuntu", "fedora"]
     steps:
       - uses: actions/checkout@v3
       - uses: docker/metadata-action@v3
@@ -30,161 +27,114 @@ jobs:
       - uses: int128/kaniko-action@v1
         with:
           push: true
-          tags: ghcr.io/${{ github.repository }}/${{ matrix.distro }}:${{ matrix.version }}
+          tags: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
           labels: ${{ steps.metadata.outputs.labels }}
           cache: true
           cache-repository: ghcr.io/${{ github.repository }}/cache
           file: docker/${{ matrix.distro }}/Dockerfile
-          build-args: VERSION=${{ matrix.version }}
 
-  build-fedora:
+  install-app:
+    needs: build-docker
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        distro: ["fedora"]
-        version:
-          - 41
+        distro:
+          - fedora
+          - ubuntu
+        application:
+          - pyenv
+          # - nodenv
+    container:
+      image: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
     steps:
-      - uses: actions/checkout@v3
-      - uses: docker/metadata-action@v3
-        id: metadata
-        with:
-          images: ghcr.io/${{ github.repository }}
-      - uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: int128/kaniko-action@v1
-        with:
-          push: true
-          tags: ghcr.io/${{ github.repository }}/${{ matrix.distro }}:${{ matrix.version }}
-          labels: ${{ steps.metadata.outputs.labels }}
-          cache: true
-          cache-repository: ghcr.io/${{ github.repository }}/cache
-          file: docker/${{ matrix.distro }}/Dockerfile
-          build-args: VERSION=${{ matrix.version }}
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - run: make ${{ matrix.application }}
+
+  # nodenv:
+  #   needs: build-docker
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       distro:
+  #         - fedora
+  #   container:
+  #     image: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+  #     - name: Run make
+  #       env:
+  #         DEBIAN_FRONTEND: noninteractive
+  #         TZ: Etc/UTC
+  #       run: make nodenv
 
 
-  # base:
+  # app-1password:
   #   runs-on: ubuntu-latest  # GitHub-hosted runner
+  #   # needs: [pyenv, nodenv]
+  #   needs: build-docker
   #   strategy:
   #     matrix:
   #       container:
   #         # - ubuntu:24.04
-  #         - fedora:41
+  #         - ghcr.io/${{ github.repository }}/fedora:41
   #   container:
   #     image: ${{ matrix.container }}  # Dynamically use the image from the matrix
   #   steps:
   #     - name: Checkout code
   #       uses: actions/checkout@v3
+  #     - name: Run make
+  #       run: make app-1password
 
-  #     - name: Run make install
-  #       env:
-  #         DEBIAN_FRONTEND: noninteractive
-  #         TZ: Etc/UTC
-  #       run: |
-  #         bash ./bootstrap.sh && make base
-
-  pyenv:
-    needs: [build-fedora, build-ubuntu]
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        container:
-          - ghcr.io/${{ github.repository }}/fedora:41
-    container:
-      image: ${{ matrix.container }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - run: make pyenv
-
-  nodenv:
-    runs-on: ubuntu-latest  # GitHub-hosted runner
-    needs: [build-fedora, build-ubuntu]
-    strategy:
-      matrix:
-        container:
-          - ghcr.io/${{ github.repository }}/fedora:41
-    container:
-      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Run make
-        env:
-          DEBIAN_FRONTEND: noninteractive
-          TZ: Etc/UTC
-        run: make nodenv
+  # app-gh:
+  #   runs-on: ubuntu-latest  # GitHub-hosted runner
+  #   # needs: [pyenv, nodenv]
+  #   needs: build-docker
+  #   strategy:
+  #     matrix:
+  #       container:
+  #         # - ubuntu:24.04
+  #         - ghcr.io/${{ github.repository }}/fedora:41
+  #   container:
+  #     image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+  #     - run: make app-gh
 
 
-  app-1password:
-    runs-on: ubuntu-latest  # GitHub-hosted runner
-    # needs: [pyenv, nodenv]
-    needs: [build-fedora, build-ubuntu]
-    strategy:
-      matrix:
-        container:
-          # - ubuntu:24.04
-          - ghcr.io/${{ github.repository }}/fedora:41
-    container:
-      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Run make
-        run: make app-1password
-
-  app-gh:
-    runs-on: ubuntu-latest  # GitHub-hosted runner
-    # needs: [pyenv, nodenv]
-    needs: [build-fedora, build-ubuntu]
-    strategy:
-      matrix:
-        container:
-          # - ubuntu:24.04
-          - ghcr.io/${{ github.repository }}/fedora:41
-    container:
-      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - run: make app-gh
+  # app-tailscale:
+  #   # this needs to run on plain images, because it requires a systemd integration
+  #   runs-on: ubuntu-latest  # GitHub-hosted runner
+  #   strategy:
+  #     matrix:
+  #       container:
+  #         - ubuntu:24.04
+  #         # - fedora:41  # fails on fedora
+  #   container:
+  #     image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+  #     - run: bash bootstrap.sh && make app-tailscale
 
 
-  app-tailscale:
-    # this needs to run on plain images, because it requires a systemd integration
-    runs-on: ubuntu-latest  # GitHub-hosted runner
-    strategy:
-      matrix:
-        container:
-          - ubuntu:24.04
-          # - fedora:41  # fails on fedora
-    container:
-      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - run: bash bootstrap.sh && make app-tailscale
-
-
-  app-resilio:
-    runs-on: ubuntu-latest  # GitHub-hosted runner
-    # needs: [pyenv, nodenv]
-    needs: [build-fedora, build-ubuntu]
-    strategy:
-      matrix:
-        container:
-          # - ubuntu:24.04
-          - ghcr.io/${{ github.repository }}/fedora:41
-    container:
-      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - run: make app-resilio
+  # app-resilio:
+  #   runs-on: ubuntu-latest  # GitHub-hosted runner
+  #   # needs: [pyenv, nodenv]
+  #   needs: build-docker
+  #   strategy:
+  #     matrix:
+  #       container:
+  #         # - ubuntu:24.04
+  #         - ghcr.io/${{ github.repository }}/fedora:41
+  #   container:
+  #     image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+  #     - run: make app-resilio
 
 
   # app-warp:

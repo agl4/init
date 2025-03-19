@@ -1,5 +1,4 @@
-ARG  VERSION=41
-FROM fedora:${VERSION}
+FROM fedora:41
 
 ENV LC_ALL=C
 ENV container=docker
