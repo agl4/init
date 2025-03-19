@@ -79,8 +79,7 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
           TZ: Etc/UTC
-        run: |
-          bash make pyenv
+        run: make pyenv
 
   # nodenv:
   #   runs-on: ubuntu-latest  # GitHub-hosted runner
