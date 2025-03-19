@@ -8,12 +8,12 @@ on:
   pull_request:
 
 jobs:
-  build-and-install:
+  base:
     runs-on: ubuntu-latest  # GitHub-hosted runner
     strategy:
       matrix:
         container:
-          - ubuntu:24.04
+          # - ubuntu:24.04
           - fedora:41
     container:
       image: ${{ matrix.container }}  # Dynamically use the image from the matrix
@@ -26,25 +26,179 @@ jobs:
           DEBIAN_FRONTEND: noninteractive
           TZ: Etc/UTC
         run: |
-          bash ./bootstrap.sh && make desktop
+          bash ./bootstrap.sh && make base
 
-      - name: Run tests
-        run: |
-          # shellcheck disable=SC1090
-          source ~/.bashrc && make test
-        shell: bash
+  pyenv:
+    runs-on: ubuntu-latest  # GitHub-hosted runner
+    needs: base
+    strategy:
+      matrix:
+        container:
+          # - ubuntu:24.04
+          - fedora:41
+    container:
+      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Install 1password
+      - name: Run make
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          TZ: Etc/UTC
         run: |
-          source ~/.bashrc && make 1password
-        shell: bash
+          bash ./bootstrap.sh && make pyenv
 
-      - name: Install resilio
-        run: |
-          source ~/.bashrc && make resilio
-        shell: bash
+  nodenv:
+    runs-on: ubuntu-latest  # GitHub-hosted runner
+    needs: base
+    strategy:
+      matrix:
+        container:
+          # - ubuntu:24.04
+          - fedora:41
+    container:
+      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Install tailscale
+      - name: Run make
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          TZ: Etc/UTC
         run: |
-          source ~/.bashrc && make tailscale
-        shell: bash
+          bash ./bootstrap.sh && make nodenv
+
+
+  app-1password:
+    runs-on: ubuntu-latest  # GitHub-hosted runner
+    needs: [pyenv, nodenv]
+    strategy:
+      matrix:
+        container:
+          # - ubuntu:24.04
+          - fedora:41
+    container:
+      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run make
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          TZ: Etc/UTC
+        run: |
+          bash ./bootstrap.sh && make app-1password
+
+  app-gh:
+    runs-on: ubuntu-latest  # GitHub-hosted runner
+    needs: [pyenv, nodenv]
+    strategy:
+      matrix:
+        container:
+          # - ubuntu:24.04
+          - fedora:41
+    container:
+      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run make
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          TZ: Etc/UTC
+        run: |
+          bash ./bootstrap.sh && make app-gh
+
+
+  app-tailscale:
+    runs-on: ubuntu-latest  # GitHub-hosted runner
+    needs: [pyenv, nodenv]
+    strategy:
+      matrix:
+        container:
+          # - ubuntu:24.04
+          - fedora:41
+    container:
+      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run make
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          TZ: Etc/UTC
+        run: |
+          bash ./bootstrap.sh && make app-tailscale
+
+
+  app-resilio:
+    runs-on: ubuntu-latest  # GitHub-hosted runner
+    needs: [pyenv, nodenv]
+    strategy:
+      matrix:
+        container:
+          # - ubuntu:24.04
+          - fedora:41
+    container:
+      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run make
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          TZ: Etc/UTC
+        run: |
+          bash ./bootstrap.sh && make app-resilio
+
+
+  app-warp:
+    runs-on: ubuntu-latest  # GitHub-hosted runner
+    needs: [pyenv, nodenv]
+    strategy:
+      matrix:
+        container:
+          # - ubuntu:24.04
+          - fedora:41
+    container:
+      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run make
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          TZ: Etc/UTC
+        run: |
+          bash ./bootstrap.sh && make app-warp
+
+
+
+
+      # - name: Run tests
+      #   run: |
+      #     # shellcheck disable=SC1090
+      #     source ~/.bashrc && make test
+      #   shell: bash
+
+      # - name: Install 1password
+      #   run: |
+      #     source ~/.bashrc && make 1password
+      #   shell: bash
+
+      # - name: Install resilio
+      #   run: |
+      #     source ~/.bashrc && make resilio
+      #   shell: bash
+
+      # - name: Install tailscale
+      #   run: |
+      #     source ~/.bashrc && make tailscale
+      #   shell: bash
