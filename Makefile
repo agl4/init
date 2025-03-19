@@ -59,6 +59,7 @@ include make/tmux.mk
 # Include apps
 include make/apps/1password.mk
 include make/apps/gh.mk
+include make/apps/ghq.mk
 include make/apps/resilio.mk
 include make/apps/tailscale.mk
 include make/apps/warp.mk
