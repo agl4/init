@@ -12,7 +12,7 @@ debian-install : debian-update-repos
 	@sudo apt-get install -y $(PACKAGES)
 
 debian-postinstall :
-	@sudo apt-get install -y pcscd scdaemon gnupg2 
+	@sudo apt-get install -y pcscd scdaemon gnupg2
 	@sudo systemctl enable pcscd
 	@sudo systemctl start pcscd
 
