@@ -35,7 +35,7 @@ jobs:
           cache-repository: ghcr.io/${{ github.repository }}/cache
           file: docker/${{ matrix.distro }}/Dockerfile
 
-  install-app-in-docker:
+  app:
     needs: build-docker
     runs-on: ubuntu-latest
     strategy:
@@ -54,7 +54,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: make ${{ matrix.application }}
 
-  install-app-in-docker-cached:
+  app-cached:
     needs: build-docker
     runs-on: ubuntu-latest
     strategy:
@@ -76,7 +76,7 @@ jobs:
           key: ${{ matrix.distro }}-${{ hashFiles(env.CACHE_PATH) }}
       - run: make ${{ matrix.application }}
 
-  install-app-in-runner:
+  app-runner:
     # this needs to run on plain images, because it requires a systemd
     # integration
     runs-on: ubuntu-latest  # GitHub-hosted runner
