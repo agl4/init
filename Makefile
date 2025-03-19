@@ -6,11 +6,13 @@
 # - https://polothy.github.io/post/2018-10-09-makefile-dotfiles/
 # - https://github.com/masasam/dotfiles/blob/master/Makefile
 #
+.PHONY : caps-lock dev directories server desktop install base test all
 
+SHELL := /bin/bash
 OS := $(shell uname -s)
 ARCHITECTURE := $(shell uname -m)
 ifeq ($(OS),Linux)
-DISTRIBUTION := $(shell cat /etc/os-release | sed -n 's/^ID=\(.*\)$$/\1/p')
+DISTRIBUTION := $(shell source /etc/os-release && echo "$$ID")
 VERSION_CODENAME := $(shell cat /etc/os-release | sed -n 's/^VERSION_CODENAME=\(.*\)$$/\1/p')
 endif
 SRCDIR := ./src
@@ -31,7 +33,7 @@ $(info -- Running on host.........: $(HOST))
 $(info -- Detected OS.............: $(OS))
 $(info -- Detected distribution...: $(DISTRIBUTION))
 $(info -- Version codename .......: $(VERSION_CODENAME))
-$(info -- Version codename .......: $(ARCHITECTURE))
+$(info -- Architecture ...........: $(ARCHITECTURE))
 $(info -- Inside docker ..........: $(INSIDE_DOCKER))
 
 # Target definitions
@@ -41,21 +43,24 @@ DESKTOP_TARGETS :=
 ASDF_TARGETS :=
 PACKAGES = curl fish git tmux
 
-# ... other variable declarations
+# Include files:
 -include make/os/$(OS).mk
 -include make/distro/$(DISTRIBUTION).mk
 include versions.mk
+include make/fish.mk
+include make/git.mk
+include make/gpg.mk
+include make/nodenv.mk
+include make/pyenv.mk
+include make/ssh-server.mk
+include make/ssh.mk
+include make/tmux.mk
+
+# Include apps
 include make/apps/1password.mk
-include make/apps/asdf.mk
-include make/apps/fish.mk
 include make/apps/gh.mk
-include make/apps/git.mk
-include make/apps/gpg.mk
 include make/apps/resilio.mk
-include make/apps/ssh-server.mk
-include make/apps/ssh.mk
 include make/apps/tailscale.mk
-include make/apps/tmux.mk
 include make/apps/warp.mk
 
 dev :
@@ -84,12 +89,9 @@ install : $(SCRIPTS) $(OS_SCRIPTS)
 uninstall :
 	rm $(SCRIPTS) $(OS_SCRIPTS) ${PREFIX}/keys ${PREFIX}/keys_week
 
-server  : install directories $(BASE_TARGETS) $(SERVER_TARGETS)
-desktop : install directories $(BASE_TARGETS) $(DESKTOP_TARGETS)
-
-apps : directories $(GH_TARGETS) $(1PASSWORD_TARGETS) $(RESILIO_TARGETS) $(TAILSCALE_TARGETS) $(WARP_TARGETS);
-
-.PHONY : apps caps-lock dev directories server desktop install
+base : install directories $(BASE_TARGETS)
+server  : base $(SERVER_TARGETS)
+desktop : base $(DESKTOP_TARGETS)
 
 test :
 	fish --version
@@ -99,3 +101,5 @@ test :
 	pass --version
 	python --version
 	tmux -V
+	type python | grep pyenv
+	type node | grep nodenv

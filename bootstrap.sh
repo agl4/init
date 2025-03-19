@@ -16,11 +16,21 @@ case $(uname -s) in
         }
         case $ID in
             ubuntu|debian|raspbian)
+                [[ -x /usr/bin/sudo ]] || {
+                    apt-get update
+                    apt-get install -y sudo
+                }
                 sudo apt-get update
-                sudo apt-get install -y git make
+                sudo apt-get install -y git make curl
             ;;
             fedora)
-                sudo dnf install -y git make
+                sudo dnf install -y git make curl
+            ;;
+            opensuse*)
+                [[ -x /usr/bin/sudo ]] || {
+                    zypper install -y sudo
+                }
+                sudo zypper install -y git make curl
             ;;
             *) echo "Unsupported distro: $ID"
                exit 1
@@ -28,7 +38,7 @@ case $(uname -s) in
         esac
         ;;
     Darwin)
-        xcode-select --install
+        xcode-select --install || true
         ;;
     FreeBSD)
         export ASSUME_ALWAYS_YES=YES
@@ -44,6 +54,6 @@ esac
 cat <<EOF
 Now run:
 
-    make install
+    make
 
 EOF
