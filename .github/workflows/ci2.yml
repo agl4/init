@@ -43,7 +43,11 @@ jobs:
           - ubuntu
         application:
           - pyenv
-          # - nodenv
+          - nodenv
+          - app-gh
+          - app-1password
+          - app-resilio
+          - app-warp
     container:
       image: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
     steps:
@@ -51,132 +55,19 @@ jobs:
         uses: actions/checkout@v3
       - run: make ${{ matrix.application }}
 
-  # nodenv:
-  #   needs: build-docker
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     matrix:
-  #       distro:
-  #         - fedora
-  #   container:
-  #     image: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v3
-  #     - name: Run make
-  #       env:
-  #         DEBIAN_FRONTEND: noninteractive
-  #         TZ: Etc/UTC
-  #       run: make nodenv
+  app-tailscale:
+    # this needs to run on plain images, because it requires a systemd integration
+    runs-on: ubuntu-latest  # GitHub-hosted runner
+    strategy:
+      matrix:
+        container:
+          - ubuntu:24.04
+          # - fedora:41  # fails on fedora
+    container:
+      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - run: bash bootstrap.sh && make app-tailscale
 
 
-  # app-1password:
-  #   runs-on: ubuntu-latest  # GitHub-hosted runner
-  #   # needs: [pyenv, nodenv]
-  #   needs: build-docker
-  #   strategy:
-  #     matrix:
-  #       container:
-  #         # - ubuntu:24.04
-  #         - ghcr.io/${{ github.repository }}/fedora:41
-  #   container:
-  #     image: ${{ matrix.container }}  # Dynamically use the image from the matrix
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v3
-  #     - name: Run make
-  #       run: make app-1password
-
-  # app-gh:
-  #   runs-on: ubuntu-latest  # GitHub-hosted runner
-  #   # needs: [pyenv, nodenv]
-  #   needs: build-docker
-  #   strategy:
-  #     matrix:
-  #       container:
-  #         # - ubuntu:24.04
-  #         - ghcr.io/${{ github.repository }}/fedora:41
-  #   container:
-  #     image: ${{ matrix.container }}  # Dynamically use the image from the matrix
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v3
-  #     - run: make app-gh
-
-
-  # app-tailscale:
-  #   # this needs to run on plain images, because it requires a systemd integration
-  #   runs-on: ubuntu-latest  # GitHub-hosted runner
-  #   strategy:
-  #     matrix:
-  #       container:
-  #         - ubuntu:24.04
-  #         # - fedora:41  # fails on fedora
-  #   container:
-  #     image: ${{ matrix.container }}  # Dynamically use the image from the matrix
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v3
-  #     - run: bash bootstrap.sh && make app-tailscale
-
-
-  # app-resilio:
-  #   runs-on: ubuntu-latest  # GitHub-hosted runner
-  #   # needs: [pyenv, nodenv]
-  #   needs: build-docker
-  #   strategy:
-  #     matrix:
-  #       container:
-  #         # - ubuntu:24.04
-  #         - ghcr.io/${{ github.repository }}/fedora:41
-  #   container:
-  #     image: ${{ matrix.container }}  # Dynamically use the image from the matrix
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v3
-  #     - run: make app-resilio
-
-
-  # app-warp:
-  #   runs-on: ubuntu-latest  # GitHub-hosted runner
-  #   needs: [pyenv, nodenv]
-  #   strategy:
-  #     matrix:
-  #       container:
-  #         # - ubuntu:24.04
-  #         - fedora:41
-  #   container:
-  #     image: ${{ matrix.container }}  # Dynamically use the image from the matrix
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v3
-  #     - name: Run make
-  #       env:
-  #         DEBIAN_FRONTEND: noninteractive
-  #         TZ: Etc/UTC
-  #       run: |
-  #         bash ./bootstrap.sh && make app-warp
-
-
-
-
-  #     # - name: Run tests
-  #     #   run: |
-  #     #     # shellcheck disable=SC1090
-  #     #     source ~/.bashrc && make test
-  #     #   shell: bash
-
-  #     # - name: Install 1password
-  #     #   run: |
-  #     #     source ~/.bashrc && make 1password
-  #     #   shell: bash
-
-  #     # - name: Install resilio
-  #     #   run: |
-  #     #     source ~/.bashrc && make resilio
-  #     #   shell: bash
-
-  #     # - name: Install tailscale
-  #     #   run: |
-  #     #     source ~/.bashrc && make tailscale
-  #     #   shell: bash
