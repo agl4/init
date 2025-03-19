@@ -98,7 +98,8 @@ jobs:
 
   app-1password:
     runs-on: ubuntu-latest  # GitHub-hosted runner
-    needs: [pyenv, nodenv]
+    # needs: [pyenv, nodenv]
+    needs: build-fedora
     strategy:
       matrix:
         container:
@@ -115,6 +116,7 @@ jobs:
   app-gh:
     runs-on: ubuntu-latest  # GitHub-hosted runner
     needs: [pyenv, nodenv]
+    needs: build-fedora
     strategy:
       matrix:
         container:
@@ -129,24 +131,25 @@ jobs:
 
 
   app-tailscale:
+    # this needs to run on plain images, because it requires a systemd integration
     runs-on: ubuntu-latest  # GitHub-hosted runner
-    needs: [pyenv, nodenv]
     strategy:
       matrix:
         container:
-          # - ubuntu:24.04
-          - ghcr.io/${{ github.repository }}/fedora:41
+          - ubuntu:24.04
+          - fedora:41
     container:
       image: ${{ matrix.container }}  # Dynamically use the image from the matrix
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - run: make app-tailscale
+      - run: bash bootstrap.sh && make app-tailscale
 
 
   app-resilio:
     runs-on: ubuntu-latest  # GitHub-hosted runner
-    needs: [pyenv, nodenv]
+    # needs: [pyenv, nodenv]
+    needs: build-fedora
     strategy:
       matrix:
         container:
