@@ -8,13 +8,37 @@ on:
   # pull_request:
 
 jobs:
+  build-ubuntu:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        distro: ["ubuntu"]
+        version:
+          - 22.04
+          - 24.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: docker/metadata-action@v3
+        id: metadata
+        with:
+          images: ghcr.io/${{ github.repository }}
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: int128/kaniko-action@v1
+        with:
+          push: true
+          tags: ghcr.io/${{ github.repository }}/${{ matrix.distro }}:${{ matrix.version }}
+          labels: ${{ steps.metadata.outputs.labels }}
+          cache: true
+          cache-repository: ghcr.io/${{ github.repository }}/cache
+          file: docker/${{ matrix.distro }}/Dockerfile
+          build-args: VERSION=${{ matrix.version }}
+
   build-fedora:
     runs-on: ubuntu-latest
-    # strategy:
-    #   matrix:
-    #     container:
-    #       # - ubuntu:24.04
-    #       - fedora:41
     strategy:
       matrix:
         distro: ["fedora"]
@@ -63,7 +87,7 @@ jobs:
   #         bash ./bootstrap.sh && make base
 
   pyenv:
-    needs: build-fedora
+    needs: [build-fedora, build-ubuntu]
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -78,7 +102,7 @@ jobs:
 
   nodenv:
     runs-on: ubuntu-latest  # GitHub-hosted runner
-    needs: build-fedora
+    needs: [build-fedora, build-ubuntu]
     strategy:
       matrix:
         container:
@@ -99,7 +123,7 @@ jobs:
   app-1password:
     runs-on: ubuntu-latest  # GitHub-hosted runner
     # needs: [pyenv, nodenv]
-    needs: build-fedora
+    needs: [build-fedora, build-ubuntu]
     strategy:
       matrix:
         container:
@@ -116,7 +140,7 @@ jobs:
   app-gh:
     runs-on: ubuntu-latest  # GitHub-hosted runner
     # needs: [pyenv, nodenv]
-    needs: build-fedora
+    needs: [build-fedora, build-ubuntu]
     strategy:
       matrix:
         container:
@@ -137,7 +161,7 @@ jobs:
       matrix:
         container:
           - ubuntu:24.04
-          - fedora:41
+          # - fedora:41  # fails on fedora
     container:
       image: ${{ matrix.container }}  # Dynamically use the image from the matrix
     steps:
@@ -149,7 +173,7 @@ jobs:
   app-resilio:
     runs-on: ubuntu-latest  # GitHub-hosted runner
     # needs: [pyenv, nodenv]
-    needs: build-fedora
+    needs: [build-fedora, build-ubuntu]
     strategy:
       matrix:
         container:
