@@ -46,6 +46,7 @@ jobs:
           - ubuntu
         application:
           - app-gh
+          - app-ghq
           - app-1password
           - app-resilio
     container:
