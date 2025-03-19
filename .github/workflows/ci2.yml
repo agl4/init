@@ -1,0 +1,92 @@
+---
+name: Build and Install Matrix
+
+on:
+  pull_request:
+  push:
+    paths:
+      - 'docker/**'
+      - 'share/**'
+      - 'make/**'
+      - '.github/workflows/**'
+
+jobs:
+  build-docker:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        distro: ["ubuntu", "fedora"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/metadata-action@v3
+        id: metadata
+        with:
+          images: ghcr.io/${{ github.repository }}
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: int128/kaniko-action@v1
+        with:
+          push: true
+          tags: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
+          labels: ${{ steps.metadata.outputs.labels }}
+          cache: true
+          cache-repository: ghcr.io/${{ github.repository }}/cache
+          file: docker/${{ matrix.distro }}/Dockerfile
+
+  install-app-in-docker:
+    needs: build-docker
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        distro:
+          - fedora
+          - ubuntu
+        application:
+          - app-gh
+          - app-1password
+          - app-resilio
+    container:
+      image: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: make ${{ matrix.application }}
+
+  install-app-in-docker-cached:
+    needs: build-docker
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        distro:
+          - fedora
+          - ubuntu
+        application:
+          - pyenv
+          - nodenv
+    container:
+      image: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "CACHE_PATH=share/${{ matrix.application }}/**" >> $GITHUB_ENV
+      - uses: actions/cache@v4
+        with:
+          path: ~/.${{ matrix.application }}
+          key: ${{ matrix.distro }}-${{ hashFiles(env.CACHE_PATH) }}
+      - run: make ${{ matrix.application }}
+
+  install-app-in-runner:
+    # this needs to run on plain images, because it requires a systemd integration
+    runs-on: ubuntu-latest  # GitHub-hosted runner
+    strategy:
+      matrix:
+        container: ["ubuntu:24.04"]
+        app: ["app-tailscale", "app-warp"]
+    container:
+      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash bootstrap.sh && make ${{ matrix.app }}
+
+

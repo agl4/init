@@ -2,14 +2,16 @@
 
 .PHONY : warp-install-ubuntu
 warp-install-ubuntu :
+	@sudo apt-get update && sudo apt-get install -y gpg lsb-release
 	@curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
 	@echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $$(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
-	@sudo apt-get update && sudo apt-get install cloudflare-warp
+	@sudo apt-get update && sudo apt-get install -y cloudflare-warp
 
 
 .PHONY : warp-install-fedora
 warp-install-fedora :
-	@sudo dnf config-manager --add-repo https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo
+	@mkdir -p /etc/systemd/resolved.conf.d/ || true
+	@sudo dnf config-manager addrepo --from-repofile=https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo
 	@sudo dnf install -y cloudflare-warp
 
 # https://www.reddit.com/r/Fedora/comments/vj5x6l/comment/kakjrpu/

@@ -1,5 +1,5 @@
-PACKAGES += bash curl fish git gnupg2 mosh pass pass-extension-otp pcscd
-PACKAGES += rsync scdaemon tmux fzf git-lfs git-annex ripgrep
+PACKAGES += bash curl fish git mosh pass pass-extension-otp
+PACKAGES += rsync tmux fzf git-lfs git-annex ripgrep lsb-release
 PACKAGES += hunspell hunspell-hu hunspell-en-gb hunspell-en-us
 
 debian-update-repos :
@@ -12,6 +12,7 @@ debian-install : debian-update-repos
 	@sudo apt-get install -y $(PACKAGES)
 
 debian-postinstall :
+	@sudo apt-get install -y pcscd scdaemon gnupg2
 	@sudo systemctl enable pcscd
 	@sudo systemctl start pcscd
 
