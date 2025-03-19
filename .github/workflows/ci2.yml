@@ -34,7 +34,7 @@ jobs:
       - uses: int128/kaniko-action@v1
         with:
           push: true
-          tags: ${{ matrix.distro }}:${{ matrix.version }}
+          tags: ${{ steps.metadata.outputs.tags }}/${{ matrix.distro }}:${{ matrix.version }}
           labels: ${{ steps.metadata.outputs.labels }}
           cache: true
           cache-repository: ghcr.io/${{ github.repository }}/cache
