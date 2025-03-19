@@ -36,9 +36,11 @@ nodenv-install :
 NODENV_TARGETS += nodenv-setup-bashrc nodenv-setup-zshrc
 
 ifeq (${OS},Darwin)
+nodenv-deps : nodenv-deps-darwin
 NODENV_TARGETS += nodenv-deps-darwin
 endif
 ifneq (${OS},Darwin)
+nodenv-deps : nodenv-deps-${DISTRIBUTION}
 NODENV_TARGETS += nodenv-deps-${DISTRIBUTION}
 endif
 

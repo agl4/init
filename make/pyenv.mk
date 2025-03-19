@@ -38,9 +38,11 @@ pyenv-install :
 PYENV_TARGETS += pyenv-setup-bashrc pyenv-setup-zshrc
 
 ifeq (${OS},Darwin)
+pyenv-deps : pyenv-deps-darwin
 PYENV_TARGETS += pyenv-deps-darwin
 endif
 ifneq (${OS},Darwin)
+pyenv-deps : pyenv-deps-${DISTRIBUTION}
 PYENV_TARGETS += pyenv-deps-${DISTRIBUTION}
 endif
 
