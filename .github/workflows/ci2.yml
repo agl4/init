@@ -78,16 +78,15 @@ jobs:
       - run: make ${{ matrix.application }}
 
   install-app-in-runner:
-    # this needs to run on plain images, because it requires a systemd integration
+    # this needs to run on plain images, because it requires a systemd
+    # integration
     runs-on: ubuntu-latest  # GitHub-hosted runner
     strategy:
       matrix:
         container: ["ubuntu:24.04"]
         app: ["app-tailscale", "app-warp"]
     container:
-      image: ${{ matrix.container }}  # Dynamically use the image from the matrix
+      image: ${{ matrix.container }}
     steps:
       - uses: actions/checkout@v4
       - run: bash bootstrap.sh && make ${{ matrix.app }}
-
-
