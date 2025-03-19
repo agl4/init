@@ -9,6 +9,7 @@ warp-install-ubuntu :
 
 .PHONY : warp-install-fedora
 warp-install-fedora :
+	@mkdir -p /etc/systemd/resolved.conf.d/ || true
 	@sudo dnf config-manager addrepo --from-repofile=https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo
 	@sudo dnf install -y cloudflare-warp
 
