@@ -2,7 +2,6 @@
 name: Build and Install Matrix
 
 on:
-  pull_request:
   push:
     paths:
       - 'docker/**'
