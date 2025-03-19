@@ -2,10 +2,13 @@
 name: Build and Install Matrix
 
 on:
+  pull_request:
   push:
-    # branches:
-    #   - main
-  # pull_request:
+    paths:
+      - 'docker/**'
+      - 'share/**'
+      - 'make/**'
+      - '.github/workflows/**'
 
 jobs:
   build-docker:
