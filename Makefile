@@ -91,7 +91,7 @@ uninstall :
 	rm $(SCRIPTS) $(OS_SCRIPTS) ${PREFIX}/keys ${PREFIX}/keys_week
 
 uninstall-asdf :
-	rm -rf $HOME/.config/fish/conf.d/asdf.fish $HOME/.asdf/
+	rm -rf ${HOME}/.config/fish/conf.d/asdf.fish ${HOME}/.asdf/
 
 base : install directories $(BASE_TARGETS)
 server  : base $(SERVER_TARGETS)
