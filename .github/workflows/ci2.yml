@@ -70,7 +70,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: echo "CACHE_PATH=share/${{ matrix.application }}/**" >> $GITHUB_ENV
-      - run: cat $GITHUB_ENV
       - uses: actions/cache@v4
         with:
           path: ~/.${{ matrix.application }}
