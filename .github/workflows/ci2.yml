@@ -45,16 +45,34 @@ jobs:
           - fedora
           - ubuntu
         application:
-          - pyenv
-          - nodenv
           - app-gh
           - app-1password
           - app-resilio
     container:
       image: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - run: make ${{ matrix.application }}
+
+  install-app-in-docker-cached:
+    needs: build-docker
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        distro:
+          - fedora
+          - ubuntu
+        application:
+          - pyenv
+          - nodenv
+    container:
+      image: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: ${HOME}/.${{ matrix.application }}
+          key: ${{ runner.os }}-${{ hashFiles('share/${{ matrix.application }}/**') }}
       - run: make ${{ matrix.application }}
 
   install-app-in-runner:
@@ -67,8 +85,7 @@ jobs:
     container:
       image: ${{ matrix.container }}  # Dynamically use the image from the matrix
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - run: bash bootstrap.sh && make ${{ matrix.app }}
 
 
