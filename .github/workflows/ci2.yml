@@ -14,7 +14,7 @@ jobs:
       matrix:
         distro: ["ubuntu", "fedora"]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: docker/metadata-action@v3
         id: metadata
         with:
@@ -33,7 +33,7 @@ jobs:
           cache-repository: ghcr.io/${{ github.repository }}/cache
           file: docker/${{ matrix.distro }}/Dockerfile
 
-  install-app:
+  install-app-in-docker:
     needs: build-docker
     runs-on: ubuntu-latest
     strategy:
@@ -47,27 +47,25 @@ jobs:
           - app-gh
           - app-1password
           - app-resilio
-          - app-warp
     container:
       image: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - run: make ${{ matrix.application }}
 
-  app-tailscale:
+  install-app-in-runner:
     # this needs to run on plain images, because it requires a systemd integration
     runs-on: ubuntu-latest  # GitHub-hosted runner
     strategy:
       matrix:
-        container:
-          - ubuntu:24.04
-          # - fedora:41  # fails on fedora
+        container: ["ubuntu:24.04"]
+        app: ["app-tailscale", "app-warp"]
     container:
       image: ${{ matrix.container }}  # Dynamically use the image from the matrix
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-      - run: bash bootstrap.sh && make app-tailscale
+        uses: actions/checkout@v4
+      - run: bash bootstrap.sh && make ${{ matrix.app }}
 
 
