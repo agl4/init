@@ -73,7 +73,7 @@ jobs:
       - run: cat $GITHUB_ENV
       - uses: actions/cache@v4
         with:
-          path: ${HOME}/.${{ matrix.application }}
+          path: ~/.${{ matrix.application }}
           key: ${{ matrix.distro }}-${{ hashFiles(env.CACHE_PATH) }}
       - run: make ${{ matrix.application }}
 
