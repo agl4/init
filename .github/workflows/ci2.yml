@@ -115,7 +115,7 @@ jobs:
 
   app-gh:
     runs-on: ubuntu-latest  # GitHub-hosted runner
-    needs: [pyenv, nodenv]
+    # needs: [pyenv, nodenv]
     needs: build-fedora
     strategy:
       matrix:
