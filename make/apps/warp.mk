@@ -9,7 +9,7 @@ warp-install-ubuntu :
 
 .PHONY : warp-install-fedora
 warp-install-fedora :
-	@sudo dnf config-manager config-manager addrepo --from-repofile=https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo
+	@sudo dnf config-manager addrepo --from-repofile=https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo
 	@sudo dnf install -y cloudflare-warp
 
 # https://www.reddit.com/r/Fedora/comments/vj5x6l/comment/kakjrpu/
