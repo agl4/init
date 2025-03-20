@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:devel
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC

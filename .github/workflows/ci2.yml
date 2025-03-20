@@ -19,9 +19,10 @@ jobs:
       matrix:
         distro:
           - fedora-latest
-          - ubuntu-24.04
-          - ubuntu-22.04
           - ubuntu-rolling
+          - ubuntu-devel
+          - ubuntu-lts
+          - ubuntu-22.04
         application:
           - app-gh
           - app-ghq
@@ -42,9 +43,10 @@ jobs:
       matrix:
         distro:
           - fedora-latest
-          - ubuntu-24-04
           - ubuntu-22.04
           - ubuntu-rolling
+          - ubuntu-devel
+          - ubuntu-lts
         application:
           - pyenv
           - nodenv
