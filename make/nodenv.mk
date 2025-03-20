@@ -34,9 +34,15 @@ nodenv-install :
 	@xargs ${HOME}/.nodenv/shims/npm install --global < "share/nodenv/.default-npm-packages"
 	@${HOME}/.nodenv/bin/nodenv rehash
 
+nodenv-darwin-path-setup :
+	echo "${HOME}/.nodenv/bin" | sudo tee /etc/paths.d/nodenv
+	echo "${HOME}/.nodenv/shims" | sudo tee -a /etc/paths.d/nodenv
+	sudo chmod 0644 /etc/paths.d/nodenv
+
 NODENV_TARGETS += nodenv-setup-bashrc nodenv-setup-zshrc
 
 ifeq (${OS},Darwin)
+DESKTOP_TARGETS += nodenv-darwin-path-setup
 nodenv-deps : nodenv-deps-darwin
 NODENV_TARGETS += nodenv-deps-darwin
 endif

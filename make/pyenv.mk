@@ -36,9 +36,15 @@ pyenv-install :
 	${HOME}/.pyenv/shims/pip install -r share/pyenv/requirements.txt
 	${HOME}/.pyenv/bin/pyenv rehash
 
+pyenv-darwin-path-setup :
+	echo "${HOME}/.pyenv/bin" | sudo tee /etc/paths.d/pyenv
+	echo "${HOME}/.pyenv/shims" | sudo tee -a /etc/paths.d/pyenv
+	sudo chmod 0644 /etc/paths.d/pyenv
+
 PYENV_TARGETS += pyenv-setup-bashrc pyenv-setup-zshrc
 
 ifeq (${OS},Darwin)
+DESKTOP_TARGETS += pyenv-darwin-path-setup
 pyenv-deps : pyenv-deps-darwin
 PYENV_TARGETS += pyenv-deps-darwin
 endif
