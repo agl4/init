@@ -1,5 +1,5 @@
 ---
-name: Build and Install Matrix
+name: Docker images
 
 on:
   push:
