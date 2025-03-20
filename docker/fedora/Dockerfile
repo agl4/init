@@ -1,4 +1,4 @@
-FROM fedora:41
+FROM fedora:42
 
 ENV LC_ALL=C
 ENV container=docker
