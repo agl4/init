@@ -35,6 +35,7 @@ nodenv-install :
 	@${HOME}/.nodenv/bin/nodenv rehash
 
 nodenv-darwin-path-setup :
+	sudo mkdir -p /etc/paths.d || true
 	echo "${HOME}/.nodenv/bin" | sudo tee /etc/paths.d/nodenv
 	echo "${HOME}/.nodenv/shims" | sudo tee -a /etc/paths.d/nodenv
 	sudo chmod 0644 /etc/paths.d/nodenv

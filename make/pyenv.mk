@@ -37,6 +37,7 @@ pyenv-install :
 	${HOME}/.pyenv/bin/pyenv rehash
 
 pyenv-darwin-path-setup :
+	sudo mkdir -p /etc/paths.d || true
 	echo "${HOME}/.pyenv/bin" | sudo tee /etc/paths.d/pyenv
 	echo "${HOME}/.pyenv/shims" | sudo tee -a /etc/paths.d/pyenv
 	sudo chmod 0644 /etc/paths.d/pyenv
