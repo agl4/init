@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM debian:12.10
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
@@ -13,7 +13,6 @@ RUN cd /build && bash bootstrap.sh \
     && make base \
     && make pyenv-deps \
     && make nodenv-deps
-
 # Cleanup
 RUN rm -rf /build \
     && apt-get clean \
