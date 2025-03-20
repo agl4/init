@@ -18,8 +18,10 @@ jobs:
     strategy:
       matrix:
         distro:
-          - fedora
-          - ubuntu
+          - fedora-latest
+          - ubuntu-24.04
+          - ubuntu-22.04
+          - ubuntu-rolling
         application:
           - app-gh
           - app-ghq
@@ -36,8 +38,10 @@ jobs:
     strategy:
       matrix:
         distro:
-          - fedora
-          - ubuntu
+          - fedora-latest
+          - ubuntu-24-04
+          - ubuntu-22.04
+          - ubuntu-rolling
         application:
           - pyenv
           - nodenv
