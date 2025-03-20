@@ -13,7 +13,6 @@ RUN cd /build && bash bootstrap.sh \
     && make base \
     && make pyenv-deps \
     && make nodenv-deps
-
 # Cleanup
 RUN rm -rf /build \
     && apt-get clean \
