@@ -43,7 +43,7 @@ case $(uname -s) in
     FreeBSD)
         export ASSUME_ALWAYS_YES=YES
         pkg update -f
-        pkg install -y git sudo mosh python fish tmux gmake
+        pkg install -y git sudo mosh python fish tmux gmake bash
         ;;
     *)
         echo "Unsupported OS."
@@ -54,6 +54,6 @@ esac
 cat <<EOF
 Now run:
 
-    make
+    make [base|desktop|server]
 
 EOF

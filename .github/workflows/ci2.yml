@@ -6,6 +6,7 @@ on:
     paths:
       - 'share/**'
       - 'make/**'
+      - Makefile
   workflow_run:
     workflows:
       - Docker images
