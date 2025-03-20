@@ -8,8 +8,14 @@
 #
 .PHONY : caps-lock dev directories server desktop install base test all
 
-SHELL := /bin/bash
 OS := $(shell uname -s)
+
+ifeq ($(OS),FreeBSD)
+SHELL := /usr/local/bin/bash
+else
+SHELL := /bin/bash
+endif
+
 ARCHITECTURE := $(shell uname -m)
 ifeq ($(OS),Linux)
 DISTRIBUTION := $(shell source /etc/os-release && echo "$$ID")
