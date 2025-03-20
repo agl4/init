@@ -32,6 +32,7 @@ nodenv-install :
 	@${HOME}/.nodenv/bin/nodenv global ${NODENV_VERSION}
 	@${HOME}/.nodenv/shims/npm update -g npm
 	@xargs ${HOME}/.nodenv/shims/npm install --global < "share/nodenv/.default-npm-packages"
+	@${HOME}/.nodenv/bin/nodenv rehash
 
 NODENV_TARGETS += nodenv-setup-bashrc nodenv-setup-zshrc
 
