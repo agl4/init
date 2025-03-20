@@ -1,0 +1,33 @@
+---
+name: Build and Install Matrix
+
+on:
+  push:
+    paths:
+      - 'docker/**'
+
+jobs:
+  build-docker:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        distro: ["ubuntu", "fedora"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/metadata-action@v5
+        id: metadata
+        with:
+          images: ghcr.io/${{ github.repository }}
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: int128/kaniko-action@v1
+        with:
+          push: true
+          tags: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
+          labels: ${{ steps.metadata.outputs.labels }}
+          cache: true
+          cache-repository: ghcr.io/${{ github.repository }}/cache
+          file: docker/${{ matrix.distro }}/Dockerfile
