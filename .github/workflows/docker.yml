@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        distro: ["ubuntu-rolling", "fedora-latest", "ubuntu-22.04", "ubuntu-24.04"]
+        distro: ["ubuntu-rolling", "fedora-latest", "ubuntu-devel", "ubuntu-lts"]
     steps:
       - uses: actions/checkout@v4
       - uses: docker/metadata-action@v5
