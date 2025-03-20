@@ -47,7 +47,7 @@ BASE_TARGETS :=
 SERVER_TARGETS :=
 DESKTOP_TARGETS :=
 ASDF_TARGETS :=
-PACKAGES = curl fish git tmux
+PACKAGES = curl fish git tmux bash
 
 # Include files:
 -include make/os/$(OS).mk
