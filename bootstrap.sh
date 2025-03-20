@@ -54,6 +54,6 @@ esac
 cat <<EOF
 Now run:
 
-    make
+    make [base|desktop|server]
 
 EOF
