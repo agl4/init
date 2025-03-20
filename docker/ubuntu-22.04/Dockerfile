@@ -13,9 +13,9 @@ RUN apt-get update \
     && ln -fs /usr/share/zoneinfo/${TZ} /etc/localtime \
     && dpkg-reconfigure tzdata
 
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US:en
+ENV LC_ALL=en_US.UTF-8
 
 COPY . /build
 
