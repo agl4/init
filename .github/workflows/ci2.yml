@@ -6,11 +6,9 @@ on:
     paths:
       - 'share/**'
       - 'make/**'
-      - '.github/workflows/**'
 
 jobs:
   app:
-    needs: build-docker
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -29,7 +27,6 @@ jobs:
       - run: make ${{ matrix.application }}
 
   app-cached:
-    needs: build-docker
     runs-on: ubuntu-latest
     strategy:
       matrix:
