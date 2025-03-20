@@ -5,13 +5,13 @@ desktop systems.
 
 Supports:
 
-| Distribution/OS     |                    | pipeline |
-|---------------------|--------------------|----------|
-| macOS               | `desktop`          |          |
-| Ubuntu 22.04, 24.04 | `desktop`/`server` | `*`      |
-| Fedora 42           | `desktop`/`server` | `*`      |
-| FreeBSD             | `server`           |          |
-| Raspbian            | `server`           |          |
+| Distribution/OS     |                             | pipeline |
+|---------------------|-----------------------------|----------|
+| macOS               | `base`, `desktop`           |          |
+| Ubuntu 22.04, 24.04 | `base`, `desktop`,` server` | `*`      |
+| Fedora 42           | `base`, `desktop`, `server` | `*`      |
+| FreeBSD             | `base`, `server`            |          |
+| Raspbian            | `base`, `server`            |          |
 
 ## Prerequisites
 
