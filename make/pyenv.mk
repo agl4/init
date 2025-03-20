@@ -34,6 +34,7 @@ pyenv-install :
 	${HOME}/.pyenv/bin/pyenv global ${PYENV_VERSION}
 	${HOME}/.pyenv/shims/pip install --upgrade pip
 	${HOME}/.pyenv/shims/pip install -r share/pyenv/requirements.txt
+	${HOME}/.pyenv/bin/pyenv rehash
 
 PYENV_TARGETS += pyenv-setup-bashrc pyenv-setup-zshrc
 
