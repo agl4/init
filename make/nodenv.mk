@@ -53,5 +53,4 @@ NODENV_TARGETS += nodenv-deps-${DISTRIBUTION}
 endif
 
 nodenv : $(NODENV_TARGETS) nodenv-install
-node : nodenv
-DESKTOP_TARGETS += node
+DESKTOP_TARGETS += nodenv

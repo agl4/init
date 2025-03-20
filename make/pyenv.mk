@@ -55,5 +55,4 @@ PYENV_TARGETS += pyenv-deps-${DISTRIBUTION}
 endif
 
 pyenv : $(PYENV_TARGETS) pyenv-install
-python : pyenv
-DESKTOP_TARGETS += python
+DESKTOP_TARGETS += pyenv
