@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0](https://github.com/agl4/init/compare/v1.0.0...v1.1.0) (2025-03-20)
+
+
+### Features
+
+* Fedora 42 support ([e4f0534](https://github.com/agl4/init/commit/e4f0534280a458aee3c64ae2346d797d23ddd9c6))
+
+
+### Bug Fixes
+
+* Add pyenv rehashing after install ([f0b1d55](https://github.com/agl4/init/commit/f0b1d553edb45fd3f644e5986f4c58870b1c5837))
+* Add rehashing after npm installation ([050395d](https://github.com/agl4/init/commit/050395dd14748978e5c11d90766c916c5b222f9b))
+* Setting up PATH on macOS correctly ([bcd1a74](https://github.com/agl4/init/commit/bcd1a74145b4630d3f8c98ce5dcccbc814e0b4b0))
+
 ## [1.0.0](https://github.com/agl4/init/compare/v0.25.0...v1.0.0) (2025-03-19)
 
 
