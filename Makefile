@@ -53,16 +53,16 @@ PACKAGES = curl fish git tmux
 -include make/os/$(OS).mk
 -include make/distro/$(DISTRIBUTION).mk
 include versions.mk
-include make/fish.mk
-include make/git.mk
-include make/gpg.mk
-include make/nodenv.mk
-include make/pyenv.mk
-include make/ssh-server.mk
-include make/ssh.mk
-include make/tmux.mk
+include make/base/fish.mk
+include make/base/git.mk
+include make/base/gpg.mk
+include make/base/ssh.mk
+include make/base/tmux.mk
+include make/server/ssh-server.mk
 
 # Include apps
+include make/apps/nodenv.mk
+include make/apps/pyenv.mk
 include make/apps/1password.mk
 include make/apps/gh.mk
 include make/apps/ghq.mk
@@ -76,9 +76,6 @@ dev :
 directories:
 	@install -d -m 0700 "${HOME}/src"
 	@install -d -m 0700 "${HOME}/tmp"
-
-caps-lock :
-	@gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier', 'ctrl:nocaps']"
 
 SCRIPTS := $(addprefix ${PREFIX}/,$(notdir $(wildcard ${SRCDIR}/shell/*.sh)))
 $(SCRIPTS) : $(wildcard ${SRCDIR}/shell/*.sh)

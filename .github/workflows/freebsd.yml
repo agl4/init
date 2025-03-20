@@ -1,7 +1,13 @@
 ---
 name: FreeBSD testing
 
-on: [push]
+on:
+  push:
+    paths:
+      - 'make/base/**'
+      - 'make/server/**'
+      - 'make/os/FreeBSD.mk'
+      - Makefile
 
 jobs:
   test:
