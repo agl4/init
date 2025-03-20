@@ -18,8 +18,10 @@ jobs:
     strategy:
       matrix:
         distro:
-          - fedora
-          - ubuntu
+          - fedora-latest
+          - ubuntu-24.04
+          - ubuntu-22.04
+          - ubuntu-rolling
         application:
           - app-gh
           - app-ghq
@@ -29,6 +31,8 @@ jobs:
       image: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
     steps:
       - uses: actions/checkout@v4
+        # Use the triggering workflow's commit if available, otherwise default to the current branch
+        ref: ${{ github.event.workflow_run.head_commit.id || github.ref_name }}
       - run: make ${{ matrix.application }}
 
   app-cached:
@@ -36,8 +40,10 @@ jobs:
     strategy:
       matrix:
         distro:
-          - fedora
-          - ubuntu
+          - fedora-latest
+          - ubuntu-24-04
+          - ubuntu-22.04
+          - ubuntu-rolling
         application:
           - pyenv
           - nodenv
@@ -45,6 +51,8 @@ jobs:
       image: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
     steps:
       - uses: actions/checkout@v4
+        # Use the triggering workflow's commit if available, otherwise default to the current branch
+        ref: ${{ github.event.workflow_run.head_commit.id || github.ref_name }}
       - run: echo "CACHE_PATH=share/${{ matrix.application }}/**" >> $GITHUB_ENV
       - uses: actions/cache@v4
         with:
@@ -64,4 +72,6 @@ jobs:
       image: ${{ matrix.container }}
     steps:
       - uses: actions/checkout@v4
+        # Use the triggering workflow's commit if available, otherwise default to the current branch
+        ref: ${{ github.event.workflow_run.head_commit.id || github.ref_name }}
       - run: bash bootstrap.sh && make ${{ matrix.app }}
