@@ -1,4 +1,4 @@
-FROM debian:12.10
+FROM ubuntu:rolling
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
