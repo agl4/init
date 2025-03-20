@@ -1,6 +1,11 @@
 SSH_SRC := ./src/ssh-server
 SSH_TARGET := /etc/ssh
+
+ifeq ($(GITHUB_ACTIONS),)
 SSH_CONFIGS := sshd_config TrustedUserCAKeys
+else
+SSH_CONFIGS := sshd_config_github_actions TrustedUserCAKeys
+endif
 
 SSH_TARGETS := $(subst ${SSH_SRC},${SSH_TARGET},$(SSH_CONFIGS))
 
