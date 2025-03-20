@@ -9,7 +9,7 @@ Supports:
 |---------------------|--------------------|----------|
 | macOS               | `desktop`          |          |
 | Ubuntu 22.04, 24.04 | `desktop`/`server` | `*`      |
-| Fedora 41           | `desktop`/`server` | `*`      |
+| Fedora 42           | `desktop`/`server` | `*`      |
 | FreeBSD             | `server`           |          |
 | Raspbian            | `server`           |          |
 
