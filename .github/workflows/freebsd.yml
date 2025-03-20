@@ -23,8 +23,8 @@ jobs:
 
         run: |
           bash ./bootstrap.sh
-          make base
-          make server
+          gmake base
+          gmake server
 
 
 
