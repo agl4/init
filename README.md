@@ -17,6 +17,10 @@ Supports:
 
 Run `bootstrap.sh`, which installs the dependencies.
 
+```shell
+curl -fsSL https://raw.githubusercontent.com/agl4/init/refs/heads/main/bootstrap.sh | sh
+```
+
 ## Install
 
 To install the environment run the following:
