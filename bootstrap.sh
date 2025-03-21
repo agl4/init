@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -eu
 
@@ -11,16 +11,16 @@ main(){
             if [ -z "$ID" ] ; then
                 echo "ERROR: Cannot detect distro."
             fi
-            [[ "$ID" == "raspbian"  ]] && {
+            if [ "$ID" == "raspbian"  ] && {
                 sudo locale-gen en_US.UTF-8
                 sudo update-locale LANG=en_US.UTF-8
             }
             case $ID in
                 ubuntu|debian|raspbian)
-                    [[ -x /usr/bin/sudo ]] || {
+                    if [ -x /usr/bin/sudo ] ; then
                         apt-get update
                         apt-get install -y sudo
-                    }
+                    fi
                     sudo apt-get update
                     sudo apt-get install -y git make curl unzip
                 ;;
@@ -28,9 +28,9 @@ main(){
                     sudo dnf install -y git make curl unzip
                 ;;
                 opensuse*)
-                    [[ -x /usr/bin/sudo ]] || {
+                    if [ -x /usr/bin/sudo ] ; then
                         zypper install -y sudo
-                    }
+                    fi
                     sudo zypper install -y git make curl unzip
                 ;;
                 *) echo "Unsupported distro: $ID"
