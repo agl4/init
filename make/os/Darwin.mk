@@ -28,9 +28,7 @@ brew-setup-shell:
 hunspell_install_dictionaries:
 	@bash share/darwin-install-hunspell-dictionaries.sh
 
-ifndef INSTALL_FAST
 BASE_TARGETS += darwin-brew-update
 BASE_TARGETS += darwin-brew-upgrade
-endif
 BASE_TARGETS += darwin-base
 BASE_TARGETS += hunspell_install_dictionaries

@@ -26,18 +26,7 @@ curl -fsSL https://raw.githubusercontent.com/agl4/init/refs/heads/main/bootstrap
 To install the environment run the following:
 
 ```shell
-# Install git before this action of course
-git clone https://github.com/agl4/init
-cd init
-bash bootstrap.sh && make desktop
-```
-
-By default this upgrades the whole system before installing anything. To skip
-this step, set the variable `INSTALL_FAST` before running the install
-scripts. This will also skip compiling everything from source with `asdf`.
-
-```shell
-INSTALL_FAST=1 make desktop
+git clone https://github.com/agl4/init && make desktop
 ```
 
 ### Server environment

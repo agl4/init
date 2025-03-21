@@ -12,9 +12,6 @@ freebsd-pkg-upgrade :
 freebsd-base : freebsd-pkg-update
 	@pkg install -y $(PACKAGES)
 
-
-ifndef INSTALL_FAST
 BASE_TARGETS += freebsd-pkg-update
 BASE_TARGETS += freebsd-pkg-upgrade
-endif
 BASE_TARGETS += freebsd-base

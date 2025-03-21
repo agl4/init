@@ -15,10 +15,7 @@ debian-postinstall :
 	@sudo systemctl enable pcscd
 	@sudo systemctl start pcscd
 
-ifndef INSTALL_FAST
 BASE_TARGETS += debian-upgrade
-endif
-
 BASE_TARGETS += debian-install
 
 ifndef INSIDE_DOCKER
