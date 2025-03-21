@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/agl4/init/compare/v1.1.0...v1.2.0) (2025-03-21)
+
+
+### Features
+
+* Add github backup script ([0c2c459](https://github.com/agl4/init/commit/0c2c459a0dc6eea2390bc924eca701786a9b27c2))
+* Add lightroom tagger script ([a80011f](https://github.com/agl4/init/commit/a80011fb2971d475a5a548aee0db70cdab1a22db))
+
 ## [1.1.0](https://github.com/agl4/init/compare/v1.0.0...v1.1.0) (2025-03-20)
 
 
