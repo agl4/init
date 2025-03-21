@@ -11,10 +11,10 @@ main(){
             if [ -z "$ID" ] ; then
                 echo "ERROR: Cannot detect distro."
             fi
-            if [ "$ID" == "raspbian"  ] && {
+            if [ "$ID" == "raspbian"  ] ; then
                 sudo locale-gen en_US.UTF-8
                 sudo update-locale LANG=en_US.UTF-8
-            }
+            fi
             case $ID in
                 ubuntu|debian|raspbian)
                     if [ -x /usr/bin/sudo ] ; then
