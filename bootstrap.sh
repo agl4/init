@@ -51,14 +51,6 @@ main(){
             exit 1
             ;;
     esac
-
-    cat <<EOF
-    Now run:
-
-        make [base|desktop|server]
-
-    EOF
 }
-
 
 main
