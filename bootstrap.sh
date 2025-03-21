@@ -44,7 +44,7 @@ main(){
         FreeBSD)
             export ASSUME_ALWAYS_YES=YES
             pkg update -f
-            pkg install -y git sudo mosh python fish tmux gmake bash
+            pkg install -y git gmake curl unzip sudo bash
             ;;
         *)
             echo "Unsupported OS."

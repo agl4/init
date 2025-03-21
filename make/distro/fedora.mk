@@ -1,6 +1,5 @@
 PACKAGES += bash curl fish git gnupg-pkcs11-scd gnupg2 mosh pass pass-otp
 PACKAGES += pcsc-lite pcsc-lite-ccid tmux rsync fzf git-lfs git-annex
-PACKAGES += hunspell hunspell-hu hunspell-en-GB hunspell-en-US ripgrep
 
 fedora-upgrade :
 	@sudo dnf upgrade -y

@@ -1,7 +1,6 @@
 .PHONY : freebsd-pkg-update freebsd-pkg-upgrade freebsd-base
 
 PACKAGES += bash curl fish git mosh rsync sudo tmux fzf
-PACKAGES += hunspell en-hunspell hu-hunspell hs-git-annex
 
 freebsd-pkg-update :
 	@pkg update -f

@@ -1,6 +1,5 @@
 PACKAGES += bash curl fish git mosh pass pass-extension-otp
 PACKAGES += rsync tmux fzf git-lfs git-annex ripgrep lsb-release
-PACKAGES += hunspell hunspell-hu hunspell-en-gb hunspell-en-us
 
 debian-update-repos :
 	@sudo apt-get update -y
