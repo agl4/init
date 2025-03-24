@@ -23,11 +23,20 @@ curl -fsSL https://raw.githubusercontent.com/agl4/init/refs/heads/main/bootstrap
 
 ## Install
 
-To install the environment run the following:
+To clone the repo run the following:
 
 ```shell
-git clone https://github.com/agl4/init && make desktop
+git clone https://github.com/agl4/init
 ```
+
+### Desktop environment
+
+To configure a full environment, use:
+
+```shell
+make desktop
+```
+
 
 ### Server environment
 

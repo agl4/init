@@ -9,6 +9,7 @@ on:
 jobs:
   build-docker:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     strategy:
       matrix:
         distro: ["ubuntu-rolling", "fedora-latest", "ubuntu-devel", "ubuntu-lts"]
@@ -25,6 +26,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - uses: int128/kaniko-action@v1
         with:
+          build-args: "BOOTSTRAP_BRANCH=${{ github.head_ref || github.ref_name }} "
           push: true
           tags: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
           labels: ${{ steps.metadata.outputs.labels }}

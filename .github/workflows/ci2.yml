@@ -7,6 +7,7 @@ on:
       - 'share/**'
       - 'make/**'
       - Makefile
+      - bootstrap.sh
   workflow_run:
     workflows:
       - Docker images
@@ -16,6 +17,7 @@ on:
 jobs:
   app:
     runs-on: ubuntu-latest
+    timeout-minutes: 2
     strategy:
       matrix:
         distro:
@@ -40,6 +42,7 @@ jobs:
 
   app-cached:
     runs-on: ubuntu-latest
+    timeout-minutes: 8
     strategy:
       matrix:
         distro:
@@ -69,6 +72,7 @@ jobs:
     # this needs to run on plain images, because it requires a systemd
     # integration
     runs-on: ubuntu-latest  # GitHub-hosted runner
+    timeout-minutes: 3
     strategy:
       matrix:
         container: ["ubuntu:24.04"]
