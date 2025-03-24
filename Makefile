@@ -57,6 +57,7 @@ include versions.mk
 include make/base/fish.mk
 include make/base/git.mk
 include make/base/gpg.mk
+include make/base/scripts.mk
 include make/base/ssh.mk
 include make/base/tmux.mk
 include make/server/ssh-server.mk
@@ -74,22 +75,6 @@ include make/apps/warp.mk
 directories:
 	@install -d -m 0700 "${HOME}/src"
 	@install -d -m 0700 "${HOME}/tmp"
-
-SCRIPTS := $(addprefix ${PREFIX}/,$(notdir $(wildcard ${SRCDIR}/shell/*.sh)))
-$(SCRIPTS) : $(wildcard ${SRCDIR}/shell/*.sh)
-	@install -m 0700 -v -d ${PREFIX}
-	@install -m 0700 -v ${SRCDIR}/shell/$(notdir $@) $@
-OS_SCRIPTS := $(addprefix ${PREFIX}/,$(notdir $(wildcard ${SRCDIR}/os/${OS}/*)))
-$(OS_SCRIPTS) :
-	@install -m 0700 -v -d "${PREFIX}"
-	@install -m 0700 -v "${SRCDIR}/os/${OS}/$(notdir $@)" "$@"
-
-install : $(SCRIPTS) $(OS_SCRIPTS)
-	@ln -f ${PREFIX}/keys.sh ${PREFIX}/keys
-	@ln -f ${PREFIX}/keys.sh ${PREFIX}/keys_week
-
-uninstall :
-	rm $(SCRIPTS) $(OS_SCRIPTS) ${PREFIX}/keys ${PREFIX}/keys_week
 
 uninstall-asdf :
 	rm -rf ${HOME}/.config/fish/conf.d/asdf.fish ${HOME}/.asdf/
