@@ -29,8 +29,7 @@ jobs:
           pkg install -y bash
 
         run: |
-          bash ./bootstrap.sh
-          gmake base
+          bash -xv ./bootstrap.sh
           gmake server
 
 
