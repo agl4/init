@@ -2,6 +2,7 @@
 # https://github.com/pyenv/pyenv?tab=readme-ov-file#b-set-up-your-shell-environment-for-pyenv
 
 PYENV_VERSION := $(shell cat share/pyenv/.python-version)
+PYENV_DEFAULT_PACKAGES := share/pyenv/requirements.txt
 
 pyenv-deps-darwin :
 	@brew install openssl readline sqlite3 xz zlib tcl-tk@8 libb2
@@ -33,7 +34,7 @@ pyenv-install :
 	${HOME}/.pyenv/bin/pyenv install --skip-existing ${PYENV_VERSION}
 	${HOME}/.pyenv/bin/pyenv global ${PYENV_VERSION}
 	${HOME}/.pyenv/shims/pip install --upgrade pip
-	${HOME}/.pyenv/shims/pip install -r share/pyenv/requirements.txt
+	${HOME}/.pyenv/shims/pip install -r ${PYENV_DEFAULT_PACKAGES}
 	${HOME}/.pyenv/bin/pyenv rehash
 
 pyenv-darwin-path-setup :
