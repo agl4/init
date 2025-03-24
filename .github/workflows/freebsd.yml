@@ -12,6 +12,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 7
     name: A job to run test in FreeBSD
     env:
       MYTOKEN : ${{ secrets.MYTOKEN }}

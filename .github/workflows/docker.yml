@@ -9,6 +9,7 @@ on:
 jobs:
   build-docker:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     strategy:
       matrix:
         distro: ["ubuntu-rolling", "fedora-latest", "ubuntu-devel", "ubuntu-lts"]
