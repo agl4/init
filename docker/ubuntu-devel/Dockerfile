@@ -1,4 +1,5 @@
 FROM ubuntu:devel
+ARG BOOTSTRAP_BRANCH=main
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
@@ -22,7 +23,6 @@ COPY . /build
 # Install dependencies
 RUN touch /.dockerenv
 RUN cd /build && bash bootstrap.sh \
-    && make base \
     && make pyenv-deps \
     && make nodenv-deps
 # Cleanup

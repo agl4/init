@@ -2,11 +2,24 @@
 
 set -eu
 
-main(){
+THIS_REPO=https://github.com/agl4/init
+WORKDIR=$(mktemp -d)
+BOOTSTRAP_BRANCH=${BRANCH:="main"}
+
+cloning_repo(){
+    git clone -b "$BOOTSTRAP_BRANCH" --depth 1 "$THIS_REPO" "${WORKDIR}/"
+}
+
+install_base(){
+    cd "$WORKDIR" && make base
+}
+
+prerequisites(){
     echo "Bootstrapping system..."
 
     case $(uname -s) in
         Linux)
+            # shellcheck disable=SC1091
             . /etc/os-release
             if [ -z "$ID" ] ; then
                 echo "ERROR: Cannot detect distro."
@@ -51,6 +64,16 @@ main(){
             exit 1
             ;;
     esac
+}
+
+cleanup(){
+    rm -rf "${WORKDIR}"
+}
+
+main(){
+    prerequisites
+    cloning_repo
+    install_base
 }
 
 main

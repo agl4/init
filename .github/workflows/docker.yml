@@ -25,6 +25,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - uses: int128/kaniko-action@v1
         with:
+          build-args: "BOOTSTRAP_BRANCH=${{ github.head_ref || github.ref_name }} "
           push: true
           tags: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
           labels: ${{ steps.metadata.outputs.labels }}
