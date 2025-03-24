@@ -8,6 +8,9 @@
 #
 .PHONY : directories server desktop install base test all
 
+SRCDIR := ./src
+PREFIX ?= ${HOME}/.local/bin
+
 OS := $(shell uname -s)
 
 ifeq ($(OS),FreeBSD)
@@ -21,8 +24,6 @@ ifeq ($(OS),Linux)
 DISTRIBUTION := $(shell source /etc/os-release && echo "$$ID")
 VERSION_CODENAME := $(shell source /etc/os-release && echo "$$VERSION_CODENAME")
 endif
-SRCDIR := ./src
-PREFIX ?= ${HOME}/.local/bin
 
 # INSIDE_DOCKER := $(or $(and $(wildcard /.dockerenv),1),0)
 ifneq ($(wildcard /.dockerenv),)
