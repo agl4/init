@@ -71,9 +71,6 @@ include make/apps/resilio.mk
 include make/apps/tailscale.mk
 include make/apps/warp.mk
 
-dev :
-	@install -m 0700 "share/commit-hook.sh" .git/hooks/prepare-commit-msg
-
 directories:
 	@install -d -m 0700 "${HOME}/src"
 	@install -d -m 0700 "${HOME}/tmp"
