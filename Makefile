@@ -19,7 +19,7 @@ endif
 ARCHITECTURE := $(shell uname -m)
 ifeq ($(OS),Linux)
 DISTRIBUTION := $(shell source /etc/os-release && echo "$$ID")
-VERSION_CODENAME := $(shell cat /etc/os-release | sed -n 's/^VERSION_CODENAME=\(.*\)$$/\1/p')
+VERSION_CODENAME := $(shell source /etc/os-release && echo "$$VERSION_CODENAME")
 endif
 SRCDIR := ./src
 PREFIX ?= ${HOME}/.local/bin
