@@ -1,6 +1,7 @@
+# Includes should go first
 Include ~/.ssh/conf.d/*
 
-# Generic config
+# Generic config should go after includes
 Host *
 StrictHostKeyChecking yes
 ForwardAgent no

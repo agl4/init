@@ -5,5 +5,4 @@ dockerlint
 markdownlint-cli
 prettier
 remark-language-server
-traverse
 yaml-language-server

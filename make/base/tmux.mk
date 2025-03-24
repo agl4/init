@@ -10,4 +10,3 @@ tmux: ${HOME}/.tmux.conf ${PREFIX}/__tmux-switch-window.sh
 
 DESKTOP_TARGETS += tmux
 SERVER_TARGETS += tmux
-HELP_TARGETS += tmux
