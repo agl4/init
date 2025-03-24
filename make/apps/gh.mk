@@ -28,6 +28,9 @@ gh-login :
 	@gh auth login
 	@gh auth setup-git
 
+gh-login-warning :
+	@echo "WARNING: GitHub authentication is not done automatically, run 'make gh-login'"
+
 GH_TARGETS :=
 ifeq (${OS},Darwin)
 GH_TARGETS += gh-install-darwin
@@ -37,4 +40,4 @@ GH_TARGETS += gh-install-${DISTRIBUTION}
 endif
 
 .PHONY : app-gh
-app-gh : $(GH_TARGETS)
+app-gh : $(GH_TARGETS) gh-login-warning
