@@ -5,13 +5,13 @@ desktop systems.
 
 Supports:
 
-| Distribution/OS     |                             | pipeline |
-|---------------------|-----------------------------|----------|
-| macOS               | `base`, `desktop`           |          |
-| Ubuntu 22.04, 24.04 | `base`, `desktop`,` server` | `*`      |
-| Fedora 42           | `base`, `desktop`, `server` | `*`      |
-| FreeBSD             | `base`, `server`            |          |
-| Raspbian            | `base`, `server`            |          |
+| Distribution/OS         | `make` targets available    | tested |
+|-------------------------|-----------------------------|--------|
+| macOS                   | `base`, `desktop`           |        |
+| Ubuntu `22.04`, `24.04` | `base`, `desktop`,` server` | `*`    |
+| Fedora `41`-`42`        | `base`, `desktop`, `server` | `*`    |
+| FreeBSD `14`            | `base`, `server`            | `*`    |
+| Raspbian                | `base`, `server`            |        |
 
 ## Prerequisites
 
@@ -36,7 +36,6 @@ To configure a full environment, use:
 ```shell
 make desktop
 ```
-
 
 ### Server environment
 
