@@ -97,14 +97,3 @@ uninstall-asdf :
 base : install directories $(BASE_TARGETS)
 server  : base $(SERVER_TARGETS)
 desktop : base $(DESKTOP_TARGETS)
-
-test :
-	fish --version
-	git --version
-	gpg --version
-	node --version
-	pass --version
-	python --version
-	tmux -V
-	type python | grep pyenv
-	type node | grep nodenv
