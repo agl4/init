@@ -17,4 +17,3 @@ ssh: $(addprefix $(SSH_DST_DIR)/, $(patsubst ${SSH_SRC_DIR}/%,%,${SSH_CONFIGS}))
 
 # Add ssh to desktop and help targets
 DESKTOP_TARGETS += ssh
-HELP_TARGETS += ssh

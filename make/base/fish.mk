@@ -34,4 +34,3 @@ fish: $(FISHER) fish_install fisher_update
 # Common and help targets
 DESKTOP_TARGETS += fish
 SERVER_TARGETS += fish
-HELP_TARGETS += fish

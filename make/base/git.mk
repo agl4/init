@@ -28,4 +28,3 @@ git:
 # Add targets to groups
 DESKTOP_TARGETS += git
 SERVER_TARGETS += git
-HELP_TARGET += git
