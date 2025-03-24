@@ -6,7 +6,7 @@
 # - https://polothy.github.io/post/2018-10-09-makefile-dotfiles/
 # - https://github.com/masasam/dotfiles/blob/master/Makefile
 #
-.PHONY : caps-lock dev directories server desktop install base test all
+.PHONY : directories server desktop install base test all
 
 OS := $(shell uname -s)
 
@@ -46,6 +46,8 @@ $(info -- Inside docker ..........: $(INSIDE_DOCKER))
 BASE_TARGETS :=
 SERVER_TARGETS :=
 DESKTOP_TARGETS :=
+
+# Default package list
 PACKAGES = curl fish git tmux bash
 
 # Include files:
