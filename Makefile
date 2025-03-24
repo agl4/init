@@ -6,7 +6,10 @@
 # - https://polothy.github.io/post/2018-10-09-makefile-dotfiles/
 # - https://github.com/masasam/dotfiles/blob/master/Makefile
 #
-.PHONY : caps-lock dev directories server desktop install base test all
+.PHONY : directories server desktop install base test all
+
+SRCDIR := ./src
+PREFIX ?= ${HOME}/.local/bin
 
 OS := $(shell uname -s)
 
@@ -19,10 +22,8 @@ endif
 ARCHITECTURE := $(shell uname -m)
 ifeq ($(OS),Linux)
 DISTRIBUTION := $(shell source /etc/os-release && echo "$$ID")
-VERSION_CODENAME := $(shell cat /etc/os-release | sed -n 's/^VERSION_CODENAME=\(.*\)$$/\1/p')
+VERSION_CODENAME := $(shell source /etc/os-release && echo "$$VERSION_CODENAME")
 endif
-SRCDIR := ./src
-PREFIX ?= ${HOME}/.local/bin
 
 # INSIDE_DOCKER := $(or $(and $(wildcard /.dockerenv),1),0)
 ifneq ($(wildcard /.dockerenv),)
@@ -46,6 +47,8 @@ $(info -- Inside docker ..........: $(INSIDE_DOCKER))
 BASE_TARGETS :=
 SERVER_TARGETS :=
 DESKTOP_TARGETS :=
+
+# Default package list
 PACKAGES = curl fish git tmux bash
 
 # Include files:
@@ -55,6 +58,7 @@ include versions.mk
 include make/base/fish.mk
 include make/base/git.mk
 include make/base/gpg.mk
+include make/base/scripts.mk
 include make/base/ssh.mk
 include make/base/tmux.mk
 include make/server/ssh-server.mk
@@ -69,28 +73,9 @@ include make/apps/resilio.mk
 include make/apps/tailscale.mk
 include make/apps/warp.mk
 
-dev :
-	@install -m 0700 "share/commit-hook.sh" .git/hooks/prepare-commit-msg
-
 directories:
 	@install -d -m 0700 "${HOME}/src"
 	@install -d -m 0700 "${HOME}/tmp"
-
-SCRIPTS := $(addprefix ${PREFIX}/,$(notdir $(wildcard ${SRCDIR}/shell/*.sh)))
-$(SCRIPTS) : $(wildcard ${SRCDIR}/shell/*.sh)
-	@install -m 0700 -v -d ${PREFIX}
-	@install -m 0700 -v ${SRCDIR}/shell/$(notdir $@) $@
-OS_SCRIPTS := $(addprefix ${PREFIX}/,$(notdir $(wildcard ${SRCDIR}/os/${OS}/*)))
-$(OS_SCRIPTS) :
-	@install -m 0700 -v -d "${PREFIX}"
-	@install -m 0700 -v "${SRCDIR}/os/${OS}/$(notdir $@)" "$@"
-
-install : $(SCRIPTS) $(OS_SCRIPTS)
-	@ln -f ${PREFIX}/keys.sh ${PREFIX}/keys
-	@ln -f ${PREFIX}/keys.sh ${PREFIX}/keys_week
-
-uninstall :
-	rm $(SCRIPTS) $(OS_SCRIPTS) ${PREFIX}/keys ${PREFIX}/keys_week
 
 uninstall-asdf :
 	rm -rf ${HOME}/.config/fish/conf.d/asdf.fish ${HOME}/.asdf/
@@ -98,14 +83,3 @@ uninstall-asdf :
 base : install directories $(BASE_TARGETS)
 server  : base $(SERVER_TARGETS)
 desktop : base $(DESKTOP_TARGETS)
-
-test :
-	fish --version
-	git --version
-	gpg --version
-	node --version
-	pass --version
-	python --version
-	tmux -V
-	type python | grep pyenv
-	type node | grep nodenv

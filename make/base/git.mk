@@ -17,9 +17,6 @@ git:
 	@git config --global alias.f "fetch"
 	@git config --global alias.p "pull"
 	@git config --global alias.s "status"
-	@git config --global alias.a "annex"
-	@git config --global alias.ai "annex info --fast"
-	@git config --global alias.aS "annex sync --no-content"
 
 	@git config --global filter.lfs.clean "git-lfs clean -- %f"
 	@git config --global filter.lfs.smudge "git-lfs smudge -- %f"
@@ -31,4 +28,3 @@ git:
 # Add targets to groups
 DESKTOP_TARGETS += git
 SERVER_TARGETS += git
-HELP_TARGET += git

@@ -16,4 +16,3 @@ gpg: $(addprefix $(GPG_DST_DIR)/, $(GPG_FILES))
 # Add gpg to desktop and help targets
 SERVER_TARGETS += gpg
 DESKTOP_TARGETS += gpg
-HELP_TARGETS += gpg

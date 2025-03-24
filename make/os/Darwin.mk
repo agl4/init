@@ -25,10 +25,6 @@ brew-setup-shell:
 	@grep 'brew\ shellenv' ${HOME}/.bashrc || echo 'eval "$$(${BREW} shellenv)"' >> ${HOME}/.bashrc
 	@grep 'brew\ shellenv' ${HOME}/.zshrc || echo 'eval "$$(${BREW} shellenv)"' >> ${HOME}/.zshrc
 
-hunspell_install_dictionaries:
-	@bash share/darwin-install-hunspell-dictionaries.sh
-
 BASE_TARGETS += darwin-brew-update
 BASE_TARGETS += darwin-brew-upgrade
 BASE_TARGETS += darwin-base
-BASE_TARGETS += hunspell_install_dictionaries

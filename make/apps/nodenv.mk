@@ -3,6 +3,7 @@
 # https://github.com/nodejs/node/blob/main/BUILDING.md#option-2-automated-install-with-boxstarter
 
 NODENV_VERSION := $(shell cat share/nodenv/.node-version)
+NODENV_DEFAULT_PACKAGES := share/nodenv/.default-npm-packages
 
 nodenv-deps-darwin :
 	@brew install python3
@@ -31,7 +32,7 @@ nodenv-install :
 	@${HOME}/.nodenv/bin/nodenv install --skip-existing ${NODENV_VERSION}
 	@${HOME}/.nodenv/bin/nodenv global ${NODENV_VERSION}
 	@${HOME}/.nodenv/shims/npm update -g npm
-	@xargs ${HOME}/.nodenv/shims/npm install --global < "share/nodenv/.default-npm-packages"
+	@xargs ${HOME}/.nodenv/shims/npm install --global < ${NODENV_DEFAULT_PACKAGES}
 	@${HOME}/.nodenv/bin/nodenv rehash
 
 nodenv-darwin-path-setup :

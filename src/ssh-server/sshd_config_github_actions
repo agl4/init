@@ -1,3 +1,7 @@
+#
+# MACs setup needed to be disabled, because the pipeline image cannot make a
+# connection with this setup. This config is used in the pipeline only.
+#
 PermitRootLogin without-password
 GatewayPorts no
 X11Forwarding no
