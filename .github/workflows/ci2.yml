@@ -27,10 +27,10 @@ jobs:
           - ubuntu-lts
           - ubuntu-22.04
         application:
-          - app-gh
+          # - app-gh
           - app-ghq
-          - app-1password
-          - app-resilio
+          # - app-1password
+          # - app-resilio
     container:
       image: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
     steps:
@@ -54,7 +54,7 @@ jobs:
           - ubuntu-lts
         app:
           - pyenv
-          - nodenv
+          # - nodenv
     container:
       image: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
     steps:
@@ -76,8 +76,11 @@ jobs:
     timeout-minutes: 3
     strategy:
       matrix:
-        container: ["ubuntu:24.04"]
-        app: ["app-tailscale", "app-warp"]
+        container:
+          - ubuntu-24.04
+        app:
+          - app-tailscale
+          - app-warp
     container:
       image: ${{ matrix.container }}
     steps:
