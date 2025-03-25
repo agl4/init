@@ -1,5 +1,39 @@
 # Changelog
 
+## [2.0.0](https://github.com/agl4/init/compare/v1.1.0...v2.0.0) (2025-03-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* Unified shellenv
+* drop zsh support
+* use conf.d folders for both bash and fish
+* Create a unified shell environment
+
+### Features
+
+* Add github backup script ([0c2c459](https://github.com/agl4/init/commit/0c2c459a0dc6eea2390bc924eca701786a9b27c2))
+* Add lightroom tagger script ([a80011f](https://github.com/agl4/init/commit/a80011fb2971d475a5a548aee0db70cdab1a22db))
+* Bootstrapping to a base system ([326b65a](https://github.com/agl4/init/commit/326b65a823a1bbb7b4a8cb45b57ed8e3d2ccaf59))
+* Create a unified shell environment ([08ac513](https://github.com/agl4/init/commit/08ac51374011c8db35b6a483b9b62174565ebf13))
+* drop zsh support ([08ac513](https://github.com/agl4/init/commit/08ac51374011c8db35b6a483b9b62174565ebf13))
+* Theme switcher script for linux ([90cbebe](https://github.com/agl4/init/commit/90cbebe538a3c0ae3dce4379469363ca9f76bf15))
+* Unified shellenv ([67c90d4](https://github.com/agl4/init/commit/67c90d4fe0e32d00f56e75ff697c8d742395d424))
+* use conf.d folders for both bash and fish ([08ac513](https://github.com/agl4/init/commit/08ac51374011c8db35b6a483b9b62174565ebf13))
+
+
+### Bug Fixes
+
+* Add caps-lock setup as script ([c22c450](https://github.com/agl4/init/commit/c22c450acb382f26682f0cee5ab0c61d7f19fb76))
+* Fix bootstrapping with gmake on FreeBSD ([7886235](https://github.com/agl4/init/commit/7886235742529ba55eaae5b2b21515d4760d92b0))
+* Fix path setup on fish where no fish_add_path is available ([08ac513](https://github.com/agl4/init/commit/08ac51374011c8db35b6a483b9b62174565ebf13))
+* **gh:** Add warning message after installation ([30c4c6b](https://github.com/agl4/init/commit/30c4c6be5b060775d0febccb752943d51452bd7a))
+* **git:** Remove git-annex aliases ([9fc054f](https://github.com/agl4/init/commit/9fc054f09c0e286949345876e27903142f898a6e))
+* **npm:** Remove unused package ([0595992](https://github.com/agl4/init/commit/05959920d3da44dd5ad0dfb74c89574344fd6f14))
+* Remove emacs-related script ([36553fa](https://github.com/agl4/init/commit/36553fa8b98241326600a658e6aa63b296fb1167))
+* Remove fast install support [skip ci] ([5139bcb](https://github.com/agl4/init/commit/5139bcbdda350a90c856c65c0caf785be1f91352))
+* Remove host ca related setup ([16567a5](https://github.com/agl4/init/commit/16567a500c2a0cceca220708da66aab05eecf7c7))
+
 ## [1.1.0](https://github.com/agl4/init/compare/v1.0.0...v1.1.0) (2025-03-20)
 
 
