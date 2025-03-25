@@ -2,6 +2,7 @@
 
 set -eu
 
+OS=$(uname -s)
 THIS_REPO=https://github.com/agl4/init
 WORKDIR=$(mktemp -d)
 BOOTSTRAP_BRANCH=${BRANCH:="main"}
@@ -11,7 +12,11 @@ cloning_repo(){
 }
 
 install_base(){
-    cd "$WORKDIR" && make base
+    if [ "$OS" = "FreeBSD" ] ; then
+        cd "$WORKDIR" && gmake base
+    else
+        cd "$WORKDIR" && make base
+    fi
 }
 
 prerequisites(){
