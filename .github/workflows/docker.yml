@@ -5,6 +5,10 @@ on:
   push:
     paths:
       - 'docker/**'
+      - 'make/base/**'
+      - 'make/distro/**'
+      - Makefile
+      - bootstrap.sh
 
 jobs:
   build-docker:
