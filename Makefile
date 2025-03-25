@@ -86,5 +86,11 @@ uninstall-asdf :
 base : install directories $(BASE_TARGETS)
 	sudo touch /.agl4-init-base-finished
 
+base-test :
+	gpg --version
+	fzf --version
+	tmux --version
+	pass --version
+
 server  : base $(SERVER_TARGETS)
 desktop : base $(DESKTOP_TARGETS)
