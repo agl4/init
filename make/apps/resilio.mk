@@ -7,7 +7,6 @@ resilio-install-opensuse-tumbleweed :
 	@sudo zypper ar --gpgcheck-allow-unsigned-repo -f https://linux-packages.resilio.com/resilio-sync/rpm/\$$basearch resilio-sync
 	@sudo zypper install -y resilio-sync
 
-
 resilio-install-ubuntu :
 	@sudo apt-get update && sudo apt-get install -y wget
 
@@ -44,3 +43,6 @@ RESILIO_TARGETS += resilio-install-${DISTRIBUTION}
 endif
 
 app-resilio: $(RESILIO_TARGETS)
+
+app-resilio-test :
+	@[[ -x /usr/bin/rslsync ]] || [[ -d /Applications/Resilio\ Sync.app ]] || exit 1

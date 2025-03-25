@@ -40,3 +40,6 @@ ifneq (${OS},Darwin)
 endif
 
 app-1password: $(1PASSWORD_TARGETS)
+
+app-1password-test:
+	[[ -x /usr/bin/1password ]] || [[ -d /Applications/1Password.app ]] || exit 1

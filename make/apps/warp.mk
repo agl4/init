@@ -40,3 +40,5 @@ endif
 
 .PHONY : app-warp
 app-warp: $(WARP_TARGETS)
+app-warp-test :
+	@[[ -x  /usr/bin/warp-cli ]] || [[ /Applications/Cloudflare\ WARP.app ]] || exit 1

@@ -59,3 +59,9 @@ endif
 
 pyenv : $(PYENV_TARGETS) pyenv-install
 DESKTOP_TARGETS += pyenv
+
+pyenv-test :
+	@[[ -x $HOME/.pyenv/bin/pyenv ]] || exit 1
+	@echo $PATH | grep pyenv/shims || exit 1
+	@echo $PATH | grep pyenv/bin || exit 1
+	@pyenv --version

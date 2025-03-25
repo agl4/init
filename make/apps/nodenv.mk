@@ -58,3 +58,9 @@ endif
 
 nodenv : $(NODENV_TARGETS) nodenv-install
 DESKTOP_TARGETS += nodenv
+
+nodenv-test :
+	@[[ -x $HOME/.nodenv/bin/nodenv ]] || exit 1
+	@echo $PATH | grep nodenv/shims || exit 1
+	@echo $PATH | grep nodenv/bin || exit 1
+	@nodenv --version

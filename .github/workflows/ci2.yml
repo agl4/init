@@ -39,6 +39,7 @@ jobs:
         # Use the triggering workflow's commit if available, otherwise default to the current branch
           ref: ${{ github.event.workflow_run.head_commit.id || github.ref_name }}
       - run: make ${{ matrix.application }}
+      - run: make ${{ matrix.application }}-test
 
   app-cached:
     runs-on: ubuntu-latest
@@ -51,7 +52,7 @@ jobs:
           - ubuntu-rolling
           - ubuntu-devel
           - ubuntu-lts
-        application:
+        app:
           - pyenv
           - nodenv
     container:
@@ -61,12 +62,12 @@ jobs:
         with:
         # Use the triggering workflow's commit if available, otherwise default to the current branch
           ref: ${{ github.event.workflow_run.head_commit.id || github.ref_name }}
-      - run: echo "CACHE_PATH=share/${{ matrix.application }}/**" >> $GITHUB_ENV
+      - run: echo "CACHE_PATH=share/${{ matrix.app }}/**" >> $GITHUB_ENV
       - uses: actions/cache@v4
         with:
-          path: ~/.${{ matrix.application }}
+          path: ~/.${{ matrix.app }}
           key: ${{ matrix.distro }}-${{ hashFiles(env.CACHE_PATH) }}
-      - run: make ${{ matrix.application }}
+      - run: make ${{ matrix.app }}
 
   app-runner:
     # this needs to run on plain images, because it requires a systemd
@@ -85,3 +86,4 @@ jobs:
         # Use the triggering workflow's commit if available, otherwise default to the current branch
           ref: ${{ github.event.workflow_run.head_commit.id || github.ref_name }}
       - run: bash bootstrap.sh && make ${{ matrix.app }}
+      - run: make ${{ matrix.app }}-test

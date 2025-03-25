@@ -41,3 +41,7 @@ endif
 
 .PHONY : app-gh
 app-gh : $(GH_TARGETS) gh-login-warning
+
+app-gh-test :
+	@[[ -x /usr/bin/gh ]] || [[ -x /opt/homebrew/bin/gh ]] || exit 1
+	@gh --version

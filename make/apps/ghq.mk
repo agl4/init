@@ -19,5 +19,6 @@ $(source_path) :
 
 app-ghq: ${source_path}
 
-test-ghq:
+app-ghq-test :
+	@[[ -x ${HOME}/.local/bin/ghq ]] || exit 1
 	@ghq --version
