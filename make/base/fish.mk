@@ -1,7 +1,6 @@
 .PHONY: fisher_update fish
 
 # Directories
-FISH_PREFIX := $(HOME)/.config/fish
 FISH_DIR_SRC := $(SRCDIR)/fish
 
 # Fisher components

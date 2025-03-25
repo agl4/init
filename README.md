@@ -13,6 +13,11 @@ Supports:
 | FreeBSD `14`            | `base`, `server`            | `*`    |
 | Raspbian                | `base`, `server`            |        |
 
+Supported shells:
+
+- fish
+- bashrc (as a fall-back)
+
 ## Prerequisites
 
 Run `bootstrap.sh`, which installs the dependencies.

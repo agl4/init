@@ -48,14 +48,17 @@ BASE_TARGETS :=
 SERVER_TARGETS :=
 DESKTOP_TARGETS :=
 
-# Default package list
+# Default configuration
 PACKAGES = curl fish git tmux bash
+BASH_PREFIX := $(HOME)/.config/bash/conf.d
+FISH_PREFIX := $(HOME)/.config/fish
 
 # Include files:
 -include make/os/$(OS).mk
 -include make/distro/$(DISTRIBUTION).mk
 include versions.mk
 include make/base/fish.mk
+include make/base/bash.mk
 include make/base/git.mk
 include make/base/gpg.mk
 include make/base/scripts.mk

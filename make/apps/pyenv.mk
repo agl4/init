@@ -2,7 +2,8 @@
 # https://github.com/pyenv/pyenv?tab=readme-ov-file#b-set-up-your-shell-environment-for-pyenv
 
 PYENV_VERSION := $(shell cat share/pyenv/.python-version)
-PYENV_DEFAULT_PACKAGES := share/pyenv/requirements.txt
+PYENV_CONFIG_SRC := share/pyenv
+PYENV_DEFAULT_PACKAGES := ${PYENV_CONFIG_SRC}/requirements.txt
 
 pyenv-deps-darwin :
 	@brew install openssl readline sqlite3 xz zlib tcl-tk@8 libb2
@@ -19,16 +20,6 @@ pyenv-deps-opensuse-tumbleweed :
 	@sudo zypper install -y gcc automake bzip2 libbz2-devel xz xz-devel openssl-devel ncurses-devel \
 		readline-devel zlib-devel tk-devel libffi-devel sqlite3-devel gdbm-devel make findutils patch
 
-pyenv-setup-bashrc :
-	@grep '^export PYENV_ROOT' ${HOME}/.bashrc || echo 'export PYENV_ROOT="$$HOME/.pyenv"' >> ${HOME}/.bashrc
-	@grep 'PYENV_ROOT.*PATH' ${HOME}/.bashrc || echo '[[ -d $$PYENV_ROOT/bin ]] && export PATH="$$PYENV_ROOT/bin:$$PATH"' >> ${HOME}/.bashrc
-	@grep 'pyenv init' ${HOME}/.bashrc || echo 'eval "$$(pyenv init - bash)"' >> ${HOME}/.bashrc
-
-pyenv-setup-zshrc :
-	@grep '^export PYENV_ROOT' ${HOME}/.zshrc || echo 'export PYENV_ROOT="$$HOME/.pyenv"' >> ${HOME}/.zshrc
-	@grep 'PYENV_ROOT.*PATH' ${HOME}/.zshrc || echo '[[ -d $$PYENV_ROOT/bin ]] && export PATH="$$PYENV_ROOT/bin:$$PATH"' >> ${HOME}/.zshrc
-	@grep 'pyenv init' ${HOME}/.zshrc || echo 'eval "$$(pyenv init - zsh)"' >> ${HOME}/.zshrc
-
 pyenv-install :
 	@git clone https://github.com/pyenv/pyenv.git ${HOME}/.pyenv || git -C ${HOME}/.pyenv pull
 	${HOME}/.pyenv/bin/pyenv install --skip-existing ${PYENV_VERSION}
@@ -37,15 +28,26 @@ pyenv-install :
 	${HOME}/.pyenv/shims/pip install -r ${PYENV_DEFAULT_PACKAGES}
 	${HOME}/.pyenv/bin/pyenv rehash
 
+$(BASH_PREFIX)/pyenv.bash : ${PYENV_CONFIG_SRC}/pyenv.bash
+	@install -m 0700 -d -v $(dir $@)
+	@install -m 0600 -v $< $@
+
+$(FISH_PREFIX)/conf.d/pyenv.fish : ${PYENV_CONFIG_SRC}/pyenv.fish
+	@install -m 0700 -d -v $(dir $@)
+	@install -m 0600 -v $< $@
+
+pyenv-setup-shell : $(BASH_PREFIX)/pyenv.bash $(FISH_PREFIX)/conf.d/pyenv.fish
+
 pyenv-darwin-path-setup :
 	sudo mkdir -p /etc/paths.d || true
 	echo "${HOME}/.pyenv/bin" | sudo tee /etc/paths.d/pyenv
 	echo "${HOME}/.pyenv/shims" | sudo tee -a /etc/paths.d/pyenv
 	sudo chmod 0644 /etc/paths.d/pyenv
 
-PYENV_TARGETS += pyenv-setup-bashrc pyenv-setup-zshrc
+PYENV_TARGETS += pyenv-setup-shell
 
 ifeq (${OS},Darwin)
+# For GUI applications on macOS
 DESKTOP_TARGETS += pyenv-darwin-path-setup
 pyenv-deps : pyenv-deps-darwin
 PYENV_TARGETS += pyenv-deps-darwin

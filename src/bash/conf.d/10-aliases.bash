@@ -4,7 +4,7 @@ alias aves='ansible-vault encrypt_string'
 alias bv=bumpversion
 alias e='emacsclient -n'
 alias g=git
-alias h='history --max=10 --reverse'
+alias h='history | tail'
 alias k=keys
 alias p=pass
 alias pg='pass git'
