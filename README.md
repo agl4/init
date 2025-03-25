@@ -1,17 +1,22 @@
-# Desktop init scripts
+# Init
 
 This code installs some basic tools and make some initial configuration to my
-desktop systems.
+working environments.
 
 Supports:
 
 | Distribution/OS         | `make` targets available    | tested |
 |-------------------------|-----------------------------|--------|
 | macOS                   | `base`, `desktop`           |        |
-| Ubuntu `22.04`, `24.04` | `base`, `desktop`,` server` | `*`    |
+| Ubuntu `22.04`, `24.04` | `base`, `desktop`, `server` | `*`    |
 | Fedora `41`-`42`        | `base`, `desktop`, `server` | `*`    |
 | FreeBSD `14`            | `base`, `server`            | `*`    |
 | Raspbian                | `base`, `server`            |        |
+
+Supported shells:
+
+- fish
+- bashrc (as a fall-back)
 
 ## Prerequisites
 
@@ -23,7 +28,7 @@ curl -fsSL https://raw.githubusercontent.com/agl4/init/refs/heads/main/bootstrap
 
 ## Install
 
-To clone the repo run the following:
+To clone the repository run the following:
 
 ```shell
 git clone https://github.com/agl4/init
