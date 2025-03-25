@@ -21,4 +21,4 @@ app-ghq: ${source_path}
 
 app-ghq-test :
 	@[[ -x ${HOME}/.local/bin/ghq ]] || exit 1
-	@ghq --version
+	@source ${HOME}/.bashrc && ghq --version
