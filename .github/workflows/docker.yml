@@ -16,7 +16,11 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        distro: ["ubuntu-rolling", "fedora-latest", "ubuntu-devel", "ubuntu-lts"]
+        distro:
+          # - ubuntu-rolling
+          - fedora-latest
+          # - ubuntu-devel
+          # - ubuntu-lts
     steps:
       - uses: actions/checkout@v4
       - uses: docker/metadata-action@v5

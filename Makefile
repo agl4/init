@@ -84,5 +84,7 @@ uninstall-asdf :
 	rm -rf ${HOME}/.config/fish/conf.d/asdf.fish ${HOME}/.asdf/
 
 base : install directories $(BASE_TARGETS)
+	sudo touch /.agl4-init-base-finished
+
 server  : base $(SERVER_TARGETS)
 desktop : base $(DESKTOP_TARGETS)
