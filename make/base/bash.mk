@@ -1,7 +1,7 @@
 .PHONY: bash_install insert_bashrc_loader
 
 # Directories
-BASH_DIR_SRC := $(SRCDIR)/bash/conf.d
+BASH_DIR_SRC := $(SRCDIR)/bash/conf.d/
 BASH_FILES := $(wildcard ${BASH_DIR_SRC}/*)
 
 $(BASH_PREFIX)/conf.d/%: $(BASH_DIR_SRC)/%

@@ -51,7 +51,7 @@ DESKTOP_TARGETS :=
 # Default configuration
 PACKAGES = curl fish git tmux bash
 BASH_PREFIX := $(HOME)/.config/bash/
-FISH_PREFIX := $(HOME)/.config/fish
+FISH_PREFIX := $(HOME)/.config/fish/
 
 # Include files:
 -include make/os/$(OS).mk
