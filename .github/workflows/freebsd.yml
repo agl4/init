@@ -8,6 +8,7 @@ on:
       - 'make/server/**'
       - 'make/os/FreeBSD.mk'
       - Makefile
+      - bootstrap.sh
 
 jobs:
   test:
