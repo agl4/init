@@ -23,7 +23,7 @@ darwin-base : | $(BREW)
 	@${BREW} install $(PACKAGES)
 	@${BREW} install --cask $(PACKAGES_CASKS)
 
-$(BASH_PREFIX)/homebrew.bash : ${BREW_CONFIG_SRC}/homebrew.bash
+$(BASH_PREFIX)/conf.d/homebrew.bash : ${BREW_CONFIG_SRC}/homebrew.bash
 	@install -m 0700 -d -v $(dir $@)
 	@install -m 0600 -v $< $@
 
@@ -31,7 +31,7 @@ $(FISH_PREFIX)/conf.d/homebrew.fish : ${BREW_CONFIG_SRC}/homebrew.fish
 	@install -m 0700 -d -v $(dir $@)
 	@install -m 0600 -v $< $@
 
-brew-setup-shell : $(BASH_PREFIX)/homebrew.bash $(FISH_PREFIX)/conf.d/homebrew.fish
+brew-setup-shell : $(BASH_PREFIX)/conf.d/homebrew.bash $(FISH_PREFIX)/conf.d/homebrew.fish
 
 BASE_TARGETS += brew-setup-shell
 BASE_TARGETS += darwin-brew-update

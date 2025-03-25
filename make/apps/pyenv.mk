@@ -28,7 +28,7 @@ pyenv-install :
 	${HOME}/.pyenv/shims/pip install -r ${PYENV_DEFAULT_PACKAGES}
 	${HOME}/.pyenv/bin/pyenv rehash
 
-$(BASH_PREFIX)/pyenv.bash : ${PYENV_CONFIG_SRC}/pyenv.bash
+$(BASH_PREFIX)/conf.d/pyenv.bash : ${PYENV_CONFIG_SRC}/pyenv.bash
 	@install -m 0700 -d -v $(dir $@)
 	@install -m 0600 -v $< $@
 
@@ -36,7 +36,7 @@ $(FISH_PREFIX)/conf.d/pyenv.fish : ${PYENV_CONFIG_SRC}/pyenv.fish
 	@install -m 0700 -d -v $(dir $@)
 	@install -m 0600 -v $< $@
 
-pyenv-setup-shell : $(BASH_PREFIX)/pyenv.bash $(FISH_PREFIX)/conf.d/pyenv.fish
+pyenv-setup-shell : $(BASH_PREFIX)/conf.d/pyenv.bash $(FISH_PREFIX)/conf.d/pyenv.fish
 
 pyenv-darwin-path-setup :
 	sudo mkdir -p /etc/paths.d || true

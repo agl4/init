@@ -27,7 +27,7 @@ nodenv-install :
 	@xargs ${HOME}/.nodenv/shims/npm install --global < ${NODENV_DEFAULT_PACKAGES}
 	@${HOME}/.nodenv/bin/nodenv rehash
 
-$(BASH_PREFIX)/nodenv.bash : ${NODENV_CONFIG_SRC}/nodenv.bash
+$(BASH_PREFIX)/conf.d/nodenv.bash : ${NODENV_CONFIG_SRC}/nodenv.bash
 	@install -m 0700 -d -v $(dir $@)
 	@install -m 0600 -v $< $@
 
@@ -35,7 +35,7 @@ $(FISH_PREFIX)/conf.d/nodenv.fish : ${NODENV_CONFIG_SRC}/nodenv.fish
 	@install -m 0700 -d -v $(dir $@)
 	@install -m 0600 -v $< $@
 
-nodenv-setup-shell : $(BASH_PREFIX)/nodenv.bash $(FISH_PREFIX)/conf.d/nodenv.fish
+nodenv-setup-shell : $(BASH_PREFIX)/conf.d/nodenv.bash $(FISH_PREFIX)/conf.d/nodenv.fish
 
 nodenv-darwin-path-setup :
 	sudo mkdir -p /etc/paths.d || true
