@@ -10,13 +10,18 @@ git:
 
 	@git config --global alias.root "rev-parse --show-toplevel"
 	@git config --global alias.b "branch"
+	@git config --global alias.ba "branch -av"
 	@git config --global alias.d "diff"
 	@git config --global alias.l "log"
+	@git config --global alias.lg "log --graph"
 	@git config --global alias.l1 "log --oneline"
+	@git config --global alias.l1g "log --oneline --graph"
 	@git config --global alias.r "remote"
 	@git config --global alias.f "fetch"
 	@git config --global alias.p "pull"
 	@git config --global alias.s "status"
+	@git config --global alias.s1 "status --short"
+	@git config --global alias.exec "!exec "
 
 	@git config --global filter.lfs.clean "git-lfs clean -- %f"
 	@git config --global filter.lfs.smudge "git-lfs smudge -- %f"
@@ -24,6 +29,9 @@ git:
 	@git config --global filter.lfs.required "true"
 
 	@git config --global credential.https://github.com.username "agl4"
+
+	@install -m 0700 -d -v "${HOME}/src"
+	@git config --global ghq.root "${HOME}/src"
 
 # Add targets to groups
 DESKTOP_TARGETS += git
