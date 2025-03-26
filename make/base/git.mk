@@ -1,7 +1,10 @@
 # Configure git
+GIT_GLOBAL_CONFIG := ${HOME}/.config/git/config
+
 git:
-	@install -m 0700 -d -v "${HOME}/src"
-	@git config --global ghq.root "${HOME}/src"
+	@if [ -e ${HOME}/.gitconfig ] ; then mv ${HOME}/.gitconfig ${HOME}/.gitconfig.bak ; fi
+	@mkdir -p $(shell dirname ${GIT_GLOBAL_CONFIG}) || true
+	@touch ${GIT_GLOBAL_CONFIG}
 	@git config --global pull.rebase "false"
 	@git config --global credential.helper cache
 	@git config --global core.autocrlf "false"
