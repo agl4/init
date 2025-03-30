@@ -1,5 +1,5 @@
 ---
-name: Linux testing
+name: Linux
 
 on:
   push:
