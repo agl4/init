@@ -9,7 +9,7 @@ on:
       - 'make/**'
       - Makefile
       - bootstrap.sh
-      - '.github/**}}'
+      - '.github/**'
   workflow_run:
     workflows:
       - Docker images
