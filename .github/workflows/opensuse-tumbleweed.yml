@@ -3,12 +3,12 @@ name: openSUSE Tumbleweed
 
 on:
   push:
-    paths:
-      - 'share/nodenv/**'
-      - 'share/pyenv/**'
-      - 'make/**'
-      - Makefile
-      - bootstrap.sh
+    # paths:
+    #   - 'share/nodenv/**'
+    #   - 'share/pyenv/**'
+    #   - 'make/**'
+    #   - Makefile
+    #   - bootstrap.sh
   workflow_run:
     workflows:
       - Docker images
