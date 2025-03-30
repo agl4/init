@@ -26,7 +26,7 @@ Supported shells:
 
 ## Prerequisites
 
-Run `bootstrap.sh`, which installs the dependencies.
+Run [`bootstrap.sh`](./bootstrap.sh), which installs the dependencies.
 
 ```shell
 curl -fsSL https://raw.githubusercontent.com/agl4/init/refs/heads/main/bootstrap.sh | sh
