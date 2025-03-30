@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/agl4/init/compare/v2.0.0...v2.0.1) (2025-03-25)
+
+
+### Bug Fixes
+
+* Increase tmux history ([81437d1](https://github.com/agl4/init/commit/81437d1b2dfc9db8879ba6edfca970bb36fc67ed)), closes [#154](https://github.com/agl4/init/issues/154)
+
 ## [2.0.0](https://github.com/agl4/init/compare/v1.1.0...v2.0.0) (2025-03-25)
 
 
