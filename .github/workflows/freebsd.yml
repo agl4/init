@@ -32,6 +32,3 @@ jobs:
         run: |
           bash -xv ./bootstrap.sh
           gmake server
-
-
-
