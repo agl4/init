@@ -3,11 +3,11 @@ name: macOS testing
 
 on:
   push:
-    paths:
-      - 'share/**'
-      - 'make/**'
-      - Makefile
-      - bootstrap.sh
+    # paths:
+    #   - 'share/**'
+    #   - 'make/**'
+    #   - Makefile
+    #   - bootstrap.sh
 
 jobs:
   build:
