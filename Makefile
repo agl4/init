@@ -69,12 +69,8 @@ include make/server/ssh-server.mk
 # Include apps
 include make/apps/nodenv.mk
 include make/apps/pyenv.mk
-include make/apps/1password.mk
 include make/apps/gh.mk
 include make/apps/ghq.mk
-include make/apps/resilio.mk
-include make/apps/tailscale.mk
-include make/apps/warp.mk
 
 directories:
 	@install -d -m 0700 "${HOME}/src"

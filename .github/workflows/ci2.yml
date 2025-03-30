@@ -29,8 +29,6 @@ jobs:
         application:
           - app-gh
           - app-ghq
-          - app-1password
-          - app-resilio
     container:
       image: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
     steps:
@@ -68,20 +66,3 @@ jobs:
           key: ${{ matrix.distro }}-${{ hashFiles(env.CACHE_PATH) }}
       - run: make ${{ matrix.application }}
 
-  app-runner:
-    # this needs to run on plain images, because it requires a systemd
-    # integration
-    runs-on: ubuntu-latest  # GitHub-hosted runner
-    timeout-minutes: 3
-    strategy:
-      matrix:
-        container: ["ubuntu:24.04"]
-        app: ["app-tailscale", "app-warp"]
-    container:
-      image: ${{ matrix.container }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-        # Use the triggering workflow's commit if available, otherwise default to the current branch
-          ref: ${{ github.event.workflow_run.head_commit.id || github.ref_name }}
-      - run: bash bootstrap.sh && make ${{ matrix.app }}
