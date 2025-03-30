@@ -3,6 +3,10 @@
 This code installs some basic tools and make some initial configuration to my
 working environments.
 
+[![macOS testing](https://github.com/agl4/init/actions/workflows/macos.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/macos.yml)
+[![Linux](https://github.com/agl4/init/actions/workflows/ci2.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/ci2.yml)
+[![FreeBSD testing](https://github.com/agl4/init/actions/workflows/freebsd.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/freebsd.yml)
+
 Supports:
 
 | Distribution/OS                  | `make` targets available    | tested |
