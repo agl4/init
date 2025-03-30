@@ -1,19 +1,21 @@
 ---
 name: Linux
 
-# on:
-#   push:
-#     paths:
-#       - 'share/nodenv/**'
-#       - 'share/pyenv/**'
-#       - 'make/**'
-#       - Makefile
-#       - bootstrap.sh
-#   workflow_run:
-#     workflows:
-#       - Docker images
-#     types:
-#       - completed
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'share/nodenv/**'
+      - 'share/pyenv/**'
+      - 'make/**'
+      - Makefile
+      - bootstrap.sh
+  workflow_run:
+    workflows:
+      - Docker images
+    types:
+      - completed
 
 jobs:
   app:
