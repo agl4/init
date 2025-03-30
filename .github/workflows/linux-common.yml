@@ -1,0 +1,29 @@
+---
+name: Shared Steps
+
+on:
+  workflow_call:
+    inputs:
+      distro:
+        required: true
+        type: string
+      application:
+        required: true
+        type: string
+    secrets:
+      GITHUB_TOKEN:
+        required: true
+
+jobs:
+  run-steps:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/${{ github.repository }}/${{ inputs.distro }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_commit.id || github.ref_name }}
+
+      - name: Run Build
+        run: make ${{ inputs.application }}

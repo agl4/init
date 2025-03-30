@@ -1,19 +1,19 @@
 ---
 name: Linux
 
-on:
-  push:
-    paths:
-      - 'share/nodenv/**'
-      - 'share/pyenv/**'
-      - 'make/**'
-      - Makefile
-      - bootstrap.sh
-  workflow_run:
-    workflows:
-      - Docker images
-    types:
-      - completed
+# on:
+#   push:
+#     paths:
+#       - 'share/nodenv/**'
+#       - 'share/pyenv/**'
+#       - 'make/**'
+#       - Makefile
+#       - bootstrap.sh
+#   workflow_run:
+#     workflows:
+#       - Docker images
+#     types:
+#       - completed
 
 jobs:
   app:
@@ -59,8 +59,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-        # Use the triggering workflow's commit if available, otherwise default
-        # to the current branch
+        # Use the triggering workflow's commit if available, otherwise default to the current branch
           ref: ${{ github.event.workflow_run.head_commit.id || github.ref_name }}
       - run: echo "CACHE_PATH=share/${{ matrix.application }}/**" >> $GITHUB_ENV
       - uses: actions/cache@v4

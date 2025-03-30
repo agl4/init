@@ -1,0 +1,49 @@
+---
+name: Ubuntu
+
+on:
+  push:
+    paths:
+      - 'share/nodenv/**'
+      - 'share/pyenv/**'
+      - 'make/**'
+      - Makefile
+      - bootstrap.sh
+  workflow_run:
+    workflows:
+      - Docker images
+    types:
+      - completed
+
+jobs:
+  app:
+    uses: ./.github/workflows/linux-common.yml
+    strategy:
+      matrix:
+        distro:
+          - ubuntu-rolling
+          - ubuntu-devel
+          - ubuntu-lts
+          - ubuntu-22.04
+        application:
+          - app-gh
+          - app-ghq
+    with:
+      distro: ${{ matrix.distro}}
+      application: ${{ matrix.application }}
+
+  app-cached:
+    uses: ./.github/workflows/linux-common.yml
+    strategy:
+      matrix:
+        distro:
+          - ubuntu-rolling
+          - ubuntu-devel
+          - ubuntu-lts
+          - ubuntu-22.04
+        application:
+          - app-pyenv
+          - app-nodenv
+    with:
+      distro: ${{ matrix.distro }}
+      application: ${{ matrix.application}}
