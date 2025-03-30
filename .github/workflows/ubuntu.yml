@@ -42,8 +42,8 @@ jobs:
           - ubuntu-lts
           - ubuntu-22.04
         application:
-          - app-pyenv
-          - app-nodenv
+          - pyenv
+          - nodenv
     with:
       distro: ${{ matrix.distro }}
       application: ${{ matrix.application}}

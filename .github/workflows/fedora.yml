@@ -9,7 +9,7 @@ on:
       - 'make/**'
       - Makefile
       - bootstrap.sh
-      - '.github/**'
+      - '.github/**}}'
   workflow_run:
     workflows:
       - Docker images
@@ -37,8 +37,8 @@ jobs:
         distro:
           - fedora-latest
         application:
-          - app-pyenv
-          - app-nodenv
+          - pyenv
+          - nodenv
     with:
       distro: ${{ matrix.distro }}
       application: ${{ matrix.application}}
