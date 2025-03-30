@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.1.0](https://github.com/agl4/init/compare/v2.0.1...v2.1.0) (2025-03-30)
+
+
+### Features
+
+* **git:** Use config file in .config/git ([b29e475](https://github.com/agl4/init/commit/b29e47503f01efbcbc24b94fc921149a4126ae24))
+
+
+### Bug Fixes
+
+* **git:** Update aliases ([35b0380](https://github.com/agl4/init/commit/35b0380e271f53fec22535d6b774ac580981d577))
+
 ## [2.0.1](https://github.com/agl4/init/compare/v2.0.0...v2.0.1) (2025-03-25)
 
 
