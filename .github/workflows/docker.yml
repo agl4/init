@@ -4,6 +4,7 @@ name: Docker images
 on:
   push:
     paths:
+      - '.github/workflows/docker.yml'
       - 'docker/**'
       - 'make/base/**'
       - 'make/distro/**'
