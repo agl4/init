@@ -3,16 +3,17 @@ name: macOS testing
 
 on:
   push:
-    # paths:
-    #   - 'share/**'
-    #   - 'make/**'
-    #   - Makefile
-    #   - bootstrap.sh
+    paths:
+      - 'share/nodenv/**'
+      - 'share/pyenv/**'
+      - 'make/**'
+      - Makefile
+      - bootstrap.sh
 
 jobs:
   build:
     runs-on: macos-latest
-
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
       - run: |
