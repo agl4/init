@@ -5,13 +5,13 @@ working environments.
 
 Supports:
 
-| Distribution/OS         | `make` targets available    | tested |
-|-------------------------|-----------------------------|--------|
-| macOS                   | `base`, `desktop`           |        |
-| Ubuntu `22.04`, `24.04` | `base`, `desktop`, `server` | `*`    |
-| Fedora `41`-`42`        | `base`, `desktop`, `server` | `*`    |
-| FreeBSD `14`            | `base`, `server`            | `*`    |
-| Raspbian                | `base`, `server`            |        |
+| Distribution/OS                  | `make` targets available    | tested |
+|----------------------------------|-----------------------------|--------|
+| macOS                            | `base`, `desktop`           |        |
+| Ubuntu `24.04`, `24.10`, `25.04` | `base`, `desktop`, `server` | `*`    |
+| Fedora `42`-`43`                 | `base`, `desktop`, `server` | `*`    |
+| FreeBSD `14`                     | `base`, `server`            | `*`    |
+| Raspbian                         | `base`, `server`            |        |
 
 Supported shells:
 
