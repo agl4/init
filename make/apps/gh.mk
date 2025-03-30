@@ -1,8 +1,8 @@
 .PHONY : gh-install-opensuse-tumbleweed
 gh-install-opensuse-tumbleweed :
-	@sudo zypper addrepo https://cli.github.com/packages/rpm/gh-cli.repo
-	@sudo zypper ref
-	@sudo zypper install -y gh
+	@sudo zypper --non-interactive addrepo https://cli.github.com/packages/rpm/gh-cli.repo
+	@sudo zypper --non-interactive ref
+	@sudo zypper --non-interactive install -y gh
 
 .PHONY : gh-install-ubuntu
 gh-install-ubuntu :
