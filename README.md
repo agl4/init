@@ -56,7 +56,7 @@ The server environment contains the same base package set, shell configuration a
 make server
 ```
 
-## Github authentication
+## GitHub authentication
 
 To authenticate git over HTTPS with GitHub use:
 
