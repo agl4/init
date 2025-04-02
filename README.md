@@ -1,38 +1,64 @@
-# Desktop init scripts
+# Init
+
+[![macOS](https://github.com/agl4/init/actions/workflows/macos.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/macos.yml)
+[![Fedora](https://github.com/agl4/init/actions/workflows/fedora.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/fedora.yml)
+[![Ubuntu](https://github.com/agl4/init/actions/workflows/ubuntu.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/ubuntu.yml)
+[![FreeBSD](https://github.com/agl4/init/actions/workflows/freebsd.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/freebsd.yml)
+[![openSUSE Tumbleweed](https://github.com/agl4/init/actions/workflows/opensuse-tumbleweed.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/opensuse-tumbleweed.yml)
+[![Lint Code Base](https://github.com/agl4/init/actions/workflows/github-super-linter.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/github-super-linter.yml)
 
 This code installs some basic tools and make some initial configuration to my
-desktop systems.
+working environments.
 
 Supports:
 
-- macOS
-- Ubuntu 20.04, 22.04
-- Fedora 38-40
-- FreeBSD
+| Distribution/OS                  | `make` targets available    | tested |
+|----------------------------------|-----------------------------|--------|
+| macOS                            | `base`, `desktop`           | `*`    |
+| Ubuntu `24.04`, `24.10`, `25.04` | `base`, `desktop`, `server` | `*`    |
+| Fedora `42`-`43`                 | `base`, `desktop`, `server` | `*`    |
+| openSUSE Tumbleweed              | `base`, `desktop`, `server` | `*`    |
+| FreeBSD `14`                     | `base`, `server`            | `*`    |
+| Raspbian                         | `base`, `server`            |        |
+
+Supported shells:
+
+- fish
+- bashrc (as a fall-back)
 
 ## Prerequisites
 
-Run `bootstrap.sh`, which installs the dependencies.
+Run [`bootstrap.sh`](./bootstrap.sh), which installs the dependencies.
+
+```shell
+curl -fsSL https://raw.githubusercontent.com/agl4/init/refs/heads/main/bootstrap.sh | sh
+```
 
 ## Install
 
-To install the environment run the following:
+To clone the repository run the following:
 
 ```shell
 git clone https://github.com/agl4/init
-cd init
-make install
 ```
 
-By default this upgrades the whole system before installing anything. To skip
-this step, set the variable `INSTALL_FAST` before running the install
-scripts. This will also skip compiling everything from source with `asdf`.
+### Desktop environment
+
+To configure a full environment, use:
 
 ```shell
-INSTALL_FAST=1 make install
+make desktop
 ```
 
-## Github authentication
+### Server environment
+
+The server environment contains the same base package set, shell configuration and scripts, but also configures `sshd`. To install, use:
+
+```shell
+make server
+```
+
+## GitHub authentication
 
 To authenticate git over HTTPS with GitHub use:
 

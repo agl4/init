@@ -1,5 +1,122 @@
 # Changelog
 
+## [3.0.0](https://github.com/agl4/init/compare/v2.1.0...v3.0.0) (2025-04-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* openSUSE support
+* Remove unused apps
+
+### Features
+
+* openSUSE support ([076b5ba](https://github.com/agl4/init/commit/076b5ba0a843811e2b29ef78edbbb72d9315c83a))
+* openSUSE Tumbleweed support ([d6dc7ab](https://github.com/agl4/init/commit/d6dc7abbb6d213d25f3caa270fd77ca9af7d0f2f))
+* Remove unused apps ([663254f](https://github.com/agl4/init/commit/663254faed85e1a93c16f1d00996d60d665c9079))
+
+
+### Bug Fixes
+
+* Add missing dependency awk ([7bad8ec](https://github.com/agl4/init/commit/7bad8eca57d8c879f3be82975e8643b9e99e2d9f))
+
+## [2.1.0](https://github.com/agl4/init/compare/v2.0.1...v2.1.0) (2025-03-30)
+
+
+### Features
+
+* **git:** Use config file in .config/git ([b29e475](https://github.com/agl4/init/commit/b29e47503f01efbcbc24b94fc921149a4126ae24))
+
+
+### Bug Fixes
+
+* **git:** Update aliases ([35b0380](https://github.com/agl4/init/commit/35b0380e271f53fec22535d6b774ac580981d577))
+
+## [2.0.1](https://github.com/agl4/init/compare/v2.0.0...v2.0.1) (2025-03-25)
+
+
+### Bug Fixes
+
+* Increase tmux history ([81437d1](https://github.com/agl4/init/commit/81437d1b2dfc9db8879ba6edfca970bb36fc67ed)), closes [#154](https://github.com/agl4/init/issues/154)
+
+## [2.0.0](https://github.com/agl4/init/compare/v1.1.0...v2.0.0) (2025-03-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* Unified shellenv
+* drop zsh support
+* use conf.d folders for both bash and fish
+* Create a unified shell environment
+
+### Features
+
+* Add github backup script ([0c2c459](https://github.com/agl4/init/commit/0c2c459a0dc6eea2390bc924eca701786a9b27c2))
+* Add lightroom tagger script ([a80011f](https://github.com/agl4/init/commit/a80011fb2971d475a5a548aee0db70cdab1a22db))
+* Bootstrapping to a base system ([326b65a](https://github.com/agl4/init/commit/326b65a823a1bbb7b4a8cb45b57ed8e3d2ccaf59))
+* Create a unified shell environment ([08ac513](https://github.com/agl4/init/commit/08ac51374011c8db35b6a483b9b62174565ebf13))
+* drop zsh support ([08ac513](https://github.com/agl4/init/commit/08ac51374011c8db35b6a483b9b62174565ebf13))
+* Theme switcher script for linux ([90cbebe](https://github.com/agl4/init/commit/90cbebe538a3c0ae3dce4379469363ca9f76bf15))
+* Unified shellenv ([67c90d4](https://github.com/agl4/init/commit/67c90d4fe0e32d00f56e75ff697c8d742395d424))
+* use conf.d folders for both bash and fish ([08ac513](https://github.com/agl4/init/commit/08ac51374011c8db35b6a483b9b62174565ebf13))
+
+
+### Bug Fixes
+
+* Add caps-lock setup as script ([c22c450](https://github.com/agl4/init/commit/c22c450acb382f26682f0cee5ab0c61d7f19fb76))
+* Fix bootstrapping with gmake on FreeBSD ([7886235](https://github.com/agl4/init/commit/7886235742529ba55eaae5b2b21515d4760d92b0))
+* Fix path setup on fish where no fish_add_path is available ([08ac513](https://github.com/agl4/init/commit/08ac51374011c8db35b6a483b9b62174565ebf13))
+* **gh:** Add warning message after installation ([30c4c6b](https://github.com/agl4/init/commit/30c4c6be5b060775d0febccb752943d51452bd7a))
+* **git:** Remove git-annex aliases ([9fc054f](https://github.com/agl4/init/commit/9fc054f09c0e286949345876e27903142f898a6e))
+* **npm:** Remove unused package ([0595992](https://github.com/agl4/init/commit/05959920d3da44dd5ad0dfb74c89574344fd6f14))
+* Remove emacs-related script ([36553fa](https://github.com/agl4/init/commit/36553fa8b98241326600a658e6aa63b296fb1167))
+* Remove fast install support [skip ci] ([5139bcb](https://github.com/agl4/init/commit/5139bcbdda350a90c856c65c0caf785be1f91352))
+* Remove host ca related setup ([16567a5](https://github.com/agl4/init/commit/16567a500c2a0cceca220708da66aab05eecf7c7))
+
+## [1.1.0](https://github.com/agl4/init/compare/v1.0.0...v1.1.0) (2025-03-20)
+
+
+### Features
+
+* Fedora 42 support ([e4f0534](https://github.com/agl4/init/commit/e4f0534280a458aee3c64ae2346d797d23ddd9c6))
+
+
+### Bug Fixes
+
+* Add pyenv rehashing after install ([f0b1d55](https://github.com/agl4/init/commit/f0b1d553edb45fd3f644e5986f4c58870b1c5837))
+* Add rehashing after npm installation ([050395d](https://github.com/agl4/init/commit/050395dd14748978e5c11d90766c916c5b222f9b))
+* Setting up PATH on macOS correctly ([bcd1a74](https://github.com/agl4/init/commit/bcd1a74145b4630d3f8c98ce5dcccbc814e0b4b0))
+
+## [1.0.0](https://github.com/agl4/init/compare/v0.25.0...v1.0.0) (2025-03-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Getting rid of ASDF-VM, use pyenv and nodenv.
+
+### Features
+
+* Add nodenv for nodejs ([714696b](https://github.com/agl4/init/commit/714696b683ec331996e0de67cb1f46ba77a07e8c))
+* Getting rid of ASDF-VM, use pyenv and nodenv. ([dea3f6b](https://github.com/agl4/init/commit/dea3f6ba28a99d4b3ff2aef1d8c85677def97bef))
+* Implement pyenv ([a494e23](https://github.com/agl4/init/commit/a494e239f63620367bafbcf04e3d059270e7a54c))
+
+
+### Bug Fixes
+
+* Add curl to bootstrap.sh ([e46be2a](https://github.com/agl4/init/commit/e46be2ab7ec40064dac4e16794bda2b0e28fc135))
+* Fix 1password installation ([29ba8e5](https://github.com/agl4/init/commit/29ba8e5e4295c35f24d7f9ee381a37cdb3a6e4a6))
+* Fix asdf plugin update ([a761272](https://github.com/agl4/init/commit/a761272f4c6a6719998aa1f8931d1253fb708e52))
+* Fix fish syntax in homebrew fish setup ([4962905](https://github.com/agl4/init/commit/4962905c6b89aac57ad231afa8f57bd0309190aa))
+* Fix gh installation ([4db6b9c](https://github.com/agl4/init/commit/4db6b9c8be516e4d0f7814eda92246d9b4387d25))
+* Fix homebrew invocation on fish 4.0.0 ([97711cf](https://github.com/agl4/init/commit/97711cff382dde1271a0992d2b290447cea5567b))
+* Fix installation of Clouflare WARP+ ([65c6a8f](https://github.com/agl4/init/commit/65c6a8ffdab9884c0e670eb3ac1acaefea82c3e2))
+* Fix PATH related issues ([7bc4585](https://github.com/agl4/init/commit/7bc4585d89e58ab38e2e4873ad22460195650315))
+* Fix resilio installation ([6611f0b](https://github.com/agl4/init/commit/6611f0bf7567583bd86ac6dbfdde1a6c5a137a47))
+* Fix Resilio installation ([984e128](https://github.com/agl4/init/commit/984e128cb57668c11bc714f482a44c94af3da26b))
+* Fix tailscale installation ([46d19c7](https://github.com/agl4/init/commit/46d19c7668b509eec7545300c9241f354fdb5b90))
+* Set GitHub username for git ([ec0bf30](https://github.com/agl4/init/commit/ec0bf3019c837d36760a8f7477d8cbf26d9eab54))
+* Simplify job dependencies in CI workflow ([77dfe75](https://github.com/agl4/init/commit/77dfe7548cd6e9ebf0759ca1f7fde0467d453ad7))
+* Update job dependencies for app-warp in CI workflow [skip_ci] ([2742a05](https://github.com/agl4/init/commit/2742a059ac71d753d0bf1d7df1a5486e4f130347))
+
 ## [0.25.0](https://github.com/agl4/init/compare/v0.24.1...v0.25.0) (2025-02-17)
 
 

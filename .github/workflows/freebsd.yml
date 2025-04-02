@@ -1,0 +1,34 @@
+---
+name: FreeBSD
+
+on:
+  push:
+    paths:
+      - 'make/base/**'
+      - 'make/server/**'
+      - 'make/os/FreeBSD.mk'
+      - Makefile
+      - bootstrap.sh
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    name: A job to run test in FreeBSD
+    env:
+      MYTOKEN : ${{ secrets.MYTOKEN }}
+      MYTOKEN2: "value2"
+    steps:
+    - uses: actions/checkout@v4
+    - name: Test in FreeBSD
+      id: test
+      uses: vmactions/freebsd-vm@v1
+      with:
+        envs: 'MYTOKEN MYTOKEN2'
+        usesh: true
+        prepare: |
+          pkg install -y bash
+
+        run: |
+          bash -xv ./bootstrap.sh
+          gmake server

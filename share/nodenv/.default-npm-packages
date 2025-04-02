@@ -1,0 +1,8 @@
+@ansible/ansible-language-server
+bash-language-server
+dockerfile-language-server-nodejs
+dockerlint
+markdownlint-cli
+prettier
+remark-language-server
+yaml-language-server
