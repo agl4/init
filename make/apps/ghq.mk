@@ -17,7 +17,9 @@ $(source_path) :
 	@chmod +x "${source_path}"
 	@rm "${install_path}/ghq_${platform}_${architecture}.zip"
 
-app-ghq: ${source_path}
+.PHONY : app-ghq
+app-ghq : ${source_path}
 
-test-ghq:
+.PHONY : test-ghq
+test-ghq :
 	@ghq --version

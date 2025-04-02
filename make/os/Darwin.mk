@@ -13,12 +13,15 @@ PACKAGES_CASKS := gpg-suite-no-mail emacs
 $(BREW) :
 	@bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
+.PHONY : darwin-brew-update
 darwin-brew-update : | $(BREW)
 	@${BREW} update
 
+.PHONY : darwin-brew-upgrade
 darwin-brew-upgrade : | $(BREW)
 	@${BREW} update
 
+.PHONY : darwin-base
 darwin-base : | $(BREW)
 	@${BREW} install $(PACKAGES)
 	@${BREW} install --cask $(PACKAGES_CASKS)
@@ -31,6 +34,7 @@ $(FISH_PREFIX)/conf.d/homebrew.fish : ${BREW_CONFIG_SRC}/homebrew.fish
 	@install -m 0700 -d -v $(dir $@)
 	@install -m 0600 -v $< $@
 
+.PHONY : brew-setup-shell
 brew-setup-shell : $(BASH_PREFIX)/conf.d/homebrew.bash $(FISH_PREFIX)/conf.d/homebrew.fish
 
 BASE_TARGETS += brew-setup-shell

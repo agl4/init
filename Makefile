@@ -6,8 +6,6 @@
 # - https://polothy.github.io/post/2018-10-09-makefile-dotfiles/
 # - https://github.com/masasam/dotfiles/blob/master/Makefile
 #
-.PHONY : directories server desktop install base test all
-
 SRCDIR := ./src
 PREFIX ?= ${HOME}/.local/bin
 
@@ -72,13 +70,16 @@ include make/apps/pyenv.mk
 include make/apps/gh.mk
 include make/apps/ghq.mk
 
+.PHONY : directories
 directories:
 	@install -d -m 0700 "${HOME}/src"
 	@install -d -m 0700 "${HOME}/tmp"
 
+.PHONY : uninstall-asdf
 uninstall-asdf :
 	rm -rf ${HOME}/.config/fish/conf.d/asdf.fish ${HOME}/.asdf/
 
+.PHONY : base server desktop
 base : install directories $(BASE_TARGETS)
 server  : base $(SERVER_TARGETS)
 desktop : base $(DESKTOP_TARGETS)

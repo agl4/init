@@ -1,7 +1,8 @@
 # Configure git
 GIT_GLOBAL_CONFIG := ${HOME}/.config/git/config
 
-git:
+.PHONY : git
+git :
 	@if [ -e ${HOME}/.gitconfig ] ; then mv ${HOME}/.gitconfig ${HOME}/.gitconfig.bak ; fi
 	@mkdir -p $(shell dirname ${GIT_GLOBAL_CONFIG}) || true
 	@touch ${GIT_GLOBAL_CONFIG}

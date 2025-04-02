@@ -6,18 +6,23 @@ NODENV_VERSION := $(shell cat share/nodenv/.node-version)
 NODENV_CONFIG_SRC := share/nodenv
 NODENV_DEFAULT_PACKAGES := ${NODENV_CONFIG_SRC}/.default-npm-packages
 
+.PHONY : nodenv-deps-darwin
 nodenv-deps-darwin :
 	@brew install python3
 
+.PHONY : nodenv-deps-ubuntu
 nodenv-deps-ubuntu :
 	@sudo apt-get -y install python3 g++-12 gcc-12 make python3-pip
 
+.PHONY : nodenv-deps-fedora
 nodenv-deps-fedora :
 	@sudo dnf install -y python3 gcc-c++ make python3-pip
 
+.PHONY : nodenv-deps-opensuse-tumbleweed
 nodenv-deps-opensuse-tumbleweed :
 	@sudo zypper install -y python3 gcc-c++ make python3-pip
 
+.PHONY : nodenv-install
 nodenv-install :
 	@git clone https://github.com/nodenv/nodenv.git ${HOME}/.nodenv || git -C ${HOME}/.nodenv pull
 	@git clone https://github.com/nodenv/node-build.git ${HOME}/.nodenv/plugins/node-build || git -C ${HOME}/.nodenv/plugins/node-build pull
@@ -35,8 +40,10 @@ $(FISH_PREFIX)/conf.d/nodenv.fish : ${NODENV_CONFIG_SRC}/nodenv.fish
 	@install -m 0700 -d -v $(dir $@)
 	@install -m 0600 -v $< $@
 
+.PHONY : nodenv-setup-shell
 nodenv-setup-shell : $(BASH_PREFIX)/conf.d/nodenv.bash $(FISH_PREFIX)/conf.d/nodenv.fish
 
+.PHONY : nodenv-darwin-path-setup
 nodenv-darwin-path-setup :
 	sudo mkdir -p /etc/paths.d || true
 	echo "${HOME}/.nodenv/bin" | sudo tee /etc/paths.d/nodenv
@@ -48,6 +55,7 @@ NODENV_TARGETS += nodenv-setup-shell
 ifeq (${OS},Darwin)
 # For GUI applications on macOS
 DESKTOP_TARGETS += nodenv-darwin-path-setup
+.PHONY : nodenv-deps
 nodenv-deps : nodenv-deps-darwin
 NODENV_TARGETS += nodenv-deps-darwin
 endif
@@ -56,5 +64,6 @@ nodenv-deps : nodenv-deps-${DISTRIBUTION}
 NODENV_TARGETS += nodenv-deps-${DISTRIBUTION}
 endif
 
+.PHONY : nodenv
 nodenv : $(NODENV_TARGETS) nodenv-install
 DESKTOP_TARGETS += nodenv

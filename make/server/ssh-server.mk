@@ -20,6 +20,7 @@ ifeq (${OS},FreeBSD)
 	service sshd restart
 endif
 
+.PHONY : ssh-server
 ssh-server : $(addprefix $(SSH_TARGET)/, $(SSH_CONFIGS))
 
 SERVER_TARGETS += ssh-server

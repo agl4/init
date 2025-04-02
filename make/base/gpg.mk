@@ -6,12 +6,13 @@ GPG_SRC_DIR := ${SRCDIR}/gpg/conf
 GPG_FILES := scdaemon.conf gpg-agent.conf gpg.conf
 
 # Rule to install GPG configuration files
-$(GPG_DST_DIR)/%: $(GPG_SRC_DIR)/%
+$(GPG_DST_DIR)/% : $(GPG_SRC_DIR)/%
 	@install -m 0700 -d -v $(dir $@)
 	@install -m 0600 -v $< $@
 
 # Target to install all GPG files
-gpg: $(addprefix $(GPG_DST_DIR)/, $(GPG_FILES))
+.PHONY : gpg
+gpg : $(addprefix $(GPG_DST_DIR)/, $(GPG_FILES))
 
 # Add gpg to desktop and help targets
 SERVER_TARGETS += gpg
