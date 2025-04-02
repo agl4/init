@@ -46,7 +46,7 @@ prerequisites(){
                     sudo dnf install -y git make curl unzip
                 ;;
                 opensuse*)
-                    if [ -x /usr/bin/sudo ] ; then
+                    if [ ! -x /usr/bin/sudo ] ; then
                         zypper install -y sudo
                     fi
                     sudo zypper install -y git make curl unzip
