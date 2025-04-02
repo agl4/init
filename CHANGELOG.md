@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.0.0](https://github.com/agl4/init/compare/v2.1.0...v3.0.0) (2025-04-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* openSUSE support
+* Remove unused apps
+
+### Features
+
+* openSUSE support ([076b5ba](https://github.com/agl4/init/commit/076b5ba0a843811e2b29ef78edbbb72d9315c83a))
+* openSUSE Tumbleweed support ([d6dc7ab](https://github.com/agl4/init/commit/d6dc7abbb6d213d25f3caa270fd77ca9af7d0f2f))
+* Remove unused apps ([663254f](https://github.com/agl4/init/commit/663254faed85e1a93c16f1d00996d60d665c9079))
+
+
+### Bug Fixes
+
+* Add missing dependency awk ([7bad8ec](https://github.com/agl4/init/commit/7bad8eca57d8c879f3be82975e8643b9e99e2d9f))
+
 ## [2.1.0](https://github.com/agl4/init/compare/v2.0.1...v2.1.0) (2025-03-30)
 
 
