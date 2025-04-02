@@ -80,6 +80,6 @@ uninstall-asdf :
 	rm -rf ${HOME}/.config/fish/conf.d/asdf.fish ${HOME}/.asdf/
 
 .PHONY : base server desktop
-base : install directories $(BASE_TARGETS)
+base : scripts directories $(BASE_TARGETS)
 server  : base $(SERVER_TARGETS)
 desktop : base $(DESKTOP_TARGETS)
