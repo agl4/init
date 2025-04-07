@@ -1,10 +1,5 @@
 # Init
 
-[![macOS](https://github.com/agl4/init/actions/workflows/macos.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/macos.yml)
-[![Fedora](https://github.com/agl4/init/actions/workflows/fedora.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/fedora.yml)
-[![Ubuntu](https://github.com/agl4/init/actions/workflows/ubuntu.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/ubuntu.yml)
-[![FreeBSD](https://github.com/agl4/init/actions/workflows/freebsd.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/freebsd.yml)
-[![openSUSE Tumbleweed](https://github.com/agl4/init/actions/workflows/opensuse-tumbleweed.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/opensuse-tumbleweed.yml)
 [![Lint Code Base](https://github.com/agl4/init/actions/workflows/github-super-linter.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/github-super-linter.yml)
 
 This code installs some basic tools and make some initial configuration to my
@@ -12,19 +7,21 @@ working environments.
 
 Supports:
 
-| Distribution/OS                  | `make` targets available    | tested |
-|----------------------------------|-----------------------------|--------|
-| macOS                            | `base`, `desktop`           | `*`    |
-| Ubuntu `24.04`, `24.10`, `25.04` | `base`, `desktop`, `server` | `*`    |
-| Fedora `42`-`43`                 | `base`, `desktop`, `server` | `*`    |
-| openSUSE Tumbleweed              | `base`, `desktop`, `server` | `*`    |
-| FreeBSD `14`                     | `base`, `server`            | `*`    |
-| Raspbian                         | `base`, `server`            |        |
+| Distribution/OS                  | `make` targets available | tested                                                                                                                                                                             |
+|----------------------------------|--------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| macOS                            | `desktop`                | [![macOS](https://github.com/agl4/init/actions/workflows/macos.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/macos.yml)                                           |
+| Ubuntu `24.04`, `24.10`, `25.04` | `desktop`, `server`      | [![Ubuntu](https://github.com/agl4/init/actions/workflows/ubuntu.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/ubuntu.yml)                                        |
+| Fedora `42`-`43`                 | `desktop`, `server`      | [![Fedora](https://github.com/agl4/init/actions/workflows/fedora.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/fedora.yml)                                        |
+| openSUSE Tumbleweed              | `desktop`, `server`      | [![openSUSE Tumbleweed](https://github.com/agl4/init/actions/workflows/opensuse-tumbleweed.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/opensuse-tumbleweed.yml) |
+| FreeBSD `14`                     | `server`                 | [![FreeBSD](https://github.com/agl4/init/actions/workflows/freebsd.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/freebsd.yml)                                     |
+| Raspbian                         | `server`                 |                                                                                                                                                                                    |
+
+The target `make base` is supported everywhere.
 
 Supported shells:
 
-- fish
-- bashrc (as a fall-back)
+- `fish`
+- `bashrc` (as a fall-back)
 
 ## Prerequisites
 
