@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/agl4/init/compare/v3.0.0...v3.0.1) (2025-04-07)
+
+
+### Bug Fixes
+
+* Fix Makefile target name ([d5a637d](https://github.com/agl4/init/commit/d5a637d616dd9ae53e979493a64a0991d60b8194))
+
 ## [3.0.0](https://github.com/agl4/init/compare/v2.1.0...v3.0.0) (2025-04-02)
 
 
