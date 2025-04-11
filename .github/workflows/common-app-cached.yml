@@ -26,5 +26,5 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ~/.${{ inputs.application }}
-          key: ${{ matrix.distro }}-${{ hashFiles(env.CACHE_PATH) }}
+          key: ${{ inputs.distro }}-${{ hashFiles(env.CACHE_PATH) }}
       - run: make ${{ inputs.application }}
