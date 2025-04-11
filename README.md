@@ -7,7 +7,7 @@ working environments.
 
 Supports:
 
-| Distribution/OS    \    Targets: | `make desktop` | `make server` |
+| Distribution/OS    -    Targets: | `make desktop` | `make server` |
 |----------------------------------|----------------|---------------|
 | macOS                            | *              |               |
 | Ubuntu `24.04`, `24.10`, `25.04` | *              | *             |
@@ -16,7 +16,6 @@ Supports:
 | FreeBSD `14`                     |                | *             |
 | Raspbian                         |                | *             |
 
-
 |               | `make desktop` | `make server` |
 |---------------|----------------|---------------|
 | `make base`   | *              | *             |
@@ -24,8 +23,7 @@ Supports:
 | `make pyenv`  | *              |               |
 | `make server` |                | *             |
 
-
-`make base`
+To install the base packages and setup shell use `make base`. This target is supported on all operating systems.
 
 | Distribution/OS     | status                                                                                                                                                                                                        |
 |---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -35,8 +33,7 @@ Supports:
 | openSUSE Tumbleweed | [![base-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/base-opensuse-tumbleweed.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/base-opensuse-tumbleweed.yml) |
 | FreeBSD             |                                                                                                                                                                                                               |
 
-`make nodenv`
-
+To install a Node.js environment using [`nodenv`](https://github.com/nodenv/nodenv), use `make nodenv`
 
 | Distribution/OS     | status                                                                                                                                                                                                            |
 |---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -46,7 +43,7 @@ Supports:
 | openSUSE Tumbleweed | [![nodenv-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/apps-nodenv-opensuse-tumbleweed.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-nodenv-opensuse-tumbleweed.yml) |
 | FreeBSD             |                                                                                                                                                                                                                   |
 
-`make pyenv`
+To install a Python environment using [`pyenv`](https://github.com/pyenv/pyenv) use `make pyenv`.
 
 | Distribution/OS     | status                                                                                                                                                                                                         |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -55,13 +52,6 @@ Supports:
 | Ubuntu              | [![pyenv-ubuntu](https://github.com/agl4/init/actions/workflows/apps-pyenv-ubuntu.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-pyenv-ubuntu.yml)                                        |
 | openSUSE Tumbleweed | [![pyenv-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/apps-pyenv-opensuse-tumbleweed.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-pyenv-opensuse-tumbleweed.yml) |
 | FreeBSD             |                                                                                                                                                                                                                |
-
-The target `make base` is supported everywhere.
-
-Supported shells:
-
-- `fish`
-- `bashrc` (as a fall-back)
 
 ## Prerequisites
 
