@@ -54,7 +54,6 @@ FISH_PREFIX := $(HOME)/.config/fish/
 # Include files:
 -include make/os/$(OS).mk
 -include make/distro/$(DISTRIBUTION).mk
-include versions.mk
 include make/base/fish.mk
 include make/base/bash.mk
 include make/base/git.mk
