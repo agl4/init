@@ -2,7 +2,6 @@
 # https://github.com/nodejs/node/blob/main/tools/bootstrap/README.md
 # https://github.com/nodejs/node/blob/main/BUILDING.md#option-2-automated-install-with-boxstarter
 
-
 NODENV_VERSION := $(shell cat share/nodenv/.node-version)
 NODENV_CONFIG_SRC := share/nodenv
 NODENV_DEFAULT_PACKAGES := ${NODENV_CONFIG_SRC}/.default-npm-packages
