@@ -28,4 +28,5 @@ jobs:
           path: ~/.${{ inputs.application }}
           key: ${{ inputs.distro }}-${{ hashFiles(env.CACHE_PATH) }}
       - run: make ${{ inputs.application }}
+      - run: make bash
       - run: . "${HOME}/.bashrc" && make test-${{ inputs.application }}
