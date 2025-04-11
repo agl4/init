@@ -6,8 +6,6 @@ on:
     paths:
       - 'share/pyenv/**'
       - make/apps/pyenv.mk
-      - Makefile
-      - bootstrap.sh
   workflow_run:
     workflows:
       - base-fedora

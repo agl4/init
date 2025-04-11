@@ -6,8 +6,6 @@ on:
     paths:
       - 'share/nodenv/**'
       - make/apps/nodenv.mk
-      - Makefile
-      - bootstrap.sh
   workflow_run:
     workflows:
       - base-ubuntu
