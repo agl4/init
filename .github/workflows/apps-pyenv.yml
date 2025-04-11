@@ -1,0 +1,33 @@
+---
+name: pyenv
+
+on:
+  push:
+    paths:
+      - 'share/pyenv/**'
+      - make/apps/pyenv.mk
+      - Makefile
+      - bootstrap.sh
+  workflow_run:
+    workflows:
+      - Docker images
+    types:
+      - completed
+
+jobs:
+  app:
+    uses: ./.github/workflows/common-app-cached.yml
+    strategy:
+      matrix:
+        distro:
+          - fedora-latest
+          - ubuntu-rolling
+          - ubuntu-devel
+          - ubuntu-lts
+          - ubuntu-22.04
+          - opensuse-tumbleweed
+        application:
+          - pyenv
+    with:
+      distro: ${{ matrix.distro}}
+      application: ${{ matrix.application }}

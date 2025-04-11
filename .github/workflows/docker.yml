@@ -4,7 +4,6 @@ name: Docker images
 on:
   push:
     paths:
-      - '.github/workflows/docker.yml'
       - 'docker/**'
       - 'make/base/**'
       - 'make/distro/**'
@@ -13,8 +12,7 @@ on:
 
 jobs:
   build-docker:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
+    uses: ./.github/workflows/common-docker.yml
     strategy:
       matrix:
         distro:
@@ -23,23 +21,3 @@ jobs:
           - ubuntu-devel
           - ubuntu-lts
           - opensuse-tumbleweed
-    steps:
-      - uses: actions/checkout@v4
-      - uses: docker/metadata-action@v5
-        id: metadata
-        with:
-          images: ghcr.io/${{ github.repository }}
-      - uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: int128/kaniko-action@v1
-        with:
-          build-args: "BOOTSTRAP_BRANCH=${{ github.head_ref || github.ref_name }} "
-          push: true
-          tags: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
-          labels: ${{ steps.metadata.outputs.labels }}
-          cache: true
-          cache-repository: ghcr.io/${{ github.repository }}/cache
-          file: docker/${{ matrix.distro }}/Dockerfile

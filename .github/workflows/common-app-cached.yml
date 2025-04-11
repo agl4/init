@@ -1,0 +1,30 @@
+--
+name: Common cached app
+
+on:
+  workflow_call:
+    inputs:
+      distro:
+        required: true
+        type: string
+      application:
+        required: true
+        type: string
+
+jobs:
+  app-cached:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    container:
+      image: ghcr.io/${{ github.repository }}/${{ inputs.distro }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+        # Use the triggering workflow's commit if available, otherwise default to the current branch
+          ref: ${{ github.event.workflow_run.head_commit.id || github.ref_name }}
+      - run: echo "CACHE_PATH=share/${{ inputs.application }}/**" >> $GITHUB_ENV
+      - uses: actions/cache@v4
+        with:
+          path: ~/.${{ inputs.application }}
+          key: ${{ matrix.distro }}-${{ hashFiles(env.CACHE_PATH) }}
+      - run: make ${{ inputs.application }}
