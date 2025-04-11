@@ -7,14 +7,14 @@ working environments.
 
 Supports:
 
-| Distribution/OS                  | `make` targets available |
-|----------------------------------|--------------------------|
-| macOS                            | `desktop`                |
-| Ubuntu `24.04`, `24.10`, `25.04` | `desktop`, `server`      |
-| Fedora `42`-`43`                 | `desktop`, `server`      |
-| openSUSE Tumbleweed              | `desktop`, `server`      |
-| FreeBSD `14`                     | `server`                 |
-| Raspbian                         | `server`                 |
+| Distribution/OS    \    Targets: | `make desktop` | `make server` |
+|----------------------------------|----------------|---------------|
+| macOS                            | *              |               |
+| Ubuntu `24.04`, `24.10`, `25.04` | *              | *             |
+| Fedora `42`-`43`                 | *              | *             |
+| openSUSE Tumbleweed              | *              | *             |
+| FreeBSD `14`                     |                | *             |
+| Raspbian                         |                | *             |
 
 
 |               | `make desktop` | `make server` |
