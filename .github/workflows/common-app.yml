@@ -22,5 +22,5 @@ jobs:
         with:
           ref: ${{ github.event.workflow_run.head_commit.id || github.ref_name }}
 
-      - name: Run Build
-        run: make ${{ inputs.application }}
+      - run: make ${{ inputs.application }}
+      - run: make test-${{ inputs.application }}

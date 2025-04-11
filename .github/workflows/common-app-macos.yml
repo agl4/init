@@ -18,3 +18,4 @@ jobs:
           ref: ${{ github.event.workflow_run.head_commit.id || github.ref_name }}
       - run: bash bootstrap.sh
       - run: make ${{ inputs.application }}
+      - run: make test-${{ inputs.application }}

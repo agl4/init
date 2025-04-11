@@ -28,3 +28,4 @@ jobs:
           path: ~/.${{ inputs.application }}
           key: ${{ inputs.distro }}-${{ hashFiles(env.CACHE_PATH) }}
       - run: make ${{ inputs.application }}
+      - run: make test-${{ inputs.application }}
