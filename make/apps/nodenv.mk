@@ -2,7 +2,6 @@
 # https://github.com/nodejs/node/blob/main/tools/bootstrap/README.md
 # https://github.com/nodejs/node/blob/main/BUILDING.md#option-2-automated-install-with-boxstarter
 
-
 NODENV_VERSION := $(shell cat share/app-nodenv/.node-version)
 NODENV_CONFIG_SRC := share/app-nodenv
 NODENV_DEFAULT_PACKAGES := ${NODENV_CONFIG_SRC}/.default-npm-packages
@@ -71,5 +70,10 @@ DESKTOP_TARGETS += nodenv
 
 .PHONY : test-app-nodenv
 test-app-nodenv :
+	[[ -x ${HOME}/.nodenv/bin/nodenv ]] || exit 1
+	echo ${PATH} | grep nodenv/shims || exit 1
+	echo ${PATH} | grep nodenv/bin || exit 1
 	node --version | grep "${NODENV_VERSION}"
 	type npm | grep .nodenv/shims
+	cat ${NODENV_DEFAULT_PACKAGES} | xargs -I "{}" bash -c "npm list -g | grep {}"
+	@echo "Testing successful."
