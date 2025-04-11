@@ -22,6 +22,6 @@ $(source_path) :
 .PHONY : app-ghq
 app-ghq : ${source_path}
 
-.PHONY : test-ghq
-test-ghq :
-	@ghq --version
+.PHONY : test-app-ghq
+test-app-ghq :
+	ghq --version
