@@ -1,0 +1,19 @@
+---
+name: base-opensuse-tumbleweed
+
+on:
+  push:
+    paths:
+      - 'docker/opensuse*/**'
+      - 'make/base/**'
+      - 'make/distro/**'
+      - Makefile
+      - bootstrap.sh
+
+jobs:
+  build-docker:
+    uses: ./.github/workflows/common-docker.yml
+    strategy:
+      matrix:
+        distro:
+          - opensuse-tumbleweed

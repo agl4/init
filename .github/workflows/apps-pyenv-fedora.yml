@@ -1,0 +1,28 @@
+---
+name: pyenv-fedora
+
+on:
+  push:
+    paths:
+      - 'share/pyenv/**'
+      - make/apps/pyenv.mk
+      - Makefile
+      - bootstrap.sh
+  workflow_run:
+    workflows:
+      - base-fedora
+    types:
+      - completed
+
+jobs:
+  app:
+    uses: ./.github/workflows/common-app-cached.yml
+    strategy:
+      matrix:
+        distro:
+          - fedora-latest
+        application:
+          - pyenv
+    with:
+      distro: ${{ matrix.distro}}
+      application: ${{ matrix.application }}

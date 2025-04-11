@@ -1,5 +1,5 @@
 ---
-name: nodenv
+name: nodenv-opensuse-tumbleweed
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
       - bootstrap.sh
   workflow_run:
     workflows:
-      - Docker images
+      - base-opensuse-tumbleweed
     types:
       - completed
 
@@ -27,7 +27,7 @@ jobs:
           - ubuntu-22.04
           - opensuse-tumbleweed
         application:
-          - pyenv
+          - nodenv
     with:
       distro: ${{ matrix.distro}}
       application: ${{ matrix.application }}

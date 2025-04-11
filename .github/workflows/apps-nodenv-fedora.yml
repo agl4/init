@@ -1,0 +1,28 @@
+---
+name: nodenv-fedora
+
+on:
+  push:
+    paths:
+      - 'share/nodenv/**'
+      - make/apps/nodenv.mk
+      - Makefile
+      - bootstrap.sh
+  workflow_run:
+    workflows:
+      - base-fedora
+    types:
+      - completed
+
+jobs:
+  app:
+    uses: ./.github/workflows/common-app-cached.yml
+    strategy:
+      matrix:
+        distro:
+          - fedora-latest
+        application:
+          - nodenv
+    with:
+      distro: ${{ matrix.distro}}
+      application: ${{ matrix.application }}

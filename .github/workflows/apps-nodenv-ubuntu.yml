@@ -1,16 +1,16 @@
 ---
-name: pyenv
+name: nodenv-ubuntu
 
 on:
   push:
     paths:
-      - 'share/pyenv/**'
-      - make/apps/pyenv.mk
+      - 'share/nodenv/**'
+      - make/apps/nodenv.mk
       - Makefile
       - bootstrap.sh
   workflow_run:
     workflows:
-      - Docker images
+      - base-ubuntu
     types:
       - completed
 
@@ -20,14 +20,12 @@ jobs:
     strategy:
       matrix:
         distro:
-          - fedora-latest
           - ubuntu-rolling
           - ubuntu-devel
           - ubuntu-lts
           - ubuntu-22.04
-          - opensuse-tumbleweed
         application:
-          - pyenv
+          - nodenv
     with:
       distro: ${{ matrix.distro}}
       application: ${{ matrix.application }}
