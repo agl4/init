@@ -79,7 +79,6 @@ main(){
     prerequisites
     cloning_repo
     install_base
-    sudo touch /.agl4-init-bootstrap-finished
 }
 
 main
