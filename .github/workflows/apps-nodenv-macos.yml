@@ -14,4 +14,4 @@ jobs:
         application:
           - app-nodenv
     with:
-      distro: ${{ matrix.distro}}
+      application: ${{ matrix.application }}
