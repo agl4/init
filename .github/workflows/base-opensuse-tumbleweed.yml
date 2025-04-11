@@ -17,3 +17,5 @@ jobs:
       matrix:
         distro:
           - opensuse-tumbleweed
+    with:
+      distro: ${{ matrix.distro }}

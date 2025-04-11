@@ -19,3 +19,5 @@ jobs:
           - ubuntu-rolling
           - ubuntu-devel
           - ubuntu-lts
+    with:
+      distro: ${{ matrix.distro }}

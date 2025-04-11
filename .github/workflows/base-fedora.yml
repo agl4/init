@@ -17,3 +17,5 @@ jobs:
       matrix:
         distro:
           - fedora-latest
+    with:
+      distro: ${{ matrix.distro }}
