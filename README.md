@@ -16,43 +16,6 @@ Supports:
 | FreeBSD `14`                     |                | *             |
 | Raspbian                         |                | *             |
 
-|               | `make desktop` | `make server` |
-|---------------|----------------|---------------|
-| `make base`   | *              | *             |
-| `make nodenv` | *              |               |
-| `make pyenv`  | *              |               |
-| `make server` |                | *             |
-
-To install the base packages and setup shell use `make base`. This target is supported on all operating systems.
-
-| Distribution/OS     | status                                                                                                                                                                                                        |
-|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| macOS               |                                                                                                                                                                                                               |
-| Fedora              | [![base-fedora](https://github.com/agl4/init/actions/workflows/base-fedora.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/base-fedora.yml)                                        |
-| Ubuntu              | [![base-ubuntu](https://github.com/agl4/init/actions/workflows/base-ubuntu.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/base-ubuntu.yml)                                        |
-| openSUSE Tumbleweed | [![base-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/base-opensuse-tumbleweed.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/base-opensuse-tumbleweed.yml) |
-| FreeBSD             |                                                                                                                                                                                                               |
-
-To install a Node.js environment using [`nodenv`](https://github.com/nodenv/nodenv), use `make nodenv`
-
-| Distribution/OS     | status                                                                                                                                                                                                            |
-|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| macOS               |                                                                                                                                                                                                                   |
-| Fedora              | [![nodenv-fedora](https://github.com/agl4/init/actions/workflows/apps-nodenv-fedora.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-nodenv-fedora.yml)                                        |
-| Ubuntu              | [![nodenv-ubuntu](https://github.com/agl4/init/actions/workflows/apps-nodenv-ubuntu.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-nodenv-ubuntu.yml)                                        |
-| openSUSE Tumbleweed | [![nodenv-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/apps-nodenv-opensuse-tumbleweed.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-nodenv-opensuse-tumbleweed.yml) |
-| FreeBSD             |                                                                                                                                                                                                                   |
-
-To install a Python environment using [`pyenv`](https://github.com/pyenv/pyenv) use `make pyenv`.
-
-| Distribution/OS     | status                                                                                                                                                                                                         |
-|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| macOS               |                                                                                                                                                                                                                |
-| Fedora              | [![pyenv-fedora](https://github.com/agl4/init/actions/workflows/apps-pyenv-fedora.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-pyenv-fedora.yml)                                        |
-| Ubuntu              | [![pyenv-ubuntu](https://github.com/agl4/init/actions/workflows/apps-pyenv-ubuntu.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-pyenv-ubuntu.yml)                                        |
-| openSUSE Tumbleweed | [![pyenv-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/apps-pyenv-opensuse-tumbleweed.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-pyenv-opensuse-tumbleweed.yml) |
-| FreeBSD             |                                                                                                                                                                                                                |
-
 ## Prerequisites
 
 Run [`bootstrap.sh`](./bootstrap.sh), which installs the dependencies.
@@ -98,3 +61,47 @@ Also setup `gh` authentication to `.gitconfig`:
 ```shell
 gh auth setup-git
 ```
+## Targets
+
+|               | `make desktop` | `make server` |
+|---------------|----------------|---------------|
+| `make base`   | *              | *             |
+| `make nodenv` | *              |               |
+| `make pyenv`  | *              |               |
+| `make server` |                | *             |
+
+### `make base`
+
+To install the base packages and setup shell use `make base`. This target is supported on all operating systems.
+
+| Distribution/OS     | status                                                                                                                                                                                                        |
+|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| macOS               |                                                                                                                                                                                                               |
+| Fedora              | [![base-fedora](https://github.com/agl4/init/actions/workflows/base-fedora.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/base-fedora.yml)                                        |
+| Ubuntu              | [![base-ubuntu](https://github.com/agl4/init/actions/workflows/base-ubuntu.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/base-ubuntu.yml)                                        |
+| openSUSE Tumbleweed | [![base-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/base-opensuse-tumbleweed.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/base-opensuse-tumbleweed.yml) |
+| FreeBSD             |                                                                                                                                                                                                               |
+
+### `make nodenv`
+
+To install a Node.js environment using [`nodenv`](https://github.com/nodenv/nodenv), use `make nodenv`
+
+| Distribution/OS     | status                                                                                                                                                                                                            |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| macOS               |                                                                                                                                                                                                                   |
+| Fedora              | [![nodenv-fedora](https://github.com/agl4/init/actions/workflows/apps-nodenv-fedora.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-nodenv-fedora.yml)                                        |
+| Ubuntu              | [![nodenv-ubuntu](https://github.com/agl4/init/actions/workflows/apps-nodenv-ubuntu.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-nodenv-ubuntu.yml)                                        |
+| openSUSE Tumbleweed | [![nodenv-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/apps-nodenv-opensuse-tumbleweed.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-nodenv-opensuse-tumbleweed.yml) |
+| FreeBSD             |                                                                                                                                                                                                                   |
+
+### `make pyenv`
+
+To install a Python environment using [`pyenv`](https://github.com/pyenv/pyenv) use `make pyenv`.
+
+| Distribution/OS     | status                                                                                                                                                                                                         |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| macOS               |                                                                                                                                                                                                                |
+| Fedora              | [![pyenv-fedora](https://github.com/agl4/init/actions/workflows/apps-pyenv-fedora.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-pyenv-fedora.yml)                                        |
+| Ubuntu              | [![pyenv-ubuntu](https://github.com/agl4/init/actions/workflows/apps-pyenv-ubuntu.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-pyenv-ubuntu.yml)                                        |
+| openSUSE Tumbleweed | [![pyenv-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/apps-pyenv-opensuse-tumbleweed.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-pyenv-opensuse-tumbleweed.yml) |
+| FreeBSD             |                                                                                                                                                                                                                |
