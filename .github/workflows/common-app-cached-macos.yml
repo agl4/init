@@ -1,0 +1,26 @@
+---
+name: Common cached app macOS
+
+on:
+  workflow_call:
+    inputs:
+      application:
+        required: true
+        type: string
+
+jobs:
+  app-cached:
+    runs-on: macos-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+        # Use the triggering workflow's commit if available, otherwise default to the current branch
+          ref: ${{ github.event.workflow_run.head_commit.id || github.ref_name }}
+      - run: echo "CACHE_PATH=share/${{ inputs.application }}/**" >> $GITHUB_ENV
+      - uses: actions/cache@v4
+        with:
+          path: ~/.${{ inputs.application }}
+          key: macos-${{ hashFiles(env.CACHE_PATH) }}
+      - run: bash bootstrap.sh
+      - run: make ${{ inputs.application }}

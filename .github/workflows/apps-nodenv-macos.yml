@@ -1,0 +1,17 @@
+---
+name: nodenv-macos
+
+on:
+  push:
+    paths:
+      - 'share/nodenv/**'
+      - make/apps/nodenv.mk
+
+jobs:
+  app:
+    uses: ./.github/workflows/common-app-cached-macos.yml
+    strategy:
+        application:
+          - app-nodenv
+    with:
+      distro: ${{ matrix.distro}}
