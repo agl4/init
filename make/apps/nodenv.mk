@@ -64,10 +64,11 @@ nodenv-deps : nodenv-deps-${DISTRIBUTION}
 NODENV_TARGETS += nodenv-deps-${DISTRIBUTION}
 endif
 
-.PHONY : nodenv
+.PHONY : app-nodenv
 app-nodenv : $(NODENV_TARGETS) nodenv-install
 DESKTOP_TARGETS += nodenv
 
-test-nodenv :
+.PHONY : test-app-nodenv
+test-app-nodenv :
 	node --version | grep "${NODENV_VERSION}"
 	type npm | grep .nodenv/shims
