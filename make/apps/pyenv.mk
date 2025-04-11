@@ -1,8 +1,9 @@
 # https://github.com/pyenv/pyenv/wiki#suggested-build-environment
 # https://github.com/pyenv/pyenv?tab=readme-ov-file#b-set-up-your-shell-environment-for-pyenv
 
-PYENV_VERSION := $(shell cat share/pyenv/.python-version)
-PYENV_CONFIG_SRC := share/pyenv
+
+PYENV_VERSION := $(shell cat share/app-pyenv/.python-version)
+PYENV_CONFIG_SRC := share/app-pyenv
 PYENV_DEFAULT_PACKAGES := ${PYENV_CONFIG_SRC}/requirements.txt
 
 .PHONY : pyenv-deps-darwin
@@ -65,6 +66,11 @@ pyenv-deps : pyenv-deps-${DISTRIBUTION}
 PYENV_TARGETS += pyenv-deps-${DISTRIBUTION}
 endif
 
-.PHONY : pyenv
-pyenv : $(PYENV_TARGETS) pyenv-install
+.PHONY : app-pyenv
+app-pyenv : $(PYENV_TARGETS) pyenv-install
 DESKTOP_TARGETS += pyenv
+
+.PHONY : test-app-pyenv
+test-app-pyenv :
+	python --version | grep "${PYENV_VERSION}"
+	type pip | grep .pyenv/shims/pip

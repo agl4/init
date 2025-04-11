@@ -1,0 +1,20 @@
+---
+name: pyenv-macos
+
+on:
+  push:
+    paths:
+      - 'share/pyenv/**'
+      - make/apps/pyenv.mk
+
+jobs:
+  app:
+    uses: ./.github/workflows/common-app-cached-macos.yml
+    strategy:
+      matrix:
+        application:
+          - app-pyenv
+        path_to_cache:
+          - "~/.pyenv"
+    with:
+      application: ${{ matrix.application }}

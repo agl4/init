@@ -7,21 +7,14 @@ working environments.
 
 Supports:
 
-| Distribution/OS                  | `make` targets available | tested                                                                                                                                                                             |
-|----------------------------------|--------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| macOS                            | `desktop`                | [![macOS](https://github.com/agl4/init/actions/workflows/macos.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/macos.yml)                                           |
-| Ubuntu `24.04`, `24.10`, `25.04` | `desktop`, `server`      | [![Ubuntu](https://github.com/agl4/init/actions/workflows/ubuntu.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/ubuntu.yml)                                        |
-| Fedora `42`-`43`                 | `desktop`, `server`      | [![Fedora](https://github.com/agl4/init/actions/workflows/fedora.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/fedora.yml)                                        |
-| openSUSE Tumbleweed              | `desktop`, `server`      | [![openSUSE Tumbleweed](https://github.com/agl4/init/actions/workflows/opensuse-tumbleweed.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/opensuse-tumbleweed.yml) |
-| FreeBSD `14`                     | `server`                 | [![FreeBSD](https://github.com/agl4/init/actions/workflows/freebsd.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/freebsd.yml)                                     |
-| Raspbian                         | `server`                 |                                                                                                                                                                                    |
-
-The target `make base` is supported everywhere.
-
-Supported shells:
-
-- `fish`
-- `bashrc` (as a fall-back)
+| Distribution/OS    -    Targets: | `make desktop` | `make server` |
+|----------------------------------|----------------|---------------|
+| macOS                            | *              |               |
+| Ubuntu `24.04`, `24.10`, `25.04` | *              | *             |
+| Fedora `42`-`43`                 | *              | *             |
+| openSUSE Tumbleweed              | *              | *             |
+| FreeBSD `14`                     |                | *             |
+| Raspbian                         |                | *             |
 
 ## Prerequisites
 
@@ -68,3 +61,45 @@ Also setup `gh` authentication to `.gitconfig`:
 ```shell
 gh auth setup-git
 ```
+## Targets
+
+|               | `make desktop` | `make server` |
+|---------------|----------------|---------------|
+| `make base`   | *              | *             |
+| `make nodenv` | *              |               |
+| `make pyenv`  | *              |               |
+| `make server` |                | *             |
+
+### `make base`
+
+To install the base packages and setup shell use `make base`. This target is supported on all operating systems.
+
+| Distribution/OS     | status                                                                                                                                                                                                        |
+|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| macOS               |                                                                                                                                                                                                               |
+| Fedora              | [![base-fedora](https://github.com/agl4/init/actions/workflows/base-fedora.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/base-fedora.yml)                                        |
+| Ubuntu              | [![base-ubuntu](https://github.com/agl4/init/actions/workflows/base-ubuntu.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/base-ubuntu.yml)                                        |
+| openSUSE Tumbleweed | [![base-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/base-opensuse-tumbleweed.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/base-opensuse-tumbleweed.yml) |
+| FreeBSD             |                                                                                                                                                                                                               |
+
+### `make nodenv`
+
+To install a Node.js environment using [`nodenv`](https://github.com/nodenv/nodenv), use `make nodenv`
+
+| Distribution/OS     | status                                                                                                                                                                                                            |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| macOS               |                                                                                                                                                                                                                   |
+| Fedora              | [![nodenv-fedora](https://github.com/agl4/init/actions/workflows/apps-nodenv-fedora.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-nodenv-fedora.yml)                                        |
+| Ubuntu              | [![nodenv-ubuntu](https://github.com/agl4/init/actions/workflows/apps-nodenv-ubuntu.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-nodenv-ubuntu.yml)                                        |
+| openSUSE Tumbleweed | [![nodenv-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/apps-nodenv-opensuse-tumbleweed.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-nodenv-opensuse-tumbleweed.yml) |
+
+### `make pyenv`
+
+To install a Python environment using [`pyenv`](https://github.com/pyenv/pyenv) use `make pyenv`.
+
+| Distribution/OS     | status                                                                                                                                                                                                         |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| macOS               |                                                                                                                                                                                                                |
+| Fedora              | [![pyenv-fedora](https://github.com/agl4/init/actions/workflows/apps-pyenv-fedora.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-pyenv-fedora.yml)                                        |
+| Ubuntu              | [![pyenv-ubuntu](https://github.com/agl4/init/actions/workflows/apps-pyenv-ubuntu.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-pyenv-ubuntu.yml)                                        |
+| openSUSE Tumbleweed | [![pyenv-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/apps-pyenv-opensuse-tumbleweed.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-pyenv-opensuse-tumbleweed.yml) |

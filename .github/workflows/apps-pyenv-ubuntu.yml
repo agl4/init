@@ -1,0 +1,31 @@
+---
+name: pyenv-ubuntu
+
+on:
+  push:
+    paths:
+      - 'share/pyenv/**'
+      - make/apps/pyenv.mk
+  workflow_run:
+    workflows:
+      - base-ubuntu
+    types:
+      - completed
+
+jobs:
+  app:
+    uses: ./.github/workflows/common-app-cached.yml
+    strategy:
+      matrix:
+        distro:
+          - ubuntu-rolling
+          - ubuntu-devel
+          - ubuntu-lts
+          - ubuntu-22.04
+        application:
+          - app-pyenv
+        path_to_cache:
+          - "~/.pyenv"
+    with:
+      distro: ${{ matrix.distro}}
+      application: ${{ matrix.application }}

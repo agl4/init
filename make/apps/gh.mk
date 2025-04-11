@@ -28,6 +28,7 @@ gh-login :
 	@gh auth login
 	@gh auth setup-git
 
+.PHONY : gh-login-warning
 gh-login-warning :
 	@echo "WARNING: GitHub authentication is not done automatically, run 'make gh-login'"
 
@@ -41,3 +42,7 @@ endif
 
 .PHONY : app-gh
 app-gh : $(GH_TARGETS) gh-login-warning
+
+.PHONY : test-app-gh
+test-app-gh :
+	gh --version

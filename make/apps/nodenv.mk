@@ -2,8 +2,9 @@
 # https://github.com/nodejs/node/blob/main/tools/bootstrap/README.md
 # https://github.com/nodejs/node/blob/main/BUILDING.md#option-2-automated-install-with-boxstarter
 
-NODENV_VERSION := $(shell cat share/nodenv/.node-version)
-NODENV_CONFIG_SRC := share/nodenv
+
+NODENV_VERSION := $(shell cat share/app-nodenv/.node-version)
+NODENV_CONFIG_SRC := share/app-nodenv
 NODENV_DEFAULT_PACKAGES := ${NODENV_CONFIG_SRC}/.default-npm-packages
 
 .PHONY : nodenv-deps-darwin
@@ -64,6 +65,11 @@ nodenv-deps : nodenv-deps-${DISTRIBUTION}
 NODENV_TARGETS += nodenv-deps-${DISTRIBUTION}
 endif
 
-.PHONY : nodenv
-nodenv : $(NODENV_TARGETS) nodenv-install
+.PHONY : app-nodenv
+app-nodenv : $(NODENV_TARGETS) nodenv-install
 DESKTOP_TARGETS += nodenv
+
+.PHONY : test-app-nodenv
+test-app-nodenv :
+	node --version | grep "${NODENV_VERSION}"
+	type npm | grep .nodenv/shims

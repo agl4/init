@@ -1,28 +1,17 @@
 ---
-name: Docker images
+name: Common docker images
 
 on:
-  push:
-    paths:
-      - '.github/workflows/docker.yml'
-      - 'docker/**'
-      - 'make/base/**'
-      - 'make/distro/**'
-      - Makefile
-      - bootstrap.sh
+  workflow_call:
+    inputs:
+      distro:
+        required: true
+        type: string
 
 jobs:
   build-docker:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    strategy:
-      matrix:
-        distro:
-          - ubuntu-rolling
-          - fedora-latest
-          - ubuntu-devel
-          - ubuntu-lts
-          - opensuse-tumbleweed
     steps:
       - uses: actions/checkout@v4
       - uses: docker/metadata-action@v5
@@ -38,8 +27,8 @@ jobs:
         with:
           build-args: "BOOTSTRAP_BRANCH=${{ github.head_ref || github.ref_name }} "
           push: true
-          tags: ghcr.io/${{ github.repository }}/${{ matrix.distro }}
+          tags: ghcr.io/${{ github.repository }}/${{ inputs.distro }}
           labels: ${{ steps.metadata.outputs.labels }}
           cache: true
           cache-repository: ghcr.io/${{ github.repository }}/cache
-          file: docker/${{ matrix.distro }}/Dockerfile
+          file: docker/${{ inputs.distro }}/Dockerfile
