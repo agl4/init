@@ -45,5 +45,6 @@ app-gh : $(GH_TARGETS) gh-login-warning
 
 .PHONY : test-app-gh
 test-app-gh :
-	@[[ -x /usr/bin/gh ]] || [[ -x /opt/homebrew/bin/gh ]] || exit 1
-	@gh --version
+	[[ -x /usr/bin/gh ]] || [[ -x /opt/homebrew/bin/gh ]] || exit 1
+	gh --version
+	@echo "Testing successful."

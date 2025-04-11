@@ -71,9 +71,10 @@ DESKTOP_TARGETS += pyenv
 
 .PHONY : test-app-pyenv
 test-app-pyenv :
-	[[ -x $HOME/.pyenv/bin/pyenv ]] || exit 1
-	echo $PATH | grep pyenv/shims || exit 1
-	echo $PATH | grep pyenv/bin || exit 1
+	[[ -x ${HOME}/.pyenv/bin/pyenv ]] || exit 1
+	echo ${PATH} | grep pyenv/shims || exit 1
+	echo ${PATH} | grep pyenv/bin || exit 1
 	python --version | grep "${PYENV_VERSION}"
 	type pip | grep .pyenv/shims/pip
 	cat ${PYENV_DEFAULT_PACKAGES} | xargs -I "{}" bash -c "pip list --format=freeze | grep {}"
+	@echo "Testing successful."
