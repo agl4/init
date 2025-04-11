@@ -26,3 +26,4 @@ jobs:
     with:
       distro: ${{ matrix.distro}}
       application: ${{ matrix.application }}
+      path_to_cache: ${{ matrix.path_to_cache }}

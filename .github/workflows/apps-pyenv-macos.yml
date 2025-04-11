@@ -18,3 +18,4 @@ jobs:
           - "~/.pyenv"
     with:
       application: ${{ matrix.application }}
+      path_to_cache: ${{ matrix.path_to_cache }}
