@@ -6,6 +6,7 @@
 # - https://polothy.github.io/post/2018-10-09-makefile-dotfiles/
 # - https://github.com/masasam/dotfiles/blob/master/Makefile
 #
+
 SRCDIR := ./src
 PREFIX ?= ${HOME}/.local/bin
 
