@@ -1,3 +1,4 @@
+.PHONY : ubuntu-setup-repos
 ubuntu-setup-repos : debian-update-repos
 	@sudo apt-get install -y software-properties-common
 	@sudo add-apt-repository -y universe

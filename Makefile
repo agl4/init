@@ -6,7 +6,6 @@
 # - https://polothy.github.io/post/2018-10-09-makefile-dotfiles/
 # - https://github.com/masasam/dotfiles/blob/master/Makefile
 #
-.PHONY : directories server desktop install base test all
 
 SRCDIR := ./src
 PREFIX ?= ${HOME}/.local/bin
@@ -56,7 +55,6 @@ FISH_PREFIX := $(HOME)/.config/fish/
 # Include files:
 -include make/os/$(OS).mk
 -include make/distro/$(DISTRIBUTION).mk
-include versions.mk
 include make/base/fish.mk
 include make/base/bash.mk
 include make/base/git.mk
@@ -69,28 +67,19 @@ include make/server/ssh-server.mk
 # Include apps
 include make/apps/nodenv.mk
 include make/apps/pyenv.mk
-include make/apps/1password.mk
 include make/apps/gh.mk
 include make/apps/ghq.mk
-include make/apps/resilio.mk
-include make/apps/tailscale.mk
-include make/apps/warp.mk
 
+.PHONY : directories
 directories:
 	@install -d -m 0700 "${HOME}/src"
 	@install -d -m 0700 "${HOME}/tmp"
 
+.PHONY : uninstall-asdf
 uninstall-asdf :
 	rm -rf ${HOME}/.config/fish/conf.d/asdf.fish ${HOME}/.asdf/
 
-base : install directories $(BASE_TARGETS)
-	sudo touch /.agl4-init-base-finished
-
-base-test :
-	gpg --version
-	fzf --version
-	tmux --version
-	pass --version
-
+.PHONY : base server desktop
+base : scripts directories $(BASE_TARGETS)
 server  : base $(SERVER_TARGETS)
 desktop : base $(DESKTOP_TARGETS)

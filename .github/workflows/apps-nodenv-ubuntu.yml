@@ -1,0 +1,32 @@
+---
+name: nodenv-ubuntu
+
+on:
+  push:
+    paths:
+      - 'share/app-nodenv/**'
+      - make/apps/nodenv.mk
+  workflow_run:
+    workflows:
+      - base-ubuntu
+    types:
+      - completed
+
+jobs:
+  app:
+    uses: ./.github/workflows/common-app-cached.yml
+    strategy:
+      matrix:
+        distro:
+          - ubuntu-rolling
+          - ubuntu-devel
+          - ubuntu-lts
+          - ubuntu-22.04
+        application:
+          - app-nodenv
+        path_to_cache:
+          - "~/.nodenv"
+    with:
+      distro: ${{ matrix.distro}}
+      application: ${{ matrix.application }}
+      path_to_cache: ${{ matrix.path_to_cache }}

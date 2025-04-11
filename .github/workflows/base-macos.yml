@@ -1,0 +1,17 @@
+---
+name: base-macos
+
+on:
+  push:
+    paths:
+      - Makefile
+      - bootstrap.sh
+
+jobs:
+  build:
+    runs-on: macos-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          bash bootstrap.sh

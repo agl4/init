@@ -1,0 +1,30 @@
+---
+name: ghq-linux
+
+on:
+  push:
+    paths:
+      - make/apps/ghq.mk
+  workflow_run:
+    workflows:
+      - Docker images
+    types:
+      - completed
+
+jobs:
+  app:
+    uses: ./.github/workflows/common-app.yml
+    strategy:
+      matrix:
+        distro:
+          - fedora-latest
+          - ubuntu-rolling
+          - ubuntu-devel
+          - ubuntu-lts
+          - ubuntu-22.04
+          - opensuse-tumbleweed
+        application:
+          - app-ghq
+    with:
+      distro: ${{ matrix.distro}}
+      application: ${{ matrix.application }}

@@ -1,0 +1,31 @@
+---
+name: Common app
+
+on:
+  workflow_call:
+    inputs:
+      distro:
+        required: true
+        type: string
+      application:
+        required: true
+        type: string
+
+jobs:
+  run-steps:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    container:
+      image: ghcr.io/${{ github.repository }}/${{ inputs.distro }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_commit.id || github.ref_name }}
+      - run: make ${{ inputs.application }}
+      - run: |
+          make bash
+          . "${HOME}/.bashrc"
+          make test-${{ inputs.application }}

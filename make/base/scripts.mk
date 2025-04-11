@@ -1,5 +1,3 @@
-.PHONY : install uninstall
-
 SCRIPTS := $(addprefix ${PREFIX}/,$(notdir $(wildcard ${SRCDIR}/shell/*.sh)))
 $(SCRIPTS) : $(wildcard ${SRCDIR}/shell/*.sh)
 	@install -m 0700 -v -d ${PREFIX}
@@ -9,6 +7,7 @@ $(OS_SCRIPTS) :
 	@install -m 0700 -v -d "${PREFIX}"
 	@install -m 0700 -v "${SRCDIR}/os/${OS}/$(notdir $@)" "$@"
 
+.PHONY : scripts
 scripts : $(SCRIPTS) $(OS_SCRIPTS)
 	@ln -f ${PREFIX}/keys.sh ${PREFIX}/keys
 	@ln -f ${PREFIX}/keys.sh ${PREFIX}/keys_week

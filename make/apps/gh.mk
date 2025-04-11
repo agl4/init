@@ -1,7 +1,7 @@
 .PHONY : gh-install-opensuse-tumbleweed
 gh-install-opensuse-tumbleweed :
 	@sudo zypper addrepo https://cli.github.com/packages/rpm/gh-cli.repo
-	@sudo zypper ref
+	@sudo zypper --gpg-auto-import-keys refresh
 	@sudo zypper install -y gh
 
 .PHONY : gh-install-ubuntu
@@ -28,6 +28,7 @@ gh-login :
 	@gh auth login
 	@gh auth setup-git
 
+.PHONY : gh-login-warning
 gh-login-warning :
 	@echo "WARNING: GitHub authentication is not done automatically, run 'make gh-login'"
 
@@ -42,6 +43,7 @@ endif
 .PHONY : app-gh
 app-gh : $(GH_TARGETS) gh-login-warning
 
-app-gh-test :
+.PHONY : test-app-gh
+test-app-gh :
 	@[[ -x /usr/bin/gh ]] || [[ -x /opt/homebrew/bin/gh ]] || exit 1
 	@gh --version
