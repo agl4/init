@@ -17,12 +17,12 @@ Supports:
 | Raspbian                         | `server`                 |
 
 
-|        | desktop | server |
-|--------|---------|--------|
-| base   | *       | *      |
-| nodenv | *       |        |
-| pyenv  | *       |        |
-| server |         | *      |
+|               | `make desktop` | `make server` |
+|---------------|----------------|---------------|
+| `make base`   | *              | *             |
+| `make nodenv` | *              |               |
+| `make pyenv`  | *              |               |
+| `make server` |                | *             |
 
 
 `make base`
