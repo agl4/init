@@ -5,8 +5,6 @@ on:
   push:
     paths:
       - make/apps/ghq.mk
-      - Makefile
-      - bootstrap.sh
   workflow_run:
     workflows:
       - Docker images

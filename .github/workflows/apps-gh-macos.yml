@@ -1,0 +1,17 @@
+---
+name: gh
+
+on:
+  push:
+    paths:
+      - make/apps/gh.mk
+
+jobs:
+  app:
+    uses: ./.github/workflows/common-app-macos.yml
+    strategy:
+      matrix:
+        application:
+          - app-gh
+    with:
+      application: ${{ matrix.application}}

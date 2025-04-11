@@ -1,0 +1,17 @@
+---
+name: ghq
+
+on:
+  push:
+    paths:
+      - make/apps/ghq.mk
+
+jobs:
+  app:
+    uses: ./.github/workflows/common-app-macos.yml
+    strategy:
+      matrix:
+        application:
+          - app-ghq
+    with:
+      application: ${{ matrix.application }}
