@@ -16,6 +16,37 @@ Supports:
 | FreeBSD `14`                     | `server`                 | [![FreeBSD](https://github.com/agl4/init/actions/workflows/freebsd.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/freebsd.yml)                                     |
 | Raspbian                         | `server`                 |                                                                                                                                                                                    |
 
+Base target
+
+| Distribution/OS     | status                                                                                                                                                                                            |
+|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| macOS               |                                                                                                                                                                                                   |
+| Fedora              | [![base-fedora](https://github.com/agl4/init/actions/workflows/base-fedora.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/base-fedora.yml)                                        |
+| Ubuntu              | [![base-ubuntu](https://github.com/agl4/init/actions/workflows/base-ubuntu.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/base-ubuntu.yml)                                        |
+| openSUSE Tumbleweed | [![base-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/base-opensuse-tumbleweed.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/base-opensuse-tumbleweed.yml) |
+| FreeBSD             |                                                                                                                                                                                                   |
+
+Nodenv
+
+
+| Distribution/OS     | status                                                                                                                                                                                                            |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| macOS               |                                                                                                                                                                                                                   |
+| Fedora              | [![nodenv-fedora](https://github.com/agl4/init/actions/workflows/apps-nodenv-fedora.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/apps-nodenv-fedora.yml)                                        |
+| Ubuntu              | [![nodenv-ubuntu](https://github.com/agl4/init/actions/workflows/apps-nodenv-ubuntu.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/apps-nodenv-ubuntu.yml)                                        |
+| openSUSE Tumbleweed | [![nodenv-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/apps-nodenv-opensuse-tumbleweed.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/apps-nodenv-opensuse-tumbleweed.yml) |
+| FreeBSD             |                                                                                                                                                                                                                   |
+
+Pyenv
+
+| Distribution/OS     | status                                                                                                                                                                                                         |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| macOS               |                                                                                                                                                                                                                |
+| Fedora              | [![pyenv-fedora](https://github.com/agl4/init/actions/workflows/apps-pyenv-fedora.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/apps-pyenv-fedora.yml)                                        |
+| Ubuntu              | [![pyenv-ubuntu](https://github.com/agl4/init/actions/workflows/apps-pyenv-ubuntu.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/apps-pyenv-ubuntu.yml)                                        |
+| openSUSE Tumbleweed | [![pyenv-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/apps-pyenv-opensuse-tumbleweed.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/apps-pyenv-opensuse-tumbleweed.yml) |
+| FreeBSD             |                                                                                                                                                                                                                |
+
 The target `make base` is supported everywhere.
 
 Supported shells:
