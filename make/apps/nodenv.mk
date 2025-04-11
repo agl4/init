@@ -67,3 +67,7 @@ endif
 .PHONY : nodenv
 nodenv : $(NODENV_TARGETS) nodenv-install
 DESKTOP_TARGETS += nodenv
+
+test-nodenv :
+	node --version | grep "${NODENV_VERSION}"
+	type npm | grep .nodenv/shims
