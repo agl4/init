@@ -4,7 +4,7 @@ name: pyenv-opensuse-tumbleweed
 on:
   push:
     paths:
-      - 'share/pyenv/**'
+      - 'share/app-pyenv/**'
       - make/apps/pyenv.mk
   workflow_run:
     workflows:

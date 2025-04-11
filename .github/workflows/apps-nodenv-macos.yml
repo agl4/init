@@ -4,7 +4,7 @@ name: nodenv-macos
 on:
   push:
     paths:
-      - 'share/nodenv/**'
+      - 'share/app-nodenv/**'
       - make/apps/nodenv.mk
 
 jobs:
