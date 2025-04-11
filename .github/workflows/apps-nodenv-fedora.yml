@@ -20,7 +20,7 @@ jobs:
         distro:
           - fedora-latest
         application:
-          - nodenv
+          - app-nodenv
     with:
       distro: ${{ matrix.distro}}
       application: ${{ matrix.application }}

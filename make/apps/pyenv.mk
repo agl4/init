@@ -66,5 +66,5 @@ PYENV_TARGETS += pyenv-deps-${DISTRIBUTION}
 endif
 
 .PHONY : pyenv
-pyenv : $(PYENV_TARGETS) pyenv-install
+app-pyenv : $(PYENV_TARGETS) pyenv-install
 DESKTOP_TARGETS += pyenv

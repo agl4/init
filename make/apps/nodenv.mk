@@ -65,7 +65,7 @@ NODENV_TARGETS += nodenv-deps-${DISTRIBUTION}
 endif
 
 .PHONY : nodenv
-nodenv : $(NODENV_TARGETS) nodenv-install
+app-nodenv : $(NODENV_TARGETS) nodenv-install
 DESKTOP_TARGETS += nodenv
 
 test-nodenv :

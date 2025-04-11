@@ -23,7 +23,7 @@ jobs:
           - ubuntu-lts
           - ubuntu-22.04
         application:
-          - nodenv
+          - app-nodenv
     with:
       distro: ${{ matrix.distro}}
       application: ${{ matrix.application }}

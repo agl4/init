@@ -20,7 +20,7 @@ jobs:
         distro:
           - opensuse-tumbleweed
         application:
-          - pyenv
+          - app-pyenv
     with:
       distro: ${{ matrix.distro}}
       application: ${{ matrix.application }}
