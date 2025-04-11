@@ -24,4 +24,7 @@ jobs:
           key: macos-${{ hashFiles(env.CACHE_PATH) }}
       - run: bash bootstrap.sh
       - run: make ${{ inputs.application }}
-      - run: make test-${{ inputs.application }}
+      - run: |
+          make bash
+          . "${HOME}/.bashrc"
+          make test-${{ inputs.application }}
