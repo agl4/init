@@ -1,7 +1,6 @@
 # https://github.com/pyenv/pyenv/wiki#suggested-build-environment
 # https://github.com/pyenv/pyenv?tab=readme-ov-file#b-set-up-your-shell-environment-for-pyenv
 
-
 PYENV_VERSION := $(shell cat share/app-pyenv/.python-version)
 PYENV_CONFIG_SRC := share/app-pyenv
 PYENV_DEFAULT_PACKAGES := ${PYENV_CONFIG_SRC}/requirements.txt
@@ -74,3 +73,4 @@ DESKTOP_TARGETS += pyenv
 test-app-pyenv :
 	python --version | grep "${PYENV_VERSION}"
 	type pip | grep .pyenv/shims/pip
+	cat ${PYENV_DEFAULT_PACKAGES} | xargs -I "{}" bash -c "pip list --format=freeze | grep {}"

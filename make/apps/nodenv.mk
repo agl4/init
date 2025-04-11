@@ -2,7 +2,6 @@
 # https://github.com/nodejs/node/blob/main/tools/bootstrap/README.md
 # https://github.com/nodejs/node/blob/main/BUILDING.md#option-2-automated-install-with-boxstarter
 
-
 NODENV_VERSION := $(shell cat share/app-nodenv/.node-version)
 NODENV_CONFIG_SRC := share/app-nodenv
 NODENV_DEFAULT_PACKAGES := ${NODENV_CONFIG_SRC}/.default-npm-packages
@@ -73,3 +72,4 @@ DESKTOP_TARGETS += nodenv
 test-app-nodenv :
 	node --version | grep "${NODENV_VERSION}"
 	type npm | grep .nodenv/shims
+	cat ${NODENV_DEFAULT_PACKAGES} | xargs -I "{}" bash -c "npm list -g | grep {}"
