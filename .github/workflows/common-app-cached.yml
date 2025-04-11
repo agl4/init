@@ -14,6 +14,9 @@ on:
 jobs:
   app-cached:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     timeout-minutes: 8
     container:
       image: ghcr.io/${{ github.repository }}/${{ inputs.distro }}
