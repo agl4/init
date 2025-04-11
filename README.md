@@ -7,23 +7,25 @@ working environments.
 
 Supports:
 
-| Distribution/OS                  | `make` targets available | tested                                                                                                                                                                             |
-|----------------------------------|--------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| macOS                            | `desktop`                | [![macOS](https://github.com/agl4/init/actions/workflows/macos.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/macos.yml)                                           |
-| Ubuntu `24.04`, `24.10`, `25.04` | `desktop`, `server`      | [![Ubuntu](https://github.com/agl4/init/actions/workflows/ubuntu.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/ubuntu.yml)                                        |
-| Fedora `42`-`43`                 | `desktop`, `server`      | [![Fedora](https://github.com/agl4/init/actions/workflows/fedora.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/fedora.yml)                                        |
-| openSUSE Tumbleweed              | `desktop`, `server`      | [![openSUSE Tumbleweed](https://github.com/agl4/init/actions/workflows/opensuse-tumbleweed.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/opensuse-tumbleweed.yml) |
-| FreeBSD `14`                     | `server`                 | [![FreeBSD](https://github.com/agl4/init/actions/workflows/freebsd.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/freebsd.yml)                                     |
-| Raspbian                         | `server`                 |                                                                                                                                                                                    |
+| Distribution/OS                  | `make` targets available |
+|----------------------------------|--------------------------|
+| macOS                            | `desktop`                |
+| Ubuntu `24.04`, `24.10`, `25.04` | `desktop`, `server`      |
+| Fedora `42`-`43`                 | `desktop`, `server`      |
+| openSUSE Tumbleweed              | `desktop`, `server`      |
+| FreeBSD `14`                     | `server`                 |
+| Raspbian                         | `server`                 |
 
 
-| Targets           | Fedora                                                                                                                                                                 | Ubuntu                                                                                                                                                                 | openSUSE Tumbleweed                                                                                                                                                                                           |
-|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `make base`       | [![base-fedora](https://github.com/agl4/init/actions/workflows/base-fedora.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/base-fedora.yml) | [![base-ubuntu](https://github.com/agl4/init/actions/workflows/base-ubuntu.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/base-ubuntu.yml) | [![base-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/base-opensuse-tumbleweed.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/base-opensuse-tumbleweed.yml) |
-| `make app-nodenv` |                                                                                                                                                                        |                                                                                                                                                                        |                                                                                                                                                                                                               |
+|        | desktop | server |
+|--------|---------|--------|
+| base   | *       | *      |
+| nodenv | *       |        |
+| pyenv  | *       |        |
+| server |         | *      |
 
 
-Base target
+`make base`
 
 | Distribution/OS     | status                                                                                                                                                                                                        |
 |---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -33,7 +35,7 @@ Base target
 | openSUSE Tumbleweed | [![base-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/base-opensuse-tumbleweed.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/base-opensuse-tumbleweed.yml) |
 | FreeBSD             |                                                                                                                                                                                                               |
 
-Nodenv
+`make nodenv`
 
 
 | Distribution/OS     | status                                                                                                                                                                                                            |
@@ -44,7 +46,7 @@ Nodenv
 | openSUSE Tumbleweed | [![nodenv-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/apps-nodenv-opensuse-tumbleweed.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-nodenv-opensuse-tumbleweed.yml) |
 | FreeBSD             |                                                                                                                                                                                                                   |
 
-Pyenv
+`make pyenv`
 
 | Distribution/OS     | status                                                                                                                                                                                                         |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
