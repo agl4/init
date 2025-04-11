@@ -24,6 +24,8 @@ jobs:
           - ubuntu-22.04
         application:
           - app-nodenv
+        path_to_cache:
+          - "~/.nodenv"
     with:
       distro: ${{ matrix.distro}}
       application: ${{ matrix.application }}

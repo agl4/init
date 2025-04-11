@@ -7,6 +7,9 @@ on:
       application:
         required: true
         type: string
+      path_to_cache:
+        required: true
+        type: string
 
 jobs:
   app-cached:
@@ -20,7 +23,7 @@ jobs:
       - run: echo "CACHE_PATH=share/${{ inputs.application }}/**" >> $GITHUB_ENV
       - uses: actions/cache@v4
         with:
-          path: ~/.${{ inputs.application }}
+          path: ${{ inputs.path_to_cache }}
           key: macos-${{ hashFiles(env.CACHE_PATH) }}
       - run: bash bootstrap.sh
       - run: make ${{ inputs.application }}

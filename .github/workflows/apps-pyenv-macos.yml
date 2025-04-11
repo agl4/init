@@ -14,5 +14,7 @@ jobs:
       matrix:
         application:
           - app-pyenv
+        path_to_cache:
+          - "~/.pyenv"
     with:
       application: ${{ matrix.application }}

@@ -14,5 +14,7 @@ jobs:
       matrix:
         application:
           - app-nodenv
+        path_to_cache:
+          - "~/.nodenv"
     with:
       application: ${{ matrix.application }}
