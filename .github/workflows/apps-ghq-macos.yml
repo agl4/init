@@ -1,5 +1,5 @@
 ---
-name: ghq
+name: ghq-macos
 
 on:
   push:
