@@ -24,4 +24,6 @@ app-ghq : ${source_path}
 
 .PHONY : test-app-ghq
 test-app-ghq :
+	[[ -x ${HOME}/.local/bin/ghq ]] || exit 1
 	ghq --version
+	@echo "Testing successful."
