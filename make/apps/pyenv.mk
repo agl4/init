@@ -67,7 +67,7 @@ endif
 
 .PHONY : app-pyenv
 app-pyenv : $(PYENV_TARGETS) pyenv-install
-DESKTOP_TARGETS += pyenv
+DESKTOP_TARGETS += app-pyenv
 
 .PHONY : test-app-pyenv
 test-app-pyenv :
