@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.2](https://github.com/agl4/init/compare/v3.0.1...v3.0.2) (2025-04-13)
+
+
+### Bug Fixes
+
+* Remove fzf from FreeBSD installation ([9072fce](https://github.com/agl4/init/commit/9072fce38a8e79e9edf49a83a20daaccd3e28138))
+
 ## [3.0.1](https://github.com/agl4/init/compare/v3.0.0...v3.0.1) (2025-04-07)
 
 
