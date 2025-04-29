@@ -1,4 +1,7 @@
 # Configure git
+
+# https://blog.gitbutler.com/how-git-core-devs-configure-git/
+
 GIT_GLOBAL_CONFIG := ${HOME}/.config/git/config
 
 .PHONY : git
@@ -9,8 +12,19 @@ git :
 	@git config --global pull.rebase "false"
 	@git config --global credential.helper cache
 	@git config --global core.autocrlf "false"
+	@git config --global core.fsmonitor "true"
 	@git config --global diff.gpg.textconv "gpg --no-tty --decrypt"
 	@git config --global init.defaultBranch main
+
+	@git config --global column.ui auto
+	@git config --global branch.sort -committerdate
+	@git config --global tag.sort version:refname
+	@git config --global diff.algorithm histogram
+	@git config --global diff.colorMoved plain
+	@git config --global diff.mnemonicPrefix true
+	@git config --global diff.renames true
+	@git config --global commit.verbose true
+	@git config --global merge.conflictstyle zdiff3
 
 	@git config --global alias.root "rev-parse --show-toplevel"
 	@git config --global alias.b "branch"
