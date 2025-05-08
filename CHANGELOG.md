@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.3](https://github.com/agl4/init/compare/v3.0.2...v3.0.3) (2025-05-05)
+
+
+### Bug Fixes
+
+* Fix tmux history config ([ce061af](https://github.com/agl4/init/commit/ce061afdf9ef67edf45b80ebe9702a7f605fa4d1))
+
 ## [3.0.2](https://github.com/agl4/init/compare/v3.0.1...v3.0.2) (2025-04-13)
 
 
