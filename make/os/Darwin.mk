@@ -7,8 +7,8 @@ BREW := /usr/local/bin/brew
 endif
 
 PACKAGES += curl fish git gnupg mosh openssh pass pass-otp tmux fzf git-lfs git-annex
-PACKAGES += sqlite3 ripgrep hunspell unzip
-PACKAGES_CASKS := gpg-suite-no-mail emacs
+PACKAGES += sqlite3 ripgrep hunspell unzip pinentry-mac
+PACKAGES_CASKS := emacs
 
 $(BREW) :
 	@bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
