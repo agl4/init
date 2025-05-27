@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/agl4/init/compare/v3.0.3...v3.1.0) (2025-05-27)
+
+
+### Features
+
+* Drop MacGPG in favour of gnupg and pinentry-mac ([55c8266](https://github.com/agl4/init/commit/55c82666ee6a8f1c0d7091090ec055247bc5c620))
+
 ## [3.0.3](https://github.com/agl4/init/compare/v3.0.2...v3.0.3) (2025-05-05)
 
 
