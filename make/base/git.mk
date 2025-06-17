@@ -12,7 +12,7 @@ git :
 	@git config --global pull.rebase "false"
 	@git config --global credential.helper cache
 	@git config --global core.autocrlf "false"
-	@git config --global core.fsmonitor "true"
+	@git config --global core.fsmonitor "false"
 	@git config --global diff.gpg.textconv "gpg --no-tty --decrypt"
 	@git config --global init.defaultBranch main
 
