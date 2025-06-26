@@ -6,6 +6,7 @@ alias e='emacsclient -n'
 alias g=git
 alias h='history --max=10 --reverse'
 alias k=keys
+alias m=make
 alias p=pass
 alias pg='pass git'
 alias x='xargs -I {}'
