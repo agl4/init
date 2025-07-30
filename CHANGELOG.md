@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.0](https://github.com/agl4/init/compare/v3.1.0...v3.2.0) (2025-07-04)
+
+
+### Features
+
+* **get-link-string.sh:** New script get-link-string.sh ([d950167](https://github.com/agl4/init/commit/d950167948bd9a400d4ce192924d35fc402effe6))
+
+
+### Bug Fixes
+
+* Add alias to make ([e94df14](https://github.com/agl4/init/commit/e94df146b6b79347a3ca49e9c37158b123b5f748))
+
 ## [3.1.0](https://github.com/agl4/init/compare/v3.0.3...v3.1.0) (2025-06-17)
 
 
