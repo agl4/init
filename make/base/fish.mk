@@ -18,7 +18,7 @@ $(FISH_PREFIX)/% : $(FISH_DIR_SRC)/%
 # Target to install all fish configuration files
 .PHONY : fish_install
 fish_install : $(addprefix $(FISH_PREFIX)/, $(patsubst ${FISH_DIR_SRC}/%,%,${FISH_FILES}))
-	@rm ${HOME}/.config/fish/functions/fish_greeting.fish
+	@rm ${HOME}/.config/fish/functions/fish_greeting.fish || true
 
 # Rule to install Fisher components
 $(FISHER) :
