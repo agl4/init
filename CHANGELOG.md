@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.3.0](https://github.com/agl4/init/compare/v3.2.0...v3.3.0) (2025-07-31)
+
+
+### Features
+
+* Change to fish pure theme ([7522c24](https://github.com/agl4/init/commit/7522c248010ca701edb5d236ed0e8f043d512a25))
+
+
+### Bug Fixes
+
+* Emacs is now called emacs-app ([cf74cc7](https://github.com/agl4/init/commit/cf74cc7a59ebbb9b8687a7fe934a398090acf100))
+
 ## [3.2.0](https://github.com/agl4/init/compare/v3.1.0...v3.2.0) (2025-07-04)
 
 
