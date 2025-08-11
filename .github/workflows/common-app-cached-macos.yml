@@ -16,7 +16,7 @@ jobs:
     runs-on: macos-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
         # Use the triggering workflow's commit if available, otherwise default to the current branch
           ref: ${{ github.event.workflow_run.head_commit.id || github.ref_name }}

@@ -19,7 +19,7 @@ jobs:
       MYTOKEN : ${{ secrets.MYTOKEN }}
       MYTOKEN2: "value2"
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - name: Test in FreeBSD
       id: test
       uses: vmactions/freebsd-vm@v1
