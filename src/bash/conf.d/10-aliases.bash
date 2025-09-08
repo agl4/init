@@ -8,5 +8,4 @@ alias h='history | tail'
 alias k=keys
 alias m=make
 alias p=pass
-alias pg='pass git'
 alias x='xargs -I {}'
