@@ -40,6 +40,7 @@ git :
 	@git config --global alias.s "status"
 	@git config --global alias.s1 "status --short"
 	@git config --global alias.exec "!exec "
+	@git config --global alias.o "count-objects -vH"
 
 	@git config --global filter.lfs.clean "git-lfs clean -- %f"
 	@git config --global filter.lfs.smudge "git-lfs smudge -- %f"
