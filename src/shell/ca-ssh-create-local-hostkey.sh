@@ -8,7 +8,7 @@ DISPLAY=""
 # options
 CA_NAME=""
 FORCE_OVERWRITE=""
-CERT_VALID="-1m:+52w"
+CERT_VALID="-1m:+60w"
 CA_PATH_IN_PASS="ca-ssh"
 DOMAIN_LIST="cs.mmegh.local be.mmegh.local me.mmegh.local mmegh.local tail6efd3.ts.net"
 CA_PUBKEY_PATH="$(mktemp)"
