@@ -7,7 +7,7 @@ working environments.
 
 Supports:
 
-| Distribution/OS    -    Targets: | `make desktop` | `make server` |
+| Distribution/OS    \    Targets: | `make desktop` | `make server` |
 |----------------------------------|----------------|---------------|
 | macOS                            | *              |               |
 | Ubuntu `24.04`, `25.04`, `25.10` | *              | *             |
