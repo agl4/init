@@ -18,7 +18,7 @@ file_ssh_key_prefix="${HOME}/.ssh"
 current_path="$(dirname "$0")"
 cert_name="${file_ssh_key_prefix}/${name}-cert.pub"
 
-if [ "$(basename $0)" = "keys_week" ] ; then
+if [ "$(basename "$0")" = "keys_week" ] ; then
     # 7 days in seconds
     _timeout=604800
 else

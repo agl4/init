@@ -58,7 +58,7 @@ if command -v jot >/dev/null 2>&1; then
     RANDOM_STRING=$(jot -r "$LENGTH" 48 90 | awk '{printf "%c", ($1 < 58 || $1 > 64) ? $1 : ($1 + 7)}')
   fi
 else
-  RANDOM_STRING=$(cat /dev/urandom | tr -dc "$CHARSET" | head -c "$LENGTH")
+  RANDOM_STRING=$( tr -dc "$CHARSET" < /dev/urandom | head -c "$LENGTH")
 fi
 
 # Output final result
