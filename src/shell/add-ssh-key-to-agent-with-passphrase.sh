@@ -84,8 +84,6 @@ _cleanup()
 }
 trap _cleanup 1 2 3 6
 
-# This is the main gotcha, SSH_ASKPASS must be a program that reads the
-# passphrase.
 cat <<EOF > "${SSH_ASKPASS}"
 #!/bin/sh
 pass $opt_pass | head -1
