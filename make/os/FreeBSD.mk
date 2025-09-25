@@ -1,4 +1,5 @@
-PACKAGES += bash curl fish git mosh rsync sudo tmux
+PACKAGES += bash curl fish git mosh rsync sudo rsync
+PACKAGES += tmux python ca_root_nss fzf smartmontools
 
 .PHONY : freebsd-pkg-update
 freebsd-pkg-update :
