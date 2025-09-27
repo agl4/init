@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.2](https://github.com/agl4/init/compare/v3.3.1...v3.3.2) (2025-09-27)
+
+
+### Bug Fixes
+
+* Make sure openssh server is installed ([ce0ac10](https://github.com/agl4/init/commit/ce0ac10d73e52bda971df375c44853c5a25825ff))
+
 ## [3.3.1](https://github.com/agl4/init/compare/v3.3.0...v3.3.1) (2025-09-25)
 
 
