@@ -66,7 +66,6 @@ endif
 
 .PHONY : app-nodenv
 app-nodenv : $(NODENV_TARGETS) nodenv-install
-DESKTOP_TARGETS += app-nodenv
 
 .PHONY : test-app-nodenv
 test-app-nodenv :
