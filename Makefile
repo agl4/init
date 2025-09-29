@@ -75,10 +75,6 @@ directories:
 	@install -d -m 0700 "${HOME}/src"
 	@install -d -m 0700 "${HOME}/tmp"
 
-.PHONY : uninstall-asdf
-uninstall-asdf :
-	rm -rf ${HOME}/.config/fish/conf.d/asdf.fish ${HOME}/.asdf/
-
 .PHONY : base server desktop
 base : scripts directories $(BASE_TARGETS)
 server  : base $(SERVER_TARGETS)
