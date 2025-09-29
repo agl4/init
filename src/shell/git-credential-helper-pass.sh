@@ -4,7 +4,7 @@
 set -euo pipefail
 
 # Namespace inside pass where credentials will be stored
-PASS_NAMESPACE="git-credentials"
+PASS_NAMESPACE="git-credential-helper"
 
 # Read all key=value pairs from stdin into an associative array
 declare -A CREDS
