@@ -24,7 +24,7 @@ git :
 	@git config --global diff.mnemonicPrefix true
 	@git config --global diff.renames true
 	@git config --global commit.verbose true
-	@git config --global merge.conflictstyle zdiff3
+	@git config --global merge.conflictstyle diff3
 
 	@git config --global alias.root "rev-parse --show-toplevel"
 	@git config --global alias.b "branch"
