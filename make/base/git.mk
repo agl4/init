@@ -48,6 +48,7 @@ git :
 	@git config --global filter.lfs.required "true"
 
 	@git config --global credential.https://github.com.username "agl4"
+	@git config --global credential.https://github.com.helper !'${HOME}/.local/bin/pass-git-credential-helper.sh'
 
 	@install -m 0700 -d -v "${HOME}/src"
 	@git config --global ghq.root "${HOME}/src"
