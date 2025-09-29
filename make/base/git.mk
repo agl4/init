@@ -10,7 +10,7 @@ git :
 	@mkdir -p $(shell dirname ${GIT_GLOBAL_CONFIG}) || true
 	@touch ${GIT_GLOBAL_CONFIG}
 	@git config --global pull.rebase "false"
-	@git config --global credential.helper cache
+	@git config --global credential.helper 'cache --timeout=600'
 	@git config --global core.autocrlf "false"
 	@git config --global core.fsmonitor "false"
 	@git config --global diff.gpg.textconv "gpg --no-tty --decrypt"
