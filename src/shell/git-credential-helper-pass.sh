@@ -5,7 +5,8 @@ set -eu
 
 # Namespace inside pass where credentials will be stored
 PASS_NAMESPACE="git-credential-helper"
-PASSWORD_STORE_DIR=${PASSWORD_STORE_DIR:="$HOME/.password-store"}
+PASSWORD_STORE_DIR=${PASSWORD_STORE_DIR:="$HOME/.password-store-local"}
+export PASSWORD_STORE_DIR
 # Read key=value pairs from stdin into variables
 protocol=""
 host=""
