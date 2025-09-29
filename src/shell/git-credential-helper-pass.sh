@@ -13,15 +13,12 @@ while IFS='=' read -r key value; do
     CREDS["$key"]="$value"
 done
 
-# Build the pass key path: host[/path]/username
+# Build the pass key path: host/username
 make_pass_path() {
     local protocol="${CREDS[protocol]}"
     local host="${CREDS[host]}"
-    # local path="${CREDS[path]}"
     local username="${CREDS[username]}"
-
     local pass_path="$PASS_NAMESPACE/$protocol/$host"
-    # [[ -n "$path" ]] && pass_path="$pass_path/$path"
     [[ -n "$username" ]] && pass_path="$pass_path/$username"
     echo "$pass_path/token"
 }
@@ -29,13 +26,9 @@ make_pass_path() {
 case "$1" in
     get)
         pass_path="$(make_pass_path)"
-        if pass show "$pass_path" >/dev/null 2>&1; then
-            password="$(pass show "$pass_path" | head -n1)"
-            echo "username=${CREDS[username]}"
-            echo "password=$password"
-        else
-            exit 1
-        fi
+        password="$(pass show "$pass_path" | head -n1)"
+        echo "username=${CREDS[username]}"
+        echo "password=$password"
         ;;
     store)
         pass_path="$(make_pass_path)"
@@ -49,7 +42,7 @@ case "$1" in
         pass rm "$pass_path" >/dev/null 2>&1 || true
         ;;
     *)
-        echo "Usage: $0 {get|store|erase}" >&2
+        echo "Usage: $(basename "$0") {get|store|erase}" >&2
         exit 1
         ;;
 esac
