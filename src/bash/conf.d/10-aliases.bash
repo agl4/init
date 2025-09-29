@@ -8,4 +8,5 @@ alias h='history | tail'
 alias k=keys
 alias m=make
 alias p=pass
+alias pl="PASSWORD_STORE_DIR=\$HOME/.password-store-local pass"
 alias x='xargs -I {}'
