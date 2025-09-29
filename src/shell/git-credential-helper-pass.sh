@@ -24,25 +24,9 @@ done
 
 # Build the pass key path: host/username
 make_pass_path() {
-    local pass_path="$PASS_NAMESPACE/$protocol/$host"
+    pass_path="$PASS_NAMESPACE/$protocol/$host"
     [ -n "$username" ] && pass_path="$pass_path/$username"
     echo "$pass_path/token"
-}
-
-get_or_read_password(){
-    local pass_path="$1"
-    if [ ! -e "${PASSWORD_STORE_DIR}/${pass_path}.gpg" ] ; then
-        >&2 echo -n "Password not found for $pass_path, please type in: "
-        read -rs USER_INPUT
-        if [ -z "$USER_INPUT" ] ; then
-            >&2 echo "ERROR: No empty passphrase is supported."
-            exit 1
-        fi
-        echo -n "$USER_INPUT" | pass insert -m $pass_path 2>&1 >/dev/null
-
-
-    fi
-    pass show "$pass_path"
 }
 
 case "$1" in
@@ -52,6 +36,7 @@ case "$1" in
             >&2 echo "Password not found for $pass_path"
             exit 1
         fi
+        >&2 echo "Waiting for gpg..."
         password="$(pass show "$pass_path")"
         echo "username=$username"
         echo "password=$password"
