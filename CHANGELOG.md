@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.1](https://github.com/agl4/init/compare/v3.3.0...v3.3.1) (2025-09-25)
+
+
+### Bug Fixes
+
+* Update FreeBSD package list ([1800a65](https://github.com/agl4/init/commit/1800a65d4fc610f9b76c4025e42e8afe79929a1b))
+
 ## [3.3.0](https://github.com/agl4/init/compare/v3.2.0...v3.3.0) (2025-09-14)
 
 
