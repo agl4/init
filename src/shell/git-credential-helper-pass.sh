@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # git-credential-pass: A Git credential helper using pass(1)
-set -euxvo pipefail
+set -euo pipefail
 
 # Namespace inside pass where credentials will be stored
 PASS_NAMESPACE="git-credentials"
