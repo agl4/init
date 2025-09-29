@@ -75,7 +75,8 @@ directories:
 	@install -d -m 0700 "${HOME}/src"
 	@install -d -m 0700 "${HOME}/tmp"
 
-.PHONY : base server desktop
+.PHONY : base server desktop install
 base : scripts directories $(BASE_TARGETS)
+install : scripts directories
 server  : base $(SERVER_TARGETS)
 desktop : base $(DESKTOP_TARGETS)
