@@ -1,40 +1,66 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # git-credential-pass: A Git credential helper using pass(1)
-set -euo pipefail
+set -eu
 
 # Namespace inside pass where credentials will be stored
 PASS_NAMESPACE="git-credential-helper"
+PASSWORD_STORE_DIR=${PASSWORD_STORE_DIR:="$HOME/.password-store"}
+# Read key=value pairs from stdin into variables
+protocol=""
+host=""
+username=""
+password=""
 
-# Read all key=value pairs from stdin into an associative array
-declare -A CREDS
 while IFS='=' read -r key value; do
-    [[ -z "$key" ]] && break
-    CREDS["$key"]="$value"
+    case "$key" in
+        "") break ;;
+        protocol) protocol="$value" ;;
+        host) host="$value" ;;
+        username) username="$value" ;;
+        password) password="$value" ;;
+    esac
 done
 
 # Build the pass key path: host/username
 make_pass_path() {
-    local protocol="${CREDS[protocol]}"
-    local host="${CREDS[host]}"
-    local username="${CREDS[username]}"
     local pass_path="$PASS_NAMESPACE/$protocol/$host"
-    [[ -n "$username" ]] && pass_path="$pass_path/$username"
+    [ -n "$username" ] && pass_path="$pass_path/$username"
     echo "$pass_path/token"
+}
+
+get_or_read_password(){
+    local pass_path="$1"
+    if [ ! -e "${PASSWORD_STORE_DIR}/${pass_path}.gpg" ] ; then
+        >&2 echo -n "Password not found for $pass_path, please type in: "
+        read -rs USER_INPUT
+        if [ -z "$USER_INPUT" ] ; then
+            >&2 echo "ERROR: No empty passphrase is supported."
+            exit 1
+        fi
+        echo -n "$USER_INPUT" | pass insert -m $pass_path 2>&1 >/dev/null
+
+
+    fi
+    pass show "$pass_path"
 }
 
 case "$1" in
     get)
         pass_path="$(make_pass_path)"
-        password="$(pass show "$pass_path" | head -n1)"
-        echo "username=${CREDS[username]}"
+        if [ ! -e "${PASSWORD_STORE_DIR}/${pass_path}.gpg" ] ; then
+            >&2 echo "Password not found for $pass_path"
+            exit 1
+        fi
+        password="$(pass show "$pass_path")"
+        echo "username=$username"
         echo "password=$password"
         ;;
     store)
         pass_path="$(make_pass_path)"
         # Store password (first line only)
-        if [ "$(pass show "$pass_path")" != "${CREDS[password]}" ] ; then
-            printf '%s\n' "${CREDS[password]}" | pass insert -m "$pass_path" >/dev/null
+        if [ ! -e "${PASSWORD_STORE_DIR}/${pass_path}.gpg" ] ; then
+            printf '%s\n' "$password" | pass insert -m "$pass_path" >/dev/null
         fi
         ;;
     erase)
