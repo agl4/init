@@ -2,6 +2,9 @@
 
 set -eu
 
+PASSWORD_STORE_DIR=${PASSWORD_STORE_DIR:="$HOME/.password-store-local"}
+export PASSWORD_STORE_DIR
+
 NO_HOSTNAME=""
 NO_USERNAME=""
 key_usage=""
@@ -74,7 +77,7 @@ key_directory=${key_directory:="${HOME}/.ssh/"}
 
 if [ -z "$NO_PASSPHRASE" ] ; then
     pass generate --no-symbols "${PASSPHRASE_LOCATION}" "$passphrase_length"
-fi 
+fi
 mkdir -p "$key_directory" || true
 chmod 0700 "$key_directory"
 if [ -z "$NO_PASSPHRASE" ] ; then

@@ -1,12 +1,9 @@
 ---
-name: macOS
+name: base-macos
 
 on:
   push:
     paths:
-      - 'share/nodenv/**'
-      - 'share/pyenv/**'
-      - 'make/**'
       - Makefile
       - bootstrap.sh
 
@@ -17,4 +14,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          bash bootstrap.sh && make desktop
+          bash bootstrap.sh

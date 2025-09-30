@@ -8,7 +8,7 @@ DISPLAY=""
 # options
 CA_NAME=""
 FORCE_OVERWRITE=""
-CERT_VALID="-1m:+52w"
+CERT_VALID="-1m:+60w"
 CA_PATH_IN_PASS="ca-ssh"
 DOMAIN_LIST="cs.mmegh.local be.mmegh.local me.mmegh.local mmegh.local tail6efd3.ts.net"
 CA_PUBKEY_PATH="$(mktemp)"
@@ -72,7 +72,8 @@ ca-ssh-add-key-to-agent-from-pass.sh \
 # - We want to operate with the least privileges possible, so we just use sudo
 #   only for placing the certificates into /etc/ssh
 for _hostkey_pub in $(find /etc/ssh/ -type f -name "*.pub" | grep -v -- '-cert.pub$') ; do
-    _hostkey_cert="$(echo "$_hostkey_pub" | sed 's/\.pub$/-cert.pub/')"
+    _hostkey_cert="${_hostkey_pub/.pub/-cert.pub}"
+
 
     if [ -z "$FORCE_OVERWRITE" ] ; then
         if [ -f "$_hostkey_cert" ] ; then
@@ -83,7 +84,7 @@ for _hostkey_pub in $(find /etc/ssh/ -type f -name "*.pub" | grep -v -- '-cert.p
     fi
 
     _hostkey_pub_tmp=$(mktemp)
-    cp $_hostkey_pub $_hostkey_pub_tmp
+    cp "$_hostkey_pub" "$_hostkey_pub_tmp"
     ssh-keygen \
         -Us "$CA_PUBKEY_PATH" \
         -I "$HOST_SANS_DOMAIN" \

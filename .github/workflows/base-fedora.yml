@@ -1,0 +1,21 @@
+---
+name: base-fedora
+
+on:
+  push:
+    paths:
+      - 'docker/fedora*/**'
+      - 'make/base/**'
+      - 'make/distro/**'
+      - Makefile
+      - bootstrap.sh
+
+jobs:
+  build-docker:
+    uses: ./.github/workflows/common-docker.yml
+    strategy:
+      matrix:
+        distro:
+          - fedora-latest
+    with:
+      distro: ${{ matrix.distro }}

@@ -6,6 +6,7 @@
 # - https://polothy.github.io/post/2018-10-09-makefile-dotfiles/
 # - https://github.com/masasam/dotfiles/blob/master/Makefile
 #
+
 SRCDIR := ./src
 PREFIX ?= ${HOME}/.local/bin
 
@@ -54,7 +55,6 @@ FISH_PREFIX := $(HOME)/.config/fish/
 # Include files:
 -include make/os/$(OS).mk
 -include make/distro/$(DISTRIBUTION).mk
-include versions.mk
 include make/base/fish.mk
 include make/base/bash.mk
 include make/base/git.mk
@@ -75,11 +75,8 @@ directories:
 	@install -d -m 0700 "${HOME}/src"
 	@install -d -m 0700 "${HOME}/tmp"
 
-.PHONY : uninstall-asdf
-uninstall-asdf :
-	rm -rf ${HOME}/.config/fish/conf.d/asdf.fish ${HOME}/.asdf/
-
-.PHONY : base server desktop
-base : install directories $(BASE_TARGETS)
+.PHONY : base server desktop install
+base : scripts directories $(BASE_TARGETS)
+install : scripts directories
 server  : base $(SERVER_TARGETS)
 desktop : base $(DESKTOP_TARGETS)

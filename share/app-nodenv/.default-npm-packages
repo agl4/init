@@ -5,4 +5,5 @@ dockerlint
 markdownlint-cli
 prettier
 remark-language-server
+vscode-langservers-extracted
 yaml-language-server

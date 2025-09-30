@@ -1,0 +1,21 @@
+---
+name: nodenv-macos
+
+on:
+  push:
+    paths:
+      - 'share/app-nodenv/**'
+      - make/apps/nodenv.mk
+
+jobs:
+  app:
+    uses: ./.github/workflows/common-app-cached-macos.yml
+    strategy:
+      matrix:
+        application:
+          - app-nodenv
+        path_to_cache:
+          - "~/.nodenv"
+    with:
+      application: ${{ matrix.application }}
+      path_to_cache: ${{ matrix.path_to_cache }}

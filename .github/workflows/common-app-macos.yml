@@ -1,0 +1,24 @@
+---
+name: Common app macOS
+
+on:
+  workflow_call:
+    inputs:
+      application:
+        required: true
+        type: string
+
+jobs:
+  run-steps:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_commit.id || github.ref_name }}
+      - run: bash bootstrap.sh
+      - run: make ${{ inputs.application }}
+      - run: |
+          make bash
+          . "${HOME}/.bashrc"
+          make test-${{ inputs.application }}

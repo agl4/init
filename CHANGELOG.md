@@ -1,5 +1,72 @@
 # Changelog
 
+## [3.3.1](https://github.com/agl4/init/compare/v3.3.0...v3.3.1) (2025-09-25)
+
+
+### Bug Fixes
+
+* Update FreeBSD package list ([1800a65](https://github.com/agl4/init/commit/1800a65d4fc610f9b76c4025e42e8afe79929a1b))
+
+## [3.3.0](https://github.com/agl4/init/compare/v3.2.0...v3.3.0) (2025-09-14)
+
+
+### Features
+
+* Change to fish pure theme ([7522c24](https://github.com/agl4/init/commit/7522c248010ca701edb5d236ed0e8f043d512a25))
+* **mmegh-user-ca:** New user certificate ([194a0b5](https://github.com/agl4/init/commit/194a0b5730c511ea230e37ed3e415f3cdd545dd5))
+
+
+### Bug Fixes
+
+* Emacs is now called emacs-app ([cf74cc7](https://github.com/agl4/init/commit/cf74cc7a59ebbb9b8687a7fe934a398090acf100))
+* **tmux:** Less history to keep memory usage lower ([fa7c9f4](https://github.com/agl4/init/commit/fa7c9f48ddd2150b9aeb478f5d7a338d082f2c6c))
+* **tmux:** Remove color setup ([37b6a0f](https://github.com/agl4/init/commit/37b6a0f08475816e211b355f80228f510541a213))
+
+## [3.2.0](https://github.com/agl4/init/compare/v3.1.0...v3.2.0) (2025-07-04)
+
+
+### Features
+
+* **get-link-string.sh:** New script get-link-string.sh ([d950167](https://github.com/agl4/init/commit/d950167948bd9a400d4ce192924d35fc402effe6))
+
+
+### Bug Fixes
+
+* Add alias to make ([e94df14](https://github.com/agl4/init/commit/e94df146b6b79347a3ca49e9c37158b123b5f748))
+
+## [3.1.0](https://github.com/agl4/init/compare/v3.0.3...v3.1.0) (2025-06-17)
+
+
+### Features
+
+* Drop MacGPG in favour of gnupg and pinentry-mac ([55c8266](https://github.com/agl4/init/commit/55c82666ee6a8f1c0d7091090ec055247bc5c620))
+
+
+### Bug Fixes
+
+* Turn of git fsmonitor ([33326bf](https://github.com/agl4/init/commit/33326bf11bf30b23c67757aa149d331f83bdb31c))
+
+## [3.0.3](https://github.com/agl4/init/compare/v3.0.2...v3.0.3) (2025-05-05)
+
+
+### Bug Fixes
+
+* Fix tmux history config ([ce061af](https://github.com/agl4/init/commit/ce061afdf9ef67edf45b80ebe9702a7f605fa4d1))
+
+## [3.0.2](https://github.com/agl4/init/compare/v3.0.1...v3.0.2) (2025-04-13)
+
+
+### Bug Fixes
+
+* Remove fzf from FreeBSD installation ([9072fce](https://github.com/agl4/init/commit/9072fce38a8e79e9edf49a83a20daaccd3e28138))
+
+## [3.0.1](https://github.com/agl4/init/compare/v3.0.0...v3.0.1) (2025-04-07)
+
+
+### Bug Fixes
+
+* Fix Makefile target name ([d5a637d](https://github.com/agl4/init/commit/d5a637d616dd9ae53e979493a64a0991d60b8194))
+
 ## [3.0.0](https://github.com/agl4/init/compare/v2.1.0...v3.0.0) (2025-04-02)
 
 

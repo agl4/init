@@ -1,3 +1,6 @@
+# renovate: datasource=github-releases depName=jorgebucaran/fisher versioning=semver registryUrl=https://github.com
+FISHER_VERSION := 4.4.5
+
 # Directories
 FISH_DIR_SRC := $(SRCDIR)/fish
 
@@ -15,6 +18,7 @@ $(FISH_PREFIX)/% : $(FISH_DIR_SRC)/%
 # Target to install all fish configuration files
 .PHONY : fish_install
 fish_install : $(addprefix $(FISH_PREFIX)/, $(patsubst ${FISH_DIR_SRC}/%,%,${FISH_FILES}))
+	@rm ${HOME}/.config/fish/functions/fish_greeting.fish || true
 
 # Rule to install Fisher components
 $(FISHER) :

@@ -1,5 +1,5 @@
 ---
-name: FreeBSD
+name: base-freebsd
 
 on:
   push:

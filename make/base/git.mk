@@ -1,4 +1,7 @@
 # Configure git
+
+# https://blog.gitbutler.com/how-git-core-devs-configure-git/
+
 GIT_GLOBAL_CONFIG := ${HOME}/.config/git/config
 
 .PHONY : git
@@ -7,10 +10,21 @@ git :
 	@mkdir -p $(shell dirname ${GIT_GLOBAL_CONFIG}) || true
 	@touch ${GIT_GLOBAL_CONFIG}
 	@git config --global pull.rebase "false"
-	@git config --global credential.helper cache
+	@git config --global credential.helper 'cache --timeout=600'
 	@git config --global core.autocrlf "false"
+	@git config --global core.fsmonitor "false"
 	@git config --global diff.gpg.textconv "gpg --no-tty --decrypt"
 	@git config --global init.defaultBranch main
+
+	@git config --global column.ui auto
+	@git config --global branch.sort -committerdate
+	@git config --global tag.sort version:refname
+	@git config --global diff.algorithm histogram
+	@git config --global diff.colorMoved plain
+	@git config --global diff.mnemonicPrefix true
+	@git config --global diff.renames true
+	@git config --global commit.verbose true
+	@git config --global merge.conflictstyle diff3
 
 	@git config --global alias.root "rev-parse --show-toplevel"
 	@git config --global alias.b "branch"
@@ -26,6 +40,7 @@ git :
 	@git config --global alias.s "status"
 	@git config --global alias.s1 "status --short"
 	@git config --global alias.exec "!exec "
+	@git config --global alias.o "count-objects -vH"
 
 	@git config --global filter.lfs.clean "git-lfs clean -- %f"
 	@git config --global filter.lfs.smudge "git-lfs smudge -- %f"
@@ -33,6 +48,9 @@ git :
 	@git config --global filter.lfs.required "true"
 
 	@git config --global credential.https://github.com.username "agl4"
+	@git config --global --replace-all credential.https://github.com.helper ""
+	@git config --global --add credential.https://github.com.helper 'cache --timeout=600'
+	@git config --global --add credential.https://github.com.helper !'${HOME}/.local/bin/git-credential-helper-pass.sh'
 
 	@install -m 0700 -d -v "${HOME}/src"
 	@git config --global ghq.root "${HOME}/src"

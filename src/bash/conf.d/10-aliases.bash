@@ -6,6 +6,7 @@ alias e='emacsclient -n'
 alias g=git
 alias h='history | tail'
 alias k=keys
+alias m=make
 alias p=pass
-alias pg='pass git'
+alias pl="PASSWORD_STORE_DIR=\$HOME/.password-store-local pass"
 alias x='xargs -I {}'

@@ -1,0 +1,5 @@
+# -*- sh -*-
+CA_NAME=my-user-ca
+CERT_PRINCIPALS=root
+CERT_EXTENSIONS=clear,permit-agent-forwarding,permit-port-forwarding,permit-pty,no-user-rc,no-x11-forwarding
+CERT_IDENTITY=${USER}@${HOSTNAME}
