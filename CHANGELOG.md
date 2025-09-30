@@ -1,5 +1,26 @@
 # Changelog
 
+## [4.0.0](https://github.com/agl4/init/compare/v3.3.1...v4.0.0) (2025-09-30)
+
+
+### Features
+
+* Create make install alias ([8eb9c35](https://github.com/agl4/init/commit/8eb9c35bd151488c261935e577008760cb398d30))
+* **pass-git-credential-helper.sh:** Add pass-git-credential-helper.sh ([c104f76](https://github.com/agl4/init/commit/c104f7697aa1e068a4c2ddfd4b208885a5acd711))
+* Remove pyenv from default installation ([ca83aac](https://github.com/agl4/init/commit/ca83aacc8551d48e2604c4b21165a4442c853e64))
+* Removing nodenv from default installation ([5041e80](https://github.com/agl4/init/commit/5041e800c70863095a7fa24bf4b2ac18ac631e41))
+* Update ssh-key related tools to use local password-store ([e6b91a0](https://github.com/agl4/init/commit/e6b91a077c1c546412bd073d34d410b0dca8b456))
+
+
+### Bug Fixes
+
+* Make sure openssh server is installed ([ce0ac10](https://github.com/agl4/init/commit/ce0ac10d73e52bda971df375c44853c5a25825ff))
+
+
+### Miscellaneous Chores
+
+* release 4.0.0 ([1ee2492](https://github.com/agl4/init/commit/1ee24929e2d97e39581241de3da8a0570d06c9b0))
+
 ## [3.3.1](https://github.com/agl4/init/compare/v3.3.0...v3.3.1) (2025-09-25)
 
 
