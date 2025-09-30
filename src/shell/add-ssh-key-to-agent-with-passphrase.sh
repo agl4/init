@@ -6,6 +6,9 @@
 
 set -eu
 
+PASSWORD_STORE_DIR=${PASSWORD_STORE_DIR:="$HOME/.password-store-local"}
+export PASSWORD_STORE_DIR
+
 # defaults
 opt_lifetime="7200"
 

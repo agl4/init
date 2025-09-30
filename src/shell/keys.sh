@@ -55,4 +55,3 @@ if [ -f "$cert_name" ] ; then
 else
     _add
 fi
-
