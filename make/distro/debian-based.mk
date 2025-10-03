@@ -1,5 +1,5 @@
 PACKAGES += bash curl fish git mosh pass pass-extension-otp
-PACKAGES += rsync tmux fzf git-lfs git-annex ripgrep lsb-release
+PACKAGES += rsync tmux fzf git-lfs git-annex-standalone ripgrep lsb-release
 PACKAGES += openssh-server
 
 .PHONY : debian-update-repos
