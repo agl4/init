@@ -4,7 +4,7 @@ ubuntu-setup-repos : debian-update-repos
 	@sudo add-apt-repository -y universe
 	@sudo add-apt-repository -y multiverse
 
-neurodebian : /etc/apt/sources.list.d/neurodebian.sources.list
+/etc/apt/sources.list.d/neurodebian.sources.list :
 	@curl -sSL http://neuro.debian.net/lists/${VERSION_CODENAME}.de-m.full | sudo tee /etc/apt/sources.list.d/neurodebian.sources.list
 	@sudo apt-key adv --recv-keys --keyserver hkps://keyserver.ubuntu.com 0xA5D32F012649A5A9
 
