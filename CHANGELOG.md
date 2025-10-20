@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.1](https://github.com/agl4/init/compare/v4.0.0...v4.0.1) (2025-10-18)
+
+
+### Bug Fixes
+
+* **bash:** Fix PATH variable ([46c1090](https://github.com/agl4/init/commit/46c10905b78c576e0054f50c101a90f70a862627))
+
 ## [4.0.0](https://github.com/agl4/init/compare/v3.3.1...v4.0.0) (2025-09-30)
 
 
