@@ -41,6 +41,7 @@ git :
 	@git config --global alias.s1 "status --short"
 	@git config --global alias.exec "!exec "
 	@git config --global alias.o "count-objects -vH"
+	@git config --global alias.largest-objects  "!git rev-list --objects --all | git cat-file --batch-check='%(objectname) %(objectsize) %(rest)' | sort --key=2 -nr | head -10"
 
 	@git config --global filter.lfs.clean "git-lfs clean -- %f"
 	@git config --global filter.lfs.smudge "git-lfs smudge -- %f"
