@@ -5,8 +5,7 @@ set -eu
 
 # Namespace inside pass where credentials will be stored
 PASS_NAMESPACE="git-credential-helper"
-PASSWORD_STORE_DIR=${PASSWORD_STORE_DIR:="$HOME/.password-store-local"}
-export PASSWORD_STORE_DIR
+
 # Read key=value pairs from stdin into variables
 protocol=""
 host=""
@@ -46,12 +45,12 @@ case "$1" in
         pass_path="$(make_pass_path)"
         # Store password (first line only)
         if [ ! -e "${PASSWORD_STORE_DIR}/${pass_path}.gpg" ] ; then
-            printf '%s\n' "$password" | pass insert -m "$pass_path" >/dev/null
+            printf '%s\n' "$password" | pass-local insert -m "$pass_path" >/dev/null
         fi
         ;;
     erase)
         pass_path="$(make_pass_path)"
-        pass rm "$pass_path" >/dev/null 2>&1 || true
+        pass-local rm "$pass_path" >/dev/null 2>&1 || true
         ;;
     *)
         echo "Usage: $(basename "$0") {get|store|erase}" >&2
