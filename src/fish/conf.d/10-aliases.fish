@@ -8,5 +8,5 @@ alias h='history --max=10 --reverse'
 alias k=keys
 alias m=make
 alias p=pass
-alias pl="env PASSWORD_STORE_DIR=$HOME/.password-store-local pass"
+alias pl=pass-local
 alias x='xargs -I {}'

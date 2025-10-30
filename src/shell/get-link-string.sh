@@ -6,6 +6,8 @@ set -eu
 LENGTH=4
 PREFIX="L-"
 INCLUDE_NUMBERS=
+LOWER_CASE=
+UPPER_CASE=
 
 # Function to display help message
 show_help() {
@@ -27,7 +29,7 @@ EOF
 }
 
 # Parse command-line options
-while getopts "l:p:n:h" opt; do
+while getopts l:p:n:hLU opt; do
   case "$opt" in
     l)
       if [[ "$OPTARG" =~ ^[0-9]+$ ]]; then
@@ -37,6 +39,8 @@ while getopts "l:p:n:h" opt; do
         exit 1
       fi
       ;;
+    U) UPPER_CASE=1 ;;
+    L) LOWER_CASE=1 ;;
     p) PREFIX=$OPTARG ;;
     n) INCLUDE_NUMBERS=1 ;;
     h) show_help; exit 0 ;;
@@ -62,4 +66,10 @@ else
 fi
 
 # Output final result
-echo "$PREFIX$RANDOM_STRING"
+if [ -n "$UPPER_CASE" ] ; then
+    echo "$PREFIX$RANDOM_STRING" | tr '[:lower:]' '[:upper:]'
+elif [ -n "$LOWER_CASE" ] ; then
+    echo "$PREFIX$RANDOM_STRING" | tr '[:upper:]' '[:lower:]'
+else
+    echo "$PREFIX$RANDOM_STRING"
+fi

@@ -2,9 +2,6 @@
 
 set -eu
 
-PASSWORD_STORE_DIR=${PASSWORD_STORE_DIR:="$HOME/.password-store-local"}
-export PASSWORD_STORE_DIR
-
 NO_HOSTNAME=""
 NO_USERNAME=""
 key_usage=""
@@ -76,19 +73,19 @@ PUBKEY_LOCATION="${PASS_BASE_DIRECTORY}/${KEYNAME}/pubkey"
 key_directory=${key_directory:="${HOME}/.ssh/"}
 
 if [ -z "$NO_PASSPHRASE" ] ; then
-    pass generate --no-symbols "${PASSPHRASE_LOCATION}" "$passphrase_length"
+    pass-local generate --no-symbols "${PASSPHRASE_LOCATION}" "$passphrase_length"
 fi
 mkdir -p "$key_directory" || true
 chmod 0700 "$key_directory"
 if [ -z "$NO_PASSPHRASE" ] ; then
     echo 'Touch the device...'
-    ssh-keygen -t ed25519 -C "$KEY_COMMENT" -f "${key_directory}/${KEYNAME}" -P "$(pass "${PASSPHRASE_LOCATION}")"
+    ssh-keygen -t ed25519 -C "$KEY_COMMENT" -f "${key_directory}/${KEYNAME}" -P "$(pass-local "${PASSPHRASE_LOCATION}")"
 else
     ssh-keygen -t ed25519 -C "$KEY_COMMENT" -f "${key_directory}/${KEYNAME}"
 fi
 
 if [ -z "$NO_PUBKEY_IN_PASS" ] ; then
-    pass insert -m "$PUBKEY_LOCATION" < "${key_directory}/${KEYNAME}.pub"
+    pass-local insert -m "$PUBKEY_LOCATION" < "${key_directory}/${KEYNAME}.pub"
 fi
 
 echo
