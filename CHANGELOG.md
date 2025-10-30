@@ -1,5 +1,14 @@
 # Changelog
 
+## [4.1.0](https://github.com/agl4/init/compare/v4.0.1...v4.1.0) (2025-10-30)
+
+
+### Features
+
+* **generate-gpg-key.sh:** New script ([ede0dae](https://github.com/agl4/init/commit/ede0daec246d7add8d296be63b240d52d280b987))
+* **pass-local.sh:** New script ([ee43cb9](https://github.com/agl4/init/commit/ee43cb9cf8126942c3bd1d5f547be85ed96bb37a))
+* Use pass-local in scripts ([e7d1a3c](https://github.com/agl4/init/commit/e7d1a3c76004b64a63aadfb895524fc5f7976183))
+
 ## [4.0.1](https://github.com/agl4/init/compare/v4.0.0...v4.0.1) (2025-10-18)
 
 
