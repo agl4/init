@@ -11,5 +11,6 @@ $(OS_SCRIPTS) :
 scripts : $(SCRIPTS) $(OS_SCRIPTS)
 	@ln -f ${PREFIX}/keys.sh ${PREFIX}/keys
 	@ln -f ${PREFIX}/keys.sh ${PREFIX}/keys_week
+	rm ${PREFIX}/genssh.sh
 
 BASE_TARGETS += scripts

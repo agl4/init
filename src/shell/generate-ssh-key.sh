@@ -5,6 +5,11 @@ set -eu
 PASSWORD_STORE_DIR=${PASSWORD_STORE_DIR:="$HOME/.password-store-local"}
 export PASSWORD_STORE_DIR
 
+if [ ! -d "${PASSWORD_STORE_DIR}" ] ; then
+    >&2 echo "ERROR: Password store is not initiated yet: $PASSWORD_STORE_DIR"
+    exit 1
+fi
+
 NO_HOSTNAME=""
 NO_USERNAME=""
 key_usage=""
