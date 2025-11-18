@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.2.0](https://github.com/agl4/init/compare/v4.1.0...v4.2.0) (2025-11-18)
+
+
+### Features
+
+* Hardening GPG ([6c21583](https://github.com/agl4/init/commit/6c21583a9f34f16e0d2bca8930426465057c31e4))
+
 ## [4.1.0](https://github.com/agl4/init/compare/v4.0.1...v4.1.0) (2025-10-30)
 
 
