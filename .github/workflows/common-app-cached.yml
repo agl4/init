@@ -24,7 +24,7 @@ jobs:
     container:
       image: ghcr.io/${{ github.repository }}/${{ inputs.distro }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
         # Use the triggering workflow's commit if available, otherwise default to the current branch
           ref: ${{ github.event.workflow_run.head_commit.id || github.ref_name }}
