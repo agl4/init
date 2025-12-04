@@ -63,6 +63,7 @@ include make/base/gpg.mk
 include make/base/scripts.mk
 include make/base/ssh.mk
 include make/base/tmux.mk
+include make/base/kde.mk
 include make/server/ssh-server.mk
 
 # Include apps
