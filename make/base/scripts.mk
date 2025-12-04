@@ -14,4 +14,4 @@ scripts : $(SCRIPTS) $(OS_SCRIPTS)
 	@rm ${PREFIX}/genssh.sh 2>/dev/null|| true
 	@ln -f ${PREFIX}/pass-local.sh ${PREFIX}/pass-local
 
-BASE_TARGETS += scripts
+SHELL_TARGETS += scripts

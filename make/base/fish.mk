@@ -36,5 +36,4 @@ fish : $(FISHER) fish_install fisher_update
 	@echo "Fish installed."
 
 # Common and help targets
-DESKTOP_TARGETS += fish
-SERVER_TARGETS += fish
+SHELL_TARGETS += fish

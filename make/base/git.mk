@@ -57,5 +57,4 @@ git :
 	@git config --global ghq.root "${HOME}/src"
 
 # Add targets to groups
-DESKTOP_TARGETS += git
-SERVER_TARGETS += git
+SHELL_TARGETS += git

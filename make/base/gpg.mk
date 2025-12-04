@@ -24,5 +24,4 @@ $(GPG_DST_DIR)/% : $(GPG_SRC_DIR)/%
 gpg : $(addprefix $(GPG_DST_DIR)/, $(GPG_FILES)) $(GPG_DST_DIR)/gpg-agent.conf
 
 # Add gpg to desktop and help targets
-SERVER_TARGETS += gpg
-DESKTOP_TARGETS += gpg
+SHELL_TARGETS += gpg

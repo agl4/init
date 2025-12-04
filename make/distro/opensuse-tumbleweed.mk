@@ -15,9 +15,9 @@ opensuse-tumbleweed-postinstall :
 	@sudo systemctl enable pcscd
 	@sudo systemctl start pcscd
 
-BASE_TARGETS += opensuse-tumbleweed-upgrade
-BASE_TARGETS += opensuse-tumbleweed-install
+INSTALL_TARGETS += opensuse-tumbleweed-upgrade
+INSTALL_TARGETS += opensuse-tumbleweed-install
 
 ifndef INSIDE_DOCKER
-BASE_TARGETS += opensuse-tumbleweed-postinstall
+INSTALL_TARGETS += opensuse-tumbleweed-postinstall
 endif

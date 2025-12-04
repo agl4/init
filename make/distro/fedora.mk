@@ -15,9 +15,9 @@ fedora-postinstall :
 	@sudo systemctl enable pcscd
 	@sudo systemctl start pcscd
 
-BASE_TARGETS += fedora-upgrade
-BASE_TARGETS += fedora-install
+INSTALL_TARGETS += fedora-upgrade
+INSTALL_TARGETS += fedora-install
 
 ifndef INSIDE_DOCKER
-BASE_TARGETS += fedora-postinstall
+INSTALL_TARGETS += fedora-postinstall
 endif
