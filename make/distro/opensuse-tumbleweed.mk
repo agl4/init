@@ -1,6 +1,6 @@
 PACKAGES += bash curl fish git gpg2 mosh password-store
 PACKAGES += pcsc-lite pcsc-ccid tmux rsync fzf git-lfs git-annex
-PACKAGES += openssh-server
+PACKAGES += openssh-server gawk
 
 .PHONY : opensuse-tumbleweed-upgrade
 opensuse-tumbleweed-upgrade :
