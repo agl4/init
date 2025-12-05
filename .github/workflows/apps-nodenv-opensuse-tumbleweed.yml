@@ -19,6 +19,7 @@ jobs:
       matrix:
         distro:
           - opensuse-tumbleweed
+          - opensuse-leap
         application:
           - app-nodenv
         path_to_cache:
