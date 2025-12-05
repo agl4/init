@@ -1,5 +1,15 @@
 # Changelog
 
+## [4.2.0](https://github.com/agl4/init/compare/v4.1.0...v4.2.0) (2025-12-05)
+
+
+### Features
+
+* Add shell target ([92d37b4](https://github.com/agl4/init/commit/92d37b4da8fe0d9f873836781e6d63e376386c19))
+* Hardening GPG ([6c21583](https://github.com/agl4/init/commit/6c21583a9f34f16e0d2bca8930426465057c31e4))
+* Support openSUSE Leap ([a44b54f](https://github.com/agl4/init/commit/a44b54f0514fad1a97e4904f0be52e6fac6b1d58))
+* Support ssh-agent on KDE ([b609d29](https://github.com/agl4/init/commit/b609d29228054a47a24babfc09b87930038a3942))
+
 ## [4.1.0](https://github.com/agl4/init/compare/v4.0.1...v4.1.0) (2025-10-30)
 
 
