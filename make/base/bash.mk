@@ -20,5 +20,4 @@ insert_bashrc_loader :
 bash : $(FISHER) bash_install insert_bashrc_loader
 
 # Common and help targets
-DESKTOP_TARGETS += bash
-SERVER_TARGETS += bash
+SHELL_TARGETS += bash

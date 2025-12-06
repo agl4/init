@@ -43,9 +43,10 @@ $(info -- Architecture ...........: $(ARCHITECTURE))
 $(info -- Inside docker ..........: $(INSIDE_DOCKER))
 
 # Target definitions
-BASE_TARGETS :=
+INSTALL_TARGETS :=
 SERVER_TARGETS :=
 DESKTOP_TARGETS :=
+SHELL_TARGETS :=
 
 # Default configuration
 PACKAGES = curl fish git tmux bash
@@ -77,7 +78,7 @@ directories:
 	@install -d -m 0700 "${HOME}/tmp"
 
 .PHONY : base server desktop install
-base : scripts directories $(BASE_TARGETS)
-install : scripts directories
-server  : base $(SERVER_TARGETS)
-desktop : base $(DESKTOP_TARGETS)
+install : directories $(INSTALL_TARGETS)
+shell : directories $(SHELL_TARGETS)
+server  : install shell $(SERVER_TARGETS)
+desktop : install shell $(DESKTOP_TARGETS)

@@ -37,7 +37,7 @@ $(FISH_PREFIX)/conf.d/homebrew.fish : ${BREW_CONFIG_SRC}/homebrew.fish
 .PHONY : brew-setup-shell
 brew-setup-shell : $(BASH_PREFIX)/conf.d/homebrew.bash $(FISH_PREFIX)/conf.d/homebrew.fish
 
-BASE_TARGETS += brew-setup-shell
-BASE_TARGETS += darwin-brew-update
-BASE_TARGETS += darwin-brew-upgrade
-BASE_TARGETS += darwin-base
+INSTALL_TARGETS += brew-setup-shell
+INSTALL_TARGETS += darwin-brew-update
+INSTALL_TARGETS += darwin-brew-upgrade
+INSTALL_TARGETS += darwin-base

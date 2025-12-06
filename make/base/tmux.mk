@@ -7,5 +7,4 @@ ${PREFIX}/__tmux-switch-window.sh : ${SRCDIR}/tmux/bin/__tmux-switch-window.sh
 .PHONY : tmux
 tmux: ${HOME}/.tmux.conf ${PREFIX}/__tmux-switch-window.sh
 
-DESKTOP_TARGETS += tmux
-SERVER_TARGETS += tmux
+SHELL_TARGETS += tmux

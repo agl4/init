@@ -1,6 +1,6 @@
 PACKAGES += bash curl fish git gpg2 mosh password-store
 PACKAGES += pcsc-lite pcsc-ccid tmux rsync fzf git-lfs git-annex
-PACKAGES += openssh-server
+PACKAGES += openssh-server gawk
 
 .PHONY : opensuse-tumbleweed-upgrade
 opensuse-tumbleweed-upgrade :
@@ -15,9 +15,9 @@ opensuse-tumbleweed-postinstall :
 	@sudo systemctl enable pcscd
 	@sudo systemctl start pcscd
 
-BASE_TARGETS += opensuse-tumbleweed-upgrade
-BASE_TARGETS += opensuse-tumbleweed-install
+INSTALL_TARGETS += opensuse-tumbleweed-upgrade
+INSTALL_TARGETS += opensuse-tumbleweed-install
 
 ifndef INSIDE_DOCKER
-BASE_TARGETS += opensuse-tumbleweed-postinstall
+INSTALL_TARGETS += opensuse-tumbleweed-postinstall
 endif
