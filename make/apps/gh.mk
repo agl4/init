@@ -4,6 +4,9 @@ gh-install-opensuse-tumbleweed :
 	@sudo zypper --gpg-auto-import-keys refresh
 	@sudo zypper install -y gh
 
+.PHONY : gh-install-opensuse-leap
+gh-install-opensuse-leap : gh-install-opensuse-tumbleweed
+
 .PHONY : gh-install-ubuntu
 gh-install-ubuntu :
 	@sudo apt-get update
@@ -13,6 +16,9 @@ gh-install-ubuntu :
 	@echo "deb [arch=${ARCHITECTURE} signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
 	@sudo apt-get update
 	@sudo apt-get install gh -y
+
+.PHONY : gh-install-debian
+gh-install-debian : gh-install-ubuntu
 
 .PHONY : gh-install-fedora
 gh-install-fedora :
