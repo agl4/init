@@ -16,7 +16,6 @@ case $current_theme in
     *) dark_name=dark ;;
 esac
 
-
 # Check if the current theme ends with '-dark' to determine if it's dark mode
 if [[ "$current_theme" == *-$dark_name ]]; then
     # Current theme is dark, change to light (strip '-dark' from theme name)
@@ -35,15 +34,12 @@ else
 fi
 
 if [ -x /usr/bin/plasma-apply-colorscheme ] ; then
-
-CUR_SCHEME=$(plasma-apply-colorscheme --list-schemes | grep "current color scheme")
-
-case $CUR_SCHEME in
-    *BreezeDark*)  plasma-apply-colorscheme BreezeLight  ;;
-    *BreezeLight*) plasma-apply-colorscheme BreezeDark ;;
-    *BreezeClassic*) plasma-apply-colorscheme BreezeDark ;;
-    *openSUSE*) plasma-apply-colorscheme openSUSEdark ;;
-    *openSUSEdark*) plasma-apply-colorscheme openSUSE ;;
-esac
-
+    CUR_SCHEME=$(plasma-apply-colorscheme --list-schemes | grep "current color scheme")
+    case $CUR_SCHEME in
+        *BreezeDark*)  plasma-apply-colorscheme BreezeLight  ;;
+        *BreezeLight*) plasma-apply-colorscheme BreezeDark ;;
+        *BreezeClassic*) plasma-apply-colorscheme BreezeDark ;;
+        *openSUSE*) plasma-apply-colorscheme openSUSEdark ;;
+        *openSUSEdark*) plasma-apply-colorscheme openSUSE ;;
+    esac
 fi
