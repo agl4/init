@@ -1,5 +1,18 @@
 # Changelog
 
+## [4.3.0](https://github.com/agl4/init/compare/v4.2.0...v4.3.0) (2025-12-08)
+
+
+### Features
+
+* **dark.sh:** Update script to support KDE ([dbba3bb](https://github.com/agl4/init/commit/dbba3bbc474407479df491d1a21699bcf12400e3))
+
+
+### Bug Fixes
+
+* Fix bash install ([41fa69d](https://github.com/agl4/init/commit/41fa69d725c930c3a58730f15db03a591e98e10d))
+* Fix dependencies for Leap and Debian ([4bf6b55](https://github.com/agl4/init/commit/4bf6b55f0c828bbfbb0a4d87e23b19d7ec19bb78))
+
 ## [4.2.0](https://github.com/agl4/init/compare/v4.1.0...v4.2.0) (2025-12-05)
 
 
