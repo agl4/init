@@ -14,6 +14,9 @@ nodenv-deps-darwin :
 nodenv-deps-ubuntu :
 	@sudo apt-get -y install python3 g++-12 gcc-12 make python3-pip
 
+.PHONY : nodenv-deps-debian
+nodenv-deps-debian : nodenv-deps-ubuntu
+
 .PHONY : nodenv-deps-fedora
 nodenv-deps-fedora :
 	@sudo dnf install -y python3 gcc-c++ make python3-pip
@@ -21,6 +24,9 @@ nodenv-deps-fedora :
 .PHONY : nodenv-deps-opensuse-tumbleweed
 nodenv-deps-opensuse-tumbleweed :
 	@sudo zypper install -y python3 gcc-c++ make python3-pip
+
+.PHONY : nodenv-deps-opensuse-leap
+nodenv-deps-opensuse-leap : nodenv-deps-opensuse-tumbleweed
 
 .PHONY : nodenv-install
 nodenv-install :
@@ -55,6 +61,7 @@ NODENV_TARGETS += nodenv-setup-shell
 ifeq (${OS},Darwin)
 # For GUI applications on macOS
 DESKTOP_TARGETS += nodenv-darwin-path-setup
+INSTALL_TARGETS += nodenv-darwin-path-setup
 .PHONY : nodenv-deps
 nodenv-deps : nodenv-deps-darwin
 NODENV_TARGETS += nodenv-deps-darwin

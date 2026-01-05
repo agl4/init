@@ -15,6 +15,9 @@ pyenv-deps-ubuntu :
 		libbz2-dev libreadline-dev libsqlite3-dev curl git \
 		libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
+.PHONY : pyenv-deps-debian
+pyenv-deps-debian : pyenv-deps-ubuntu
+
 .PHONY : pyenv-deps-fedora
 pyenv-deps-fedora :
 	@sudo dnf install -y make gcc patch zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel libuuid-devel gdbm-libs libnsl2 gawk
@@ -23,6 +26,9 @@ pyenv-deps-fedora :
 pyenv-deps-opensuse-tumbleweed :
 	@sudo zypper install -y gcc automake bzip2 libbz2-devel xz xz-devel openssl-devel ncurses-devel \
 		readline-devel zlib-devel tk-devel libffi-devel sqlite3-devel gdbm-devel make findutils patch
+
+.PHONY : pyenv-deps-opensuse-leap
+pyenv-deps-opensuse-leap : pyenv-deps-opensuse-tumbleweed
 
 .PHONY : pyenv-install
 pyenv-install :
@@ -56,6 +62,7 @@ PYENV_TARGETS += pyenv-setup-shell
 ifeq (${OS},Darwin)
 # For GUI applications on macOS
 DESKTOP_TARGETS += pyenv-darwin-path-setup
+INSTALL_TARGETS += pyenv-darwin-path-setup
 .PHONY : pyenv-deps
 pyenv-deps : pyenv-deps-darwin
 PYENV_TARGETS += pyenv-deps-darwin

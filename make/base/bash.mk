@@ -17,7 +17,7 @@ insert_bashrc_loader :
 
 # Main target to install fish and update Fisher
 .PHONY : bash
-bash : $(FISHER) bash_install insert_bashrc_loader
+bash : bash_install insert_bashrc_loader
 
 # Common and help targets
 SHELL_TARGETS += bash
