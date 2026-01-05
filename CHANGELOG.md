@@ -1,5 +1,24 @@
 # Changelog
 
+## [2026.0.0](https://github.com/agl4/init/compare/v4.2.0...v2026.0.0) (2026-01-05)
+
+
+### Features
+
+* **dark.sh:** Update script to support KDE ([dbba3bb](https://github.com/agl4/init/commit/dbba3bbc474407479df491d1a21699bcf12400e3))
+
+
+### Bug Fixes
+
+* Fix bash install ([41fa69d](https://github.com/agl4/init/commit/41fa69d725c930c3a58730f15db03a591e98e10d))
+* Fix dependencies for Leap and Debian ([4bf6b55](https://github.com/agl4/init/commit/4bf6b55f0c828bbfbb0a4d87e23b19d7ec19bb78))
+* Set VISUAL variable ([508779f](https://github.com/agl4/init/commit/508779f9a531b586f59ee55c9ada3c5cb49eb8c8))
+
+
+### Miscellaneous Chores
+
+* release 2026.0.0 ([816afd6](https://github.com/agl4/init/commit/816afd671dc6604d5a50bb7bec5bf6faac118665))
+
 ## [4.2.0](https://github.com/agl4/init/compare/v4.1.0...v4.2.0) (2025-12-05)
 
 
