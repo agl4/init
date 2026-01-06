@@ -1,5 +1,12 @@
 # Changelog
 
+## [2026.0.1](https://github.com/agl4/init/compare/v2026.0.0...v2026.0.1) (2026-01-06)
+
+
+### Bug Fixes
+
+* Harden SSH configuration ([dbe5876](https://github.com/agl4/init/commit/dbe5876904790ea381da1838b9335c1ffd1ecc13))
+
 ## [2026.0.0](https://github.com/agl4/init/compare/v4.2.0...v2026.0.0) (2026-01-05)
 
 
