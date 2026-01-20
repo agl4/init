@@ -1,5 +1,17 @@
 # Changelog
 
+## [2026.1.0](https://github.com/agl4/init/compare/v2026.0.0...v2026.1.0) (2026-01-20)
+
+
+### Features
+
+* Support for openSUSE Leap ([e59943e](https://github.com/agl4/init/commit/e59943ebe76a78e04be0cc764b9f4675863be290))
+
+
+### Bug Fixes
+
+* Harden SSH configuration ([dbe5876](https://github.com/agl4/init/commit/dbe5876904790ea381da1838b9335c1ffd1ecc13))
+
 ## [2026.0.0](https://github.com/agl4/init/compare/v4.2.0...v2026.0.0) (2026-01-05)
 
 
