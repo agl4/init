@@ -1,5 +1,12 @@
 # Changelog
 
+## [2026.1.1](https://github.com/agl4/init/compare/v2026.1.0...v2026.1.1) (2026-01-21)
+
+
+### Bug Fixes
+
+* Removing old user SSHCA key ([8c54952](https://github.com/agl4/init/commit/8c54952e9ff9b8803e3dab5444f115631ea1ac01))
+
 ## [2026.1.0](https://github.com/agl4/init/compare/v2026.0.0...v2026.1.0) (2026-01-20)
 
 
