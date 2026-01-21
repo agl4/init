@@ -14,7 +14,7 @@ Supports:
 | Fedora `42`-`43`                 | *              | *             |
 | openSUSE Tumbleweed              | *              | *             |
 | openSUSE Leap `16`               | *              | *             |
-| FreeBSD `14`                     |                | *             |
+| FreeBSD `15`                     |                | *             |
 | Raspbian                         |                | *             |
 
 ## Prerequisites
