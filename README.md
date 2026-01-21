@@ -13,6 +13,7 @@ Supports:
 | Ubuntu `24.04`, `25.04`, `25.10` | *              | *             |
 | Fedora `42`-`43`                 | *              | *             |
 | openSUSE Tumbleweed              | *              | *             |
+| openSUSE Leap `16`               | *              | *             |
 | FreeBSD `14`                     |                | *             |
 | Raspbian                         |                | *             |
 
