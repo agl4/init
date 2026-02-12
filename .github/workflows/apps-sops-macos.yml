@@ -1,0 +1,17 @@
+---
+name: sops-macos
+
+on:
+  push:
+    paths:
+      - make/apps/sops.mk
+
+jobs:
+  app:
+    uses: ./.github/workflows/common-app-macos.yml
+    strategy:
+      matrix:
+        application:
+          - app-sops
+    with:
+      application: ${{ matrix.application }}
