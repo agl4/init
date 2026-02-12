@@ -9,6 +9,7 @@
 
 SRCDIR := ./src
 PREFIX ?= ${HOME}/.local/bin
+export PATH := ${PREFIX}:$(PATH)
 
 OS := $(shell uname -s)
 
@@ -71,6 +72,8 @@ include make/apps/nodenv.mk
 include make/apps/pyenv.mk
 include make/apps/gh.mk
 include make/apps/ghq.mk
+include make/apps/cosign.mk
+include make/apps/sops.mk
 
 .PHONY : directories
 directories:
