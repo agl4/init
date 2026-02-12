@@ -16,6 +16,8 @@ $(source_path) :
 
 .PHONY : app-cosign
 app-cosign : ${source_path}
+
+.PHONY : app-cosign-uninstall
 app-cosign-uninstall :
 	rm ${source_path}
 

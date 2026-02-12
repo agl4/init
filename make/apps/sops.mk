@@ -27,6 +27,10 @@ $(source_path) : app-cosign
 .PHONY : app-sops
 app-sops : ${source_path}
 
+.PHONY : app-sops-uninstall
+app-sops-uninstall :
+	rm ${source_path}
+
 .PHONY : test-app-sops
 test-app-sops :
 	[[ -x ${HOME}/.local/bin/sops ]] || exit 1

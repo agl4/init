@@ -22,6 +22,10 @@ $(source_path) :
 .PHONY : app-ghq
 app-ghq : ${source_path}
 
+.PHONY : app-ghq-uninstall
+app-ghq-uninstall :
+	rm ${source_path}
+
 .PHONY : test-app-ghq
 test-app-ghq :
 	[[ -x ${HOME}/.local/bin/ghq ]] || exit 1
