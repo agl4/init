@@ -4,7 +4,6 @@
 COSIGN_VERSION := v3.0.4
 
 # variables copied from asdf-ghq
-dir_tmp := $(shell mktemp -d)
 platform := $(shell echo ${OS} | tr A-Z a-z)
 architecture := $(if $(filter x86_64,$(ARCHITECTURE)),amd64,$(ARCHITECTURE))
 download_url := https://github.com/sigstore/cosign/releases/download/${COSIGN_VERSION}/cosign-${platform}-${architecture}
