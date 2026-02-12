@@ -7,7 +7,6 @@ SOPS_VERSION := v3.11.0
 dir_tmp := $(shell mktemp -d)
 platform := $(shell echo ${OS} | tr A-Z a-z)
 architecture := $(if $(filter x86_64,$(ARCHITECTURE)),amd64,$(ARCHITECTURE))
-install_path := ${PREFIX}
 
 # https://github.com/getsops/sops/releases/download/v3.11.0/sops-v3.11.0.checksums.txt
 # https://github.com/getsops/sops/releases/download/v3.11.0/sops-v3.11.0.checksums.pem
@@ -16,8 +15,7 @@ install_path := ${PREFIX}
 # https://github.com/getsops/sops/releases/download/v3.11.0/sops-v3.11.0.linux.amd64
 source_path := ${PREFIX}/sops
 
-# Lines copied from script
-$(source_path) :
+$(source_path) : app-cosign
 	cd ${dir_tmp} && \
 		curl -LO https://github.com/getsops/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.${platform}.${architecture} && \
 		curl -LO https://github.com/getsops/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.checksums.txt && \
