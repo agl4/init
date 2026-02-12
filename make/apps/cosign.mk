@@ -11,6 +11,7 @@ download_url := https://github.com/sigstore/cosign/releases/download/${COSIGN_VE
 source_path := ${PREFIX}/cosign
 
 $(source_path) :
+	mkdir -p $(shell dirname $@)
 	curl -Lo $@ ${download_url}
 	chmod u+x,g-rwx,o-rwx $@
 
