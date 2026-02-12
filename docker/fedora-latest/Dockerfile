@@ -1,4 +1,4 @@
-FROM fedora:44
+FROM fedora:45
 ARG BOOTSTRAP_BRANCH=main
 
 ENV LC_ALL=C
