@@ -23,7 +23,7 @@ nodenv-deps-fedora :
 
 .PHONY : nodenv-deps-opensuse-tumbleweed
 nodenv-deps-opensuse-tumbleweed :
-	@sudo zypper install -y python3 gcc-c++ make python3-pip
+	@sudo zypper install -y python3 gcc-c++ make python3-pip bsdtar gawk
 
 .PHONY : nodenv-deps-opensuse-leap
 nodenv-deps-opensuse-leap : nodenv-deps-opensuse-tumbleweed
