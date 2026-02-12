@@ -1,5 +1,17 @@
 # Changelog
 
+## [2026.2.0](https://github.com/agl4/init/compare/v2026.1.0...v2026.2.0) (2026-02-12)
+
+
+### Features
+
+* Add app-sops ([8a9e578](https://github.com/agl4/init/commit/8a9e57823b22d7f3ce378c5dbf6b2149ede039e5))
+
+
+### Bug Fixes
+
+* Removing old user SSHCA key ([8c54952](https://github.com/agl4/init/commit/8c54952e9ff9b8803e3dab5444f115631ea1ac01))
+
 ## [2026.1.0](https://github.com/agl4/init/compare/v2026.0.0...v2026.1.0) (2026-01-20)
 
 
