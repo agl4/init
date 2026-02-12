@@ -4,7 +4,12 @@
     "customManagers": [
         {
             "customType": "regex",
-            "fileMatch": ["^make/apps/ghq.mk$", "^make/base/fish.mk$"],
+            "fileMatch": [
+                "^make/apps/cosign.mk$",
+                "^make/apps/sops.mk$",
+                "^make/apps/ghq.mk$",
+                "^make/base/fish.mk$"
+            ],
             "matchStrings": [
                 "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+) versioning=(?<versioning>\\S+) registryUrl=(?<registryUrl>\\S+)\\s.+?_VERSION := (?<currentValue>\\S+)\\s"
             ],
