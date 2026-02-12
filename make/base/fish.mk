@@ -1,5 +1,5 @@
 # renovate: datasource=github-releases depName=jorgebucaran/fisher versioning=semver registryUrl=https://github.com
-FISHER_VERSION := 4.4.6
+FISHER_VERSION := 4.4.8
 
 # Directories
 FISH_DIR_SRC := $(SRCDIR)/fish
