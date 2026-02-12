@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - make/apps/sops.mk
+      - make/apps/cosign.mk
 
 jobs:
   app:
