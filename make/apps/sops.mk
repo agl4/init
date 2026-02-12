@@ -7,12 +7,6 @@ SOPS_VERSION := v3.11.0
 dir_tmp := $(shell mktemp -d)
 platform := $(shell echo ${OS} | tr A-Z a-z)
 architecture := $(if $(filter x86_64,$(ARCHITECTURE)),amd64,$(ARCHITECTURE))
-
-# https://github.com/getsops/sops/releases/download/v3.11.0/sops-v3.11.0.checksums.txt
-# https://github.com/getsops/sops/releases/download/v3.11.0/sops-v3.11.0.checksums.pem
-# https://github.com/getsops/sops/releases/download/v3.11.0/sops-v3.11.0.checksums.sig
-# https://github.com/getsops/sops/releases/download/v3.11.0/sops-v3.11.0.darwin.arm64
-# https://github.com/getsops/sops/releases/download/v3.11.0/sops-v3.11.0.linux.amd64
 source_path := ${PREFIX}/sops
 
 $(source_path) : app-cosign
