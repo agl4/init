@@ -9,6 +9,7 @@
 
 SRCDIR := ./src
 PREFIX ?= ${HOME}/.local/bin
+export PATH := ${PREFIX}:$(PATH)
 
 OS := $(shell uname -s)
 
