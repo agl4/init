@@ -8,4 +8,4 @@ fi
 sudo zypper dup
 sudo zypper ref
 sudo zypper up
-sudo snapper create --type post --pre-number "$num" --description "DUP $date" --cleanup-algorithm number --userdata important=yes
+sudo snapper create --type post --pre-number "$num" --description "DUP $date" --cleanup-algorithm number --userdata important=yes --print-number
