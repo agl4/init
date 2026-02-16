@@ -13,9 +13,9 @@ cloning_repo(){
 
 install_base(){
     if [ "$OS" = "FreeBSD" ] ; then
-        cd "$WORKDIR" && gmake base
+        cd "$WORKDIR" && gmake shell
     else
-        cd "$WORKDIR" && make base
+        cd "$WORKDIR" && make shell
     fi
 }
 

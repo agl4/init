@@ -82,6 +82,6 @@ directories:
 
 .PHONY : base server desktop install
 install : directories $(INSTALL_TARGETS)
-shell : directories $(SHELL_TARGETS)
+shell : install $(SHELL_TARGETS)
 server  : install shell $(SERVER_TARGETS)
 desktop : install shell $(DESKTOP_TARGETS)
