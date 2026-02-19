@@ -1,7 +1,7 @@
 # Install steps taken from https://github.com/getsops/sops/releases/tag/v3.11.0
 
 # renovate: datasource=github-releases depName=sigstore/cosign versioning=semver registryUrl=https://github.com
-COSIGN_VERSION := v3.0.4
+COSIGN_VERSION := v3.0.5
 
 # variables copied from asdf-ghq
 platform := $(shell echo ${OS} | tr A-Z a-z)
