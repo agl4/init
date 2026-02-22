@@ -1,7 +1,7 @@
 # Install steps taken from https://github.com/getsops/sops/releases/tag/v3.11.0
 
 # renovate: datasource=github-releases depName=getsops/sops versioning=semver registryUrl=https://github.com
-SOPS_VERSION := v3.11.0
+SOPS_VERSION := v3.12.1
 
 # variables copied from asdf-ghq
 dir_tmp := $(shell mktemp -d)
