@@ -5,7 +5,7 @@ GHQ_VERSION := 1.8.1
 
 # variables copied from asdf-ghq
 ghq_platform := $(shell echo ${OS} | tr A-Z a-z)
-ghq_architecture := $(if $(filter x86_64,$(ghq_architecture)),amd64,$(ghq_architecture))
+ghq_architecture := $(if $(filter x86_64,$(ARCHITECTURE)),amd64,$(ARCHITECTURE))
 ghq_install_path := ${PREFIX}
 ghq_download_url := "https://github.com/x-motemen/ghq/releases/download/v${GHQ_VERSION}/ghq_${ghq_platform}_${ghq_architecture}.zip"
 ghq_source_path := "${ghq_install_path}/ghq"
