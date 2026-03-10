@@ -2,6 +2,12 @@
 BASH_DIR_SRC := $(SRCDIR)/bash/conf.d/
 BASH_FILES := $(wildcard ${BASH_DIR_SRC}/*)
 
+ifeq ($(wildcard path/to/file.txt),)
+BASHRC := ${HOME}/.bashrc
+else
+BASHRC := ${HOME}/.bashrc.user
+endif
+
 $(BASH_PREFIX)/conf.d/%: $(BASH_DIR_SRC)/%
 	@install -m 0700 -d -v $(dir $@)
 	@install -m 0600 -v $< $@
@@ -12,8 +18,8 @@ bash_install : $(addprefix $(BASH_PREFIX)/conf.d/, $(patsubst ${BASH_DIR_SRC}/%,
 
 .PHONY : insert_bashrc_loader
 insert_bashrc_loader :
-	@grep -q '^while read -r BASHRC' ${HOME}/.bashrc ||\
-		echo 'while read -r BASHRC ; do source "$$BASHRC" ; done < <(find "${BASH_PREFIX}/conf.d" -type f -name "*.bash")' >> ${HOME}/.bashrc
+	@grep -q '^while read -r BASHRC' ${BASHRC} ||\
+		echo 'while read -r BASHRC ; do source "$$BASHRC" ; done < <(find "${BASH_PREFIX}/conf.d" -type f -name "*.bash")' >> ${BASHRC}
 
 # Main target to install fish and update Fisher
 .PHONY : bash
