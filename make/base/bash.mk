@@ -3,9 +3,9 @@ BASH_DIR_SRC := $(SRCDIR)/bash/conf.d/
 BASH_FILES := $(wildcard ${BASH_DIR_SRC}/*)
 
 ifeq ($(wildcard ${HOME}/.bashrc.user),)
-BASHRC := ${HOME}/.bashrc.user
-else
 BASHRC := ${HOME}/.bashrc
+else
+BASHRC := ${HOME}/.bashrc.user
 endif
 
 $(BASH_PREFIX)/conf.d/%: $(BASH_DIR_SRC)/%
