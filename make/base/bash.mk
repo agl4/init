@@ -2,10 +2,10 @@
 BASH_DIR_SRC := $(SRCDIR)/bash/conf.d/
 BASH_FILES := $(wildcard ${BASH_DIR_SRC}/*)
 
-ifeq ($(wildcard path/to/file.txt),)
-BASHRC := ${HOME}/.bashrc
-else
+ifeq ($(wildcard ${HOME}/.bashrc.user),)
 BASHRC := ${HOME}/.bashrc.user
+else
+BASHRC := ${HOME}/.bashrc
 endif
 
 $(BASH_PREFIX)/conf.d/%: $(BASH_DIR_SRC)/%
