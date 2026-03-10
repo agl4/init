@@ -7,6 +7,7 @@
 # - https://github.com/masasam/dotfiles/blob/master/Makefile
 #
 
+XDG_CONFIG_HOME ?= $(HOME)/.config
 SRCDIR := ./src
 PREFIX ?= ${HOME}/.local/bin
 export PATH := ${PREFIX}:$(PATH)
@@ -51,8 +52,8 @@ SHELL_TARGETS :=
 
 # Default configuration
 PACKAGES = curl fish git tmux bash
-BASH_PREFIX := $(HOME)/.config/bash/
-FISH_PREFIX := $(HOME)/.config/fish/
+BASH_PREFIX := $(XDG_CONFIG_HOME)/bash/
+FISH_PREFIX := $(XDG_CONFIG_HOME)/fish/
 
 # Include files:
 -include make/os/$(OS).mk

@@ -2,7 +2,7 @@
 
 # https://blog.gitbutler.com/how-git-core-devs-configure-git/
 
-GIT_GLOBAL_CONFIG := ${HOME}/.config/git/config
+GIT_GLOBAL_CONFIG := ${XDG_CONFIG_HOME}/git/config
 
 .PHONY : git
 git :
