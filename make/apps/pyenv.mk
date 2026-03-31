@@ -25,7 +25,7 @@ pyenv-deps-fedora :
 .PHONY : pyenv-deps-opensuse-tumbleweed
 pyenv-deps-opensuse-tumbleweed :
 	@sudo zypper install -y gcc automake bzip2 libbz2-devel xz xz-devel openssl-devel ncurses-devel \
-		readline-devel zlib-devel tk-devel libffi-devel sqlite3-devel gdbm-devel make findutils patch
+		readline-devel zlib-devel tk-devel libffi-devel sqlite3-devel gdbm-devel make findutils patch tar
 
 .PHONY : pyenv-deps-opensuse-leap
 pyenv-deps-opensuse-leap : pyenv-deps-opensuse-tumbleweed
