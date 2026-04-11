@@ -1,7 +1,7 @@
 # Install steps taken from https://github.com/kajisha/asdf-ghq/blob/master/bin/install
 
 # renovate: datasource=github-releases depName=x-motemen/ghq versioning=semver registryUrl=https://github.com
-GHQ_VERSION := 1.8.1
+GHQ_VERSION := 1.10.1
 
 # variables copied from asdf-ghq
 ghq_platform := $(shell echo ${OS} | tr A-Z a-z)
