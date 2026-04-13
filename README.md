@@ -1,6 +1,7 @@
 # Init
 
 [![Lint Code Base](https://github.com/agl4/init/actions/workflows/github-super-linter.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/github-super-linter.yml)
+[![Shell Tests](https://github.com/agl4/init/actions/workflows/shell-tests.yml/badge.svg)](https://github.com/agl4/init/actions/workflows/shell-tests.yml)
 
 This code installs some basic tools and make some initial configuration to my
 working environments.
@@ -104,3 +105,11 @@ To install a Python environment using [`pyenv`](https://github.com/pyenv/pyenv) 
 | Fedora              | [![pyenv-fedora](https://github.com/agl4/init/actions/workflows/apps-pyenv-fedora.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-pyenv-fedora.yml)                                        |
 | Ubuntu              | [![pyenv-ubuntu](https://github.com/agl4/init/actions/workflows/apps-pyenv-ubuntu.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-pyenv-ubuntu.yml)                                        |
 | openSUSE Tumbleweed | [![pyenv-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/apps-pyenv-opensuse-tumbleweed.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-pyenv-opensuse-tumbleweed.yml) |
+
+## Testing
+
+To run the shell tests locally, ensure `bats` is installed and run:
+
+```shell
+make test-shell
+```
