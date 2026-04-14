@@ -7,6 +7,22 @@
 
 set -eu
 
+_help() {
+    cat <<EOF
+Usage: $0 [key_name]
+
+Adds ssh key to agent. If no key_name is provided, lists keys in agent.
+
+Example:
+  $0 github
+EOF
+}
+
+if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
+    _help
+    exit 0
+fi
+
 name="$*"
 
 if [ -z "$name" ] ; then

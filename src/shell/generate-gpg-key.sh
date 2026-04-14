@@ -2,6 +2,19 @@
 
 set -eu
 
+_help() {
+    cat <<EOF
+Usage: $0
+
+Generates a machine-local OpenPGP key and stores it in the password store.
+EOF
+}
+
+if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
+    _help
+    exit 0
+fi
+
 PASSWORD_STORE_DIR=${PASSWORD_STORE_DIR:="$HOME/.password-store"}
 export PASSWORD_STORE_DIR
 
