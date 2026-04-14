@@ -10,4 +10,4 @@ alias m=make
 alias p=pass
 alias pl=pass-local
 alias x='xargs -I {}'
-alias otp="pass otp -c (cd $HOME/.password-store && find . -name otp.gpg | sed 's/\.gpg//'  |sed 's/\.\///' | fzf)"
+alias otp="pass otp -c (cd $HOME/.password-store && find . -name otp.gpg | sed 's/\.gpg//'  |sed 's/\.\///' | fzf --exact)"
