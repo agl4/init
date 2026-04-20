@@ -9,7 +9,23 @@ CERT_VALID="+1w"
 HOST_IDENTITY=""
 OUTDIR=""
 CA_PUBKEY_PATH=""
-while getopts n:FI:o:V:P: options
+
+_help() {
+    cat <<EOF
+Usage: $0 [options]
+
+Options:
+  -I IDENTITY    Host identity (mandatory)
+  -o DIR         Output directory (mandatory)
+  -P PATH        Path to CA public key (mandatory)
+  -n PRINCIPALS  Certificate principals (default: same as IDENTITY)
+  -V VALIDITY    Certificate validity (default: +1w)
+  -F             Force overwrite existing files
+  -h             Show this help message
+EOF
+}
+
+while getopts n:FI:o:V:P:h options
 do
     case $options in
         I) HOST_IDENTITY=$OPTARG ;;
@@ -18,21 +34,25 @@ do
         F) FORCE_OVERWRITE=1 ;;
         o) OUTDIR=$OPTARG ;;
         V) CERT_VALID=$OPTARG ;;
-        *) exit 1 ;;
+        h) _help; exit 0 ;;
+        *) _help; exit 1 ;;
     esac
 done
 
 # check mandatory options
 if [ -z "$HOST_IDENTITY" ] ; then
-    echo "Option -n is mandatory"
+    echo "Option -I is mandatory"
+    _help
     exit 1
 fi
 if [ -z "$OUTDIR" ] ; then
     echo "Option -o is mandatory"
+    _help
     exit 1
 fi
 if [ -z "$CA_PUBKEY_PATH" ] ; then
     echo "Option -P is mandatory"
+    _help
     exit 1
 fi
 

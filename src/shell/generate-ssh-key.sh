@@ -8,23 +8,10 @@ key_usage=""
 passphrase_length="64"
 NO_PASSPHRASE=""
 NO_PUBKEY_IN_PASS=""
-while getopts NPl:k:d:HUB: options
-do
-    case $options in
-        k) key_usage=$OPTARG ;;
-        l) passphrase_length=$OPTARG ;;
-        d) key_directory=$OPTARG ;;
-        H) NO_HOSTNAME=1 ;;
-        U) NO_USERNAME=1 ;;
-        B) PASS_BASE_DIRECTORY=$OPTARG ;;
-        P) NO_PASSPHRASE=1 ;;
-        N) NO_PUBKEY_IN_PASS=1 ;;
-        *) echo "Invalid options" ; exit 1
-    esac
-done
 
 _help(){
 cat <<EOF
+Usage: $0 -k NAME [options]
 
 -l INT .... passphrase length (default: '64')
 -k NAME ... name the usage  (e.g. 'github')
@@ -34,6 +21,7 @@ cat <<EOF
 -B ........ set base directory in pass where to store the pubkey (optional)
 -P ........ do not create a key passphrase in pass but request interactively (optional)
 -N ........ do not save pubkey into pass (optional)
+-h ........ show this help message
 
 Only ED25519 keys are supported.
 
@@ -44,6 +32,22 @@ Example for host-based key generation, store private key only locally.
 EOF
 exit 1
 }
+
+while getopts NPl:k:d:HUB:h options
+do
+    case $options in
+        k) key_usage=$OPTARG ;;
+        l) passphrase_length=$OPTARG ;;
+        d) key_directory=$OPTARG ;;
+        H) NO_HOSTNAME=1 ;;
+        U) NO_USERNAME=1 ;;
+        B) PASS_BASE_DIRECTORY=$OPTARG ;;
+        P) NO_PASSPHRASE=1 ;;
+        N) NO_PUBKEY_IN_PASS=1 ;;
+        h) _help ;;
+        *) _help ;;
+    esac
+done
 
 if [ -z "$key_usage" ] ; then
     _help

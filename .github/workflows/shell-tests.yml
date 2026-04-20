@@ -1,0 +1,28 @@
+name: Shell Tests
+
+on:
+  push:
+    paths:
+      - 'src/shell/**'
+      - 'tests/**'
+      - '.github/workflows/shell-tests.yml'
+  pull_request:
+    paths:
+      - 'src/shell/**'
+      - 'tests/**'
+      - '.github/workflows/shell-tests.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Bats
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bats
+
+      - name: Run Tests
+        run: bats tests/keys.bats

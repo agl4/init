@@ -4,15 +4,34 @@ set -eu
 
 KEYWORD="BW"
 FORCE=
+DIR_WORK=""
 
-while getopts Fd: options
+_help() {
+    cat <<EOF
+Usage: $0 [options]
+
+Options:
+  -d DIR    Directory to process (mandatory)
+  -F        Force execution (default is dry-run)
+  -h        Show this help message
+EOF
+}
+
+while getopts Fd:h options
 do
     case $options in
         d) DIR_WORK=$OPTARG ;;
         F) FORCE=1 ;;
-        *) exit 1 ;;
+        h) _help; exit 0 ;;
+        *) _help; exit 1 ;;
     esac
 done
+
+if [ -z "$DIR_WORK" ]; then
+    echo "Option -d is mandatory"
+    _help
+    exit 1
+fi
 
 if [ ! -d "$DIR_WORK" ] ; then
     echo "$DIR_WORK is not a directory"

@@ -8,19 +8,12 @@ set -eu
 
 # defaults
 opt_lifetime="7200"
+opt_pass=""
+opt_key=""
 
-while getopts k:p:t: options
-do
-    case $options in
-        p) opt_pass=$OPTARG ;;
-        k) opt_key=$OPTARG ;;
-        t) opt_lifetime=$OPTARG ;;
-        *) exit 1;;
-    esac
-done
-
-function _help(){
+_help(){
     cat <<EOF
+Usage: $0 -p NAME -k PATH [options]
 
 $0 - add key from password store to ssh-agent
 
@@ -29,10 +22,22 @@ Options:
   -p NAME   Where to find the ssh passphrase in pass eg. ssh/key/passphrase
   -k PATH   Path to ssh key to add on disk eg. ~/.ssh/id_rsa
   -t SEC    Set key lifetime in seconds (Default: $opt_lifetime)
+  -h        Show this help message
 
 EOF
     exit 1
 }
+
+while getopts k:p:t:h options
+do
+    case $options in
+        p) opt_pass=$OPTARG ;;
+        k) opt_key=$OPTARG ;;
+        t) opt_lifetime=$OPTARG ;;
+        h) _help ;;
+        *) _help ;;
+    esac
+done
 
 # checks
 if [ -z "$opt_pass" ] ; then

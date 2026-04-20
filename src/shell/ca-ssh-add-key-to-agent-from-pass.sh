@@ -25,13 +25,14 @@ EOF
 
 }
 
-while getopts p:t:f:R: options
+while getopts p:t:f:R:h options
 do
     case $options in
         p) PATH_IN_PASS=$OPTARG ;;
         t) KEY_IN_AGENT_TIMEOUT=$OPTARG ;;
         f) CA_PUBKEY_PATH=$OPTARG ;;
         R) PUBKEY_TO_REMOVE=$OPTARG ;;
+        h) _help ;;
         *) _help ;;
     esac
 done

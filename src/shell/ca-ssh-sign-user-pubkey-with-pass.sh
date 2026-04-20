@@ -33,13 +33,14 @@ EOF
     exit 1
 }
 
-while getopts C:V:f:P: options
+while getopts C:V:f:P:h options
 do
     case $options in
         C) CA_NAME=$OPTARG ;;
         f) KEY_TO_SIGN=$OPTARG ;;
         V) CERT_VALID=$OPTARG ;;
         P) CA_PUBKEY_PATH=$OPTARG ;;
+        h) _help ;;
         *) _help ;;
     esac
 done

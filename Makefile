@@ -86,3 +86,7 @@ install : directories $(INSTALL_TARGETS)
 shell : directories $(SHELL_TARGETS)
 server  : install shell $(SERVER_TARGETS)
 desktop : install shell $(DESKTOP_TARGETS)
+
+.PHONY : test-shell
+test-shell:
+	@bats tests/keys.bats
