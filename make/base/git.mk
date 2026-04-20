@@ -27,6 +27,8 @@ git :
 	@git config --global merge.conflictstyle diff3
 
 	@git config --global alias.root "rev-parse --show-toplevel"
+	@git config --global alias.incoming "diff ...@{u}"
+	@git config --global alias.outgoing "diff @{u}..."
 	@git config --global alias.b "branch"
 	@git config --global alias.ba "branch -av"
 	@git config --global alias.d "diff"
