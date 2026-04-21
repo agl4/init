@@ -1,5 +1,26 @@
 # Changelog
 
+## [2026.2.0](https://github.com/agl4/init/compare/v2026.1.0...v2026.2.0) (2026-04-21)
+
+
+### Features
+
+* Add app-sops ([8a9e578](https://github.com/agl4/init/commit/8a9e57823b22d7f3ce378c5dbf6b2149ede039e5))
+* git incoming/outgoing alias ([5441077](https://github.com/agl4/init/commit/54410771ee0feb55420e65a6f8044c709bf84b6d))
+* OpenSUSE dist-upgrade script for rolling releases ([31b0aef](https://github.com/agl4/init/commit/31b0aef7579fb420143134e7b1af3b917064265d))
+* OTP alias ([dbe5cce](https://github.com/agl4/init/commit/dbe5cce4ececfd8d3863920b6501fd553299c47f))
+* Supporting openSUSE Slowroll ([5279ed1](https://github.com/agl4/init/commit/5279ed19c8a7951086ed782c337f5ac40f79d4fb))
+
+
+### Bug Fixes
+
+* Add snap to shell PATH ([a78c8e1](https://github.com/agl4/init/commit/a78c8e1d4ac951ab58c42ffdd78de33a88417812))
+* Fix bashrc for VDI ([3d72c77](https://github.com/agl4/init/commit/3d72c7727c667244f4b6ba6971578b8999f15c85))
+* Fix bootstrap script ([13c7307](https://github.com/agl4/init/commit/13c7307df731a27fa1cd04e89cf4160512d5ae32))
+* ghq may have more roots ([d46d0f9](https://github.com/agl4/init/commit/d46d0f9f17bd113e6a34984e2e7af5dcabcda88c))
+* Removing old user SSHCA key ([8c54952](https://github.com/agl4/init/commit/8c54952e9ff9b8803e3dab5444f115631ea1ac01))
+* Use XDG_CONFIG_HOME ([84e81be](https://github.com/agl4/init/commit/84e81be89e2f0227cf03d7907e2026aa9d27cc00))
+
 ## [2026.1.0](https://github.com/agl4/init/compare/v2026.0.0...v2026.1.0) (2026-01-20)
 
 
