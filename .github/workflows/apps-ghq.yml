@@ -20,8 +20,8 @@ jobs:
           - fedora-latest
           - ubuntu-rolling
           - ubuntu-devel
-          - ubuntu-lts
-          - ubuntu-22.04
+          - ubuntu-24.04
+          - ubuntu-26.04
           - opensuse-tumbleweed
         application:
           - app-ghq

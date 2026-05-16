@@ -11,8 +11,8 @@ Supports:
 | Distribution/OS    \    Targets: | `make desktop` | `make server` |
 |----------------------------------|----------------|---------------|
 | macOS                            | *              |               |
-| Ubuntu `24.04`, `25.04`, `25.10` | *              | *             |
-| Fedora `42`-`43`                 | *              | *             |
+| Ubuntu `24.04`, `26.04`             | *              | *             |
+| Fedora `43`-`44`                 | *              | *             |
 | openSUSE Tumbleweed              | *              | *             |
 | openSUSE Leap `16`               | *              | *             |
 | FreeBSD `15`                     |                | *             |

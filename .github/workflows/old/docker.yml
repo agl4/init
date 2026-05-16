@@ -19,5 +19,6 @@ jobs:
           - ubuntu-rolling
           - fedora-latest
           - ubuntu-devel
-          - ubuntu-lts
+          - ubuntu-24.04
+          - ubuntu-26.04
           - opensuse-tumbleweed

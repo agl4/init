@@ -56,7 +56,7 @@ git :
 	@git config --global --add credential.https://github.com.helper !'${HOME}/.local/bin/git-credential-helper-pass.sh'
 
 	@install -m 0700 -d -v "${HOME}/src"
-	@git config --global ghq.root "${HOME}/src"
+	@git config --global --add ghq.root "${HOME}/src"
 
 # Add targets to groups
 SHELL_TARGETS += git
