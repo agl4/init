@@ -2,8 +2,11 @@
 
 set -eu
 
+# Ensure we use the terminal for pass/gpg and disable SSH GUI prompts
+export GPG_TTY=$(tty 2>/dev/null || echo "")
+export SSH_ASKPASS_REQUIRE=none
+
 PATH_IN_PASS=""
-DISPLAY=""
 KEY_IN_AGENT_TIMEOUT=30
 PUBKEY_TO_REMOVE=""
 

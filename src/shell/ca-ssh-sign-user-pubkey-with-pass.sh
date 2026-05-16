@@ -2,7 +2,8 @@
 
 set -eu
 
-export DISPLAY=""
+# Disable SSH GUI prompts
+export SSH_ASKPASS_REQUIRE=none
 
 KEY_TO_SIGN=""
 CA_PATH_IN_PASS="ca-ssh"

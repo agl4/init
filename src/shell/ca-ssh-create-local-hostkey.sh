@@ -2,8 +2,9 @@
 
 set -eu
 
-# This is required on linux or the password input to work
-DISPLAY=""
+# Ensure we use the terminal for pass/gpg and disable SSH GUI prompts
+export GPG_TTY=$(tty 2>/dev/null || echo "")
+export SSH_ASKPASS_REQUIRE=none
 
 # options
 CA_NAME=""

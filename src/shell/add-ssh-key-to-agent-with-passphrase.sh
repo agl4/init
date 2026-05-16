@@ -53,14 +53,12 @@ if [ ! -f "$opt_key" ] ; then
     exit 1
 fi
 
-# 1. **`export DISPLAY="dummy"`**:
-#    - `DISPLAY` is an environment variable used by X11, the window system
-#      commonly used on Unix-like operating systems. `ssh-add` uses `SSH_ASKPASS`
-#      to prompt for passwords in a graphical environment. However, if there is no
-#      active display (like when running in a headless or non-graphical
-#      environment), setting `DISPLAY` to `"dummy"` tricks the system into
-#      thinking there's a display available, allowing `SSH_ASKPASS` to be used
-#      without a graphical interface.
+# 1. **`export SSH_ASKPASS_REQUIRE=force`**:
+#    - `SSH_ASKPASS_REQUIRE` is an environment variable introduced in OpenSSH 8.4
+#      that allows forcing the use of `SSH_ASKPASS` even when no `DISPLAY` or
+#      `WAYLAND_DISPLAY` is set. This is the modern replacement for the
+#      `DISPLAY="dummy"` hack and works correctly on Wayland and headless
+#      environments.
 
 # 2. **`SSH_ASKPASS=$(mktemp)`**:
 #    - `SSH_ASKPASS` is an environment variable that points to a program or script
@@ -79,7 +77,7 @@ fi
 # These steps collectively enable the script to add the SSH key to the agent
 # securely and automatically, without requiring manual input of the
 # passphrase.
-export DISPLAY="dummy"
+export SSH_ASKPASS_REQUIRE=force
 SSH_ASKPASS=$(mktemp)
 export SSH_ASKPASS
 
