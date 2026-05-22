@@ -1,5 +1,12 @@
 # Changelog
 
+## [2026.2.1](https://github.com/agl4/init/compare/v2026.2.0...v2026.2.1) (2026-05-22)
+
+
+### Bug Fixes
+
+* Support wayland for password input ([861ebee](https://github.com/agl4/init/commit/861ebee3fb664f0e9a093c085ec3e73233ae067a))
+
 ## [2026.2.0](https://github.com/agl4/init/compare/v2026.1.0...v2026.2.0) (2026-04-21)
 
 
