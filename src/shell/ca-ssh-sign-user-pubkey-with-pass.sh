@@ -3,7 +3,11 @@
 set -eu
 
 # Disable SSH GUI prompts
+export GPG_TTY=$(tty 2>/dev/null || echo "")
 export SSH_ASKPASS_REQUIRE=none
+unset SSH_ASKPASS
+unset DISPLAY
+unset WAYLAND_DISPLAY
 
 KEY_TO_SIGN=""
 CA_PATH_IN_PASS="ca-ssh"
