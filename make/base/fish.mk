@@ -19,6 +19,9 @@ $(FISH_PREFIX)/% : $(FISH_DIR_SRC)/%
 .PHONY : fish_install
 fish_install : $(addprefix $(FISH_PREFIX)/, $(patsubst ${FISH_DIR_SRC}/%,%,${FISH_FILES}))
 	@rm ${XDG_CONFIG_HOME}/fish/functions/fish_greeting.fish || true
+	@rm ${XDG_CONFIG_HOME}/fish/functions/fish_prompt.fish || true
+	@rm ${XDG_CONFIG_HOME}/fish/functions/fish_mode_prompt.fish || true
+	@rm ${XDG_CONFIG_HOME}/fish/conf.d/hydro.fish || true
 
 # Rule to install Fisher components
 $(FISHER) :
