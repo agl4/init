@@ -1,4 +1,4 @@
-FROM debian:13.4
+FROM debian:13.5
 ARG BOOTSTRAP_BRANCH=main
 
 ENV DEBIAN_FRONTEND=noninteractive
