@@ -1,5 +1,21 @@
 # Changelog
 
+## [2026.3.0](https://github.com/agl4/init/compare/v2026.2.0...v2026.3.0) (2026-06-12)
+
+
+### Features
+
+* Add proper Debian support ([a333137](https://github.com/agl4/init/commit/a33313744235ffada70264cdb18ef8fff908dbc0))
+* Add rclone-pass-wrapper.sh ([7c57bb9](https://github.com/agl4/init/commit/7c57bb96b03c60a290e6babf6c4e73e755756aa1))
+* **gpg:** Hardening symmetric encryption ([8ac756e](https://github.com/agl4/init/commit/8ac756e0d23561543a5202e847d53b24e0ae37bf))
+* Make sure .local/bin prepends everything in PATH ([6c202d4](https://github.com/agl4/init/commit/6c202d469719a67d7ef16d1bb6aa5b7188176b9b))
+* Use hydro fish theme for async capabilities ([37540ea](https://github.com/agl4/init/commit/37540ea0bfcd4efaddf83c657e7257c736d655ed))
+
+
+### Bug Fixes
+
+* Support wayland for password input ([861ebee](https://github.com/agl4/init/commit/861ebee3fb664f0e9a093c085ec3e73233ae067a))
+
 ## [2026.2.0](https://github.com/agl4/init/compare/v2026.1.0...v2026.2.0) (2026-04-21)
 
 
