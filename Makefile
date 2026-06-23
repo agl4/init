@@ -10,6 +10,7 @@
 XDG_CONFIG_HOME ?= $(HOME)/.config
 SRCDIR := ./src
 PREFIX ?= ${HOME}/.local/bin
+GOPATH := ${HOME}/go
 export PATH := ${PREFIX}:$(PATH)
 
 OS := $(shell uname -s)
