@@ -1,6 +1,6 @@
 PACKAGES += bash curl fish git mosh pass pass-extension-otp
 PACKAGES += rsync tmux fzf git-lfs git-annex ripgrep lsb-release
-PACKAGES += openssh-server golang
+PACKAGES += openssh-server cryptsetup udisks2 golang
 
 .PHONY : debian-update-repos
 debian-update-repos :
