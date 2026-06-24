@@ -13,5 +13,6 @@ scripts : $(SCRIPTS) $(OS_SCRIPTS)
 	@ln -f ${PREFIX}/keys.sh ${PREFIX}/keys_week
 	@rm ${PREFIX}/genssh.sh 2>/dev/null|| true
 	@ln -f ${PREFIX}/pass-local.sh ${PREFIX}/pass-local
+	@ln -f ${PREFIX}/rclone-pass-wrapper.sh ${PREFIX}/rclone
 
 SHELL_TARGETS += scripts

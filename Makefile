@@ -84,7 +84,6 @@ directories:
 
 .PHONY : base server desktop install
 install : directories $(INSTALL_TARGETS)
-	@ln -f ${PREFIX}/rclone-pass-wrapper.sh ${PREFIX}/rclone
 shell : directories $(SHELL_TARGETS)
 server  : install shell $(SERVER_TARGETS)
 desktop : install shell $(DESKTOP_TARGETS)
