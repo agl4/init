@@ -1,5 +1,19 @@
 # Changelog
 
+## [2026.4.0](https://github.com/agl4/init/compare/v2026.3.0...v2026.4.0) (2026-06-27)
+
+
+### Features
+
+* **luks-create-disk-image.sh:** New script ([6321660](https://github.com/agl4/init/commit/6321660f58b9b3e80526048a9d5661af5b2c6be2))
+
+
+### Bug Fixes
+
+* Add base packages for Debian ([15133f2](https://github.com/agl4/init/commit/15133f20b726c1b8b3b0632feddc3086207a3828))
+* **git:** Add git alias to git-annex ([b440189](https://github.com/agl4/init/commit/b4401892b9d9e390041f2eede1a1dd4b6e2e5540))
+* Link wrapper script after script install ([df5ebfb](https://github.com/agl4/init/commit/df5ebfbcae0a7ea94e1176f5f8d0f1b2ab56d60a))
+
 ## [2026.3.0](https://github.com/agl4/init/compare/v2026.2.0...v2026.3.0) (2026-06-12)
 
 
