@@ -8,7 +8,7 @@ opensuse-tumbleweed-upgrade :
 
 .PHONY : opensuse-tumbleweed-install
 opensuse-tumbleweed-install :
-	@sudo zypper -n rm busybox-gawk ; sudo zypper install -y $(PACKAGES)
+	@sudo zypper -n dup ; sudo zypper -n rm busybox-gawk ; sudo zypper install -y $(PACKAGES)
 
 .PHONY : opensuse-tumbleweed-postinstall
 opensuse-tumbleweed-postinstall :
