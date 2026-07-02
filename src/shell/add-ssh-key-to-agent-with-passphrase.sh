@@ -77,7 +77,10 @@ fi
 # These steps collectively enable the script to add the SSH key to the agent
 # securely and automatically, without requiring manual input of the
 # passphrase.
+export GPG_TTY=$(tty 2>/dev/null || echo "")
 export SSH_ASKPASS_REQUIRE=force
+unset DISPLAY
+unset WAYLAND_DISPLAY
 SSH_ASKPASS=$(mktemp)
 export SSH_ASKPASS
 

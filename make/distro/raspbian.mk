@@ -1,1 +1,1 @@
-include make/distro/debian-based.mk
+include make/distro/debian.mk

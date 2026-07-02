@@ -49,7 +49,7 @@ prerequisites(){
                     if [ ! -x /usr/bin/sudo ] ; then
                         zypper install -y sudo
                     fi
-                    sudo zypper install -y git make curl unzip
+                    sudo zypper install -y git make curl unzip tar
                 ;;
                 *) echo "Unsupported distro: $ID"
                 exit 1

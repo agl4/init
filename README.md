@@ -92,6 +92,7 @@ To install a Node.js environment using [`nodenv`](https://github.com/nodenv/node
 |---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | macOS               | [![nodenv-macos](https://github.com/agl4/init/actions/workflows/apps-nodenv-macos.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-nodenv-macos.yml)                                           |
 | Fedora              | [![nodenv-fedora](https://github.com/agl4/init/actions/workflows/apps-nodenv-fedora.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-nodenv-fedora.yml)                                        |
+| Debian              | [![nodenv-debian](https://github.com/agl4/init/actions/workflows/apps-nodenv-debian.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-nodenv-debian.yml)                                        |
 | Ubuntu              | [![nodenv-ubuntu](https://github.com/agl4/init/actions/workflows/apps-nodenv-ubuntu.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-nodenv-ubuntu.yml)                                        |
 | openSUSE Tumbleweed | [![nodenv-opensuse-tumbleweed](https://github.com/agl4/init/actions/workflows/apps-nodenv-opensuse-tumbleweed.yml/badge.svg?branch=main)](https://github.com/agl4/init/actions/workflows/apps-nodenv-opensuse-tumbleweed.yml) |
 

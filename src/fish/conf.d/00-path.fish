@@ -1,4 +1,5 @@
 if functions -q fish_add_path
+    fish_add_path $HOME/go/bin
     fish_add_path $HOME/.local/bin
     fish_add_path /snap/bin
 else

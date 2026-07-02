@@ -10,6 +10,7 @@
 XDG_CONFIG_HOME ?= $(HOME)/.config
 SRCDIR := ./src
 PREFIX ?= ${HOME}/.local/bin
+GOPATH := ${HOME}/go
 export PATH := ${PREFIX}:$(PATH)
 
 OS := $(shell uname -s)
@@ -82,8 +83,8 @@ directories:
 	@install -d -m 0700 "${HOME}/tmp"
 
 .PHONY : base server desktop install
-install : directories $(INSTALL_TARGETS)
 shell : directories $(SHELL_TARGETS)
+install : directories $(INSTALL_TARGETS)
 server  : install shell $(SERVER_TARGETS)
 desktop : install shell $(DESKTOP_TARGETS)
 

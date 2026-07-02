@@ -5,6 +5,9 @@ set -eu
 # Ensure we use the terminal for pass/gpg and disable SSH GUI prompts
 export GPG_TTY=$(tty 2>/dev/null || echo "")
 export SSH_ASKPASS_REQUIRE=none
+unset SSH_ASKPASS
+unset DISPLAY
+unset WAYLAND_DISPLAY
 
 # options
 CA_NAME=""

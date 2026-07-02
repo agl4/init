@@ -18,6 +18,7 @@ jobs:
     strategy:
       matrix:
         distro:
+          - debian
           - fedora-latest
           - ubuntu-rolling
           - ubuntu-devel

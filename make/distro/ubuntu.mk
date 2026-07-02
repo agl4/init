@@ -5,4 +5,4 @@ ubuntu-setup-repos : debian-update-repos
 	@sudo add-apt-repository -y multiverse
 
 INSTALL_TARGETS += ubuntu-setup-repos
-include make/distro/debian-based.mk
+include make/distro/debian.mk
