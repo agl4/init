@@ -13,8 +13,7 @@ $(source_path) : app-cosign
 	cd ${dir_tmp} && \
 		curl -LO https://github.com/getsops/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.${platform}.${architecture} && \
 		curl -LO https://github.com/getsops/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.checksums.txt && \
-		curl -LO https://github.com/getsops/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.checksums.pem && \
-		curl -LO https://github.com/getsops/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.checksums.sig && \
+		curl -LO https://github.com/getsops/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.checksums.sigstore.json && \
 		cosign verify-blob sops-${SOPS_VERSION}.checksums.txt \
 			--bundle sops-${SOPS_VERSION}.checksums.sigstore.json \
 			--certificate-identity-regexp=https://github.com/getsops \
