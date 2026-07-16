@@ -16,8 +16,7 @@ $(source_path) : app-cosign
 		curl -LO https://github.com/getsops/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.checksums.pem && \
 		curl -LO https://github.com/getsops/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.checksums.sig && \
 		cosign verify-blob sops-${SOPS_VERSION}.checksums.txt \
-			--certificate sops-${SOPS_VERSION}.checksums.pem \
-			--signature sops-${SOPS_VERSION}.checksums.sig \
+			--bundle sops-${SOPS_VERSION}.checksums.sigstore.json \
 			--certificate-identity-regexp=https://github.com/getsops \
 			--certificate-oidc-issuer=https://token.actions.githubusercontent.com && \
 		sha256sum -c sops-${SOPS_VERSION}.checksums.txt --ignore-missing && \
