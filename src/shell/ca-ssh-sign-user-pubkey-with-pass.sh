@@ -59,10 +59,6 @@ fi
 
 _sign_with_ca(){
     if [ -z "$CA_PUBKEY_PATH" ] ; then
-        if [ -z "$CA_NAME" ] ; then
-            echo "ERROR: CA_NAME must be defined."
-            _help
-        fi
         # Private throwaway agent: the CA key never enters the user's own
         # (possibly forwarded) agent, and dies with this script.
         _tmp_dir=$(mktemp -d)
@@ -130,5 +126,30 @@ CERT_EXTENSIONS_OPTIONS=( )
 for ext  in $(echo "$CERT_EXTENSIONS" | tr "," "\n") ; do
     CERT_EXTENSIONS_OPTIONS+=( "-O" "$ext" )
 done
+
+if [ -z "$CA_PUBKEY_PATH" ] && [ -z "$CA_NAME" ] ; then
+    echo "ERROR: CA_NAME must be defined."
+    _help
+fi
+
+# Show what is about to be signed and ask, before the CA key is touched
+_fingerprint=$(ssh-keygen -lf "${KEY_TO_SIGN}.pub")
+cat <<EOF
+About to sign:
+
+  Key ........... $_fingerprint
+  CA ............ ${CA_PUBKEY_PATH:-${CA_PATH_IN_PASS}/${CA_NAME}}
+  Identity ...... $CERT_IDENTITY
+  Principals .... $CERT_PRINCIPALS
+  Extensions .... $CERT_EXTENSIONS
+  Validity ...... $CERT_VALID
+
+EOF
+_answer=""
+read -r -p "Sign? [y/N] " _answer || true
+if [ "$_answer" != "y" ] ; then
+    echo "Aborted, nothing signed."
+    exit 1
+fi
 
 _sign_with_ca

@@ -17,7 +17,7 @@ teardown() {
 }
 
 @test "defaults: own user only, pty only" {
-    run bash "$SCRIPT" -P "$TEST_DIR/ca.pub" -f "$TEST_DIR/user"
+    run bash "$SCRIPT" -P "$TEST_DIR/ca.pub" -f "$TEST_DIR/user" <<< y
     echo "$output"
     [ "$status" -eq 0 ]
     cert="$(ssh-keygen -Lf "$TEST_DIR/user-cert.pub")"
@@ -29,7 +29,7 @@ teardown() {
 
 @test "request file values are applied" {
     printf '# comment\nCERT_PRINCIPALS=alice,bob\nCERT_EXTENSIONS=clear,permit-port-forwarding\n' > "$TEST_DIR/user.req"
-    run bash "$SCRIPT" -P "$TEST_DIR/ca.pub" -f "$TEST_DIR/user"
+    run bash "$SCRIPT" -P "$TEST_DIR/ca.pub" -f "$TEST_DIR/user" <<< y
     [ "$status" -eq 0 ]
     cert="$(ssh-keygen -Lf "$TEST_DIR/user-cert.pub")"
     [[ "$cert" == *"alice"* ]]
@@ -40,14 +40,14 @@ teardown() {
 
 @test "request file is never executed" {
     printf 'CERT_PRINCIPALS=$(touch %s/pwned)\n' "$TEST_DIR" > "$TEST_DIR/user.req"
-    run bash "$SCRIPT" -P "$TEST_DIR/ca.pub" -f "$TEST_DIR/user"
+    run bash "$SCRIPT" -P "$TEST_DIR/ca.pub" -f "$TEST_DIR/user" <<< y
     [ "$status" -ne 0 ]
     [[ "$output" == *"ERROR: $TEST_DIR/user.req"* ]]
     [ ! -e "$TEST_DIR/pwned" ]
     [ ! -e "$TEST_DIR/user-cert.pub" ]
 
     printf 'touch %s/pwned\n' "$TEST_DIR" > "$TEST_DIR/user.req"
-    run bash "$SCRIPT" -P "$TEST_DIR/ca.pub" -f "$TEST_DIR/user"
+    run bash "$SCRIPT" -P "$TEST_DIR/ca.pub" -f "$TEST_DIR/user" <<< y
     [ "$status" -ne 0 ]
     [[ "$output" == *"ERROR: $TEST_DIR/user.req"* ]]
     [ ! -e "$TEST_DIR/pwned" ]
@@ -56,7 +56,7 @@ teardown() {
 
 @test "request file cannot override settings outside the allowlist" {
     printf 'CERT_VALID=forever\n' > "$TEST_DIR/user.req"
-    run bash "$SCRIPT" -P "$TEST_DIR/ca.pub" -f "$TEST_DIR/user"
+    run bash "$SCRIPT" -P "$TEST_DIR/ca.pub" -f "$TEST_DIR/user" <<< y
     [ "$status" -ne 0 ]
     [[ "$output" == *"ERROR: $TEST_DIR/user.req"* ]]
     [ ! -e "$TEST_DIR/user-cert.pub" ]
@@ -77,7 +77,7 @@ EOF
     ssh-add -q -D
     agents_before="$(pgrep -x ssh-agent | sort)"
 
-    PATH="$TEST_DIR/mocks:$PATH" run bash "$SCRIPT" -C testca -f "$TEST_DIR/user"
+    PATH="$TEST_DIR/mocks:$PATH" run bash "$SCRIPT" -C testca -f "$TEST_DIR/user" <<< y
     echo "$output"
     [ "$status" -eq 0 ]
     ssh-keygen -Lf "$TEST_DIR/user-cert.pub" | grep -q "$(ssh-keygen -lf "$TEST_DIR/ca.pub" | awk '{print $2}')"
@@ -85,4 +85,15 @@ EOF
     run ssh-add -l
     [[ "$output" == *"no identities"* ]]
     [ "$(pgrep -x ssh-agent | sort)" = "$agents_before" ]
+}
+
+@test "nothing is signed without an explicit y" {
+    run bash "$SCRIPT" -P "$TEST_DIR/ca.pub" -f "$TEST_DIR/user" <<< n
+    [ "$status" -ne 0 ]
+    [[ "$output" == *"$(ssh-keygen -lf "$TEST_DIR/user.pub")"* ]]
+    [ ! -e "$TEST_DIR/user-cert.pub" ]
+
+    run bash "$SCRIPT" -P "$TEST_DIR/ca.pub" -f "$TEST_DIR/user" < /dev/null
+    [ "$status" -ne 0 ]
+    [ ! -e "$TEST_DIR/user-cert.pub" ]
 }
