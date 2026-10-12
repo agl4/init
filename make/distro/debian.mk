@@ -1,9 +1,21 @@
 PACKAGES += bash curl fish git mosh pass pass-extension-otp
 PACKAGES += rsync tmux fzf git-lfs git-annex ripgrep lsb-release
-PACKAGES += openssh-server cryptsetup udisks2 golang-go gopass
+PACKAGES += openssh-server cryptsetup udisks2 golang-go gopass gopass-archive-keyring
+
+.PHONY : debian-gopass-repo
+debian-gopass-repo :
+	@curl -fsSL https://packages.gopass.pw/repos/gopass/gopass-archive-keyring.gpg | sudo tee /usr/share/keyrings/gopass-archive-keyring.gpg > /dev/null
+	@printf '%s\n' \
+		'Types: deb' \
+		'URIs: https://packages.gopass.pw/repos/gopass' \
+		'Suites: stable' \
+		'Architectures: all amd64 arm64 armhf' \
+		'Components: main' \
+		'Signed-By: /usr/share/keyrings/gopass-archive-keyring.gpg' \
+		| sudo tee /etc/apt/sources.list.d/gopass.sources > /dev/null
 
 .PHONY : debian-update-repos
-debian-update-repos :
+debian-update-repos : debian-gopass-repo
 	@sudo apt-get update -y
 
 .PHONY : debian-upgrade
