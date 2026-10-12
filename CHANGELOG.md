@@ -1,5 +1,29 @@
 # Changelog
 
+## [2026.4.0](https://github.com/agl4/init/compare/v2026.3.0...v2026.4.0) (2026-10-12)
+
+
+### Features
+
+* add confirmation prompt before signing ([550a7f9](https://github.com/agl4/init/commit/550a7f96ff600314da1b35936704e8f394cdec81))
+* Add gopass to system package lists ([fb70d6a](https://github.com/agl4/init/commit/fb70d6a7036639a4fedc25110b7d27ed837de74b))
+* **aliases:** Add open-this-repo alias ([1044f8c](https://github.com/agl4/init/commit/1044f8cd79d79b03dcf9d79e111b67888d606cf6))
+* **ca-ssh-sign:** secure request parsing and agent handling ([dc1b0d1](https://github.com/agl4/init/commit/dc1b0d1e93b5f3b5f89b6a1357dfe5f2e3d8e5fe))
+* **fish:** add pooldir function and key bindings ([58f1e0a](https://github.com/agl4/init/commit/58f1e0a5b638a20fb15013aa907f05074dea7195))
+* **luks-create-disk-image.sh:** New script ([6321660](https://github.com/agl4/init/commit/6321660f58b9b3e80526048a9d5661af5b2c6be2))
+* New script: tailscale-pinger.sh ([2524ce9](https://github.com/agl4/init/commit/2524ce97a9963e6f22ae6ce8d9526f51ee048a8b))
+* **ssh:** secure passphrase handling with SSH_ASKPASS ([7c140c6](https://github.com/agl4/init/commit/7c140c6e1b98241d2b370753fd028c9c0687b165))
+* **tmux:** Enable mouse support and extended keys ([a7a732a](https://github.com/agl4/init/commit/a7a732ad0f65c7a39fa4e6b82d6c8d1ecb28205b))
+* Update SSH algos ([1eb9b7f](https://github.com/agl4/init/commit/1eb9b7f71e1d0b7a76b6dd1129e991c80995dc60))
+
+
+### Bug Fixes
+
+* Add base packages for Debian ([15133f2](https://github.com/agl4/init/commit/15133f20b726c1b8b3b0632feddc3086207a3828))
+* **git:** Add git alias to git-annex ([b440189](https://github.com/agl4/init/commit/b4401892b9d9e390041f2eede1a1dd4b6e2e5540))
+* Install gopass properly on Debian ([f9efb91](https://github.com/agl4/init/commit/f9efb918762ee59bfac5eaca14263b4fd93a7771))
+* Link wrapper script after script install ([df5ebfb](https://github.com/agl4/init/commit/df5ebfbcae0a7ea94e1176f5f8d0f1b2ab56d60a))
+
 ## [2026.3.0](https://github.com/agl4/init/compare/v2026.2.0...v2026.3.0) (2026-06-12)
 
 
