@@ -7,7 +7,7 @@ BREW := /usr/local/bin/brew
 endif
 
 PACKAGES += curl fish git gnupg mosh openssh pass pass-otp tmux fzf git-lfs git-annex
-PACKAGES += sqlite3 ripgrep hunspell unzip pinentry-mac
+PACKAGES += sqlite3 ripgrep hunspell unzip pinentry-mac gopass
 PACKAGES_CASKS := emacs-app
 
 $(BREW) :
