@@ -2,6 +2,14 @@
 
 set -eu
 
+# Askpass mode: ssh-keygen re-runs this script to fetch the passphrase, which
+# waits on the inherited stdin pipe (see below). One line per prompt.
+if [ -n "${GENERATE_SSH_KEY_ASKPASS:-}" ] ; then
+    IFS= read -r _line
+    printf '%s\n' "$_line"
+    exit 0
+fi
+
 NO_HOSTNAME=""
 NO_USERNAME=""
 key_usage=""
@@ -77,13 +85,33 @@ PUBKEY_LOCATION="${PASS_BASE_DIRECTORY}/${KEYNAME}/pubkey"
 key_directory=${key_directory:="${HOME}/.ssh/"}
 
 if [ -z "$NO_PASSPHRASE" ] ; then
+    # stdin is taken by the passphrase pipe below, so ssh-keygen cannot ask
+    # about overwriting. Refuse before the stored passphrase is replaced.
+    if [ -e "${key_directory}/${KEYNAME}" ] ; then
+        echo "ERROR: ${key_directory}/${KEYNAME} already exists, remove it first."
+        exit 1
+    fi
     pass-local generate --no-symbols "${PASSPHRASE_LOCATION}" "$passphrase_length"
 fi
 mkdir -p "$key_directory" || true
 chmod 0700 "$key_directory"
 if [ -z "$NO_PASSPHRASE" ] ; then
     echo 'Touch the device...'
-    ssh-keygen -t ed25519 -C "$KEY_COMMENT" -f "${key_directory}/${KEYNAME}" -P "$(pass-local "${PASSPHRASE_LOCATION}")"
+    # The passphrase reaches ssh-keygen over a pipe, read by askpass (this
+    # script itself): never argv (visible in ps), the environment or a file.
+    _passphrase=$(pass-local "${PASSPHRASE_LOCATION}")
+    if [ -z "$_passphrase" ] ; then
+        echo "ERROR: empty passphrase in ${PASSPHRASE_LOCATION}"
+        exit 1
+    fi
+    case $0 in
+        /*) _self=$0 ;;
+        *) _self="${PWD}/$0" ;;
+    esac
+    # Twice: ssh-keygen asks for the passphrase and then for confirmation.
+    printf '%s\n%s\n' "$_passphrase" "$_passphrase" | \
+        GENERATE_SSH_KEY_ASKPASS=1 SSH_ASKPASS="$_self" SSH_ASKPASS_REQUIRE=force \
+        ssh-keygen -t ed25519 -C "$KEY_COMMENT" -f "${key_directory}/${KEYNAME}"
 else
     ssh-keygen -t ed25519 -C "$KEY_COMMENT" -f "${key_directory}/${KEYNAME}"
 fi
