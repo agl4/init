@@ -16,8 +16,8 @@ CA_PUBKEY_PATH=""
 CA_NAME=""
 
 CERT_IDENTITY_DEFAULT="${USER}@${HOSTNAME}"
-CERT_EXTENSIONS_DEFAULT="no-x11-forwarding"
-CERT_PRINCIPALS_DEFAULT="root,${USER}"
+CERT_EXTENSIONS_DEFAULT="clear,permit-pty"
+CERT_PRINCIPALS_DEFAULT="${USER}"
 
 _help(){
     cat <<EOF
@@ -63,7 +63,12 @@ _sign_with_ca(){
             echo "ERROR: CA_NAME must be defined."
             _help
         fi
-        _ca_pubkey_path=$(mktemp)
+        # Private throwaway agent: the CA key never enters the user's own
+        # (possibly forwarded) agent, and dies with this script.
+        _tmp_dir=$(mktemp -d)
+        _ca_pubkey_path="${_tmp_dir}/ca.pub"
+        eval "$(ssh-agent -s -a "${_tmp_dir}/agent.sock")" > /dev/null
+        trap 'ssh-agent -k > /dev/null ; rm -rf "$_tmp_dir"' EXIT
         ca-ssh-add-key-to-agent-from-pass.sh \
             -t 10 \
             -p "${CA_PATH_IN_PASS}/${CA_NAME}" \
@@ -81,12 +86,6 @@ _sign_with_ca(){
         "${CERT_EXTENSIONS_OPTIONS[@]}" \
         "${KEY_TO_SIGN}.pub"
 
-    if [ -z "$CA_PUBKEY_PATH" ] ; then
-        ca-ssh-add-key-to-agent-from-pass.sh \
-            -R "$_ca_pubkey_path"
-        rm "$_ca_pubkey_path"
-    fi
-
     echo
     echo "Show cert information..."
     ssh-keygen -Lf "${KEY_TO_SIGN}-cert.pub"
@@ -95,8 +94,32 @@ _sign_with_ca(){
 _request_file="${KEY_TO_SIGN}.req"
 
 if [ -e "$_request_file" ] ; then
-    # shellcheck source=share/samples/ca-ssh-sign-user-pubkey-with-pass/sample.req
-    source "$_request_file"
+    # The request file is data, never code: KEY=VALUE lines, known keys only.
+    # See share/samples/ca-ssh-sign-user-pubkey-with-pass/sample.req
+    while IFS='=' read -r _key _value || [ -n "$_key" ] ; do
+        case $_key in
+            ''|'#'*) continue ;;
+        esac
+        case $_value in
+            *'$'*|*'`'*)
+                echo "ERROR: $_request_file: $_key: shell expansion is not supported"
+                exit 1
+                ;;
+        esac
+        case $_key in
+            CA_NAME)
+                case $_value in
+                    */*) echo "ERROR: $_request_file: CA_NAME must not contain '/'" ; exit 1 ;;
+                esac
+                # -C on the command line wins
+                CA_NAME=${CA_NAME:-$_value}
+                ;;
+            CERT_PRINCIPALS) CERT_PRINCIPALS=$_value ;;
+            CERT_EXTENSIONS) CERT_EXTENSIONS=$_value ;;
+            CERT_IDENTITY) CERT_IDENTITY=$_value ;;
+            *) echo "ERROR: $_request_file: unknown key '$_key'" ; exit 1 ;;
+        esac
+    done < "$_request_file"
 fi
 
 CA_NAME=${CA_NAME:=""} # this is required

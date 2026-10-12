@@ -90,4 +90,4 @@ desktop : install shell $(DESKTOP_TARGETS)
 
 .PHONY : test-shell
 test-shell:
-	@bats tests/keys.bats
+	@bats tests/keys.bats tests/ca-ssh-sign.bats
