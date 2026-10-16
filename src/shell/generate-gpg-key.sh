@@ -4,14 +4,41 @@ set -eu
 
 _help() {
     cat <<EOF
-Usage: $0
+Usage: $0 [-h] [-p]
 
-Generates a machine-local OpenPGP key and stores it in the password store.
+Generates a machine-local OpenPGP key and stores the public key in the password store.
+
+Options:
+  -h  show this help
+  -p  print the key ID of the existing machine-local key and exit
 EOF
 }
 
-if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
-    _help
+PRINT_ONLY=
+while getopts "hp" opt; do
+    case "$opt" in
+        h) _help; exit 0 ;;
+        p) PRINT_ONLY=1 ;;
+        *) _help >&2; exit 2 ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+THIS_DOMAIN=mmegh.local
+THIS_HOSTNAME="$(hostname | cut -d'.' -f1)"
+KEY_EMAIL="${USER}@${THIS_HOSTNAME}.${THIS_DOMAIN}"
+
+_key_id() {
+    gpg --list-keys --with-colons "$KEY_EMAIL" 2>/dev/null | awk -F: '/^pub/ {print $5}' | tail -n1
+}
+
+if [ -n "$PRINT_ONLY" ]; then
+    KEY_ID="$(_key_id)"
+    if [ -z "$KEY_ID" ]; then
+        >&2 echo "ERROR: no key found for $KEY_EMAIL"
+        exit 1
+    fi
+    echo "0x$KEY_ID"
     exit 0
 fi
 
@@ -22,10 +49,6 @@ if [ ! -d "${PASSWORD_STORE_DIR}" ] ; then
     >&2 echo "ERROR: Password store is not initiated yet: $PASSWORD_STORE_DIR"
     exit 1
 fi
-
-THIS_DOMAIN=mmegh.local
-THIS_HOSTNAME="$(hostname | cut -d'.' -f1)"
-KEY_EMAIL="${USER}@${THIS_HOSTNAME}.${THIS_DOMAIN}"
 
 gpg -k "$KEY_EMAIL" 2>/dev/null && {
     echo "ERROR: key already generated for this email, not generating a new one."
@@ -48,7 +71,7 @@ Subkey-Usage: encrypt
 %echo done
 EOF
 
-KEY_ID="$(gpg --list-keys --with-colons "$KEY_EMAIL"| awk -F: '/^pub/ {print $5}' | tail -n1)"
+KEY_ID="$(_key_id)"
 
 if [ -z "$KEY_ID" ] ; then
     >&2 echo "ERROR: cannot find generated key ID"
@@ -57,5 +80,16 @@ fi
 
 gpg --export --armor "$KEY_ID" | gopass insert -m "gpg/machine-local/${KEY_EMAIL}/${KEY_ID}-pub.asc"
 
-echo
+echo You can cache now the passphrase:
+
+date | gpg --clearsign --local-user ${KEY_EMAIL}
+
+dummy_file=$(mktemp)
+
+date | gpg -r ${KEY_EMAIL} -e > $dummy_file
+gpg -d $dummy_file
+
+
 gpg -k "$KEY_ID"
+
+echo "0x$KEY_ID"
