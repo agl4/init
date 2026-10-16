@@ -66,7 +66,7 @@ fi
 
 set -eu
 
-PASS_BASE_DIRECTORY=${PASS_BASE_DIRECTORY:="ssh"}
+PASS_BASE_DIRECTORY=${PASS_BASE_DIRECTORY:="local/ssh"}
 KEYNAME="ed25519-${key_usage}"
 KEY_COMMENT="name:${key_usage} created:$(date +%Y%m%d-%H%M%S)"
 if [ -z "$NO_HOSTNAME" ] ; then
@@ -91,7 +91,7 @@ if [ -z "$NO_PASSPHRASE" ] ; then
         echo "ERROR: ${key_directory}/${KEYNAME} already exists, remove it first."
         exit 1
     fi
-    pass-local generate --no-symbols "${PASSPHRASE_LOCATION}" "$passphrase_length"
+    gopass generate "${PASSPHRASE_LOCATION}" "$passphrase_length"
 fi
 mkdir -p "$key_directory" || true
 chmod 0700 "$key_directory"
@@ -99,7 +99,7 @@ if [ -z "$NO_PASSPHRASE" ] ; then
     echo 'Touch the device...'
     # The passphrase reaches ssh-keygen over a pipe, read by askpass (this
     # script itself): never argv (visible in ps), the environment or a file.
-    _passphrase=$(pass-local "${PASSPHRASE_LOCATION}")
+    _passphrase=$(gopass "${PASSPHRASE_LOCATION}")
     if [ -z "$_passphrase" ] ; then
         echo "ERROR: empty passphrase in ${PASSPHRASE_LOCATION}"
         exit 1
@@ -117,7 +117,7 @@ else
 fi
 
 if [ -z "$NO_PUBKEY_IN_PASS" ] ; then
-    pass-local insert -m "$PUBKEY_LOCATION" < "${key_directory}/${KEYNAME}.pub"
+    gopass insert -m "$PUBKEY_LOCATION" < "${key_directory}/${KEYNAME}.pub"
 fi
 
 echo

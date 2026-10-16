@@ -64,7 +64,7 @@ teardown() {
 
 @test "CA from pass is used in a private agent, not the caller's" {
     mkdir "$TEST_DIR/mocks"
-    cat <<EOF > "$TEST_DIR/mocks/pass"
+    cat <<EOF > "$TEST_DIR/mocks/gopass"
 #!/bin/bash
 case \$1 in
     ca-ssh/testca/public) cat "$TEST_DIR/ca.pub" ;;

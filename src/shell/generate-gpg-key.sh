@@ -15,7 +15,7 @@ if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
     exit 0
 fi
 
-PASSWORD_STORE_DIR=${PASSWORD_STORE_DIR:="$HOME/.password-store"}
+PASSWORD_STORE_DIR=${PASSWORD_STORE_DIR:="$HOME/.local/share/gopass/stores/root"}
 export PASSWORD_STORE_DIR
 
 if [ ! -d "${PASSWORD_STORE_DIR}" ] ; then
@@ -55,7 +55,7 @@ if [ -z "$KEY_ID" ] ; then
     exit 1
 fi
 
-gpg --export --armor "$KEY_ID" | pass insert -m "gpg/machine-local/${KEY_EMAIL}/${KEY_ID}-pub.asc"
+gpg --export --armor "$KEY_ID" | gopass insert -m "gpg/machine-local/${KEY_EMAIL}/${KEY_ID}-pub.asc"
 
 echo
 gpg -k "$KEY_ID"

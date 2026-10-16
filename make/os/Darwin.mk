@@ -6,7 +6,7 @@ ifeq ($(UNAME_M),x86_64)
 BREW := /usr/local/bin/brew
 endif
 
-PACKAGES += curl fish git gnupg mosh openssh pass pass-otp tmux fzf git-lfs git-annex
+PACKAGES += curl fish git gnupg mosh openssh tmux fzf git-lfs git-annex
 PACKAGES += sqlite3 ripgrep hunspell unzip pinentry-mac gopass
 PACKAGES_CASKS := emacs-app
 

@@ -3,12 +3,12 @@
 # This scripts wraps rclone command so it always uses pass as a backend for
 # configuration passphrase
 
-PASS_RCLONE_PATH="rclone/config-password"
-PASSWORD_COMMAND="pass-local ${PASS_RCLONE_PATH}"
+PASS_RCLONE_PATH="local/rclone/config-password"
+PASSWORD_COMMAND="gopass ${PASS_RCLONE_PATH}"
 
 # Generate password if it does not exist
 $PASSWORD_COMMAND >/dev/null 2>&1 ||\
-    pass-local generate -n "$PASS_RCLONE_PATH" 64 > /dev/null 2>&1
+    gopass generate "$PASS_RCLONE_PATH" 64 > /dev/null 2>&1
 
 RCLONE_PATH=
 case $(uname) in

@@ -92,7 +92,7 @@ trap _cleanup 1 2 3 6
 
 cat <<EOF > "${SSH_ASKPASS}"
 #!/bin/sh
-pass-local $opt_pass | head -1
+gopass $opt_pass | head -1
 EOF
 chmod +x "${SSH_ASKPASS}"
 

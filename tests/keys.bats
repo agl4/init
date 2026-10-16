@@ -73,7 +73,7 @@ teardown() {
     
     run "$TEST_DIR/keys.sh" id_rsa
     [ "$status" -eq 0 ]
-    grep -q "add-ssh-key-to-agent-with-passphrase.sh -p ssh/id_rsa/passphrase -t 28800 -k $HOME/.ssh/id_rsa" "${TEST_DIR}/calls.log"
+    grep -q "add-ssh-key-to-agent-with-passphrase.sh -p local/ssh/id_rsa/passphrase -t 28800 -k $HOME/.ssh/id_rsa" "${TEST_DIR}/calls.log"
 }
 
 @test "keys.sh as keys_week adds key with 7 days timeout" {
@@ -85,7 +85,7 @@ teardown() {
     
     run "$TEST_DIR/keys_week" id_rsa
     [ "$status" -eq 0 ]
-    grep -q "add-ssh-key-to-agent-with-passphrase.sh -p ssh/id_rsa/passphrase -t 604800 -k $HOME/.ssh/id_rsa" "${TEST_DIR}/calls.log"
+    grep -q "add-ssh-key-to-agent-with-passphrase.sh -p local/ssh/id_rsa/passphrase -t 604800 -k $HOME/.ssh/id_rsa" "${TEST_DIR}/calls.log"
 }
 
 @test "keys.sh with valid certificate adds key" {

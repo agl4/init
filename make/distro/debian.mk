@@ -1,4 +1,4 @@
-PACKAGES += bash curl fish git mosh pass pass-extension-otp
+PACKAGES += bash curl fish git mosh
 PACKAGES += rsync tmux fzf git-lfs git-annex ripgrep lsb-release
 PACKAGES += openssh-server cryptsetup udisks2 golang-go gopass gopass-archive-keyring
 

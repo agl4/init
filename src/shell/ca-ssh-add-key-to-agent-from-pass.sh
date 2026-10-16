@@ -63,10 +63,10 @@ if [ -z "$PUBKEY_TO_REMOVE" ] ; then
     _ca_pubkey_path=${CA_PUBKEY_PATH:="$(mktemp)"}
     echo "Get public key of the CA..."
     echo "Waiting for GPG..."
-    pass "${PATH_IN_PASS}/public" > "$_ca_pubkey_path"
+    gopass "${PATH_IN_PASS}/public" > "$_ca_pubkey_path"
     echo "Adding CA to ssh-agent..."
     echo "Waiting for GPG..."
-    pass "${PATH_IN_PASS}/private" | ssh-add -t "$KEY_IN_AGENT_TIMEOUT" -
+    gopass "${PATH_IN_PASS}/private" | ssh-add -t "$KEY_IN_AGENT_TIMEOUT" -
 else
     echo "Removing key ${PUBKEY_TO_REMOVE} ..."
     ssh-add -d - < "$PUBKEY_TO_REMOVE"
