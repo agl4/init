@@ -55,6 +55,14 @@ gpg -k "$KEY_EMAIL" 2>/dev/null && {
     exit 1
 }
 
+PASS_PREFIX="gpg/machine-local/${KEY_EMAIL}"
+gopass generate "${PASS_PREFIX}/passphrase" 45
+PASSPHRASE="$(gopass show -o "${PASS_PREFIX}/passphrase")"
+if [ -z "$PASSPHRASE" ] ; then
+    >&2 echo "ERROR: empty passphrase in ${PASS_PREFIX}/passphrase"
+    exit 1
+fi
+
 gpg --batch --generate-key - <<EOF
 %echo Generating a local OpenPGP key
 Key-Type: eddsa
@@ -67,6 +75,7 @@ Expire-Date: 0
 Subkey-Type: ecdh
 Subkey-Curve: cv25519
 Subkey-Usage: encrypt
+Passphrase: $PASSPHRASE
 %commit
 %echo done
 EOF
@@ -78,18 +87,4 @@ if [ -z "$KEY_ID" ] ; then
     exit 1
 fi
 
-gpg --export --armor "$KEY_ID" | gopass insert -m "gpg/machine-local/${KEY_EMAIL}/${KEY_ID}-pub.asc"
-
-echo You can cache now the passphrase:
-
-date | gpg --clearsign --local-user ${KEY_EMAIL}
-
-dummy_file=$(mktemp)
-
-date | gpg -r ${KEY_EMAIL} -e > $dummy_file
-gpg -d $dummy_file
-
-
 gpg -k "$KEY_ID"
-
-echo "0x$KEY_ID"
