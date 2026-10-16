@@ -11,7 +11,11 @@ $(OS_SCRIPTS) :
 scripts : $(SCRIPTS) $(OS_SCRIPTS)
 	@ln -f ${PREFIX}/keys.sh ${PREFIX}/keys
 	@ln -f ${PREFIX}/keys.sh ${PREFIX}/keys_week
-	@rm ${PREFIX}/genssh.sh 2>/dev/null|| true
+	@rm ${PREFIX}/genssh.sh \
+		${PREFIX}/passphrase-generate-wordlist.sh \
+		${PREFIX}/generate-gpg-key.sh \
+		${PREFIX}/generate-ssh-key.sh \
+		${PREFIX}/passphrase-generate-icloud-style.sh 2>/dev/null|| true
 	@ln -f ${PREFIX}/rclone-pass-wrapper.sh ${PREFIX}/rclone
 
 SHELL_TARGETS += scripts
