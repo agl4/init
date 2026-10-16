@@ -2,9 +2,15 @@ PACKAGES += bash curl fish git mosh pass pass-extension-otp
 PACKAGES += rsync tmux fzf git-lfs git-annex ripgrep lsb-release
 PACKAGES += openssh-server cryptsetup udisks2 golang-go gopass gopass-archive-keyring
 
+# Key fingerprint 8086459860A915BA78CAAB6A686E9DE6E1AEFFBE
+GOPASS_KEYRING_SHA256 := 01bb162443f88415ec53093e5b2b466efb29bdcaecd247ae194d816ae7576bc7
+
 .PHONY : debian-gopass-repo
 debian-gopass-repo :
-	@curl -fsSL https://packages.gopass.pw/repos/gopass/gopass-archive-keyring.gpg | sudo tee /usr/share/keyrings/gopass-archive-keyring.gpg > /dev/null
+	@tmp=$$(mktemp) && trap 'rm -f "$$tmp"' EXIT && \
+		curl -fsSL https://packages.gopass.pw/repos/gopass/gopass-archive-keyring.gpg -o "$$tmp" && \
+		echo "$(GOPASS_KEYRING_SHA256)  $$tmp" | sha256sum -c --quiet - && \
+		sudo install -m 0644 "$$tmp" /usr/share/keyrings/gopass-archive-keyring.gpg
 	@printf '%s\n' \
 		'Types: deb' \
 		'URIs: https://packages.gopass.pw/repos/gopass' \
