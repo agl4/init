@@ -1,5 +1,19 @@
 # Changelog
 
+## [2026.5.0](https://github.com/agl4/init/compare/v2026.4.0...v2026.5.0) (2026-10-16)
+
+
+### Features
+
+* Migrate to gopass ([27b3903](https://github.com/agl4/init/commit/27b39035672973089519b0b9425e3f243c813a5c))
+* Password finding with fzf ([fd5cfcb](https://github.com/agl4/init/commit/fd5cfcb3d754066a1f6878bbc04b749db939673f))
+* Store machine local passphrases in pass ([a968120](https://github.com/agl4/init/commit/a9681208f640ac521462e7975e0b419e67670ce6))
+
+
+### Bug Fixes
+
+* Improve integrity of gopass installation ([27993a5](https://github.com/agl4/init/commit/27993a553f268290888dd47b56fb8bfadbabd203))
+
 ## [2026.4.0](https://github.com/agl4/init/compare/v2026.3.0...v2026.4.0) (2026-10-12)
 
 
