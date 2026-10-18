@@ -12,6 +12,7 @@ freebsd-pkg-upgrade :
 
 .PHONY : freebsd-base
 freebsd-base : freebsd-pkg-update
+	-@pkg delete -y $(PACKAGES_REMOVE)
 	@pkg install -y $(PACKAGES)
 
 INSTALL_TARGETS += freebsd-pkg-update

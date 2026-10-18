@@ -10,6 +10,9 @@ PACKAGES += curl fish git gnupg mosh openssh tmux fzf git-lfs git-annex
 PACKAGES += sqlite3 ripgrep hunspell unzip pinentry-mac gopass
 PACKAGES_CASKS := emacs-app
 
+export NONINTERACTIVE := 1
+unexport HOMEBREW_ASK
+
 $(BREW) :
 	@bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
@@ -23,6 +26,7 @@ darwin-brew-upgrade : | $(BREW)
 
 .PHONY : darwin-base
 darwin-base : | $(BREW)
+	-@${BREW} uninstall $(PACKAGES_REMOVE)
 	@${BREW} install $(PACKAGES)
 	@${BREW} install --cask $(PACKAGES_CASKS)
 

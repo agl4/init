@@ -53,6 +53,7 @@ SHELL_TARGETS :=
 
 # Default configuration
 PACKAGES = curl fish git tmux bash
+PACKAGES_REMOVE = pass pass-otp
 BASH_PREFIX := $(XDG_CONFIG_HOME)/bash/
 FISH_PREFIX := $(XDG_CONFIG_HOME)/fish/
 

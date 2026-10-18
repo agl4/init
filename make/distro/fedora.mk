@@ -8,6 +8,7 @@ fedora-upgrade :
 
 .PHONY : fedora-install
 fedora-install :
+	-@sudo dnf remove -y $(PACKAGES_REMOVE)
 	@sudo dnf install -y $(PACKAGES)
 
 .PHONY : fedora-postinstall

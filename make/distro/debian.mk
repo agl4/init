@@ -30,6 +30,7 @@ debian-upgrade : debian-update-repos
 
 .PHONY : debian-install
 debian-install : debian-update-repos
+	-@sudo apt-get remove -y $(PACKAGES_REMOVE)
 	@sudo apt-get install -y $(PACKAGES)
 
 .PHONY : debian-postinstall
