@@ -1,6 +1,7 @@
 #!/bin/sh
 
 set -eu
+umask 077
 
 # Askpass mode: ssh-keygen re-runs this script to fetch the passphrase, which
 # waits on the inherited stdin pipe (see below). One line per prompt.
@@ -63,20 +64,26 @@ fi
 if [ -z "$passphrase_length" ] && [ -z "$NO_PASSPHRASE" ] ; then
     _help
 fi
-
-set -eu
+case $passphrase_length in
+    ''|*[!0-9]*) echo "ERROR: -l must be a positive integer" >&2 ; exit 1 ;;
+esac
 
 PASS_BASE_DIRECTORY=${PASS_BASE_DIRECTORY:="local/ssh"}
 KEYNAME="ed25519-${key_usage}"
 KEY_COMMENT="name:${key_usage} created:$(date +%Y%m%d-%H%M%S)"
 if [ -z "$NO_HOSTNAME" ] ; then
-    MY_HOSTNAME=$(hostname | perl -F'\.' -lane 'print $F[0]')
+    MY_HOSTNAME=$(hostname -s)
     KEYNAME="${KEYNAME}-${MY_HOSTNAME}"
     KEY_COMMENT="name:${key_usage} created:$(date +%Y%m%d-%H%M%S) host:${MY_HOSTNAME}"
 fi
 if [ -z "$NO_USERNAME" ] ; then
-    KEYNAME="${KEYNAME}-${USER}"
+    KEYNAME="${KEYNAME}-$(id -un)"
 fi
+
+# KEYNAME becomes a file name and a pass path: no '/', spaces or leading '-'.
+case $KEYNAME in
+    *[!A-Za-z0-9._-]*) echo "ERROR: invalid key name '${KEYNAME}'" >&2 ; exit 1 ;;
+esac
 
 PASSPHRASE_LOCATION="${PASS_BASE_DIRECTORY}/${KEYNAME}/passphrase"
 PUBKEY_LOCATION="${PASS_BASE_DIRECTORY}/${KEYNAME}/pubkey"
@@ -88,20 +95,20 @@ if [ -z "$NO_PASSPHRASE" ] ; then
     # stdin is taken by the passphrase pipe below, so ssh-keygen cannot ask
     # about overwriting. Refuse before the stored passphrase is replaced.
     if [ -e "${key_directory}/${KEYNAME}" ] ; then
-        echo "ERROR: ${key_directory}/${KEYNAME} already exists, remove it first."
+        echo "ERROR: ${key_directory}/${KEYNAME} already exists, remove it first." >&2
         exit 1
     fi
     gopass generate "${PASSPHRASE_LOCATION}" "$passphrase_length"
 fi
-mkdir -p "$key_directory" || true
+mkdir -p "$key_directory"
 chmod 0700 "$key_directory"
 if [ -z "$NO_PASSPHRASE" ] ; then
     echo 'Touch the device...'
     # The passphrase reaches ssh-keygen over a pipe, read by askpass (this
     # script itself): never argv (visible in ps), the environment or a file.
-    _passphrase=$(gopass "${PASSPHRASE_LOCATION}")
+    _passphrase=$(gopass show -o "${PASSPHRASE_LOCATION}")
     if [ -z "$_passphrase" ] ; then
-        echo "ERROR: empty passphrase in ${PASSPHRASE_LOCATION}"
+        echo "ERROR: empty passphrase in ${PASSPHRASE_LOCATION}" >&2
         exit 1
     fi
     case $0 in
@@ -111,9 +118,9 @@ if [ -z "$NO_PASSPHRASE" ] ; then
     # Twice: ssh-keygen asks for the passphrase and then for confirmation.
     printf '%s\n%s\n' "$_passphrase" "$_passphrase" | \
         GENERATE_SSH_KEY_ASKPASS=1 SSH_ASKPASS="$_self" SSH_ASKPASS_REQUIRE=force \
-        ssh-keygen -t ed25519 -C "$KEY_COMMENT" -f "${key_directory}/${KEYNAME}"
+        ssh-keygen -t ed25519 -a 100 -C "$KEY_COMMENT" -f "${key_directory}/${KEYNAME}"
 else
-    ssh-keygen -t ed25519 -C "$KEY_COMMENT" -f "${key_directory}/${KEYNAME}"
+    ssh-keygen -t ed25519 -a 100 -C "$KEY_COMMENT" -f "${key_directory}/${KEYNAME}"
 fi
 
 if [ -z "$NO_PUBKEY_IN_PASS" ] ; then
