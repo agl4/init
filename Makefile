@@ -83,22 +83,11 @@ directories:
 	@install -d -m 0700 "${HOME}/src"
 	@install -d -m 0700 "${HOME}/tmp"
 
-.PHONY : verify
-verify : setup-signature
-	curl -L https://github.com/web-flow.gpg | gpg --import
-	curl -sL https://github.com/agl4.gpg | gpg --import
-	git verify-commit -v HEAD
-
-.PHONY : setup-signature
-setup-signature :
-	git config user.signingkey 0x23780D5FF6512EE0
-	git config commit.gpgSign true
-
 .PHONY : base server desktop install
-shell : verify directories $(SHELL_TARGETS)
-install : verify directories $(INSTALL_TARGETS)
-server  : verify install shell $(SERVER_TARGETS)
-desktop : verify install shell $(DESKTOP_TARGETS)
+shell : directories $(SHELL_TARGETS)
+install : directories $(INSTALL_TARGETS)
+server  : install shell $(SERVER_TARGETS)
+desktop : install shell $(DESKTOP_TARGETS)
 
 .PHONY : test-shell
 test-shell:
