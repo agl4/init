@@ -1,5 +1,17 @@
 # Changelog
 
+## [2026.6.0](https://github.com/agl4/init/compare/v2026.5.0...v2026.6.0) (2026-10-22)
+
+
+### Features
+
+* Signing commits ([32a8b6f](https://github.com/agl4/init/commit/32a8b6f1de5d2d4156d144b1f3a153b8dca738bf))
+
+
+### Bug Fixes
+
+* Hardening ssh key generation ([a05ae16](https://github.com/agl4/init/commit/a05ae165c163fd9645ce4421c5b5c01e54c8cb26))
+
 ## [2026.5.0](https://github.com/agl4/init/compare/v2026.4.0...v2026.5.0) (2026-10-18)
 
 
