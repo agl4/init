@@ -1,5 +1,5 @@
 bumpversion==0.6.0
 pipenv==2026.9.1
-ruff==0.17.0
+ruff==0.17.5
 yamllint==1.38.0
 uv==0.13.7
