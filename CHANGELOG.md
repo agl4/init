@@ -1,5 +1,21 @@
 # Changelog
 
+## [2026.6.0](https://github.com/agl4/init/compare/v2026.5.0...v2026.6.0) (2026-11-14)
+
+
+### Features
+
+* Add uv ([64b9832](https://github.com/agl4/init/commit/64b98321e83f147b3af16e659a0cecff48820097))
+* Signing commits ([32a8b6f](https://github.com/agl4/init/commit/32a8b6f1de5d2d4156d144b1f3a153b8dca738bf))
+
+
+### Bug Fixes
+
+* Hardening script ([260fd94](https://github.com/agl4/init/commit/260fd946c79d200595ae45d8ee86006d960d2b92))
+* Hardening ssh key generation ([a05ae16](https://github.com/agl4/init/commit/a05ae165c163fd9645ce4421c5b5c01e54c8cb26))
+* Hide status bar in tmux ([0ac84fd](https://github.com/agl4/init/commit/0ac84fd2e79967f6a0893d8a0eb38221ff0b5738))
+* Use tmux selection but copy to system clipboard ([1bbd238](https://github.com/agl4/init/commit/1bbd238a5ed6c58da33d7d1572e0cba7e14d0ca3))
+
 ## [2026.5.0](https://github.com/agl4/init/compare/v2026.4.0...v2026.5.0) (2026-10-18)
 
 
