@@ -1,5 +1,24 @@
 # Changelog
 
+## [2026.6.0](https://github.com/agl4/init/compare/v2026.5.0...v2026.6.0) (2026-11-28)
+
+
+### Features
+
+* Add uv ([64b9832](https://github.com/agl4/init/commit/64b98321e83f147b3af16e659a0cecff48820097))
+* Search tmux history with fzf ([817995b](https://github.com/agl4/init/commit/817995b87829d013109d5227560ba275099a9fb6))
+* Signing commits ([32a8b6f](https://github.com/agl4/init/commit/32a8b6f1de5d2d4156d144b1f3a153b8dca738bf))
+
+
+### Bug Fixes
+
+* **git:** Make ghq config idempotent ([9da6780](https://github.com/agl4/init/commit/9da67801e3dabf710533732a4f23b57681fbac0d))
+* Hardening script ([260fd94](https://github.com/agl4/init/commit/260fd946c79d200595ae45d8ee86006d960d2b92))
+* Hardening ssh key generation ([a05ae16](https://github.com/agl4/init/commit/a05ae165c163fd9645ce4421c5b5c01e54c8cb26))
+* Hide status bar in tmux ([0ac84fd](https://github.com/agl4/init/commit/0ac84fd2e79967f6a0893d8a0eb38221ff0b5738))
+* **repos-unpushed.sh:** Improve output, add tag support ([4840fb8](https://github.com/agl4/init/commit/4840fb886243fdccca5fbdab7c243ce8efa6f7fd))
+* Use tmux selection but copy to system clipboard ([1bbd238](https://github.com/agl4/init/commit/1bbd238a5ed6c58da33d7d1572e0cba7e14d0ca3))
+
 ## [2026.5.0](https://github.com/agl4/init/compare/v2026.4.0...v2026.5.0) (2026-10-18)
 
 
